@@ -3,7 +3,7 @@
         private $hostName = 'localhost';
         private $userName = 'root';
         private $password = '';
-        private $dbName = 'qltv_mvc';
+        private $dbName = '';
 
         private $conn = NULL;
         private $result = NULL;
@@ -73,14 +73,14 @@
         }
 
         //phuong thuc them du lieu
-        public function InsertData($hoten, $namsinh, $quequan){
-            $sql = "INSERT INTO tbl_thanhvien(id, hoten, namsinh, quequan) VALUES (null, '$hoten', '$namsinh', '$quequan')";
+        public function InsertData($table, $hoten, $namsinh, $quequan){
+            $sql = "INSERT INTO $table(id, hoten, namsinh, quequan) VALUES (null, '$hoten', '$namsinh', '$quequan')";
             return $this->execute($sql);
         }
 
         //phuong thuc sua du lieu
-        public function UpdateData($id, $hoten, $namsinh, $quequan){
-            $sql = "UPDATE tbl_thanhvien SET hoten = '$hoten', namsinh = '$namsinh', quequan = '$quequan' WHERE id = '$id'";
+        public function UpdateData($table, $id, $hoten, $namsinh, $quequan){
+            $sql = "UPDATE $table SET hoten = '$hoten', namsinh = '$namsinh', quequan = '$quequan' WHERE id = '$id'";
             return $this->execute($sql);
         }
 
