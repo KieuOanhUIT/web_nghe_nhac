@@ -1,0 +1,194 @@
+.container-1{
+    /* Frame 7 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 50px;
+
+position: absolute;
+width: 1040px;
+height: 524px;
+left: 200px;
+top: 150px;
+}
+
+.container-1-top {
+/* Frame 6 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 5px;
+width: 1040px;
+/* height: 381px; */
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+background-image: url('/MVC/View/img/img_bg.png')
+
+}
+
+.container-1-top h2{/* ÂM NHẠC KHÔNG GIỚI HẠN */
+
+    /* width: 1040px; */
+    /* height: 264px; */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 120px;
+    line-height: 132px;;
+    /* or 132px */
+    display: flex;
+    align-items: center;
+    
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 117.23%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-emphasis-color: transparent;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    
+}
+
+.container-1-top p{
+/* Mỗi giai điệu đều mang trong mình sự sáng tạo, tự do không biên giới và chính bạn sẽ là người tìm ra chúng. */
+
+width: 666px;
+height: 66px;
+
+/* P1 Paragraph L */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* or 33px */
+display: flex;
+align-items: center;
+
+color: #9F9F9F;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+
+.container-1-bottom button{
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 50px;
+gap: 16px;
+
+width: 179px;
+height: 62px;
+color: #FFFFFF;
+
+
+background: linear-gradient(263.39deg, #296265 3.83%, #344A5C 32%, #3F2F52 56.42%, #471C4B 78.95%);
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+
+
+/*container-2*/
+.container-2{
+    /* Frame 17 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+
+padding: 0px;
+gap: 10px;
+
+position: absolute;
+width: 660px;
+height: 286px;
+/* left: 390px; */
+top: 1000px;
+
+
+}
+
+.container-2 h2{
+/* BÀI HÁT THỊNH HÀNH */
+
+width: 660px;
+height: 202px;
+
+/* H2 Heading */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 92px;
+line-height: 110%;
+/* or 101px */
+display: flex;
+align-items: center;
+text-align: center;
+
+background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 117.23%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-emphasis-color: transparent;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+}
+
+.container-2 p{
+width: 660px;
+height: 33px;
+
+/* P1 Paragraph L */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 150%;
+/* identical to box height, or 33px */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #9F9F9F;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+}
