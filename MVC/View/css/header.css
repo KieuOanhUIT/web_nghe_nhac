@@ -1,5 +1,16 @@
+@font-face {
+  font-family: 'Inter';
+  src:url('/MVC/View/font/Inter-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+ }
+
 *{
     background-color: #000;
+}
+
+html {
+  font-family: "Inter", "Times New Roman",
 }
 
 header{
