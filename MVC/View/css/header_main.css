@@ -6,7 +6,7 @@ header {
     padding: 10px 55px;
     gap: 10px;
 
-    position: relative;
+    position: fixed;
     width: 1150px;
     height: 65px;
     top: 24px;

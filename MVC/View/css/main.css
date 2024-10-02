@@ -1,3 +1,25 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('/MVC/View/font/Inter-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    color: #fff;
+}
+
+* {
+    background-color: #000000;
+    font-family: "Inter", "Times New Roman";
+    color: #fff
+}
+
+;
+
+html,
+body {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
 img, .logo, div, iconify-icon, span {
     background-color: transparent; /* Đảm bảo nền trong suốt */
 }
@@ -11,11 +33,11 @@ img, .logo, div, iconify-icon, span {
 }
 
 .ui_regular {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 150%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px; 
+    line-height: 150%;
 }
 
 .op_75 {
@@ -56,7 +78,7 @@ main {
     position: relative;
     width: 100%;
     justify-content: center;
-    top: 60px;
+    top: 120px;
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0);
