@@ -1,0 +1,206 @@
+.leftBar{
+    align-items: flex-start;
+}
+
+.wrapper{
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 24px;
+gap: 24px;
+
+width: 281px;
+height: 582px;
+color: aliceblue;
+background: none;
+
+
+}
+
+.lib, div, iconify-icon, p{
+    background-color: transparent;
+}
+
+.head{
+    /* Frame 67 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 26px;
+
+width: 281px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: auto;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+}
+
+.head-1{
+    /* Frame 57 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 103px;
+
+width: 281px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+}
+
+.lib{
+    /* Frame 56 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 20px;
+
+width: 152px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+
+iconify-icon{
+    /* fluent:library-24-filled */
+font-size: 26px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+.TV{
+   font-family: "Inter","extra-bold";
+   font-weight: bold;
+   font-size: 24px;
+}
+
+.head-2 {
+    /* Frame 60 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 20px;
+
+width: 198px;
+height: 32px;
+}
+
+.playlist, .artist{
+    /* Frame 58 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 16px;
+gap: 10px;
+
+width: 87px;
+height: 32px;
+
+background: rgba(255, 255, 255, 0.25);
+border-radius: 26px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+
+
+.list{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+width: 249px;
+height: 456px;
+overflow-y: auto;
+}
+
+.BH{
+    font-family: "Inter", "Semibold";
+    font-size: 16px;
+}
+
+.NS{
+    font-family: "Inter", "Regular";
+    font-size: 16px;
+    font-weight: 100px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 100;
+}
+ .image{
+width: 72px;
+height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+ }
+
+ .box{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 20px;
+width: 249px;
+height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+ }
+ .list::-webkit-scrollbar {
+    width: 8px; /* Độ rộng thanh cuộn */
+}
+
+/* Thanh cuộn */
+.list::-webkit-scrollbar-thumb {
+    background: transparent; /trong suốt */
+    border-radius: 4px; /* Đường viền thanh cuộn */
+}
+
