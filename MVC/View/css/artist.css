@@ -1,5 +1,5 @@
 body {
-    background-image: url('/MVC/View/img/img_bg.png');
+    background-image: url('/MVC/View/img/image-bg.png');
     background-color: rgb(0, 0, 0);
     background-repeat: no-repeat;
     background-size: 50%;
@@ -387,7 +387,7 @@ body {
     width: 1030px;
     height: 630px;
     margin-left: 20px;
-    margin-right: 0px;
+    margin-right: 30px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 10px;
