@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/MVC/View/css/main.css">
+  <!--  <link rel="stylesheet" href="/MVC/View/css/main.css">-->
     <link rel="stylesheet" href="/MVC/View/css/left_side.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Document</title>
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
@@ -13,39 +14,6 @@
 
 <body>
     <div class="mainLight"></div>
-
-    <header>
-        <div class="controlbar">
-            <div class="logo">
-                <img src="/MVC/View/img/logo.svg" alt="logo">
-            </div>
-
-            <div class="searching">
-                <div class="home">
-                    <img class="img-home" src="/MVC/View/icon/icon_home.svg" alt="">
-                </div>
-                <div class="input-wrapper">
-                    <img src="/MVC/View/icon/icon_search.svg" alt="">
-                    <input type="text" name="" id="">
-                </div>
-
-                <div class="voice-searching">
-                    <img src="/MVC/View/icon/icon_voice_searching.svg" alt="">
-                </div>
-            </div>
-
-            <div class="general">
-                <div class="notif">
-                    <img src="/MVC/View/icon/icon_notif.svg" alt="">
-                </div>
-                <div class="account">
-                    <img src="/MVC/View/icon/icon_signout.svg" alt="">
-                </div>
-                <p class="op_50" href="">ĐĂNG XUẤT</p>
-            </div>
-        </div>
-    </header>
-
 
     <main>
         <!-- Main space -->
@@ -57,7 +25,7 @@
                     <div class="head">
                         <div class="head-1">
                             <div class="lib">
-                                <iconify-icon icon="fluent:library-24-filled"></iconify-icon>
+                                <iconify-icon icon="fluent:library-24-filled" ></iconify-icon>
                                 <p class = "TV">Thư viện</p>
                             </div>
                             <div class="plus">
@@ -149,20 +117,48 @@
                 </div>
             </div>
 
-            <div class="centerSpace">
-
-            </div>
-
-            <div class="rightBar">
-
-            </div>
+           
         </div>
 
-        <!-- Listening Space -->
-        <div class="listeningSpace">
+        <!-- Create new list -->
+        <div class="create-newlist">
+            <div class="return">
+                <img src="/MVC/View/icon/ic-return.svg" alt="">
+            </div>
+            
 
+            <div class="lbl-create">
+                <p>Tạo danh sách mới</p>
+            </div>
+
+            <form name="create-newlist" action="">
+                <button class="choose-image">
+                    <img src="/MVC/View/img/insert-img.svg" alt="">
+                  </button>
+                  <input type="file" id="file-upload" style="display: none;">
+                  <!-- <img id="image-preview" src="" alt="Preview"> -->
+
+                <div class="name-list">
+                    <p>Tên danh sách</p>
+                    <input type="text" name="name-list">
+                </div>
+
+                <div class="scription">
+                    <p>Mô tả</p>
+                    <input type="textarea" name="scription">
+                </div>
+
+                <input type="submit" value="Tạo">
+            </form>
+
+
+            
         </div>
+        
     </main>
+    <script src="/MVC/View/script/leftBar.js"></script>
+
+
 </body>
 
 </html>

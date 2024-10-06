@@ -1,13 +1,21 @@
+
 .rightBar {
     display: flex;
     background: rgba(255, 255, 255, 0.10);
-    height: 100%;
-    width: 100%;
+    height: 629px;
+    width: 331px;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     align-items: center;
     flex-direction: column;
+    margin-right: 30px;
+    margin-left: auto;
 }
+
+body {
+    background-color: #000000;
+}
+
 
 iconify-icon, p{
     background-color: transparent;
@@ -17,11 +25,16 @@ iconify-icon {
     width: 24px;
     height: 24px;
     color: white;
+    cursor: pointer;
+}
+
+
+iconify-icon:hover{
+    color: #007d79;
 }
 .boxWrapper{
     width: 331px;
     height: 100%;
-    background: transparent;
     align-items: center;
     flex-direction: column;
     padding: auto;
@@ -43,12 +56,22 @@ iconify-icon {
  }
 
 .boxSongEvalute{
-    width: 281px;
+    width: auto;
     height: 539px;
     padding:0px 25px;
     position: relative;   /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
     overflow: hidden;     /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
     overflow-y: auto;
+}
+
+/*Chinh thanh cuon*/
+.boxSongEvalute::-webkit-scrollbar {
+    width: 8px; /* Độ rộng của thanh cuộn */
+}
+
+.boxSongEvalute::-webkit-scrollbar-thumb {
+    background: transparent; /* Đặt màu đỏ với độ trong suốt 70% */
+    border-radius: 4px; /* Đường viền thanh cuộn */
 }
 
 
@@ -76,6 +99,14 @@ border-radius: 10px;
     margin-bottom: 0px;
 
 }
+.All{
+    cursor: pointer;
+}
+
+.All:hover{
+    background-color: #007d79;
+}
+
 
 .nameSong-Artist{
     font-family: "Inter" ,"regular";
@@ -115,25 +146,10 @@ border-radius: 10px;
     margin-top: 10px;
     max-width: 240px; /* Đặt chiều cao tối đa để nội dung có thể cuộn */
     height: 60px;
-    overflow-y: auto; /* Kích hoạt thanh cuộn dọc */
+    position: relative;   /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
+    overflow: hidden;     /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
+
 }
-
-.NameEvaluate::-webkit-scrollbar {
-    width: 8px; /* Độ rộng của thanh cuộn */
-}
-
-/* Tùy chỉnh thanh cuộn */
-.NameEvaluate::-webkit-scrollbar-thumb {
-    background: transparent; /* Đặt màu đỏ với độ trong suốt 70% */
-    border-radius: 4px; /* Đường viền thanh cuộn */
-}
-
-/* Khi hover qua thanh cuộn, nó sẽ sáng hơn */
-.NameEvaluate::-webkit-scrollbar-thumb:hover {
-    background: rgb(104, 100, 100); /* Đặt màu đỏ không trong suốt khi hover */
-}
-
-
 
 .box-E {
     padding: 10px 0;
@@ -183,6 +199,7 @@ border-radius: 10px;
 
 /*Định dạng Phần Xem đánh giá - seeReview-content*/
 .seeReview{
+    display: none;
     box-sizing: border-box;
     position: absolute;
     width: 800px;
@@ -254,13 +271,15 @@ border-radius: 10px;
 
 }
 
-.seeReview-nDot .dot{
+form[name='myform'] .seeReview-nDot .dot-oval {
+
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    color: white;
-    
+    background-color: rgb(238, 226, 226); /* Thay đổi màu nền nếu cần */
+    display: inline-block; /* Đảm bảo rằng các dot hiển thị thành hàng ngang */
 }
+
 
 .seeReview-comment{
     width: 740px;
@@ -292,3 +311,83 @@ border-radius: 10px;
 }
 
 
+/*Định dạng ô nghệ sĩ*/
+.boxSongEvalute .artist{
+    margin-top: 20px;
+    width: 281px;
+    height: 216px;
+    display: flex;
+    flex-direction: column;   
+    gap: 16px;
+}
+
+.box-Evaluate .artist .artist-image{
+    width: auto;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Đảm bảo phần dư của hình ảnh không bị lộ ra ngoài */
+
+}
+.artist-image img{
+   width: auto;
+   height: 160px;
+    object-fit: cover;
+}
+.artist-image .textNgheSi{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.folow-artist{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.folow-artist .name{
+    width: 142px;
+    height: 26px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.folow-artist #follow{
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    width: 99px;
+    height: 40px;
+    border: 1px solid #FFFFFF;
+    border-radius: 26px;
+    font-family: 'iner','regular';
+    font-size: 16px;
+    background-color: transparent;
+    margin-right: 0px;
+    color: white;
+    margin-bottom: 3px;
+
+}
+
+.folow-artist #follow:hover{
+    background-color: #414b4a;
+    color: white;
+}
