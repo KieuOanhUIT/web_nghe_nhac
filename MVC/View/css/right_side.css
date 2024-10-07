@@ -1,4 +1,10 @@
-
+@font-face {
+    font-family: 'Inter';
+    src: url('/MVC/View/font/Inter-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    color: #fff;
+}
 .rightBar {
     display: flex;
     background: rgba(255, 255, 255, 0.10);
