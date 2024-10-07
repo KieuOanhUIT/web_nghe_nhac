@@ -1,0 +1,302 @@
+
+.leftBar {
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.10);
+    height: 630px;
+    width: 331px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-left: 30px;
+}
+
+
+body {
+    background-color: #000000;
+}
+
+iconify-icon:hover{
+    color: green    ;
+
+}
+.wrapper{
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 24px;
+gap: 24px;
+
+width: 281px;
+height: 582px;
+color: aliceblue;
+background: none;
+
+
+}
+
+.lib, div, iconify-icon, p{
+    background-color: transparent;
+    color: white;
+}
+
+.head{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
+    width: 281px;
+    height: 86px;
+}
+
+.head-1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 103px;
+    width: 281px;
+    height: 26px;
+
+}
+
+.lib{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    width: 152px;
+    height: 26px;
+
+
+}
+
+iconify-icon{
+font-size: 26px;
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+.TV{
+   font-family: "Inter","extra-bold";
+   font-weight: bold;
+   font-size: 24px;
+}
+
+.head-2 {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    width: 198px;
+    height: 32px;
+    }
+
+.playlist, .artist{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+
+    width: 87px;
+    height: 32px;
+
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 26px;
+}
+
+
+.list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    width: 249px;
+    height: 456px;
+    overflow-y: auto;
+}
+
+.BH{
+    font-family: "Inter", "Semibold";
+    font-size: 16px;
+}
+
+.NS{
+    font-family: "Inter", "Regular";
+    font-size: 16px;
+    font-weight: 100px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 100;
+}
+ .image{
+width: 72px;
+height: 72px;
+
+ }
+
+ .box{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 20px;
+width: 249px;
+height: 72px;
+
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+ }
+ .list::-webkit-scrollbar {
+    width: 8px; /* Độ rộng thanh cuộn */
+}
+
+/* Thanh cuộn */
+.list::-webkit-scrollbar-thumb {
+    background: transparent; /trong suốt */
+    border-radius:4px; /* Đường viền thanh cuộn */
+}
+
+/****************************************************/
+/*tạo danh sách phát mới*/
+.create-newlist{
+        position: absolute;
+        background-color: #000000;
+        box-sizing: border-box;
+        width: 440px;
+        height: 674px;
+        background: #000000;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        align-items: center;
+        flex-direction: column;
+        display: none;
+       
+
+}
+
+.create-newlist .return {
+    height: 50.74px;
+    width: 50.74px;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.create-newlist .lbl-create{
+
+    width: 221px;
+    height: 26px;
+    left: calc(50% - 221px/2 + 0.5px);
+    top: 103px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.create-newlist .name-list{
+    display: block;
+    width: 325px;
+    height: 74.75px;
+    margin: 25px auto;
+    gap: 6px;
+    
+}
+input[name=name-list] {
+
+    box-sizing: border-box;
+    padding: 17px 53px;
+    width: 325px;
+    height: 56px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+
+    color: white;
+}
+
+
+.create-newlist .scription{
+    width: 324px;
+    height: 190px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+input[name=scription]{
+    box-sizing: border-box;
+    width: 324px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    color: white;
+
+    }
+
+.choose-image{
+    display: flex;
+    background-color: transparent;
+    border: transparent !important;
+    margin-top: 30px;
+    margin-left: auto;    
+    margin-right: auto;
+}
+
+input[type=submit]{
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 6px 24px;
+gap: 10px;
+
+width: 77px;
+height: 36px;
+left: 305px;
+top: 598px;
+
+background: #296265;
+border-radius: 5px;
+
+margin-right: 56px;
+margin-left: auto;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+color: white;
+
+}
