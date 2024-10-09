@@ -690,20 +690,81 @@ body {
     margin-left: 14px;
 }
 #progress-slider {
+    -webkit-appearance: none;
     margin-right: 14px;
     width: 437px;
+    height: 5px;
+    background: linear-gradient(90deg, #1DB954 50%, #ddd 50%);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease-in;
 }
- 
+
+/* Custom thumb styling */
+#progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: #1DB954;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Remove the outline when focused */
+#progress-slider:focus {
+    outline: none;
+}
+
+/* Dynamic background for Webkit browsers */
+#progress-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, #1DB954 var(--value), #ddd var(--value));
+    border-radius: 5px;
+}
 #info-volume {
+    display: flex;
     width: auto;
     height: 20px;
-    margin-left: 840px;
+    margin-left: 850px;
+    align-items: center;
+}
+#volume {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #1DB954 50%, #ddd 50%);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease-in;
+}
+
+/* Custom thumb styling */
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: #1DB954;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Remove the outline when focused */
+#volume:focus {
+    outline: none;
+}
+
+/* Dynamic background for Webkit browsers */
+#volume::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, #1DB954 var(--value), #ddd var(--value));
+    border-radius: 5px;
 }
 #info {
     color: white;
     background-color: transparent;
     outline: none;
     border: none;
+    margin-right: 30px;
 }
 #info:hover svg path {
     fill: rgba(255, 255, 255, 0.5)
