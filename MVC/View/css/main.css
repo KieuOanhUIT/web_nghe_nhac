@@ -11,17 +11,18 @@
     font-family: "Inter", "Times New Roman";
     color: #fff;
     -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-;
+
 
 html,
 body {
     scroll-behavior: smooth;
     height: 100%;
+
 }
 
 body:active {
@@ -29,8 +30,17 @@ body:active {
     /* Đổi biểu tượng con trỏ khi đang kéo */
 }
 
-img, .logo, div, iconify-icon, span, ul, li, h3, h4 {
-    background-color: transparent; /* Đảm bảo nền trong suốt */
+img,
+.logo,
+div,
+iconify-icon,
+span,
+ul,
+li,
+h3,
+h4 {
+    background-color: transparent;
+    /* Đảm bảo nền trong suốt */
 }
 
 h3 {
@@ -62,7 +72,7 @@ h4 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px; 
+    font-size: 16px;
     line-height: 150%;
 }
 
@@ -83,11 +93,11 @@ h4 {
 }
 
 .p3 {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 150%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
 
 }
 
@@ -98,7 +108,7 @@ h4 {
 
 .op_50 {
     color: rgba(255, 255, 255, 0.5);
-    
+
 }
 
 .op_25 {
@@ -192,6 +202,7 @@ main {
     left: 0;
     justify-content: space-between;
     gap: 20px;
+    z-index: 500;
 }
 
 .mainSpace .leftBar,

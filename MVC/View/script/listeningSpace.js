@@ -92,3 +92,20 @@ volumnContainer.addEventListener('input', (e) => {
     }
 
 });
+
+//hiện ẩn lời
+$(document.body).ready(function () {
+    $('#lyricsBtn').click(function () {
+        $('.wrapperSlider').toggle();
+        $('.wrapper-lyric').toggle();
+    });
+});
+
+//hien an thong tin bai hat
+$(document.body).ready(function () {
+    $('#info').click(function () {
+        $('.rightBar').toggle();
+    })
+
+});
+

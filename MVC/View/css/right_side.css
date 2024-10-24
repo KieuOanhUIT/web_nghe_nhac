@@ -5,6 +5,7 @@
     font-style: normal;
     color: #fff;
 }
+
 .rightBar {
     display: flex;
     background: rgba(255, 255, 255, 0.10);
@@ -23,7 +24,8 @@ body {
 }
 
 
-iconify-icon, p{
+iconify-icon,
+p {
     background-color: transparent;
 }
 
@@ -35,17 +37,23 @@ iconify-icon {
 }
 
 
-iconify-icon:hover{
+iconify-icon:hover {
     color: #007d79;
 }
-.boxWrapper{
-    width: 331px;
-    height: 100%;
+
+.boxWrapper {
+    /*width: 331px;
+    height: 100%;*/
+
+    max-width: 100%;
+    max-height: 100%;
     align-items: center;
     flex-direction: column;
     padding: auto;
-    position: relative;   /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
-    overflow: hidden;     /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
+    position: relative;
+    /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
+    overflow: hidden;
+    /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
 }
 
 .exit {
@@ -54,40 +62,56 @@ iconify-icon:hover{
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-start;
-    margin:24px 25px 16px 25px;
+    margin: 24px 25px 16px 25px;
     gap: 20px;
-
-    width: 281px;
     height: 26px;
- }
+    max-width: 100%;
 
-.boxSongEvalute{
-    width: auto;
-    height: 539px;
-    padding:0px 25px;
-    position: relative;   /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
-    overflow: hidden;     /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
+}
+
+.boxSongEvalute {
+    width: 281px;
+    height: 470px;
+    padding: 0px 25px;
+    position: relative;
+    /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
+    overflow: hidden;
+    /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
     overflow-y: auto;
+    border: 1px white;
 }
 
 /*Chinh thanh cuon*/
 .boxSongEvalute::-webkit-scrollbar {
-    width: 8px; /* Độ rộng của thanh cuộn */
+    width: 8px;
+    /* Độ rộng của thanh cuộn */
 }
 
 .boxSongEvalute::-webkit-scrollbar-thumb {
-    background: transparent; /* Đặt màu đỏ với độ trong suốt 70% */
-    border-radius: 4px; /* Đường viền thanh cuộn */
+    background: transparent;
+    /* Đặt màu đỏ với độ trong suốt 70% */
+    border-radius: 4px;
+    /* Đường viền thanh cuộn */
 }
 
 
-.imageSong{
-width: 281px;
-height: 281px;
-border-radius: 10px;
+.imageSong {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
 }
 
-.nameSong{
+.hinhanh {
+    width: 100%;
+    height: 100%;
+}
+
+.hinhanh1 {
+    width: 100%;
+    height: 100%;
+}
+
+.nameSong {
     height: 80px;
     width: 281px;
 
@@ -96,26 +120,30 @@ border-radius: 10px;
     margin-top: 20px;
 }
 
-.nameSong-Song{
-    font-family: "Inter" ,"extra-bold";
+.nameSong-Song {
+    font-family: "Inter", "extra-bold";
     font-size: 24px;
     font-weight: bold;
     color: white;
-    padding: 0px ;
+    padding: 0px;
     margin-bottom: 0px;
 
 }
-.All{
+
+.All {
     cursor: pointer;
+    padding: 2px;
+
 }
 
-.All:hover{
+.All:hover {
+    border-radius: 5px;
     background-color: #007d79;
 }
 
 
-.nameSong-Artist{
-    font-family: "Inter" ,"regular";
+.nameSong-Artist {
+    font-family: "Inter", "regular";
     font-size: 16px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.75);
@@ -129,20 +157,24 @@ border-radius: 10px;
     background-color: black;
     border-radius: 10px;
     padding: 15px;
-    max-width: 300px; /* Đặt giới hạn chiều rộng */
+    max-width: 300px;
+    /* Đặt giới hạn chiều rộng */
     height: 130px;
     margin-top: 20px;
 }
 
 .box-head {
     display: flex;
-    justify-content: space-between; /* Căn đều hai đầu */
+    justify-content: space-between;
+    /* Căn đều hai đầu */
     align-items: center;
     margin-bottom: 10px;
 }
 
-.Evaluate-Lable p, .All p {
-    color: white; /* Màu chữ trắng */
+.Evaluate-Lable p,
+.All p {
+    color: white;
+    /* Màu chữ trắng */
     font-size: 16px;
     margin: 0;
     font-weight: bold;
@@ -150,16 +182,20 @@ border-radius: 10px;
 
 .NameEvaluate {
     margin-top: 10px;
-    max-width: 240px; /* Đặt chiều cao tối đa để nội dung có thể cuộn */
+    max-width: 240px;
+    /* Đặt chiều cao tối đa để nội dung có thể cuộn */
     height: 60px;
-    position: relative;   /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
-    overflow: hidden;     /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
+    position: relative;
+    /* Đảm bảo phần tử con có thể căn chỉnh theo phần tử cha */
+    overflow: hidden;
+    /* Ẩn phần nội dung bị tràn ra khỏi khung cha */
 
 }
 
 .box-E {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Đường gạch dưới cho mỗi đánh giá */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Đường gạch dưới cho mỗi đánh giá */
 }
 
 .Name p {
@@ -177,10 +213,12 @@ border-radius: 10px;
 .Eva-Oval {
     display: flex;
     gap: 5px;
-    margin-right: 10px; /* Khoảng cách giữa các chấm và chữ */
+    margin-right: 10px;
+    /* Khoảng cách giữa các chấm và chữ */
 }
 
-.dot, .dot-empty {
+.dot,
+.dot-empty {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -188,11 +226,13 @@ border-radius: 10px;
 }
 
 .dot {
-    background-color: #007d79; /* Màu xanh cho chấm */
+    background-color: #007d79;
+    /* Màu xanh cho chấm */
 }
 
 .dot-empty {
-    background-color: #ccc; /* Màu xám cho chấm trống */
+    background-color: #ccc;
+    /* Màu xám cho chấm trống */
 }
 
 .Eva-status p {
@@ -204,7 +244,7 @@ border-radius: 10px;
 
 
 /*Định dạng Phần Xem đánh giá - seeReview-content*/
-.seeReview{
+.seeReview {
     display: none;
     box-sizing: border-box;
     position: absolute;
@@ -216,6 +256,7 @@ border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 500000;
 }
 
 .seeReview .seeReview-exit {
@@ -225,15 +266,16 @@ border-radius: 10px;
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: space-between; /* Đẩy các phần tử con ra hai đầu */
-    
+    justify-content: space-between;
+    /* Đẩy các phần tử con ra hai đầu */
+
 }
 
-.seeReview .seeReview-exit .letter{
+.seeReview .seeReview-exit .letter {
     color: white;
 }
 
-.seeReview-content{
+.seeReview-content {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -242,35 +284,37 @@ border-radius: 10px;
     gap: 16px;
     width: 740px;
     height: 432px;
-    
+
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     margin: auto;
 
-    overflow-y:scroll;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
 
 /* Tùy chỉnh thanh cuộn */
 .seeReview .seeReview-content::-webkit-scrollbar-thumb {
-    background: transparent; 
-    border-radius: 20px; /* Đường viền thanh cuộn */
+    background: transparent;
+    border-radius: 20px;
+    /* Đường viền thanh cuộn */
 }
 
 /* Khi hover qua thanh cuộn, nó sẽ sáng hơn */
 .seeReview .seeReview-content::-webkit-scrollbar-thumb:hover {
-    background: rgb(104, 100, 100); 
+    background: rgb(104, 100, 100);
 }
 
 
-.box-E1{
+.box-E1 {
     width: 700px;
     height: 66px;
-    
+
 
 }
-.seeReview-nDot{
+
+.seeReview-nDot {
     width: 228px;
     height: 36px;
     margin: 15px auto;
@@ -282,12 +326,14 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: rgb(238, 226, 226); /* Thay đổi màu nền nếu cần */
-    display: inline-block; /* Đảm bảo rằng các dot hiển thị thành hàng ngang */
+    background-color: rgb(238, 226, 226);
+    /* Thay đổi màu nền nếu cần */
+    display: inline-block;
+    /* Đảm bảo rằng các dot hiển thị thành hàng ngang */
 }
 
 
-.seeReview-comment{
+.seeReview-comment {
     width: 740px;
     height: 44px;
     margin: 24px auto;
@@ -296,7 +342,7 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 
 }
 
-.seeReview-comment .writeComment{
+.seeReview-comment .writeComment {
     width: 681px;
     height: 44px;
     background: rgba(255, 255, 255, 0.1);
@@ -304,44 +350,48 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     border-radius: 30px;
 }
 
-.writeComment ::placeholder{
+.writeComment ::placeholder {
     color: white;
     font-size: 24px;
-    opacity: 1;               /* Độ mờ (1 là không mờ) */
+    opacity: 1;
+    /* Độ mờ (1 là không mờ) */
 
 }
 
-.writeComment{
+.writeComment {
     padding-left: 10px;
     color: white;
 }
 
 
 /*Định dạng ô nghệ sĩ*/
-.boxSongEvalute .artist{
+.boxSongEvalute .artist1 {
     margin-top: 20px;
     width: 281px;
     height: 216px;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     gap: 16px;
 }
 
-.box-Evaluate .artist .artist-image{
+.box-Evaluate .artist1 .artist-image {
     width: auto;
     height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Đảm bảo phần dư của hình ảnh không bị lộ ra ngoài */
+    overflow: hidden;
+    /* Đảm bảo phần dư của hình ảnh không bị lộ ra ngoài */
 
 }
-.artist-image img{
-   width: auto;
-   height: 160px;
+
+.artist-image1 img {
+    width: auto;
+    height: 160px;
     object-fit: cover;
 }
-.artist-image .textNgheSi{
+
+.artist-image .textNgheSi {
     position: absolute;
     margin-top: 15px;
     margin-left: 15px;
@@ -350,7 +400,7 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     font-size: 16px;
 }
 
-.folow-artist{
+.folow-artist {
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -359,7 +409,7 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 
 }
 
-.folow-artist .name{
+.folow-artist .name {
     width: 142px;
     height: 26px;
     font-family: 'Inter';
@@ -372,7 +422,7 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     color: #FFFFFF;
 }
 
-.folow-artist #follow{
+.folow-artist #follow {
     box-sizing: border-box;
 
     display: flex;
@@ -384,7 +434,7 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     height: 40px;
     border: 1px solid #FFFFFF;
     border-radius: 26px;
-    font-family: 'iner','regular';
+    font-family: 'iner', 'regular';
     font-size: 16px;
     background-color: transparent;
     margin-right: 0px;
@@ -393,7 +443,7 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 
 }
 
-.folow-artist #follow:hover{
+.folow-artist #follow:hover {
     background-color: #414b4a;
     color: white;
 }
