@@ -587,10 +587,14 @@ body {
 #songs #author {
     color: white;
     margin-top: 6px;
-    width: 484px;
+    width: 320px;
     font-size: 16px;
     font-weight: 400;
     color: #CCCCCC;
+    white-space: nowrap;       /* Prevent the text from wrapping to the next line */
+    overflow: hidden;          /* Hide any text that overflows the container */
+    text-overflow: ellipsis;   /* Display '...' for overflowing text */
+    display: inline-block;     /* Ensures it behaves like a block element for proper overflow handling */
 }
 #songs #date {
     color: white;
@@ -704,14 +708,74 @@ body {
     margin-left: 14px;
 }
 #progress-slider {
+    -webkit-appearance: none;
     margin-right: 14px;
     width: 437px;
+    height: 5px;
+    background: linear-gradient(90deg, #1DB954 50%, #ddd 50%);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease-in;
 }
- 
+
+/* Custom thumb styling */
+#progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: #1DB954;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Remove the outline when focused */
+#progress-slider:focus {
+    outline: none;
+}
+
+/* Dynamic background for Webkit browsers */
+#progress-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, #1DB954 var(--value), #ddd var(--value));
+    border-radius: 5px;
+}
 #info-volume {
+    display: flex;
     width: auto;
     height: 20px;
-    margin-left: 840px;
+    margin-left: 850px;
+    align-items: center;
+}
+#volume {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #1DB954 50%, #ddd 50%);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease-in;
+}
+
+/* Custom thumb styling */
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: #1DB954;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Remove the outline when focused */
+#volume:focus {
+    outline: none;
+}
+
+/* Dynamic background for Webkit browsers */
+#volume::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, #1DB954 var(--value), #ddd var(--value));
+    border-radius: 5px;
 }
 #info {
     color: white;
@@ -738,7 +802,8 @@ body {
 }
 #info-div {
 box-sizing: border-box;
-
+overflow-y: auto;
+overflow-x: hidden;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -751,7 +816,17 @@ height: 630px;
 background: rgba(255, 255, 255, 0.1);
 border: 1px solid rgba(255, 255, 255, 0.15);
 border-radius: 20px 10px 10px 20px;
-
+}
+#info-div::-webkit-scrollbar {
+    width: 5px;
+    scroll-margin: 3px 5px;
+}
+#info-div::-webkit-scrollbar-thumb {
+    background-color: #1DB954;
+    border-radius: 10px;
+}
+#info-div::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 #info-plus {
     position: absolute;
@@ -828,4 +903,63 @@ border-radius: 20px 10px 10px 20px;
     color: rgba(255, 255, 255, 0.75);
     font-size: 16px;
     font-weight: 400;
+}
+#info-artist-follow {
+    margin-top: 20px;
+    width: 281px;
+    height: 216x;
+    display: flex;
+    flex-direction: column;
+}
+#info-artist-follow-img {
+    background-image: url('/MVC/View/img/artist6.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 281px;
+    height: 160px;
+    border-radius: 10px;
+    display: flex;
+}
+#info-artist-follow-img span {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px 16px;
+}
+#info-artist-follow-title {
+    margin-top: 16px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+#info-artist-follow-title span {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+#info-artist-follow-title button {
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    width: 99px;
+    height: 40px;
+    border: 1px solid #FFFFFF;
+    border-radius: 26px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400px;
+}
+#info-artist-follow-title button:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
 }
