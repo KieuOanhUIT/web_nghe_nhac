@@ -1,0 +1,105 @@
+header {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    padding: 10px 55px;
+    gap: 10px;
+
+    position: fixed;
+    width: 1150px;
+    height: 65px;
+    top: 24px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+}
+
+header .controlbar {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 96px;
+
+    background-color: transparent;
+
+    width: 1040px;
+    height: 45px;
+}
+
+
+header .searching {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+    margin: 0 auto;
+    width: auto;
+    height: 44px;
+
+    flex: none;
+    flex-grow: 0;
+}
+
+header .searching .home,
+header .searching .voice-searching,
+header .general .account {
+    background: rgba(255, 255, 255, 0.25);
+    display: flex;
+    border-radius: 40px;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+}
+
+iconify-icon {
+    font-size: 28px;
+    align-self: center;
+    color: #fff;
+}
+
+header .searching .input-wrapper {
+    width: 340px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 15px;
+}
+
+header .searching .input-wrapper img {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+header .searching .input-wrapper input {
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+header .general {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    height: 44px;
+    align-items: center;
+    width: auto;
+}

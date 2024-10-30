@@ -5,8 +5,8 @@
     gap: 16px;
 }
 
-.centerSpace .trending, 
-.centerSpace .trending .trendingTopic{
+.centerSpace .trending,
+.centerSpace .trending .trendingTopic {
     display: flex;
     flex-direction: row;
 }
@@ -15,7 +15,8 @@
     gap: 16px;
 }
 
-.centerSpace h3, .centerSpace p {
+.centerSpace h3,
+.centerSpace p {
     margin: 0;
     transition: 0.5s ease;
 }
@@ -86,7 +87,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;  
+    height: 100%;
     z-index: 0;
     transition: 0.5s;
 }
@@ -118,7 +119,7 @@
     align-items: center;
     width: fit-content;
     height: fit-content;
-    
+
 }
 
 .centerSpace #artistScroll .artistItem img {

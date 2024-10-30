@@ -34,3 +34,10 @@ $(document).ready(function () {
     });
 });
 
+$(document.body).ready(function () {
+    $('#exit-lbl').click(function () {
+        $('.rightBar').toggle();
+    })
+
+});
+
