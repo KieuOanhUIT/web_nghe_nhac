@@ -1,7 +1,7 @@
 /* header */
 @font-face {
   font-family: 'Inter';
-  src: url('/MVC/View/font/Inter-Medium.otf') format('opentype');
+  src: url('../font/Inter-Medium.otf') format('opentype');
   font-style: normal;
 }
 
@@ -470,11 +470,9 @@ strong.link-email-footer {
 
 
 /* start */
-/* img bg */
 .bg {
   position: absolute;
   filter: blur(50px);
-  /* Hoặc 100px cho các bg khác */
 }
 
 /* Background 1 */
@@ -482,7 +480,6 @@ strong.link-email-footer {
   width: 877.58px;
   height: 480.64px;
   left: 400px;
-  /* Căn chỉnh vị trí hợp lý */
   top: 550px;
   background: conic-gradient(from 52.89deg at 50% 50%, #296265 -6.46deg, #26595F 18.56deg, #000000 84.46deg, #000000 178.02deg, #3A2145 310.22deg, #471C4B 324.49deg, #296265 353.54deg, #26595F 378.56deg);
   transform: rotate(-28.96deg);
@@ -493,9 +490,7 @@ strong.link-email-footer {
   width: 1047.31px;
   height: 484.72px;
   left: 1500px;
-  /* Cần xem xét vị trí hợp lý */
   top: 2500px;
-  /* Cần xem xét vị trí hợp lý */
   background: conic-gradient(from 52.89deg at 50% 50%, #296265 -6.46deg, #471C4B 54deg, #000000 136.8deg, #000000 190.8deg, #26595F 248.4deg, #3A2145 310.22deg, #296265 353.54deg, #471C4B 414deg);
   transform: rotate(164.65deg);
 }
@@ -516,9 +511,6 @@ strong.link-email-footer {
 
 
 .container-1 {
-  /* Frame 7 */
-
-  /* Auto layout */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -533,19 +525,12 @@ strong.link-email-footer {
 }
 
 .container-1-top {
-  /* Frame 6 */
-
-  /* Auto layout */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
   gap: 5px;
   width: 1040px;
-  /* height: 381px; */
-
-
-  /* Inside auto layout */
   flex: none;
   order: 0;
   align-self: stretch;
@@ -554,16 +539,11 @@ strong.link-email-footer {
 
 .container-1-top h2 {
   /* ÂM NHẠC KHÔNG GIỚI HẠN */
-
-  /* width: 1040px; */
-  /* height: 264px; */
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
   font-size: 120px;
   line-height: 132px;
-  ;
-  /* or 132px */
   display: flex;
   align-items: center;
 
@@ -573,8 +553,6 @@ strong.link-email-footer {
   background-clip: text;
   text-emphasis-color: transparent;
 
-
-  /* Inside auto layout */
   flex: none;
   order: 0;
   align-self: stretch;
@@ -652,9 +630,6 @@ img,
 
 /*container-2*/
 .container-2 {
-  /* Frame 17 */
-
-  /* Auto layout */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -668,8 +643,6 @@ img,
   height: 286px;
   left: 0px;
   top: 1000px;
-
-
 }
 
 .gradient-text-baihat {
@@ -686,9 +659,7 @@ img,
 
 
 .container-2 h2 {
-  /* BÀI HÁT THỊNH HÀNH */
-
-  width: 700px;
+  width: 800px;
   height: 202px;
 
   font-family: 'Inter';
