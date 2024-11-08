@@ -10,7 +10,7 @@ if($_SERVER['SERVER_NAME'] == "localhost")
 	define("DBHOST", "localhost");
 	define("DBUSER", "root");
 	define("DBPASS", "");
-	define("DBNAME", "music_website_db");
+	define("DBNAME", "letchill_data");
 
 }else{
 
@@ -21,5 +21,5 @@ if($_SERVER['SERVER_NAME'] == "localhost")
 	define("DBHOST", "localhost");
 	define("DBUSER", "root");
 	define("DBPASS", "");
-	define("DBNAME", "music_website_db");
+	define("DBNAME", "letchill_data");
 }
