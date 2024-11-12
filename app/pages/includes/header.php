@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/left_side.css">
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/right_side.css">
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/lyric.css">
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/search.css">
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
