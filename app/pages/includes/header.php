@@ -33,7 +33,7 @@
                 <div class="home">
                     <iconify-icon icon="ic:round-home"></iconify-icon>
                 </div>
-                <div class="input-wrapper">
+                <div class="input-wrapper" id="search-input">
                     <iconify-icon icon="lucide:search" name="search"></iconify-icon>
                     <input type="text" class="search-input" placeholder="Tìm kiếm..." onclick="toggleSearchContainer(true)" name="keyword">
 
