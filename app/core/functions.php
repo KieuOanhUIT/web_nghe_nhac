@@ -1,4 +1,15 @@
-<?php 
+<?php
+include 'config.php';
+class Database{
+    public $DBHOST = DBHOST;
+    public $DBUSER = DBUSER;
+    public $DBPASS = DBPASS;
+    public $DBNAME = DBNAME;
+    public $conn;
+
+    public function __construct(){
+        $this->db_connect();
+    }
 
 
 function show($stuff)
@@ -198,4 +209,9 @@ function get_artist($id)
 
 	return "Unknown";
 }
+	public function search($query){
+		$result = $this->conn->query($query);
+		return $result;
+	}
 
+}
