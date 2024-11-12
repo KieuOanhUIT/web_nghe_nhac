@@ -1,25 +1,18 @@
-<?php 
+<?php
 
-if($_SERVER['SERVER_NAME'] == "localhost")
-{
+// Set base configuration depending on the environment
+$config = [
+    'ROOT' => ($_SERVER['SERVER_NAME'] == "localhost") ? "http://localhost/web_nghe_nhac/public" : "http://www.mywebsite.com",
+    'DBDRIVER' => "mysql",
+    'DBHOST' => "localhost",
+    'DBUSER' => "root",
+    'DBPASS' => "",
+    'DBNAME' => "letchill_data"
+];
 
-	//for local server
-	define("ROOT", "http://localhost/web_nghe_nhac/public");
-
-	define("DBDRIVER", "mysql");
-	define("DBHOST", "localhost");
-	define("DBUSER", "root");
-	define("DBPASS", "");
-	define("DBNAME", "letchill_data");
-
-}else{
-
-	//for online server
-	define("ROOT", "http://www.mywebsite.com");	
-
-	define("DBDRIVER", "mysql");
-	define("DBHOST", "localhost");
-	define("DBUSER", "root");
-	define("DBPASS", "");
-	define("DBNAME", "letchill_data");
+// Define constants if they are not already defined
+foreach ($config as $key => $value) {
+    if (!defined($key)) {
+        define($key, $value);
+    }
 }

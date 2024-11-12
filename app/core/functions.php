@@ -1,217 +1,106 @@
 <?php
 include 'config.php';
-class Database{
-    public $DBHOST = DBHOST;
-    public $DBUSER = DBUSER;
-    public $DBPASS = DBPASS;
-    public $DBNAME = DBNAME;
+
+class Database {
     public $conn;
 
-    public function __construct(){
-        $this->db_connect();
+    public function __construct() {
+        $this->conn = $this->db_connect();
     }
 
+    private function db_connect() {
+        $dsn = DBDRIVER . ":host=" . DBHOST . ";dbname=" . DBNAME;
+        return new PDO($dsn, DBUSER, DBPASS);
+    }
 
-function show($stuff)
-{
-	echo "<pre>";
-	print_r($stuff);
-	echo "</pre>";
+    public function db_query($query, $data = []) {
+        $stm = $this->conn->prepare($query);
+        $stm->execute($data);
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function db_query_one($query, $data = []) {
+        $result = $this->db_query($query, $data);
+        return $result ? $result[0] : false;
+    }
+
+    public function search($query) {
+        return $this->conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
-function page($file)
-{
-
-	return "../app/pages/".$file.".php";
+// Helper functions
+function show($data) {
+    echo "<pre>", print_r($data, true), "</pre>";
 }
 
-function db_connect()
-{
-	$string = DBDRIVER.":hostname=".DBHOST.";dbname=".DBNAME;
-	$con = new PDO($string, DBUSER, DBPASS);
-
-	return $con;
+function page($file) {
+    return "../app/pages/" . $file . ".php";
 }
 
-function db_query($query, $data = array())
-{
-	$con = db_connect();
-
-	$stm = $con->prepare($query);
-	if($stm)
-	{
-		$check = $stm->execute($data);
-		if($check){
-			$result = $stm->fetchAll(PDO::FETCH_ASSOC);
-
-			if(is_array($result) && count($result) > 0)
-			{
-				return $result;
-			}
-		}
-	}
-	return false;
+function redirect($page) {
+    header("Location: " . ROOT . "/" . $page);
+    die;
 }
 
-function db_query_one($query, $data = array())
-{
-	$con = db_connect();
-
-	$stm = $con->prepare($query);
-	if($stm)
-	{
-		$check = $stm->execute($data);
-		if($check){
-			$result = $stm->fetchAll(PDO::FETCH_ASSOC);
-
-			if(is_array($result) && count($result) > 0)
-			{
-				return $result[0];
-			}
-		}
-	}
-	return false;
+function set_value($key, $default = '') {
+    return $_POST[$key] ?? $default;
 }
 
-function message($message = '', $clear = false)
-{
-	if(!empty($message)){
-		$_SESSION['message'] = $message;
-	}else{
-
-		if(!empty($_SESSION['message'])){
-
-			$msg = $_SESSION['message'];
-			if($clear){
-				unset($_SESSION['message']);
-			}
-			return $msg;
-		}
-
-	}
-	return false;
+function set_select($key, $value, $default = '') {
+    $selected = $_POST[$key] ?? $default;
+    return ($selected == $value) ? "selected" : "";
 }
 
-function redirect($page)
-{
-	header("Location: ".ROOT."/".$page);
-	die;
+function get_date($date) {
+    return date("jS M, Y", strtotime($date));
 }
 
-function set_value($key, $default = '')
-{
-	if(!empty($_POST[$key]))
-	{
-		return $_POST[$key];
-	}else{
-
-		return $default;
-	}
-
-	return '';
+function logged_in() {
+    return !empty($_SESSION['USER']) && is_array($_SESSION['USER']);
 }
 
-function set_select($key, $value, $default = '')
-{
-	if(!empty($_POST[$key]))
-	{
-		if($_POST[$key] == $value){
-			return " selected ";
-		}
-	}else{
-		if($default == $value){
-			return " selected ";
-		}
-	}
-
-	return '';
+function is_admin() {
+    return !empty($_SESSION['USER']['role']) && $_SESSION['USER']['role'] === 'admin';
 }
 
-function get_date($date)
-{
-	return date("jS M, Y",strtotime($date));
+function user($column) {
+    return $_SESSION['USER'][$column] ?? "Unknown";
 }
 
-function logged_in()
-{
-
-	if(!empty($_SESSION['USER']) && is_array($_SESSION['USER'])){
-		return true;
-	}
-
-	return false;
+function authenticate($user) {
+    $_SESSION['USER'] = $user;
 }
 
-function is_admin()
-{
-
-	if(!empty($_SESSION['USER']['role']) && $_SESSION['USER']['role'] == 'admin'){
-		return true;
-	}
-
-	return false;
+function str_to_url($string) {
+    $url = preg_replace('~[^\\pL0-9_]+~u', '-', $string);
+    $url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
+    return strtolower(trim(preg_replace('~[^-a-z0-9_]+~', '', $url), "-"));
 }
 
-function user($column)
-{
-	if(!empty($_SESSION['USER'][$column])){
-		return $_SESSION['USER'][$column];
-	}
-
-	return "Unknown";
+function esc($str) {
+    return nl2br(htmlspecialchars($str));
 }
 
-function authenticate($row)
-{
-	$_SESSION['USER'] = $row;
+function get_category($id) {
+    $db = new Database();
+    $row = $db->db_query_one("SELECT category FROM categories WHERE id = :id LIMIT 1", ['id' => $id]);
+    return $row['category'] ?? "Unknown";
 }
 
-function str_to_url($url)
-{
-
-	$url = str_replace("'", "", $url);
-   	$url = preg_replace('~[^\\pL0-9_]+~u', '-', $url);
-   	$url = trim($url, "-");
-   	$url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
-   	$url = strtolower($url);
-   	$url = preg_replace('~[^-a-z0-9_]+~', '', $url);
-   	
-   	return $url;
+function get_artist($id) {
+    $db = new Database();
+    $row = $db->db_query_one("SELECT name FROM artists WHERE id = :id LIMIT 1", ['id' => $id]);
+    return $row['name'] ?? "Unknown";
 }
 
-function get_category($id)
-{
-	$query = "select category from categories where id = :id limit 1";
-	$row = db_query_one($query,['id'=>$id]);
-
-	if(!empty($row['category']))
-	{
-		return $row['category'];
-	}
-
-	return "Unknown";
-}
-
-function esc($str)
-{
-	return nl2br(htmlspecialchars($str));
-}
-
-function get_artist($id)
-{
-	$query = "select name from artists where id = :id limit 1";
-	$row = db_query_one($query,['id'=>$id]);
-
-	if(!empty($row['name']))
-	{
-		return $row['name'];
-	}
-
-	return "Unknown";
-}
-	public function search($query){
-		$result = $this->conn->query($query);
-		return $result;
-	}
-
+function message($message = '', $clear = false) {
+    if ($message) {
+        $_SESSION['message'] = $message;
+    } elseif (!empty($_SESSION['message'])) {
+        $msg = $_SESSION['message'];
+        if ($clear) unset($_SESSION['message']);
+        return $msg;
+    }
+    return false;
 }
