@@ -2,7 +2,31 @@
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
 ?>
 
-
+<!-- Popup thông báo -->
+<div id="notificationPopup" class="notification-popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Thông báo</h3>
+            <span id="closePopup" class="close-popup">&times;</span>
+            <div class="notification-item unread">
+            <p class="title">Tin nhắn mới <span class="unread-indicator"></span></p>
+             <!-- Dấu chấm xanh cho thông báo chưa đọc -->
+                <p class="message">Bạn có tin nhắn mới từ quản trị viên.</p>
+                <p class="time">2024-11-13 3:45 PM</p>
+            </div>
+            <div class="notification-item">
+                <p class="title">Cập nhật hệ thống</p>
+                <p class="message">Hệ thống sẽ bảo trì vào ngày mai lúc 10:30 AM.</p>
+                <p class="time">2024-11-14 10:30 AM</p>
+            </div>
+            <div class="notification-item unread">
+            <p class="title">Cảnh báo bảo mật <span class="unread-indicator"></span></p>
+             <!-- Dấu chấm xanh cho thông báo chưa đọc -->
+                <p class="message">Đã phát hiện đăng nhập bất thường từ thiết bị lạ.</p>
+                <p class="time">2024-11-13 7:00 PM</p>
+            </div>
+            </div>
+        </div>
+    </div>
     <main>
         <!-- Main space -->
         <div class="mainSpace">
