@@ -233,8 +233,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
             </div>
 
-            <!-- rightBar -->
-            <div class="rightBar">
+            
+        </div>
+<!-- rightBar -->
+<div class="rightBar">
             <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
             ?>
@@ -440,8 +442,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </form>
 
             </div>
-        </div>
-
         <!-- Listening Space -->
         <div class="listeningSpace">
             <div class="info">
