@@ -24,7 +24,7 @@ img,
 .centerSpace .searches-container {
     max-width: 100%;
     height: 481px;
-    margin: 24px 24px 24px 24px;
+    margin: 5px 24px 24px 24px;
     position: relative;
     overflow: hidden;
     overflow-y: auto;
@@ -50,10 +50,7 @@ img,
     margin-top: 0px;
 
 }
-.searches-container{
-    
-    left: 100px;
-}
+
 .search-bar {
     width: 80%;
     max-width: 900px;
@@ -79,7 +76,6 @@ img,
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     position: absolute;
-    top: 45px;
     left: 0;
     z-index: 1;
 }
@@ -99,8 +95,6 @@ img,
     font-size: 0.9em;
     color: #9e9e9e;
     cursor: pointer;
-    padding-right: 50px;
-    margin-right: 50px;
 }
 
 .clear-history:hover {
@@ -109,7 +103,7 @@ img,
 
 .search-items {
     display: flex;
-    gap: 15px;
+    gap: 30px;
     overflow-x: auto;
     padding-bottom: 10px;
 }
@@ -122,7 +116,7 @@ img,
 
 .search-item img {
     width: 100%;
-    height: 150px;
+    height: 200px;
     border-radius: 12px;
     object-fit: cover;
 }
@@ -143,7 +137,7 @@ img,
 
 .search-item a:hover h3,
 .search-item a:hover p {
-    color: #1db954; /* Đổi màu khi hover */
+    color: #296265; /* Đổi màu khi hover */
 }
 
 /* Dấu chấm xanh cho thông báo chưa đọc */
