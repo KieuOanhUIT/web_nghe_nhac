@@ -142,7 +142,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
 
                 <!-- search -->
-                <div class="recent-searches-container" id="search-container">
+                <div class="searches-container" id="search-container" style="display: none;">
                     <div class="header">
                         <h2>Tìm kiếm gần đây</h2>
                         <span class="clear-history" onclick="clearSearchHistory()">Xóa lịch sử tìm kiếm</span>
@@ -157,46 +157,55 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                                 <p>AMEE</p>
                             </a>
                         </div>
+                        <div class="search-item">
+                            <a href="/web_nghe_nhac/song.php"> <!-- Đường dẫn đến trang chi tiết bài hát -->
+                                <img src="/web_nghe_nhac/public/assets/img/MY.png" alt="Seenderella">
+                                <h3>Mộng Yu</h3>
+                            </a>
+                            <a href="/web_nghe_nhac/artist_details.php?id=1"> <!-- Đường dẫn đến trang chi tiết nghệ sĩ -->
+                                <p>AMEE</p>
+                            </a>
+                        </div>
                         <!-- Thêm các phần tử tìm kiếm gần đây khác tương tự -->
                 </div>
 
                 <!-- lyric -->
                 <div class="wrapper-lyric" style="display: none;">
-                    <p>I can read your mind "She's having the time of her life" There in her glittering prime The lights
+                    <p>I can read your mind<br>"She's having the time of her life"<br>There in her glittering prime<br>The lights
                         refract
-                        sequined stars off her silhouette every night I can show you lies (one, two, three, four)
-                        'Cause I'm a real tough kid, I can handle my shit They said, "Babe, you gotta fake it 'til you
+                        sequined stars off her silhouette every night<br>I can show you lies (one, two, three, four)
+                        'Cause I'm a real tough kid, I can handle my shit<br>They said, "Babe, you gotta fake it 'til you
                         make it" and I
-                        did Lights, camera, bitch smile, even when you wanna die He said he'd love me all his life But
+                        did<br>Lights, camera, bitch smile, even when you wanna die<br>He said he'd love me all his life<br>But
                         that life was too
-                        short Breaking down, I hit the floor All the pieces of me shattered as the crowd was chanting,
-                        "More" I was
-                        grinning like I'm winning, I was hitting my marks 'Cause I can do it with a broken heart (one,
+                        short<br>Breaking down, I hit the floor<br>All the pieces of me shattered as the crowd was chanting,
+                        "More"<br>I was
+                        grinning like I'm winning, I was hitting my marks<br>'Cause I can do it with a broken heart (one,
                         two, three, four)
-                        I'm so depressed, I act like it's my birthday every day I'm so obsessed with him but he avoids
+                        I'm so depressed, I act like it's my birthday every day<br>I'm so obsessed with him but he avoids
                         me like the
-                        plague I cry a lot but I am so productive, it's an art You know you're good when you can even do
-                        it With a
+                        plague<br>I cry a lot but I am so productive, it's an art<br>You know you're good when you can even do
+                        it<br>With a
                         broken heart
-                        I can hold my breath I've been doing it since he left I keep finding his things in
-                        drawers Crucial evidence, I
-                        didn't imagine the whole thing I'm sure I can pass this test (one, two, three, four)
-                        'Cause I'm a real tough kid, I can handle my shit They said, "Babe, you gotta fake it 'til you
+                        I can hold my breath<br>I've been doing it since he left<br>I keep finding his things in
+                        drawers<br>Crucial evidence, I
+                        didn't imagine the whole thing<br>I'm sure I can pass this test (one, two, three, four)
+                        'Cause I'm a real tough kid, I can handle my shit<br>They said, "Babe, you gotta fake it 'til you
                         make it" and I
-                        did Lights, camera, bitch smile, in stilettos for miles He said he'd love me for all time But
+                        did<br>Lights, camera, bitch smile, in stilettos for miles<br>He said he'd love me for all time<br>But
                         that time was
-                        quite short Breaking down, I hit the floor All the pieces of me shattered as the crowd was
-                        chanting, "More" I
-                        was grinning like I'm winning, I was hitting my marks 'Cause I can do it with a broken heart
+                        quite short<br>Breaking down, I hit the floor<br>All the pieces of me shattered as the crowd was
+                        chanting, "More"<br>I
+                        was grinning like I'm winning, I was hitting my marks<br>'Cause I can do it with a broken heart
                         (one, two, three)
-                        I'm so depressed, I act like it's my birthday every day I'm so obsessed with him but he avoids
+                        I'm so depressed, I act like it's my birthday every day<br>I'm so obsessed with him but he avoids
                         me like the
-                        plague (he avoids me) I cry a lot but I am so productive, it's an art You know you're good when
+                        plague (he avoids me)<br>I cry a lot but I am so productive, it's an art<br>You know you're good when
                         you can even do
-                        it With a broken heart
-                        You know you're good when you can even do it With a broken heart You know you're good, I'm
-                        good 'Cause I'm
-                        miserable And nobody even knows Try and come for my job</p>
+                        it<br>With a broken heart
+                        You know you're good when you can even do it<br>With a broken heart<br>You know you're good, I'm
+                        good<br>'Cause I'm
+                        miserable<br>And nobody even knows<br>Try and come for my job</p>
                 </div>
             </div>
 
@@ -450,11 +459,11 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
 
                 <div class="timeDisplay">
-                    <span id="currentTime">0:00</span>
+                    <span id="currentTime" class="progressTime current">0:00</span>
                     <div class="progressContainer" id="progressContainer">
                         <div class="progress" id="progress"></div>
                     </div>
-                    <span id="duration">0:00</span>
+                    <span id="duration" class="progressTime remaining">0:00</span>
                 </div>
             </div>
 
@@ -479,7 +488,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
     <script src="/web_nghe_nhac/public/assets/script/main_cpn.js"></script>
     <script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
     <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/search.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
 
 </body>
 
