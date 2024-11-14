@@ -1,46 +1,61 @@
-<?php 
+<?php
 
-
+// Hiển thị thông tin một cách đẹp mắt
 function show($stuff)
 {
-	echo "<pre>";
-	print_r($stuff);
-	echo "</pre>";
+    echo "<pre>";
+    print_r($stuff);
+    echo "</pre>";
 }
 
+// Trả về đường dẫn của các trang trong ứng dụng
 function page($file)
 {
-
-	return "../app/pages/".$file.".php";
+    return "../app/pages/".$file.".php";
 }
 
+// Kết nối cơ sở dữ liệu với xử lý lỗi
 function db_connect()
 {
-	$string = DBDRIVER.":hostname=".DBHOST.";dbname=".DBNAME;
-	$con = new PDO($string, DBUSER, DBPASS);
-
-	return $con;
+    try {
+        $string = DBDRIVER . ":hostname=" . DBHOST . ";dbname=" . DBNAME;
+        $con = new PDO($string, DBUSER, DBPASS);
+        // Thiết lập chế độ lỗi PDO để xử lý khi có lỗi
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $con;
+    } catch (PDOException $e) {
+        // Nếu không thể kết nối, ghi lại lỗi và dừng lại
+        die("Connection failed: " . $e->getMessage());
+    }
 }
 
+// Thực hiện truy vấn cơ sở dữ liệu với dữ liệu an toàn
 function db_query($query, $data = array())
 {
-	$con = db_connect();
+    $con = db_connect();
 
-	$stm = $con->prepare($query);
-	if($stm)
-	{
-		$check = $stm->execute($data);
-		if($check){
-			$result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        // Sử dụng prepared statements để tránh SQL Injection
+        $stm = $con->prepare($query);
+        if ($stm) {
+            $check = $stm->execute($data);
+            if ($check) {
+                $result = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-			if(is_array($result) && count($result) > 0)
-			{
-				return $result;
-			}
-		}
-	}
-	return false;
+                // Kiểm tra và trả về kết quả nếu có
+                if (is_array($result) && count($result) > 0) {
+                    return $result;
+                }
+            }
+        }
+    } catch (PDOException $e) {
+        // Nếu có lỗi trong truy vấn, ghi lại lỗi
+        die("Query failed: " . $e->getMessage());
+    }
+
+    return false; // Trả về false nếu không có kết quả
 }
+
 
 function db_query_one($query, $data = array())
 {
