@@ -1,21 +1,43 @@
-    // Hàm để bật/tắt phần giao diện tìm kiếm
-    function toggleSearchContainer(show) {
-        const searchContainer = document.getElementById("search-container");
-        if (show) {
-            searchContainer.style.display = "block";
-        } else {
-            searchContainer.style.display = "none";
-        }
+// thông báo
+const notificationIcon = document.getElementById('notificationIcon');
+const notificationList = document.getElementById('notificationPopup');
+
+// Ẩn danh sách thông báo khi nhấn ra ngoài
+document.addEventListener('click', (e) => {
+    if (!notificationIcon.contains(e.target) && !notificationList.contains(e.target)) {
+        notificationList.style.display = 'none';
     }
+});
+$(document).ready(function() {
+    $('.notif').click(function() {
+        $('.notification-popup').show(); 
+    })
+});
+// Ẩn popup khi nhấn vào nút đóng
+closePopup.addEventListener('click', () => {
+    notificationPopup.style.display = 'none';
+});
 
-    // Đóng phần tìm kiếm khi nhấn bên ngoài
-    document.addEventListener("click", function(event) {
-        const searchInput = document.querySelector(".search-input");
-        const searchContainer = document.getElementById("search-container");
+// Giả sử bạn có một chức năng để đánh dấu thông báo đã đọc
+function markAsRead(notificationElement) {
+    notificationElement.classList.add('read'); // Thêm lớp 'read' vào thông báo đã đọc
+}
 
-        if (!searchContainer.contains(event.target) && event.target !== searchInput) {
-            toggleSearchContainer(false);
-        }
+// Gọi hàm này khi người dùng nhấp vào một thông báo
+document.querySelectorAll('.notification-item').forEach(item => {
+    item.addEventListener('click', () => {
+        markAsRead(item); // Đánh dấu thông báo là đã đọc
+    });
+});
+
+//tìm kiếm
+const searchinput = document.getElementById('searchi-nput');
+const searchescontainer = document.getElementById('searches-container');
+    $(document.body).ready(function () {
+        $('#search-input').click(function () {
+            $('.wrapperSlider').toggle();
+            $('.searches-container').toggle();
+        });
     });
 
     // Hàm xóa lịch sử tìm kiếm
