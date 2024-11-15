@@ -1,6 +1,6 @@
 body {
     background-color: #000;
-    background-image: url('/MVC/View/img/img_bg_1.png');
+    background-image: url('/public/assets/img/img_bg_1.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

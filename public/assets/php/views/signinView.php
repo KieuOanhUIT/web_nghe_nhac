@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-
-<head>
-
-    <meta charset="UTF-8">
+<?php
+include "public/assets/php/config/config.php";
+include "public/assets/php/models/TaiKhoan.php";
+?>
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/public/assets/css/signup-password.css">
-    <title>Màn hình đăng ký - Mật khẩu</title>
-    <!-- <script type="javascript" src="script.js"></script> -->
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signin.css">
+    <title>Đăng nhập</title>
     <style>
         /* cyrillic-ext */
         @font-face {
@@ -155,50 +154,83 @@
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
         <button class="left-button">
-            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
         <button class="right-button">
-            <img src="/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
     <!--Tiêu đề-->
     <div class="container-1">
+
         <h2 class="container-1-h2">
-            <span class="white-text" style="margin-right: 10px">Đăng ký để bắt đầu</span>
-            <span class="gradient-text">nghe nhạc</span>
+            <span class="white-text" style="margin-right: 10px">Đăng nhập vào</span>
+            <span class="gradient-text">letchill</span>
         </h2>
     </div>
-    <!--Form đăng ký-->
+    <!--Form đăng nhập-->
     <div class="container-2">
+    <form id="signinForm" onsubmit="signin(); return false;">
         <div class="container-2-top">
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
             <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********" style="margin-bottom:30px">
-                <img src="/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
+            <input type="password" id="password" name="password" placeholder="***********"><br>
+            <div class="forget-password-container"> <!-- Thêm phần tử cha -->
+                <a href="/quên-mật-khẩu" class="forget-password">Quên mật khẩu?</a>
             </div>
+            <button type="button" class="sign-in" onclick="signin()">Đăng nhập</button>
         </div>
         <div class="container-2-center">
-            <label for="lưu-ý">Mật khẩu phải có ít nhất:</label>
-            <p>1 số hoặc ký tự đặc biệt (#@%...)</p>
-            <p>Nhiều hơn 10 ký tự </p>
+            <div class="divider">
+                <hr class="custom-line-1" style="margin-right: 30px">
+                <span class="hoac-text">Hoặc</span>
+                <hr class="custom-line-1" style="margin-left: 30px">
+            </div>
+            <!--Nút social đăng nhập-->
+            <button class="social-button google">
+                <img src="/web_nghe_nhac/public/assets/img/logos--google-icon.svg" alt="icon" class="icon">
+                Đăng nhập với Google
+            </button>
+            <button class="social-button facebook">
+                <img src="/web_nghe_nhac/public/assets/img/logos--facebook.svg" alt="icon" class="icon">
+                Đăng nhập với Facebook
+            </button>
         </div>
+        <!--Nút link đăng ký-->
         <div class="container-2-bottom">
-            <button class="next">Tiếp theo</button>
+            <hr class="custom-line">
+            <span class="normal-text" style="margin-right: 5px">Chưa có tài khoản?</span>
+            <a href="/web_nghe_nhac/public/assets/php/views/signup_emailView.php" class="sign-up"><u>Đăng ký ngay</u></a>
         </div>
+        </form>
     </div>
 
     <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const icon = document.querySelector(".icon");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.src = "/public/assets/img/fluent--eye-off-32-filled.svg"; // Thay đổi icon khi hiện mật khẩu
-            } else {
-                passwordInput.type = "password";
-                icon.src = "/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
-            }
+        function signin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('processSignin.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert(data.message);
+                    // Chuyển hướng người dùng tới trang chính hoặc trang cá nhân
+                    window.location.href = "/trang-chu";
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi khi gửi yêu cầu:", error);
+            });
         }
-        </script>
+    </script>
 </body>

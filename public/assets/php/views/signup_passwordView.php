@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['password'])) {
+        $password = $_POST['password'];
+
+        // Kiểm tra tính hợp lệ của mật khẩu
+        if (!preg_match('/^(?=.*\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z]).{10,}$/', $password)) {
+            echo "Mật khẩu không hợp lệ. Mật khẩu phải chứa ít nhất 1 ký tự số, 1 ký tự đặc biệt và dài ít nhất 10 ký tự.";
+        } else {
+            // Nếu mật khẩu hợp lệ, lưu vào session và chuyển hướng
+            $_SESSION['password'] = $password;
+            header("Location: signup_infoView.php");
+            exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
+        }
+    } else {
+        echo "Không có dữ liệu password gửi lên";
+    }
+}
+?>
 <!DOCTYPE html>
 
 <head>
@@ -5,7 +26,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/public/assets/css/signup-password.css">
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signup-password.css">
     <title>Màn hình đăng ký - Mật khẩu</title>
     <!-- <script type="javascript" src="script.js"></script> -->
     <style>
@@ -155,10 +176,10 @@
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
         <button class="left-button">
-            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
         <button class="right-button">
-            <img src="/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
     <!--Tiêu đề-->
@@ -174,7 +195,7 @@
             <label for="password">Mật khẩu</label><br>
             <div class="input-container">
                 <input type="password" id="password" name="password" placeholder="**********" style="margin-bottom:30px">
-                <img src="/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
+                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
             </div>
         </div>
         <div class="container-2-center">
@@ -194,10 +215,10 @@
             
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
-                icon.src = "/public/assets/img/fluent--eye-off-32-filled.svg"; // Thay đổi icon khi hiện mật khẩu
+                icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
             } else {
                 passwordInput.type = "password";
-                icon.src = "/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
+                icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
             }
         }
         </script>

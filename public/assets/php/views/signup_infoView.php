@@ -1,12 +1,83 @@
-<!DOCTYPE html>
+<?php
+session_start();
+$email = $_SESSION['email'];
+$password = $_SESSION['password'];
 
+// Kết nối đến cơ sở dữ liệu thông qua PDO
+include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';  // Bao gồm file cấu hình
+
+try {
+    // Khởi tạo kết nối
+    $database = new Database();
+    $conn = $database->getConnection();
+
+    // Kiểm tra nếu người dùng đã gửi form
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Lấy dữ liệu từ form và kiểm tra
+        $ho_ten = trim($_POST['ho_ten']);
+        $date_of_birth = $_POST['date'];
+        $gender = $_POST['gender'];
+
+        // Bắt đầu một giao dịch
+        $conn->beginTransaction();
+
+        // Thêm người dùng vào bảng `nguoidung`
+        $sqlNguoiDung = "INSERT INTO `nguoidung` (`TenNguoiDung`, `NgaySinh`, `GioiTinh`, `Email`, `MatKhau`) 
+                         VALUES (?, ?, ?, ?, ?)";
+        $stmtNguoiDung = $conn->prepare($sqlNguoiDung);
+        $stmtNguoiDung->bindParam(1, $ho_ten);
+        $stmtNguoiDung->bindParam(2, $date_of_birth);
+        $stmtNguoiDung->bindParam(3, $gender);
+        $stmtNguoiDung->bindParam(4, $email);
+        $stmtNguoiDung->bindParam(5, $password);
+
+        if ($stmtNguoiDung->execute()) {
+            // Lấy MaNguoiDung vừa tạo
+            $maNguoiDung = $conn->lastInsertId();
+
+            // Thêm tài khoản vào bảng `taikhoan`
+            $sqlTaiKhoan = "INSERT INTO `taikhoan` (`MaTaiKhoan`, `Email`, `MatKhau`, `MaNguoiDung`) 
+                            VALUES (NULL, ?, ?, ?)";
+            $stmtTaiKhoan = $conn->prepare($sqlTaiKhoan);
+            $stmtTaiKhoan->bindParam(1, $email);
+            $stmtTaiKhoan->bindParam(2, $password);  // Giả sử password đã được mã hóa (hash)
+            $stmtTaiKhoan->bindParam(3, $maNguoiDung);
+
+            if ($stmtTaiKhoan->execute()) {
+                // Xác nhận giao dịch
+                $conn->commit();
+                echo "Đăng ký thành công!";
+                header("Location: signinView.php");
+                exit();
+            } else {
+                // Hủy giao dịch nếu có lỗi khi thêm vào bảng `taikhoan`
+                $conn->rollBack();
+                echo "Lỗi khi thêm tài khoản: " . $stmtTaiKhoan->errorInfo()[2];
+            }
+        } else {
+            // Hủy giao dịch nếu có lỗi khi thêm vào bảng `nguoidung`
+            $conn->rollBack();
+            echo "Lỗi khi thêm người dùng: " . $stmtNguoiDung->errorInfo()[2];
+        }
+    }
+} catch (PDOException $e) {
+    // Hiển thị lỗi nếu có vấn đề trong quá trình kết nối hoặc truy vấn
+    echo "Lỗi kết nối hoặc truy vấn: " . $e->getMessage();
+} finally {
+    // Đóng kết nối
+    $conn = null;
+}
+?>
+
+
+<!DOCTYPE html>
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/public/assets/css/signup-password.css">
-    <title>Màn hình đăng ký - Mật khẩu</title>
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signup-info.css">
+    <title>Màn hình đăng ký - thông tin</title>
     <!-- <script type="javascript" src="script.js"></script> -->
     <style>
         /* cyrillic-ext */
@@ -155,10 +226,10 @@
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
         <button class="left-button">
-            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
         <button class="right-button">
-            <img src="/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
     <!--Tiêu đề-->
@@ -170,35 +241,31 @@
     </div>
     <!--Form đăng ký-->
     <div class="container-2">
+    <form method="POST" action="signup_infoView.php">
         <div class="container-2-top">
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********" style="margin-bottom:30px">
-                <img src="/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
+            <!--Họ và tên-->
+            <label for="ho_ten">Họ và tên</label><br>
+            <input type="text" id="ho_ten" name="ho_ten" style="margin-bottom:30px" required>
+            <!--Ngày tháng năm sinh-->
+            <label for="date">Ngày tháng năm sinh</label><br>
+            <input type="date" id="date" name="date" placeholder="dd/MM/yyyy" required>
+            <!--Giới tính-->
+            <label for="gender" style="margin-top: 30px; margin-bottom: 20px;">Giới tính</label>
+            <div class="container-2-center">
+                <input type="radio" id="male" name="gender" value="Nam">
+                <label for="male">Nam</label>
+                <input type="radio" id="female" name="gender" value="Nu">
+                <label for="female">Nữ</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Không tiết lộ</label>
             </div>
         </div>
-        <div class="container-2-center">
-            <label for="lưu-ý">Mật khẩu phải có ít nhất:</label>
-            <p>1 số hoặc ký tự đặc biệt (#@%...)</p>
-            <p>Nhiều hơn 10 ký tự </p>
-        </div>
         <div class="container-2-bottom">
-            <button class="next">Tiếp theo</button>
+            <p>Với việc ấn Đăng ký, bạn đã đồng ý với mọi Điều khoản và Điều kiện sử dụng của chúng tôi</p>
+            <button class="sign-up">Đăng ký</button>
         </div>
+    </form>
     </div>
-
-    <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const icon = document.querySelector(".icon");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.src = "/public/assets/img/fluent--eye-off-32-filled.svg"; // Thay đổi icon khi hiện mật khẩu
-            } else {
-                passwordInput.type = "password";
-                icon.src = "/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
-            }
-        }
-        </script>
 </body>
+
+

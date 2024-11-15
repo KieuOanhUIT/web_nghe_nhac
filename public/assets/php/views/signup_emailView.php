@@ -1,12 +1,50 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];  // Gán giá trị email vào biến
+
+        $_SESSION['email'] = $email;
+
+        // Kết nối đến cơ sở dữ liệu thông qua PDO
+        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';  // Bao gồm file cấu hình
+
+        // Khởi tạo kết nối
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        // Truy vấn kiểm tra email có trong cơ sở dữ liệu không
+        $sql = "SELECT * FROM nguoidung WHERE Email = :email";  // Sử dụng PDO với tham số tên
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR); // Gán giá trị email vào PDO
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        if (count($result) > 0) {
+            // Nếu email đã tồn tại
+            $errorMessage = "Email này đã được đăng ký, vui lòng thử email khác.";
+        } else {
+            // Nếu email chưa tồn tại, lưu vào session và chuyển đến trang tiếp theo
+            $_SESSION['email'] = $email;
+            header("Location: signup_passwordView.php");
+            exit();
+        }
+    } else {
+        echo "Không có dữ liệu email gửi lên";
+    }
+}
+?>
+
 
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/public/assets/css/signup-password.css">
-    <title>Màn hình đăng ký - Mật khẩu</title>
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signup-email.css">
+    <title>Màn hình đăng ký - Email</title>
     <!-- <script type="javascript" src="script.js"></script> -->
     <style>
         /* cyrillic-ext */
@@ -155,10 +193,10 @@
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
         <button class="left-button">
-            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
         <button class="right-button">
-            <img src="/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
     <!--Tiêu đề-->
@@ -170,35 +208,33 @@
     </div>
     <!--Form đăng ký-->
     <div class="container-2">
-        <div class="container-2-top">
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********" style="margin-bottom:30px">
-                <img src="/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
+        <form action="" method="POST">
+            <div class="container-2-top">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px" required>
+                <button type="submit" class="next">Tiếp theo</button>
             </div>
-        </div>
+        </form>
         <div class="container-2-center">
-            <label for="lưu-ý">Mật khẩu phải có ít nhất:</label>
-            <p>1 số hoặc ký tự đặc biệt (#@%...)</p>
-            <p>Nhiều hơn 10 ký tự </p>
+            <div class="divider">
+                <hr class="custom-line-1" style="margin-right: 30px">
+                <span class="hoac-text">Hoặc</span>
+                <hr class="custom-line-1" style="margin-left: 30px">
+            </div>
+            <!--Nút social đăng nhập-->
+            <button class="social-button google">
+                <img src="/web_nghe_nhac/public/assets/img/logos--google-icon.svg" alt="icon" class="icon">
+                Đăng nhập với Google
+            </button>
+            <button class="social-button facebook">
+                <img src="/web_nghe_nhac/public/assets/img/logos--facebook.svg" alt="icon" class="icon">
+                Đăng nhập với Facebook
+            </button>
         </div>
+        <!--Nút link đăng ký-->
         <div class="container-2-bottom">
-            <button class="next">Tiếp theo</button>
+            <hr class="custom-line">
+            <p>Đã có tài khoản? <a href="signinView.php">Đăng nhập ngay</a></p>
         </div>
     </div>
-
-    <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const icon = document.querySelector(".icon");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.src = "/public/assets/img/fluent--eye-off-32-filled.svg"; // Thay đổi icon khi hiện mật khẩu
-            } else {
-                passwordInput.type = "password";
-                icon.src = "/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
-            }
-        }
-        </script>
 </body>
