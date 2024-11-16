@@ -15,20 +15,6 @@ closePopup.addEventListener('click', () => {
     notificationList.style.display = 'none'; // Sửa đây để sử dụng notificationList
 });
 
-// Giả sử bạn có một chức năng để đánh dấu thông báo đã đọc
-function markAsRead(notificationElement) {
-    notificationElement.classList.add('read'); // Thêm lớp 'read' vào thông báo đã đọc
-}
-
-// Gọi hàm này khi người dùng nhấp vào một thông báo
-document.querySelectorAll('.notification-item').forEach(item => {
-    item.addEventListener('click', () => {
-        markAsRead(item); // Đánh dấu thông báo là đã đọc
-    });
-});
-
-console.log("header.js is loaded!");
-
 $(document).ready(function() {
     // Lắng nghe sự kiện click vào biểu tượng thông báo
     $('.notif').click(function() {
@@ -37,18 +23,21 @@ $(document).ready(function() {
 
     // Lấy thông báo từ cơ sở dữ liệu
     $.ajax({
-        url: 'noti.php',
+        url: '/web_nghe_nhac/app/pages/noti.php', // Đảm bảo đường dẫn chính xác
         type: 'GET',
         dataType: 'json',
         success: function (notifications) {
             const notificationList = $('.popup-content');
-            notificationList.find('.notification-item').remove(); // Xóa thông báo cũ
+            notificationList.find('.notification-item').remove(); // Xóa các thông báo cũ
 
+            // Kiểm tra nếu có thông báo
             if (notifications.length > 0) {
                 notifications.forEach(notification => {
-                    const notificationClass = notification.TrangThai === 'unread' ? 'notification-item unread' : 'notification-item';
-                    const unreadIndicator = notification.TrangThai === 'unread' ? '<span class="unread-indicator"></span>' : '';
+                    // Kiểm tra trạng thái của thông báo (0: chưa đọc, 1: đã đọc)
+                    const notificationClass = notification.TrangThai === 0 ? 'notification-item unread' : 'notification-item';
+                    const unreadIndicator = notification.TrangThai === 0 ? '<span class="unread-indicator"></span>' : '';
 
+                    // Tạo HTML cho mỗi thông báo
                     const notificationHTML = `
                         <div class="${notificationClass}" data-id="${notification.MaThongBao}">
                             <p class="title">${notification.TieuDe} ${unreadIndicator}</p>
@@ -62,29 +51,40 @@ $(document).ready(function() {
                 notificationList.append('<p>Không có thông báo nào.</p>');
             }
         },
-        error: function () {
-            console.error('Không thể tải thông báo.');
+        error: function (xhr, status, error) {
+            console.error('Không thể tải thông báo.', status, error);
+            console.log(xhr.responseText);  // In thông báo lỗi chi tiết nếu có
         }
     });
 
-    // Cập nhật trạng thái thông báo khi người dùng tích vào thông báo
+    // Cập nhật trạng thái thông báo khi người dùng nhấp vào thông báo
     $(document).on('click', '.notification-item', function () {
         const notificationElement = $(this);
         const notificationId = notificationElement.data('id');
 
+        // Gửi yêu cầu POST để cập nhật trạng thái thông báo
         $.ajax({
-            url: 'noti.php',
+            url: '/web_nghe_nhac/app/pages/noti.php',
             type: 'POST',
             data: { MaThongBao: notificationId },
-            success: function () {
-                notificationElement.removeClass('unread').addClass('read');
+            success: function(response) {
+                const data = JSON.parse(response);
+                if (data.status === 'success') {
+                    // Loại bỏ chấm xanh và thay đổi lớp
+                    notificationElement.removeClass('unread').addClass('read');
+                    notificationElement.find('.unread-indicator').remove();
+                } else {
+                    console.error('Không thể cập nhật trạng thái thông báo.');
+                }
             },
-            error: function () {
+            error: function() {
                 console.error('Không thể cập nhật trạng thái thông báo.');
             }
         });
     });
 });
+
+
 
 // tìm kiếm
 const searchInput = document.getElementById('search-input');
