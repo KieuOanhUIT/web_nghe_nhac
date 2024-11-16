@@ -3,13 +3,6 @@ const notificationIcon = document.getElementById('notificationIcon');
 const notificationList = document.getElementById('notificationPopup');
 const closePopup = document.getElementById('closePopup');
 
-// Ẩn danh sách thông báo khi nhấn ra ngoài
-document.addEventListener('click', (e) => {
-    if (!notificationIcon.contains(e.target) && !notificationList.contains(e.target)) {
-        notificationList.style.display = 'none';
-    }
-});
-
 // Ẩn popup khi nhấn vào nút đóng
 closePopup.addEventListener('click', () => {
     notificationList.style.display = 'none'; // Sửa đây để sử dụng notificationList
@@ -84,8 +77,6 @@ $(document).ready(function() {
     });
 });
 
-
-
 // tìm kiếm
 const searchInput = document.getElementById('search-input');
 const searchesContainer = document.getElementById('searches-container');
@@ -102,39 +93,55 @@ function clearSearchHistory() {
     const searchItems = document.getElementById("search-items");
     searchItems.innerHTML = "";  // Xóa tất cả các mục trong danh sách tìm kiếm
 }
-
+// Hàm tìm kiếm
 function performSearch(keyword) {
     if (keyword.length === 0) {
-        document.getElementById('search-items').innerHTML = ''; // Clear search results
+        document.getElementById('search-items').innerHTML = ''; // Clear search results if keyword is empty
         return;
     }
 
-    // Send AJAX request to search.php
+    // Gửi yêu cầu AJAX tới search.php
     $.ajax({
         url: '/web_nghe_nhac/app/pages/search.php',
         type: 'GET',
         data: { keyword: keyword },
         success: function(response) {
-            // Parse the JSON response
             const results = JSON.parse(response);
 
             // Clear previous results
             document.getElementById('search-items').innerHTML = '';
 
-            // Populate search results
-            results.forEach(item => {
+            // Kiểm tra và hiển thị các bài hát
+            results.songs.forEach(song => {
                 document.getElementById('search-items').innerHTML += `
                     <div class="search-item">
-                        <a href="/web_nghe_nhac/song_details.php?id=${item.id}">
-                            <img src="path/to/image/${item.image}" alt="${item.tenbaihat}">
-                            <h3>${item.tenbaihat}</h3>
-                        </a>
-                        <a href="/web_nghe_nhac/artist_details.php?id=${item.artist_id}">
-                            <p>${item.artist}</p>
+                        <a href="/web_nghe_nhac/song.php?id=${song.MaBaiHat}">
+                            <img src="/web_nghe_nhac/public/assets/img/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
+                            <h3>${song.TenBaiHat}</h3>
                         </a>
                     </div>
                 `;
             });
+
+            // Kiểm tra và hiển thị các nghệ sĩ
+            results.artists.forEach(artist => {
+                document.getElementById('search-items').innerHTML += `
+                    <div class="search-item">
+                        <a href="/web_nghe_nhac/artist_details.php?id=${artist.MaNgheSy}">
+                            <img src="/web_nghe_nhac/public/assets/img/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
+                            <h3>${artist.TenNgheSy}</h3>
+                        </a>
+                    </div>
+                `;
+            });
+
+            // Nếu không có kết quả, hiển thị thông báo
+            if (results.songs.length === 0 && results.artists.length === 0) {
+                document.getElementById('search-items').innerHTML = '<p>Không tìm thấy kết quả nào.</p>';
+            }
+        },
+        error: function() {
+            console.error('Không thể thực hiện tìm kiếm.');
         }
     });
 }

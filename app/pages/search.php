@@ -1,30 +1,20 @@
-<?php require('/app/pages/includes/footer.php');
+<?php
+require_once '../core/functions.php';
+
+// Lấy dữ liệu từ form tìm kiếm
+if (isset($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+
+    // Truy vấn bài hát với từ khóa
+    $query_song = "SELECT MaBaiHat, TenBaiHat, AnhBaiHat FROM baihat WHERE TenBaiHat LIKE :keyword";
+    $songs = db_query($query_song, ['keyword' => "%$keyword%"]);
+
+    // Truy vấn nghệ sĩ với từ khóa
+    $query_artist = "SELECT MaNgheSy, TenNgheSy, AnhNgheSy FROM nghesy WHERE TenNgheSy LIKE :keyword";
+    $artists = db_query($query_artist, ['keyword' => "%$keyword%"]);
+
+    // Kiểm tra và hiển thị kết quả
+    $results = ['songs' => $songs, 'artists' => $artists];
+    echo json_encode($results);
+}
 ?>
-	
-	<div class="section-title">Search for: <?=$_GET['find']?></div>
-
-	<section class="content">
-		
-		<?php 
-			$title = $_GET['find'] ?? null;
-			if(!empty($title)){
-
-				$title = "%$title%";
-				$query = "select * from songs where title like :title order by views desc limit 24";
-				$rows = db_query($query,['title'=>$title]);
-			}
-			
-
-		?>
-
-		<?php if(!empty($rows)):?>
-			<?php foreach($rows as $row):?>
-				<?php include page('includes/song')?>
-			<?php endforeach;?>
-		<?php else:?>
-			<div class="m-2">No songs found</div>
-		<?php endif;?>
-
-	</section>
-
-<?php require page('includes/footer')?>

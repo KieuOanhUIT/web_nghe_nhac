@@ -156,26 +156,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                         <span class="clear-history" onclick="clearSearchHistory()">Xóa lịch sử tìm kiếm</span>
                     </div>
                     <div class="search-items" id="search-items">
-                        <div class="search-item">
-                            <a href="/web_nghe_nhac/song.php"> <!-- Đường dẫn đến trang chi tiết bài hát -->
-                                <img src="/web_nghe_nhac/public/assets/img/MY.png" alt="Seenderella">
-                                <h3>Mộng Yu</h3>
-                            </a>
-                            <a href="/web_nghe_nhac/artist_details.php?id=1"> <!-- Đường dẫn đến trang chi tiết nghệ sĩ -->
-                                <p>AMEE</p>
-                            </a>
-                        </div>
-                        <div class="search-item">
-                            <a href="/web_nghe_nhac/song.php"> <!-- Đường dẫn đến trang chi tiết bài hát -->
-                                <img src="/web_nghe_nhac/public/assets/img/MY.png" alt="Seenderella">
-                                <h3>Mộng Yu</h3>
-                            </a>
-                            <a href="/web_nghe_nhac/artist_details.php?id=1"> <!-- Đường dẫn đến trang chi tiết nghệ sĩ -->
-                                <p>AMEE</p>
-                            </a>
-                        </div>
-                        <!-- Thêm các phần tử tìm kiếm gần đây khác tương tự -->
-                </div>
+                <!-- Các mục tìm kiếm sẽ được thêm vào đây bởi JavaScript -->
+                    </div>
 
                 <!-- lyric -->
                 <div class="wrapper-lyric" style="display: none;">

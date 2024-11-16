@@ -35,7 +35,7 @@
                 </div>
                 <div class="input-wrapper" id="search-input">
                     <iconify-icon icon="lucide:search" name="search"></iconify-icon>
-                    <input id="search-bar" type="text" class="search-input" placeholder="Tìm kiếm..." name="keyword">
+                    <input id="search-bar" type="text" class="search-input" placeholder="Tìm kiếm..." name="keyword" oninput="performSearch(this.value)">
                 </div>
 
                 <div class="voice-searching">
