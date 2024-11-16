@@ -1,18 +1,9 @@
 <?php
+// Cấu hình kết nối đến cơ sở dữ liệu
+define('DB_HOST', 'localhost');    // Máy chủ cơ sở dữ liệu 
+define('DB_NAME', 'letchill_data');  // Tên cơ sở dữ liệu
+define('DB_USER', 'root');  // Tên người dùng MySQL
+define('DB_PASS', '');  // Mật khẩu
 
-// Set base configuration depending on the environment
-$config = [
-    'ROOT' => ($_SERVER['SERVER_NAME'] == "localhost") ? "/web_nghe_nhac/public" : "http://www.mywebsite.com",
-    'DBDRIVER' => "mysql",
-    'DBHOST' => "localhost",
-    'DBUSER' => "root",
-    'DBPASS' => "",
-    'DBNAME' => "letchill_data"
-];
-
-// Define constants if they are not already defined
-foreach ($config as $key => $value) {
-    if (!defined($key)) {
-        define($key, $value);
-    }
-}
+// Các tùy chọn khác (nếu cần thiết)
+define('DB_CHARSET', 'utf8'); // Đặt mã hóa ký tự
