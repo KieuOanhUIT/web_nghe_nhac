@@ -116,7 +116,7 @@ function performSearch(keyword) {
                 document.getElementById('search-items').innerHTML += `
                     <div class="search-item">
                         <a href="/web_nghe_nhac/song.php?id=${song.MaBaiHat}">
-                            <img src="/web_nghe_nhac/public/assets/img/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
+                            <img src="/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
                             <h3>${song.TenBaiHat}</h3>
                         </a>
                     </div>
@@ -128,7 +128,7 @@ function performSearch(keyword) {
                 document.getElementById('search-items').innerHTML += `
                     <div class="search-item">
                         <a href="/web_nghe_nhac/artist_details.php?id=${artist.MaNgheSy}">
-                            <img src="/web_nghe_nhac/public/assets/img/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
+                            <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
                             <h3>${artist.TenNgheSy}</h3>
                         </a>
                     </div>
