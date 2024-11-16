@@ -2,31 +2,15 @@
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
 ?>
 
-<!-- Popup thông báo -->
-<div id="notificationPopup" class="notification-popup" style="display: none;">
+    <!-- Popup thông báo -->
+    <div id="notificationPopup" class="notification-popup" style="display: none;">
         <div class="popup-content">
             <h3>Thông báo</h3>
             <span id="closePopup" class="close-popup">&times;</span>
-            <div class="notification-item unread">
-            <p class="title">Tin nhắn mới <span class="unread-indicator"></span></p>
-             <!-- Dấu chấm xanh cho thông báo chưa đọc -->
-                <p class="message">Bạn có tin nhắn mới từ quản trị viên.</p>
-                <p class="time">2024-11-13 3:45 PM</p>
-            </div>
-            <div class="notification-item">
-                <p class="title">Cập nhật hệ thống</p>
-                <p class="message">Hệ thống sẽ bảo trì vào ngày mai lúc 10:30 AM.</p>
-                <p class="time">2024-11-14 10:30 AM</p>
-            </div>
-            <div class="notification-item unread">
-            <p class="title">Cảnh báo bảo mật <span class="unread-indicator"></span></p>
-             <!-- Dấu chấm xanh cho thông báo chưa đọc -->
-                <p class="message">Đã phát hiện đăng nhập bất thường từ thiết bị lạ.</p>
-                <p class="time">2024-11-13 7:00 PM</p>
-            </div>
-            </div>
+            <!-- Thông báo động sẽ được thêm vào đây bởi JavaScript -->
         </div>
     </div>
+
     <main>
         <!-- Main space -->
         <div class="mainSpace">
@@ -195,41 +179,41 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 
                 <!-- lyric -->
                 <div class="wrapper-lyric" style="display: none;">
-                    <p>I can read your mind<br>"She's having the time of her life"<br>There in her glittering prime<br>The lights
+                    <p>I can read your mind</br>"She's having the time of her life"</br>There in her glittering prime</br>The lights
                         refract
-                        sequined stars off her silhouette every night<br>I can show you lies (one, two, three, four)
-                        'Cause I'm a real tough kid, I can handle my shit<br>They said, "Babe, you gotta fake it 'til you
+                        sequined stars off her silhouette every night</br>I can show you lies (one, two, three, four)
+                        'Cause I'm a real tough kid, I can handle my shit</br>They said, "Babe, you gotta fake it 'til you
                         make it" and I
-                        did<br>Lights, camera, bitch smile, even when you wanna die<br>He said he'd love me all his life<br>But
+                        did</br>Lights, camera, bitch smile, even when you wanna die</br>He said he'd love me all his life</br>But
                         that life was too
-                        short<br>Breaking down, I hit the floor<br>All the pieces of me shattered as the crowd was chanting,
-                        "More"<br>I was
-                        grinning like I'm winning, I was hitting my marks<br>'Cause I can do it with a broken heart (one,
+                        short</br>/breaking down, I hit the floor</br>All the pieces of me shattered as the crowd was chanting,
+                        "More"</br>I was
+                        grinning like I'm winning, I was hitting my marks</br>'Cause I can do it with a /broken heart (one,
                         two, three, four)
-                        I'm so depressed, I act like it's my birthday every day<br>I'm so obsessed with him but he avoids
+                        I'm so depressed, I act like it's my birthday every day</br>I'm so obsessed with him but he avoids
                         me like the
-                        plague<br>I cry a lot but I am so productive, it's an art<br>You know you're good when you can even do
-                        it<br>With a
-                        broken heart
-                        I can hold my breath<br>I've been doing it since he left<br>I keep finding his things in
-                        drawers<br>Crucial evidence, I
-                        didn't imagine the whole thing<br>I'm sure I can pass this test (one, two, three, four)
-                        'Cause I'm a real tough kid, I can handle my shit<br>They said, "Babe, you gotta fake it 'til you
+                        plague</br>I cry a lot but I am so productive, it's an art</br>You know you're good when you can even do
+                        it</br>With a
+                        /broken heart
+                        I can hold my /breath</br>I've been doing it since he left</br>I keep finding his things in
+                        drawers</br>Crucial evidence, I
+                        didn't imagine the whole thing</br>I'm sure I can pass this test (one, two, three, four)
+                        'Cause I'm a real tough kid, I can handle my shit</br>They said, "Babe, you gotta fake it 'til you
                         make it" and I
-                        did<br>Lights, camera, bitch smile, in stilettos for miles<br>He said he'd love me for all time<br>But
+                        did</br>Lights, camera, bitch smile, in stilettos for miles</br>He said he'd love me for all time</br>But
                         that time was
-                        quite short<br>Breaking down, I hit the floor<br>All the pieces of me shattered as the crowd was
-                        chanting, "More"<br>I
-                        was grinning like I'm winning, I was hitting my marks<br>'Cause I can do it with a broken heart
+                        quite short</br>/breaking down, I hit the floor</br>All the pieces of me shattered as the crowd was
+                        chanting, "More"</br>I
+                        was grinning like I'm winning, I was hitting my marks</br>'Cause I can do it with a /broken heart
                         (one, two, three)
-                        I'm so depressed, I act like it's my birthday every day<br>I'm so obsessed with him but he avoids
+                        I'm so depressed, I act like it's my birthday every day</br>I'm so obsessed with him but he avoids
                         me like the
-                        plague (he avoids me)<br>I cry a lot but I am so productive, it's an art<br>You know you're good when
+                        plague (he avoids me)</br>I cry a lot but I am so productive, it's an art</br>You know you're good when
                         you can even do
-                        it<br>With a broken heart
-                        You know you're good when you can even do it<br>With a broken heart<br>You know you're good, I'm
-                        good<br>'Cause I'm
-                        miserable<br>And nobody even knows<br>Try and come for my job</p>
+                        it</br>With a /broken heart
+                        You know you're good when you can even do it</br>With a /broken heart</br>You know you're good, I'm
+                        good</br>'Cause I'm
+                        miserable</br>And nobody even knows</br>Try and come for my job</p>
                 </div>
             </div>
 
@@ -445,10 +429,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         <!-- Listening Space -->
         <div class="listeningSpace">
             <div class="info">
-                <img src="/web_nghe_nhac/public/song/Taylor_Swift_-_I_Can_Do_It_With_a_Broken_Heart.png" alt="" class="picOfSong">
+                <img src="/web_nghe_nhac/public/song/Taylor_Swift_-_I_Can_Do_It_With_a_broken_Heart.png" alt="" class="picOfSong">
 
                 <div class="infoText">
-                    <p class="name ui_semibold">I can do this with the broken heart</p>
+                    <p class="name ui_semibold">I can do this with the /broken heart</p>
                     <p class="author ui_regular op_75">Taylor Switf</p>
                 </div>
 
