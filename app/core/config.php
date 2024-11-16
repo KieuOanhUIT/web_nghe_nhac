@@ -2,7 +2,7 @@
 
 // Set base configuration depending on the environment
 $config = [
-    'ROOT' => ($_SERVER['SERVER_NAME'] == "localhost") ? "http://localhost/web_nghe_nhac/public" : "http://www.mywebsite.com",
+    'ROOT' => ($_SERVER['SERVER_NAME'] == "localhost") ? "/web_nghe_nhac/public" : "http://www.mywebsite.com",
     'DBDRIVER' => "mysql",
     'DBHOST' => "localhost",
     'DBUSER' => "root",

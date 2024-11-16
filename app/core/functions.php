@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 
 // Hiển thị thông tin một cách đẹp mắt
 function show($stuff)
