@@ -1,3 +1,79 @@
+<?php
+session_start();
+
+// Bật hiển thị lỗi khi phát triển
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Kiểm tra nếu người dùng đã nhập email, mật khẩu mới và mật khẩu xác nhận
+    if (!empty($_POST['email']) && !empty($_POST['new_password']) && !empty($_POST['confirm_password'])) {
+        $email = $_POST['email'];
+        $new_password = $_POST['new_password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        // Kiểm tra mật khẩu mới và mật khẩu xác nhận có trùng khớp không
+        if ($new_password != $confirm_password) {
+            $errorMessage = "Mật khẩu mới và mật khẩu xác nhận không trùng khớp.";
+        } else {
+            // Kết nối cơ sở dữ liệu
+            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';  // Bao gồm file cấu hình
+            $database = new Database();
+            $conn = $database->getConnection();
+
+            if ($conn) {
+                try {
+                    // Bắt đầu giao dịch
+                    $conn->beginTransaction();
+
+                    // Lấy thông tin người dùng từ cơ sở dữ liệu
+                    $sql = "SELECT * FROM taikhoan WHERE Email = :email";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                    $stmt->execute();
+                    $result = $stmt->fetch();
+
+                    if ($result) {
+                        $maNguoiDung = $result['MaNguoiDung']; // Lấy khóa ngoại MaNguoiDung từ kết quả
+
+                        // Cập nhật mật khẩu mới trong bảng taikhoan
+                        $update_sql_taikhoan = "UPDATE taikhoan SET MatKhau = :new_password WHERE Email = :email";
+                        $update_stmt_taikhoan = $conn->prepare($update_sql_taikhoan);
+                        $update_stmt_taikhoan->bindParam(':new_password', $new_password, PDO::PARAM_STR);
+                        $update_stmt_taikhoan->bindParam(':email', $email, PDO::PARAM_STR);
+                        $update_stmt_taikhoan->execute();
+
+                        // Cập nhật thông tin liên quan trong bảng nguoidung
+                        $update_sql_nguoidung = "UPDATE nguoidung SET MatKhau = :new_password WHERE Email = :email";
+                        $update_stmt_nguoidung = $conn->prepare($update_sql_nguoidung);
+                        $update_stmt_nguoidung->bindParam(':new_password', $new_password, PDO::PARAM_STR);
+                        $update_stmt_nguoidung->bindParam(':email', $email, PDO::PARAM_STR);
+                        $update_stmt_nguoidung->execute();
+
+                        // Xác nhận giao dịch
+                        $conn->commit();
+
+                        $successMessage = "Mật khẩu đã được thay đổi thành công.";
+                        header("Location: signinView.php");
+                        exit();
+                    } else {
+                        $errorMessage = "Không tìm thấy người dùng.";
+                    }
+                } catch (Exception $e) {
+                    // Hủy giao dịch nếu có lỗi
+                    $conn->rollBack();
+                    $errorMessage = "Lỗi: " . $e->getMessage();
+                }
+            } else {
+                $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
+            }
+        }
+    } else {
+        $errorMessage = "Vui lòng nhập đầy đủ thông tin.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -5,8 +81,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/public/assets/css/signin.css">
-    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/resetPassword.css">
+    <title>Màn hình thay đổi mật khẩu</title>
+    <!-- <script type="javascript" src="script.js"></script> -->
     <style>
         /* cyrillic-ext */
         @font-face {
@@ -154,56 +231,63 @@
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
         <button class="left-button">
-            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
+            <a href = "signinView.php"></a>
         </button>
         <button class="right-button">
-            <img src="/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
+    
     <!--Tiêu đề-->
     <div class="container-1">
-
         <h2 class="container-1-h2">
-            <span class="white-text" style="margin-right: 10px">Đăng nhập vào</span>
-            <span class="gradient-text">letchill</span>
+            <span class="white-text" style="margin-right: 10px">Thay đổi</span>
+            <span class="gradient-text">mật khẩu</span>
         </h2>
     </div>
-    <!--Form đăng nhập-->
+
+    <!--Form thay đổi mật khẩu-->
     <div class="container-2">
-        <div class="container-2-top">
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********">
-                <img src="/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">;
+        <form action="" method="POST">
+            <div class="container-2-top">
+                <!--Email-->
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px" required><br>
+                
+                <!--Mật khẩu mới-->
+                <label for="new_password">Mật khẩu mới</label><br>
+                <div class="input-container">
+                    <input type="password" id="new_password" name="new_password" placeholder="**********" style="margin-bottom:30px" required>
+                    <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword('new_password', this)" style="cursor: pointer;">
+                </div>
+                
+                <!--Xác thực lại mật khẩu-->
+                <label for="confirm_password">Xác thực lại mật khẩu</label><br>
+                <div class="input-container">
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="**********" style="margin-bottom:30px" required>
+                    <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword('confirm_password', this)" style="cursor: pointer;">
+                </div>
             </div>
-            <div class="forget-password-container"> <!-- Thêm phần tử cha -->
-                <a href="/quên-mật-khẩu" class="forget-password">Quên mật khẩu?</a>
+
+            <div class="container-2-bottom">
+                <button type="submit" class="confirm">Xác nhận</button>
             </div>
-            <button type="button" class="sign-in" onclick="signin()">Đăng nhập</button>
-        </div>
-        <div class="container-2-center">
-            <div class="divider">
-                <hr class="custom-line-1" style="margin-right: 30px">
-                <span class="hoac-text">Hoặc</span>
-                <hr class="custom-line-1" style="margin-left: 30px">
-            </div>
-            <!--Nút social đăng nhập-->
-            <button class="social-button google">
-                <img src="/public/assets/img/logos--google-icon.svg" alt="icon" class="icon">
-                Đăng nhập với Google
-            </button>
-            <button class="social-button facebook">
-                <img src="/public/assets/img/logos--facebook.svg" alt="icon" class="icon">
-                Đăng nhập với Facebook
-            </button>
-        </div>
-        <!--Nút link đăng ký-->
-        <div class="container-2-bottom">
-            <hr class="custom-line">
-            <span class="normal-text" style="margin-right: 5px">Chưa có tài khoản?</span>
-            <a href="/MVC/View/html/signup_email.html" class="sign-up"><u>Đăng ký ngay</u></a>
-        </div>
+        </form>
     </div>
+
+    <script>
+        function togglePassword(passwordId, iconElement) {
+            const passwordInput = document.getElementById(passwordId);
+            const icon = iconElement;
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
+            } else {
+                passwordInput.type = "password";
+                icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
+            }
+        }
+    </script>
 </body>

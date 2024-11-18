@@ -1,26 +1,24 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['password'])) {
-        $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
+    // Lấy giá trị mật khẩu từ POST
+    $password = $_POST['password'];
+    
+    // Lưu giá trị mật khẩu vào session
+    $_SESSION['password'] = $password;
 
-        // Kiểm tra tính hợp lệ của mật khẩu
-        if (!preg_match('/^(?=.*\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z]).{10,}$/', $password)) {
-            echo "Mật khẩu không hợp lệ. Mật khẩu phải chứa ít nhất 1 ký tự số, 1 ký tự đặc biệt và dài ít nhất 10 ký tự.";
-        } else {
-            // Nếu mật khẩu hợp lệ, lưu vào session và chuyển hướng
-            $_SESSION['password'] = $password;
-            header("Location: signup_infoView.php");
-            exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
-        }
-    } else {
-        echo "Không có dữ liệu password gửi lên";
-    }
+    // Chuyển hướng người dùng đến trang signup_infoView.php
+    header("Location: signup_infoView.php");
+    exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
+} else {
+    // Hiển thị thông báo nếu không có dữ liệu password gửi lên
+    echo "Không có dữ liệu password gửi lên.";
 }
 ?>
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
 <head>
 
     <meta charset="UTF-8">
@@ -175,10 +173,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
-        <button class="left-button">
+        <button class="left-button" onclick="goBack()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
-        <button class="right-button">
+        <button class="right-button" onclick="goForward()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
@@ -191,6 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <!--Form đăng ký-->
     <div class="container-2">
+        <form action="signup_passwordView.php" method = "POST">
         <div class="container-2-top">
             <label for="password">Mật khẩu</label><br>
             <div class="input-container">
@@ -201,11 +200,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container-2-center">
             <label for="lưu-ý">Mật khẩu phải có ít nhất:</label>
             <p>1 số hoặc ký tự đặc biệt (#@%...)</p>
-            <p>Nhiều hơn 10 ký tự </p>
         </div>
         <div class="container-2-bottom">
-            <button class="next">Tiếp theo</button>
+            <button type = "submit" class="next">Tiếp theo</button>
         </div>
+        </form>
     </div>
 
     <script>
@@ -220,6 +219,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 passwordInput.type = "password";
                 icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
             }
+        }
+
+        // Hàm quay lại trang trước đó
+        function goBack() {
+            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
+        }
+
+        // Hàm quay lại trang tiếp theo
+        function goForward() {
+            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
         }
         </script>
 </body>

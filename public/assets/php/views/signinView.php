@@ -1,8 +1,51 @@
 <?php
-include "public/assets/php/config/config.php";
-include "public/assets/php/models/TaiKhoan.php";
+session_start();
+
+// Bật hiển thị lỗi khi phát triển
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Kiểm tra dữ liệu đầu vào
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Kết nối cơ sở dữ liệu
+        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        if ($conn) {
+            // Truy vấn kiểm tra email và mật khẩu
+            $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->execute();
+            
+            // Kiểm tra kết quả
+            $user = $stmt->fetch();
+            if ($user) {
+                header("Location: /web_nghe_nhac/app/pages/home.php"); 
+                exit();
+            } else {
+                $errorMessage = "Email hoặc mật khẩu không đúng.";
+            }
+        } else {
+            $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
+        }
+    } else {
+        $errorMessage = "Vui lòng nhập đầy đủ thông tin.";
+    }
+}
 ?>
-<meta charset="UTF-8">
+
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signin.css">
@@ -153,10 +196,10 @@ include "public/assets/php/models/TaiKhoan.php";
 <body>
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
-        <button class="left-button">
+        <button class="left-button" onclick="goBack()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
-        <button class="right-button">
+        <button class="right-button" onclick="goForward()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
@@ -170,14 +213,16 @@ include "public/assets/php/models/TaiKhoan.php";
     </div>
     <!--Form đăng nhập-->
     <div class="container-2">
-    <form id="signinForm" onsubmit="signin(); return false;">
         <div class="container-2-top">
             <label for="email">Email</label><br>
             <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
             <label for="password">Mật khẩu</label><br>
-            <input type="password" id="password" name="password" placeholder="***********"><br>
+            <div class="input-container">
+                <input type="password" id="password" name="password" placeholder="**********">
+                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">;
+            </div>
             <div class="forget-password-container"> <!-- Thêm phần tử cha -->
-                <a href="/quên-mật-khẩu" class="forget-password">Quên mật khẩu?</a>
+                <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
             </div>
             <button type="button" class="sign-in" onclick="signin()">Đăng nhập</button>
         </div>
@@ -201,36 +246,32 @@ include "public/assets/php/models/TaiKhoan.php";
         <div class="container-2-bottom">
             <hr class="custom-line">
             <span class="normal-text" style="margin-right: 5px">Chưa có tài khoản?</span>
-            <a href="/web_nghe_nhac/public/assets/php/views/signup_emailView.php" class="sign-up"><u>Đăng ký ngay</u></a>
+            <a href="signup_emailView.php" class="sign-up"><u>Đăng ký ngay</u></a>
         </div>
-        </form>
     </div>
-
+    
     <script>
-        function signin() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            fetch('processSignin.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    alert(data.message);
-                    // Chuyển hướng người dùng tới trang chính hoặc trang cá nhân
-                    window.location.href = "/trang-chu";
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error("Lỗi khi gửi yêu cầu:", error);
-            });
+        function togglePassword(passwordId, iconElement) {
+            const passwordInput = document.getElementById(passwordId);
+            const icon = iconElement;
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
+            } else {
+                passwordInput.type = "password";
+                icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
+            }
         }
+        // Hàm quay lại trang trước đó
+        function goBack() {
+            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
+        }
+
+        // Hàm quay lại trang tiếp theo
+        function goForward() {
+            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
+        }
+
     </script>
 </body>

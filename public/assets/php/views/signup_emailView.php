@@ -192,10 +192,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
-        <button class="left-button">
+        <button class="left-button" onclick="goBack()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
-        <button class="right-button">
+        <button class="right-button" onclick="goForward()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
@@ -237,4 +237,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>Đã có tài khoản? <a href="signinView.php">Đăng nhập ngay</a></p>
         </div>
     </div>
+
+    <script>
+        // Hàm quay lại trang trước đó
+        function goBack() {
+            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
+        }
+
+        // Hàm quay lại trang tiếp theo
+        function goForward() {
+            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
+        }
+    </script>
 </body>
