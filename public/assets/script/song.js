@@ -39,6 +39,11 @@ function displaySong(song) {
     audioPlayer.src = song.FileBaiHat 
     ? `/web_nghe_nhac/public/song/${song.FileBaiHat}` 
     : `/web_nghe_nhac/public/song/Hẹn Gặp Em Dưới Ánh Trăng - HURRYKNG, HIEUTHUHAI, MANBO Lyrics Video .mp3`; // Đường dẫn file âm thanh
+    
+    // Update lyrics
+    const lyric = document.getElementById('lyric');
+    lyric.innerHTML = song.LoiBaiHat || 'Lời bài hát'; // Sử dụng innerHTML để giữ lại thẻ <br>
+
 }
 // Gọi loadSongs khi trang được tải
 document.addEventListener('DOMContentLoaded', loadSongs);

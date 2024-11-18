@@ -162,42 +162,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             </div>
 
                 <!-- lyric -->
-                <div class="wrapper-lyric" style="display: none;">
-                    <p>I can read your mind</br>"She's having the time of her life"</br>There in her glittering prime</br>The lights
-                        refract
-                        sequined stars off her silhouette every night</br>I can show you lies (one, two, three, four)
-                        'Cause I'm a real tough kid, I can handle my shit</br>They said, "Babe, you gotta fake it 'til you
-                        make it" and I
-                        did</br>Lights, camera, bitch smile, even when you wanna die</br>He said he'd love me all his life</br>But
-                        that life was too
-                        short</br>/breaking down, I hit the floor</br>All the pieces of me shattered as the crowd was chanting,
-                        "More"</br>I was
-                        grinning like I'm winning, I was hitting my marks</br>'Cause I can do it with a /broken heart (one,
-                        two, three, four)
-                        I'm so depressed, I act like it's my birthday every day</br>I'm so obsessed with him but he avoids
-                        me like the
-                        plague</br>I cry a lot but I am so productive, it's an art</br>You know you're good when you can even do
-                        it</br>With a
-                        /broken heart
-                        I can hold my /breath</br>I've been doing it since he left</br>I keep finding his things in
-                        drawers</br>Crucial evidence, I
-                        didn't imagine the whole thing</br>I'm sure I can pass this test (one, two, three, four)
-                        'Cause I'm a real tough kid, I can handle my shit</br>They said, "Babe, you gotta fake it 'til you
-                        make it" and I
-                        did</br>Lights, camera, bitch smile, in stilettos for miles</br>He said he'd love me for all time</br>But
-                        that time was
-                        quite short</br>/breaking down, I hit the floor</br>All the pieces of me shattered as the crowd was
-                        chanting, "More"</br>I
-                        was grinning like I'm winning, I was hitting my marks</br>'Cause I can do it with a /broken heart
-                        (one, two, three)
-                        I'm so depressed, I act like it's my birthday every day</br>I'm so obsessed with him but he avoids
-                        me like the
-                        plague (he avoids me)</br>I cry a lot but I am so productive, it's an art</br>You know you're good when
-                        you can even do
-                        it</br>With a /broken heart
-                        You know you're good when you can even do it</br>With a /broken heart</br>You know you're good, I'm
-                        good</br>'Cause I'm
-                        miserable</br>And nobody even knows</br>Try and come for my job</p>
+                <div class="wrapper-lyric" style="display: none;" id="lyric">
+                    <p>Lời bài hát</p>
                 </div>
             
         </div>
