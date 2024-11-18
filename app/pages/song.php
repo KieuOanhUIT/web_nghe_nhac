@@ -1,19 +1,19 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/core/init.php";
-class songClass{
-    public $Database;
-    public function __construct(){
-        $this->Database = new Database;
-    }
+require_once '../core/functions.php';
 
-    //hàm tìm kiếm bài hát hoặc nghệ sỹ
-    public function search($key){
-        $sql = "SELECT b.id, b.tenbaihat, b.image, n.id 
-        FROM baihat b
-        JOIN nghesy n ON b.manghesy = n.manghesy
-        WHERE b.tenbaihat LIKE :$key OR n.nghesy LIKE :$key";
-        $result = $this->Database->search($sql);
-        return $result;
-    }
-}
+// Bật hiển thị lỗi nếu có
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Thiết lập tiêu đề Content-Type là application/json
+header('Content-Type: application/json');
+
+// Kết nối cơ sở dữ liệu
+require_once '../core/functions.php';
+
+// Truy vấn lấy thông báo từ cơ sở dữ liệu
+$query = "SELECT * FROM baihat b JOIN nghesy n ON b.MaNgheSy = n.MaNgheSy ORDER BY MaBaiHat";
+$result = db_query($query); // Thực thi câu truy vấn
+$results = ['results' => $result];
+echo json_encode($results);
 ?>

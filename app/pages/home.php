@@ -159,6 +159,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 <!-- Các mục tìm kiếm sẽ được thêm vào đây bởi JavaScript -->
                     </div>
 
+            </div>
+
                 <!-- lyric -->
                 <div class="wrapper-lyric" style="display: none;">
                     <p>I can read your mind</br>"She's having the time of her life"</br>There in her glittering prime</br>The lights
@@ -197,12 +199,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                         good</br>'Cause I'm
                         miserable</br>And nobody even knows</br>Try and come for my job</p>
                 </div>
-            </div>
-
             
         </div>
-<!-- rightBar -->
-<div class="rightBar">
+        <!-- rightBar -->
+        <div class="rightBar">
             <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
             ?>
@@ -411,11 +411,11 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         <!-- Listening Space -->
         <div class="listeningSpace">
             <div class="info">
-                <img src="/web_nghe_nhac/public/song/Taylor_Swift_-_I_Can_Do_It_With_a_broken_Heart.png" alt="" class="picOfSong">
+                <img src="" alt="" class="picOfSong" id="songImage">
 
                 <div class="infoText">
-                    <p class="name ui_semibold">I can do this with the /broken heart</p>
-                    <p class="author ui_regular op_75">Taylor Switf</p>
+                    <p class="name ui_semibold" id="songName">Tên bài hát</p>
+                    <p class="author ui_regular op_75" id="songAuthor">Tên nghệ sĩ</p>
                 </div>
 
                 <div class="addToPlaylist">
@@ -425,7 +425,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 
             <!-- Music player -->
             <div class="musicPlayer">
-                <audio id="audioPlayer" src="/web_nghe_nhac/public/song/Bầu Trời Mới - Da LAB ft. Minh Tốc & Lam (Official MV).mp3"></audio>
+                <audio id="audioPlayer" src=""></audio>
                 <div class="controlbar">
                     <button id="lyricsBtn">
                         <iconify-icon id="lyricsIcon" class="" icon="maki:karaoke"></iconify-icon>
@@ -479,7 +479,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
     <script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
     <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
     <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
-
+    <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
+    
 </body>
 
 </html>
