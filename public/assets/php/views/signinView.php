@@ -11,29 +11,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Kết nối cơ sở dữ liệu
-        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
-        $database = new Database();
-        $conn = $database->getConnection();
+        // Kiểm tra mật khẩu có ít nhất 8 ký tự và có chứa số hoặc ký tự đặc biệt
+        if (strlen($password) >= 8 && preg_match('/[0-9#@%&*]/', $password)) {
+            // Kết nối cơ sở dữ liệu
+            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
+            $database = new Database();
+            $conn = $database->getConnection();
 
-        if ($conn) {
-            // Truy vấn kiểm tra email và mật khẩu
-            $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-            $stmt->execute();
-            
-            // Kiểm tra kết quả
-            $user = $stmt->fetch();
-            if ($user) {
-                header("Location: /web_nghe_nhac/app/pages/home.php"); 
-                exit();
+            if ($conn) {
+                // Truy vấn kiểm tra email và mật khẩu
+                $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+                $stmt->execute();
+                
+                // Lấy dữ liệu người dùng
+                $user = $stmt->fetch();
+                if ($user) {
+                    // Lưu thông tin người dùng vào session và chuyển hướng đến trang home
+                    $_SESSION['user'] = $user; // Lưu thông tin người dùng vào session
+                    header("Location: /web_nghe_nhac/app/pages/home.php"); 
+                    exit();
+                } else {
+                    $errorMessage = "Email hoặc mật khẩu không đúng.";
+                }
             } else {
-                $errorMessage = "Email hoặc mật khẩu không đúng.";
+                $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
             }
         } else {
-            $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
+            $errorMessage = "Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...).";
         }
     } else {
         $errorMessage = "Vui lòng nhập đầy đủ thông tin.";
@@ -213,19 +220,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <!--Form đăng nhập-->
     <div class="container-2">
+    <form action="" method="POST">
         <div class="container-2-top">
             <label for="email">Email</label><br>
             <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
             <label for="password">Mật khẩu</label><br>
             <div class="input-container">
                 <input type="password" id="password" name="password" placeholder="**********">
-                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">;
+                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
             </div>
             <div class="forget-password-container"> <!-- Thêm phần tử cha -->
                 <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
             </div>
-            <button type="button" class="sign-in" onclick="signin()">Đăng nhập</button>
+            <button type="submit" class="sign-in">Đăng nhập</button>
         </div>
+        </form>
         <div class="container-2-center">
             <div class="divider">
                 <hr class="custom-line-1" style="margin-right: 30px">
@@ -251,9 +260,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     
     <script>
-        function togglePassword(passwordId, iconElement) {
-            const passwordInput = document.getElementById(passwordId);
-            const icon = iconElement;
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const icon = document.querySelector(".iconPass");
             
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
@@ -272,6 +281,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         function goForward() {
             window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
         }
-
     </script>
 </body>

@@ -1,37 +1,12 @@
-<?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
-    // Lấy giá trị mật khẩu từ POST
-    $password = $_POST['password'];
-
-    // Kiểm tra mật khẩu có ít nhất 8 ký tự, có chứa ít nhất 1 số hoặc ký tự đặc biệt
-    if (strlen($password) >= 8 && preg_match('/[0-9#@%&*]/', $password)) {
-        // Lưu giá trị mật khẩu vào session
-        $_SESSION['password'] = $password;
-
-        // Chuyển hướng người dùng đến trang signup_infoView.php
-        header("Location: signup_infoView.php");
-        exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
-    } else {
-        // Nếu mật khẩu không hợp lệ, hiển thị thông báo lỗi
-        echo "<p>Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...)</p>";
-    }
-} else {
-    // Hiển thị thông báo nếu không có dữ liệu password gửi lên
-    echo "Không có dữ liệu password gửi lên.";
-}
-?>
-
 <!DOCTYPE html>
+
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signup-password.css">
-    <title>Màn hình đăng ký - Mật khẩu</title>
-    <!-- <script type="javascript" src="script.js"></script> -->
+    <link rel="stylesheet" href="/public/assets/css/payment.css">
+    <title>Thanh toán</title>
     <style>
         /* cyrillic-ext */
         @font-face {
@@ -178,63 +153,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
 <body>
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
-        <button class="left-button" onclick="goBack()">
-            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
-        </button>
-        <button class="right-button" onclick="goForward()">
-            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+        <button class="left-button">
+            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
     </div>
-    <!--Tiêu đề-->
-    <div class="container-1">
-        <h2 class="container-1-h2">
-            <span class="white-text" style="margin-right: 10px">Đăng ký để bắt đầu</span>
-            <span class="gradient-text">nghe nhạc</span>
-        </h2>
-    </div>
-    <!--Form đăng ký-->
-    <div class="container-2">
-        <form action="signup_passwordView.php" method = "POST">
-        <div class="container-2-top">
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********" style="margin-bottom:30px">
-                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
+
+    <div class="container">
+        <p>Gói của bạn</p>
+        <div class="info">
+            <div class="info-1">
+                <div class="row">
+                    <h3 class="pack">Premium Individual</h3>
+                    <label class="time">1 tháng</label>
+                </div>
+                <div class="row">
+                    <label class="description">1 tài khoản Premium</label>
+                    <label class="price">59.000VND</label>
+                </div>
+            </div>
+            <div class="info-2">
+                <div class="row">
+                    <label class="title">Tổng:</label>
+                    <label for="total" id="total" class="total">59.000VND</label>
+                </div>
+                <div class="row">
+                    <label class="title">Bắt đầu từ:</label>
+                    <label class="start-date"></label>
+                </div>
             </div>
         </div>
-        <div class="container-2-center">
-            <label for="lưu-ý">Mật khẩu phải có ít nhất:</label>
-            <p>1 số hoặc ký tự đặc biệt (#@%...)</p>
-            <p>Nhiều hơn 8 ký tự </p>
+        <div class="method">
+            <div class="radio-item">
+                <input type="radio" name="payment-method" id="method" value="Momo">
+                <img src="/public/assets/img/arcticons--momo.svg" alt="icon" class="icon">
+                <label>Momo</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" name="payment-method" id="method" value="VNPay">
+                <img src="/public/assets/img/arcticons--v-vnpay.svg" alt="icon" class="icon">
+                <label>VNPay</label>
+            </div>
         </div>
-        <div class="container-2-bottom">
-            <button type = "submit" class="next">Tiếp theo</button>
+        <div class="Thanh-toan">
+            <button type="submit" class="Thanhtoan">Thanh toán</button>
         </div>
-        </form>
     </div>
-
-    <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const icon = document.querySelector(".icon");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
-            } else {
-                passwordInput.type = "password";
-                icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
-            }
-        }
-
-        // Hàm quay lại trang trước đó
-        function goBack() {
-            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
-        }
-
-        // Hàm quay lại trang tiếp theo
-        function goForward() {
-            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
-        }
-        </script>
 </body>
+
+</html>
