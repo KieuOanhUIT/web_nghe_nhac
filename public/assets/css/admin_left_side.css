@@ -1,0 +1,71 @@
+/* CSS để tạo kiểu cho menu bên trái */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+}
+
+.left-li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    position: absolute;
+    width: 329px;
+    height: 474px;
+    left: 26px;
+    top: 118px;
+}
+
+.left-menu {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    height: 74px;
+    box-sizing: border-box;
+    display: inline-flex; /* Đặt các phần tử con (icon và chữ) nằm ngang */
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    gap: 10px;
+    width: 329px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px 20px 20px 10px;
+}
+
+.left-menu:hover {
+    background-color: #444;
+}
+
+/* Đảm bảo rằng submenu sẽ bị ẩn mặc định */
+.left-submenu {
+    list-style-type: none;
+    padding-left: 20px;
+    margin: 0;
+    display: none; 
+}
+
+.left-submenu li {
+    padding: 10px;
+}
+
+.left-submenu li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.left-submenu li a:hover {
+    color: #24515A;
+}
+iconify-icon {
+    margin-right: 10px;
+    font-size: 24px;
+}
