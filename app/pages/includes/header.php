@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/right_side.css">
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/lyric.css">
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/search.css">
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/admin_left_side.css">
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/report.css">
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -46,6 +48,9 @@
             <div class="general">
                 <div class="notif" id="notificationIcon">
                     <iconify-icon icon="ri:notification-4-line"></iconify-icon>
+                </div>
+                <div class="package" id="window">
+                    <iconify-icon icon="material-symbols:select-window-2"></iconify-icon>
                 </div>
                 <div class="account">
                     <iconify-icon icon="mdi:account"></iconify-icon>
