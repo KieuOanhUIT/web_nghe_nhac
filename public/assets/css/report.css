@@ -1,15 +1,26 @@
-body {
-    background: #000;
-    color: #fff;
-}
-
-
-img {
+.bgimage {
     position: absolute;
     width: 900px;
     left: 300px;
     top: 170px;
     filter: blur(40px);
+} 
+
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+.menu,
+ul,
+li,
+img,
+.footer-link {
+  background-color: transparent;
 }
 
 .report {
@@ -27,7 +38,6 @@ img {
     width: 68%;
     right: 26px;
     top: 118px;
-    /* overflow-y: scroll; */
 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -35,27 +45,25 @@ img {
 
 }
 
-.search-container {
+.searchBar {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 35px;
     width: 100%;
-
     flex-wrap: wrap;
-    /* Đảm bảo các phần tử không bị đè lên nhau */
     height: auto;
-    /* Chiều cao tự động thay đổi theo nội dung */
 }
 
-label {
+.label {
     margin-top: 12px;
     margin-right: -15px;
 }
 
-input,
-select,
-button {
+#start-month,
+#end-month
+.package,
+.search-btn {
     padding: 0 2px;
     margin-right: 5px;
     display: flex;
@@ -72,47 +80,39 @@ button {
     flex-grow: 0;
 }
 
-button {
-    color: white;
-    border: none;
+.search-btn {
     cursor: pointer;
     width: 100px;
     justify-content: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     padding: 9px 18px;
-    gap: 10px;
-
     background: #296265;
     border-radius: 60px;
 }
 
-button:hover {
+.report button:hover {
     background-color: transparent;
     border: 1px solid #fff;
 }
 
-table {
+.result-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-table,
-th,
-td {
+.result-table table,
+.result-table th,
+.result-table td {
     border: none;
 }
 
-th,
-td {
+.result-table th,
+.result-table td {
     padding: 8px;
     text-align: left;
 }
 
-td:nth-child(4),
-td:nth-child(5) {
+.result-table td:nth-child(4),
+.result-table td:nth-child(5) {
     text-align: right;
 }
 
@@ -126,4 +126,4 @@ td:nth-child(5) {
 
 #export-btn {
     align-self: flex-end;
-}
+} 

@@ -19,7 +19,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
     }
 </style>
 <body>
-    <img src="../img/admin-bg.png" class="bg-image">
+    <img src="../img/admin-bg.png" class="bgimage">
     <li class="left-li">
         <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/admin/left_side.php";
@@ -30,14 +30,14 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
     </div>
     
     <div class="report" style="display:none">
-        <div class="search-container">
-            <label for="date">Từ móc</label>
+        <div class="searchBar">
+            <label class="label" for="date">Từ móc</label>
             <input type="month" id="start-month" name="month-year" value="Từ móc">
 
-            <label for="date">Đến móc</label>
+            <label class="label" for="date">Đến móc</label>
             <input type="month" id="end-month" name="month-year">
 
-            <label for="package">Gói:</label>
+            <label class="label" for="package">Gói:</label>
             <select id="package" class="package">
                 <option value="mini">Mini</option>
                 <option value="individual">Individual</option>
