@@ -1,49 +1,36 @@
-// Function to fetch songs from the API
-async function loadSongs() {
-    try {
-        const response = await fetch('/web_nghe_nhac/app/pages/song.php');
-        if (!response.ok) {
-            throw new Error('Failed to fetch songs');
-        }
-
-        const data = await response.json();
-        const songs = data.results; // Danh sách bài hát từ API
-
-        if (songs.length > 0) {
-            // Hiển thị bài hát đầu tiên lên Listening Space
-            displaySong(songs[0]);
-        }
-    } catch (error) {
-        console.error('Error loading songs:', error);
-    }
-}
-
-// Function to update the UI with a song's details
+// Hàm cập nhật UI với chi tiết bài hát
 function displaySong(song) {
-    // Update song image
+    if (!song || typeof song !== 'object') {
+        console.error('Song object is undefined, null, or not an object:', song);
+        return;
+    }
+
+    console.log('Displaying song:', song);
+
+    // Cập nhật hình ảnh bài hát
     const songImage = document.getElementById('songImage');
     songImage.src = song.AnhBaiHat 
-    ? `/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}` 
-    : `/web_nghe_nhac/public/assets/img/dsyeuthich.png`; // Ảnh mặc định nếu không có
+        ? `/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}` 
+        : `/web_nghe_nhac/public/assets/img/dsyeuthich.png`;
 
-    // Update song name
+    // Cập nhật tên bài hát
     const songName = document.getElementById('songName');
     songName.textContent = song.TenBaiHat || 'Unknown Song';
 
-    // Update artist name
+    // Cập nhật tên nghệ sĩ
     const songAuthor = document.getElementById('songAuthor');
     songAuthor.textContent = song.TenNgheSy || 'Unknown Artist';
 
-    // Update audio player source
+    // Cập nhật nguồn âm thanh
     const audioPlayer = document.getElementById('audioPlayer');
     audioPlayer.src = song.FileBaiHat 
-    ? `/web_nghe_nhac/public/song/${song.FileBaiHat}` 
-    : `/web_nghe_nhac/public/song/Hẹn Gặp Em Dưới Ánh Trăng - HURRYKNG, HIEUTHUHAI, MANBO Lyrics Video .mp3`; // Đường dẫn file âm thanh
-    
-    // Update lyrics
-    const lyric = document.getElementById('lyric');
-    lyric.innerHTML = song.LoiBaiHat || 'Lời bài hát'; // Sử dụng innerHTML để giữ lại thẻ <br>
+        ? `/web_nghe_nhac/public/song/${song.FileBaiHat}` 
+        : '';
 
+    // Cập nhật lời bài hát
+    const lyric = document.getElementById('lyric');
+    lyric.innerHTML = song.LoiBaiHat || 'Lời bài hát';
 }
+
 // Gọi loadSongs khi trang được tải
 document.addEventListener('DOMContentLoaded', loadSongs);
