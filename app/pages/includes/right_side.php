@@ -54,44 +54,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="box-E">
-                                    <div class="Name">
-                                        <p>Nguyen Khoa Quan</p>
-                                    </div>
-                                    <div class="Eva">
-                                        <div class="Eva-Oval">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-empty"></span>
-                                        </div>
-                                        <div class="Eva-status">
-
-                                            <p>good</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box-E">
-                                    <div class="Name">
-                                        <p>Nguyen Khoa Quan</p>
-                                    </div>
-                                    <div class="Eva">
-                                        <div class="Eva-Oval">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-empty"></span>
-                                        </div>
-                                        <div class="Eva-status">
-
-                                            <p>good</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
