@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/header_main.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/main.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/listeningSpace.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/main_cpm.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/left_side.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/right_side.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/lyric.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/search.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/admin_left_side.css">
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/report.css">
+    <link rel="stylesheet" href="../../../public/assets/css/header_main.css">
+    <link rel="stylesheet" href="../../../public/assets/css/main.css">
+    <link rel="stylesheet" href="../../../public/assets/css/listeningSpace.css">
+    <link rel="stylesheet" href="../../../public/assets/css/main_cpm.css">
+    <link rel="stylesheet" href="../../../public/assets/css/left_side.css">
+    <link rel="stylesheet" href="../../../public/assets/css/right_side.css">
+    <link rel="stylesheet" href="../../../public/assets/css/lyric.css">
+    <link rel="stylesheet" href="../../../public/assets/css/search.css">
+    <link rel="stylesheet" href="../../../public/assets/css/admin_left_side.css">
+    <link rel="stylesheet" href="../../../public/assets/css/report.css">
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>Document</title>
+    <title>Header</title>
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 
@@ -28,7 +28,7 @@
     <header>
         <div class="controlbar">
             <div class="logo">
-                <img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo">
+                <img src="/public/assets/img/logo.svg" alt="logo">
             </div>
 
             <div class="searching">
@@ -60,5 +60,3 @@
             </div>
         </div>
     </header>
-
-    

@@ -1,9 +1,10 @@
 <?php
 // Bao gồm tệp cấu hình chứa thông tin cơ sở dữ liệu
-require_once 'config.php';  
+require_once 'config.php';
 
 // Kết nối đến cơ sở dữ liệu
-function db_connect() {
+function db_connect()
+{
     try {
         // DSN (Data Source Name) chứa thông tin kết nối
         $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
@@ -23,7 +24,8 @@ function db_connect() {
 }
 
 // Hàm thực hiện câu truy vấn SQL
-function db_query($query, $params = []) {
+function db_query($query, $params = [])
+{
     $pdo = db_connect(); // Kết nối đến database
     if ($pdo === null) {
         return false; // Nếu không kết nối được, trả về false
@@ -48,4 +50,11 @@ function db_query($query, $params = []) {
         echo 'Lỗi truy vấn: ' . $e->getMessage();
         return false;
     }
+}
+
+function AddImageSong($name_image_Song)
+{
+    $base_url = "../public/assets/img/data-songs-image"; // Đường dẫn gốc đến thư mục chứa ảnh
+    return $base_url . $name_image_Song; // Trả về đường dẫn đầy đủ
+
 }
