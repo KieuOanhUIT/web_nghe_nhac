@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+// Kiểm tra nếu dữ liệu đã có trong session
+if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], $_SESSION['description'])) {
+    // Lấy thông tin từ session
+    $time = $_SESSION['duration'];
+    $price = $_SESSION['price'];
+    $total = $_SESSION['price'];  // Nếu tổng là giá, bạn có thể thay đổi tùy theo logic
+    $description = $_SESSION['description'];
+    $pack = $_SESSION['package_type'];
+
+    // Nếu bạn muốn hiển thị ngày bắt đầu, bạn có thể lấy ngày hiện tại hoặc truyền thêm thông tin từ session
+    $start_date = date('d-m-Y');  // Giả sử ngày bắt đầu là ngày hiện tại
+    echo "<p>Bắt đầu từ: $start_date</p>";
+
+    // Bạn có thể tiếp tục xử lý thanh toán, ví dụ: kết nối với cổng thanh toán.
+
+} else {
+    // Nếu không có dữ liệu trong session, chuyển hướng về trang pack-info.php
+    echo "Không có thông tin đơn hàng. Vui lòng quay lại và chọn gói.";
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 
 <head>
@@ -5,9 +31,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/public/assets/css/signup-password.css">
-    <title>Màn hình đăng ký - Mật khẩu</title>
-    <!-- <script type="javascript" src="script.js"></script> -->
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/payment.css">
+    <title>Thanh toán</title>
     <style>
         /* cyrillic-ext */
         @font-face {
@@ -153,54 +178,58 @@
 
 <body>
     <!--Nút điều hướng-->
-    <div class="navigation-buttons">
+    <div class="navigation-buttons" onclick="goBack()">
         <button class="left-button">
-            <img src="/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
-        </button>
-        <button class="right-button">
-            <img src="/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
+            <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
     </div>
-    <!--Tiêu đề-->
-    <div class="container-1">
-        <h2 class="container-1-h2">
-            <span class="white-text" style="margin-right: 10px">Đăng ký để bắt đầu</span>
-            <span class="gradient-text">nghe nhạc</span>
-        </h2>
-    </div>
-    <!--Form đăng ký-->
-    <div class="container-2">
-        <div class="container-2-top">
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********"
-                    style="margin-bottom:30px">
-                <img src="/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon"
-                    onclick="togglePassword()" style="cursor: pointer;">;
+
+    <div class="container">
+        <p>Gói của bạn</p>
+        <div class="info">
+            <div class="info-1">
+                <div class="row">
+                    <h3 class="pack">Premium <?php echo $pack; ?></h3>
+                    <label class="time"><?php echo $time; ?></label>
+                </div>
+                <div class="row">
+                    <label class="description"><?php echo $description; ?></label>
+                    <label class="price"></label>
+                </div>
+            </div>
+            <div class="info-2">
+                <div class="row">
+                    <label class="title">Tổng:</label>
+                    <label for="total" id="total" class="total"><?php echo $total; ?></label>
+                </div>
+                <div class="row">
+                    <label class="title">Bắt đầu từ:</label>
+                    <label class="start-date"><?php echo $start_date; ?></label>
+                </div>
             </div>
         </div>
-        <div class="container-2-center">
-            <label for="lưu-ý">Mật khẩu phải có ít nhất:</label>
-            <p>1 số hoặc ký tự đặc biệt (#@%...)</p>
-            <p>Nhiều hơn 10 ký tự </p>
+        <div class="method">
+            <div class="radio-item">
+                <input type="radio" name="payment-method" id="method" value="Momo">
+                <img src="/web_nghe_nhac/public/assets/img/arcticons--momo.svg" alt="icon" class="icon">
+                <label>Momo</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" name="payment-method" id="method" value="VNPay">
+                <img src="/web_nghe_nhac/public/assets/img/arcticons--v-vnpay.svg" alt="icon" class="icon">
+                <label>VNPay</label>
+            </div>
         </div>
-        <div class="container-2-bottom">
-            <button class="next">Tiếp theo</button>
+        <div class="Thanh-toan">
+            <button type="submit" class="Thanhtoan">Thanh toán</button>
         </div>
     </div>
-
     <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const icon = document.querySelector(".icon");
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.src = "/public/assets/img/fluent--eye-off-32-filled.svg"; // Thay đổi icon khi hiện mật khẩu
-            } else {
-                passwordInput.type = "password";
-                icon.src = "/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
-            }
+        // Hàm quay lại trang trước đó
+        function goBack() {
+            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
         }
     </script>
 </body>
+
+</html>
