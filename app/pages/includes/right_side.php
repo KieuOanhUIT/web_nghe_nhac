@@ -10,17 +10,17 @@
                         <div class="boxSong">
                             <div class="imageSong">
                                 <!--chèn hình ảnh-->
-                                <img src="/web_nghe_nhac/public/assets/img/ha3.svg" alt="" class="hinhanh">
+                                <img src="" alt="" class="hinhanh songImage">
 
                             </div>
 
                             <div class="nameSong">
-                                <div class="nameSong-Song">
-                                    I can do it with a broken heart
+                                <div class="nameSong-Song songName">
+                                    Tên bài hát
                                 </div>
 
-                                <div class="nameSong-Artist">
-                                    Taylor Swift
+                                <div class="nameSong-Artist songAuthor">
+                                    Tên nghệ sỹ
                                 </div>
                             </div>
                         </div>
@@ -36,75 +36,20 @@
                             </div>
 
                             <div class="NameEvaluate">
-                                <div class="box-E">
-                                    <div class="Name">
-                                        <p>Nguyen Khoa Quan</p>
-                                    </div>
-                                    <div class="Eva">
-                                        <div class="Eva-Oval">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-empty"></span>
-                                        </div>
-                                        <div class="Eva-status">
-
-                                            <p>good</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box-E">
-                                    <div class="Name">
-                                        <p>Nguyen Khoa Quan</p>
-                                    </div>
-                                    <div class="Eva">
-                                        <div class="Eva-Oval">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-empty"></span>
-                                        </div>
-                                        <div class="Eva-status">
-
-                                            <p>good</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box-E">
-                                    <div class="Name">
-                                        <p>Nguyen Khoa Quan</p>
-                                    </div>
-                                    <div class="Eva">
-                                        <div class="Eva-Oval">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-empty"></span>
-                                        </div>
-                                        <div class="Eva-status">
-
-                                            <p>good</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
                         <div class="artist1">
 
                             <div class="artist-image">
-                                <div class="textNgheSi">Nghệ sĩ</div>
-                                <img src="/web_nghe_nhac/public/assets/img/image.png" alt="" class="hinhanh1">
+                                <div class="textNgheSi">Nghệ sỹ</div>
+                                <img src="" alt="" class="hinhanh1 artist-image">
                             </div>
 
                             <div class="folow-artist">
-                                <div class="name">
-                                    <p>Taylor Swift</p>
+                                <div class="name songAuthor">
+                                    <p>Tên nghệ sỹ</p>
                                 </div>
                                 <button id="follow">Theo dõi</button>
                             </div>
@@ -115,3 +60,4 @@
                 </div>
 
             </div>
+            <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>

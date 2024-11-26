@@ -1,53 +1,118 @@
 <?php
 session_start();
 
-// Bật hiển thị lỗi khi phát triển
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Kiểm tra nếu dữ liệu đã có trong session
+if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], $_SESSION['description'], $_SESSION['user_id'])) {
+    // Lấy thông tin từ session
+    $time = $_SESSION['duration'];
+    $price = $_SESSION['price'];
+    $total = $_SESSION['price'];  // Giữ giá trị này nếu không có logic tính toán bổ sung
+    $description = $_SESSION['description'];
+    $pack = $_SESSION['package_type'];
+    $user_id = $_SESSION['user_id'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Kiểm tra dữ liệu đầu vào
-    if (!empty($_POST['email']) && !empty($_POST['password'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    // Lấy ngày bắt đầu là ngày hiện tại
+    $start_date = date('Y-m-d');  // Đảm bảo ngày bắt đầu có định dạng 'Y-m-d'
+    
+    // Lấy mã gói và ngày kết thúc dựa trên loại gói
+    $ma_goi = getPackageCode($pack); // Lấy mã gói tương ứng với package_type
+    if ($ma_goi === 0) {
+        echo "Gói không hợp lệ.";
+        exit();
+    }
+    $end_date = calculateEndDate($pack, $start_date); // Tính ngày kết thúc
 
-        // Kiểm tra mật khẩu có ít nhất 8 ký tự và có chứa số hoặc ký tự đặc biệt
-        if (strlen($password) >= 8 && preg_match('/[0-9#@%&*]/', $password)) {
-            // Kết nối cơ sở dữ liệu
-            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
-            $database = new Database();
-            $conn = $database->getConnection();
+} else {
+    // Nếu không có dữ liệu trong session hoặc người dùng chưa đăng nhập
+    echo "Không có thông tin đơn hàng hoặc bạn chưa đăng nhập. Vui lòng quay lại và chọn gói.";
+    exit();
+}
 
-            if ($conn) {
-                // Truy vấn kiểm tra email và mật khẩu
-                $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-                $stmt->execute();
-                
-                // Lấy dữ liệu người dùng
-                $user = $stmt->fetch();
-                if ($user) {
-                    // Lưu thông tin người dùng vào session và chuyển hướng đến trang home
-                    $_SESSION['user'] = $user; // Lưu thông tin người dùng vào session
-                    $_SESSION['user_id'] = $user['MaTaiKhoan'];
-                    header("Location: /web_nghe_nhac/app/pages/home.php"); 
-                    exit();
-                } else {
-                    $errorMessage = "Email hoặc mật khẩu không đúng.";
-                }
-            } else {
-                $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
-            }
-        } else {
-            $errorMessage = "Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...).";
+// Kiểm tra nếu form đã được gửi qua POST và người dùng đã chọn phương thức thanh toán
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['payment_method'])) { // Đảm bảo kiểm tra đúng tên của radio button
+        $payment_method = $_POST['payment_method']; // Lấy phương thức thanh toán
+
+        // Kiểm tra phương thức thanh toán hợp lệ
+        if (!in_array($payment_method, ['Momo', 'VNPay'])) {
+            echo "Phương thức thanh toán không hợp lệ.";
+            exit();
+        }
+
+        // Kết nối đến cơ sở dữ liệu để lưu phương thức thanh toán
+        // Kết nối đến cơ sở dữ liệu
+        include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file kết nối DB
+        $database = new Database();
+        $conn = $database->getConnection();
+        try {
+            $sql = "INSERT IGNORE INTO lichsumua (MaTaiKhoan, MaGoi, NgayBatDau, NgayKetThuc, PhuongThuc)
+                    VALUES (:user_id, :pack_id, :start_date, :end_date, :payment_method)";
+            $stmt = $conn->prepare($sql);
+
+            // Liên kết các giá trị với câu lệnh SQL
+            $stmt->bindParam(':user_id', $user_id); // Liên kết mã tài khoản
+            $stmt->bindParam(':pack_id', $ma_goi); // Liên kết mã gói
+            $stmt->bindParam(':start_date', $start_date);
+            $stmt->bindParam(':end_date', $end_date);
+            $stmt->bindParam(':payment_method', $payment_method); // Liên kết phương thức thanh toán
+
+            // Thực thi câu lệnh
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo "Lỗi khi cập nhật dữ liệu: " . $e->getMessage();
+            exit();
+        }
+
+        // Điều hướng tới file tương ứng sau khi lưu phương thức thanh toán
+        if ($payment_method === 'Momo') {
+            header('Location: momo.php');
+            exit();
+        } elseif ($payment_method === 'VNPay') {
+            header('Location: vnpay.php');
+            exit();
         }
     } else {
-        $errorMessage = "Vui lòng nhập đầy đủ thông tin.";
+        echo "Vui lòng chọn phương thức thanh toán.";
+        exit();
+    }
+}
+
+
+// Hàm tính toán ngày kết thúc dựa trên loại gói
+function calculateEndDate($package_type, $start_date) {
+    $start_timestamp = strtotime($start_date);
+
+    switch ($package_type) {
+        case 'Individual':
+        case 'Student':
+            $end_timestamp = strtotime("+1 month", $start_timestamp); // Gói "Individual" và "Student" kéo dài 1 tháng
+            break;
+        case 'Mini':
+            $end_timestamp = strtotime("+1 week", $start_timestamp); // Gói "Mini" kéo dài 1 tuần
+            break;
+        default:
+            $end_timestamp = $start_timestamp;
+    }
+
+    return date('Y-m-d', $end_timestamp);
+}
+
+// Hàm chuyển đổi package_type sang mã gói (MaGoi)
+function getPackageCode($package_type) {
+    switch ($package_type) {
+        case 'Individual':
+            return 2; // Mã gói cho "individual"
+        case 'Student':
+            return 3; // Mã gói cho "student"
+        case 'Mini':
+            return 1; // Mã gói cho "mini"
+        default:
+            return 0; // Trường hợp không xác định, có thể xử lý thêm tùy ý
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 
@@ -56,8 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d1b353cfc4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/signin.css">
-    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/payment.css">
+    <title>Thanh toán</title>
     <style>
         /* cyrillic-ext */
         @font-face {
@@ -203,84 +268,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <!--Nút điều hướng-->
-    <div class="navigation-buttons">
-        <button class="left-button" onclick="goBack()">
+    <div class="navigation-buttons" onclick="goBack()">
+        <button class="left-button">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
-        <button class="right-button" onclick="goForward()">
-            <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
-        </button>
-    </div>
-    <!--Tiêu đề-->
-    <div class="container-1">
-
-        <h2 class="container-1-h2">
-            <span class="white-text" style="margin-right: 10px">Đăng nhập vào</span>
-            <span class="gradient-text">letchill</span>
-        </h2>
-    </div>
-    <!--Form đăng nhập-->
-    <div class="container-2">
-    <form action="" method="POST">
-        <div class="container-2-top">
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********">
-                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
-            </div>
-            <div class="forget-password-container"> <!-- Thêm phần tử cha -->
-                <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
-            </div>
-            <button type="submit" class="sign-in">Đăng nhập</button>
-        </div>
-        </form>
-        <div class="container-2-center">
-            <div class="divider">
-                <hr class="custom-line-1" style="margin-right: 30px">
-                <span class="hoac-text">Hoặc</span>
-                <hr class="custom-line-1" style="margin-left: 30px">
-            </div>
-            <!--Nút social đăng nhập-->
-            <button class="social-button google">
-                <img src="/web_nghe_nhac/public/assets/img/logos--google-icon.svg" alt="icon" class="icon">
-                Đăng nhập với Google
-            </button>
-            <button class="social-button facebook">
-                <img src="/web_nghe_nhac/public/assets/img/logos--facebook.svg" alt="icon" class="icon">
-                Đăng nhập với Facebook
-            </button>
-        </div>
-        <!--Nút link đăng ký-->
-        <div class="container-2-bottom">
-            <hr class="custom-line">
-            <span class="normal-text" style="margin-right: 5px">Chưa có tài khoản?</span>
-            <a href="signup_emailView.php" class="sign-up"><u>Đăng ký ngay</u></a>
-        </div>
     </div>
     
+    <div class="container">
+        <p>Gói của bạn</p>
+        <div class="info">
+            <div class="info-1">
+                <div class="row">
+                    <h3 class="pack">Premium <?php echo $pack; ?></h3>
+                    <label class="time"><?php echo $time; ?></label>
+                </div>
+                <div class="row">
+                    <label class="description"><?php echo $description; ?></label>
+                    <label class="price"></label>
+                </div>
+            </div>
+            <div class="info-2">
+                <div class="row">
+                    <label class="title">Tổng:</label>
+                    <label for="total" id="total" class="total"><?php echo $total; ?></label>
+                </div>
+                <div class="row">
+                    <label class="title">Bắt đầu từ:</label>
+                    <label class="start-date"><?php echo $start_date; ?></label>
+                </div>
+            </div>
+        </div>
+        <form method="POST" action="payment.php">
+        <div class="method">
+            <div class="radio-item">
+                <input type="radio" name="payment_method" id="method" value="Momo">
+                <img src="/web_nghe_nhac/public/assets/img/arcticons--momo.svg" alt="icon" class="icon">
+                <label>Momo</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" name="payment_method" id="method" value="VNPay">
+                <img src="/web_nghe_nhac/public/assets/img/arcticons--v-vnpay.svg" alt="icon" class="icon">
+                <label>VNPay</label>
+            </div>
+        </div>
+        <div class="Thanh-toan">
+            <button type="submit" class="Thanhtoan">Thanh toán</button>
+        </div>
+    </form>
+    </div>
     <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const icon = document.querySelector(".iconPass");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
-            } else {
-                passwordInput.type = "password";
-                icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
-            }
-        }
         // Hàm quay lại trang trước đó
         function goBack() {
             window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
         }
-
-        // Hàm quay lại trang tiếp theo
-        function goForward() {
-            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
-        }
     </script>
 </body>
+
+</html>

@@ -1,10 +1,43 @@
+<?php
+session_start();  // Khởi tạo session để lưu trữ dữ liệu tạm thời
+
+// Kiểm tra nếu form đã được gửi qua phương thức POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Kiểm tra và lấy thông tin từ các trường đã gửi
+    $package_type = isset($_POST['package_type']) ? htmlspecialchars($_POST['package_type']) : '';
+    $price = isset($_POST['price']) ? htmlspecialchars($_POST['price']) : '';
+    $duration = isset($_POST['duration']) ? htmlspecialchars($_POST['duration']) : '';
+    $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
+
+    // Kiểm tra xem dữ liệu có đầy đủ không
+    if (empty($package_type) || empty($price) || empty($duration)) {
+        echo "Dữ liệu chưa đầy đủ. Vui lòng kiểm tra lại.";
+    } else {
+        // Lưu thông tin vào session để sử dụng trong trang payment.php
+        $_SESSION['package_type'] = $package_type;
+        $_SESSION['price'] = $price;
+        $_SESSION['duration'] = $duration;
+        $_SESSION['description'] = $description;
+
+        // Sau khi lưu dữ liệu vào session, chuyển hướng đến trang payment.php
+        header("Location: payment.php");
+        exit();  // Đảm bảo dừng lại ngay sau khi chuyển hướng
+    }
+} else {
+    // Nếu không phải là phương thức POST, bạn có thể xử lý lỗi hoặc chuyển hướng
+    echo "Không có dữ liệu gửi đến.";
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/pack-info.css">
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/pack-info.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
     <link
@@ -16,7 +49,7 @@
 
 <body>
     <div class="head-bar"> <!-- div thanh tìm kiếm -->
-        <img src="../img/logo.svg" alt="logo" width="137px" height="45px">
+        <img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo" width="137px" height="45px">
 
         <i id="home-icon" class="fas fa-home"></i>
 
@@ -51,21 +84,21 @@
                             id="playlist-text"><br>Playlist</span></span>
                 </div>
                 <div id="chillingwithheart">
-                    <span id="chillingwithheart-icon"><img src="../img/artist1.png"></i></span>
+                    <span id="chillingwithheart-icon"><img src="/web_nghe_nhac/public/assets/img/artist1.png"></i></span>
                     <span id="chillingwithheart-text">Chilling with heart<br><span
                             id="playlist-text"><br>Playlist</span></span>
                 </div>
                 <div id="ArianaGrande">
-                    <span id="ArianaGrande-icon"><img src="../img/artist2.png"></i></span>
+                    <span id="ArianaGrande-icon"><img src="/web_nghe_nhac/public/assets/img/artist2.png"></i></span>
                     <span id="ArianaGrande-text">Ariana Grande<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
                 </div>
                 <div id="healingcucmanh">
-                    <span id="healingcucmanh-icon"><img src="../img/artist3.png"></i></span>
+                    <span id="healingcucmanh-icon"><img src="/web_nghe_nhac/public/assets/img/artist3.png"></i></span>
                     <span id="healingcucmanh-text">Healing cực mạnh<br><span
                             id="playlist-text"><br>Playlist</span></span>
                 </div>
                 <div id="nhaccuaTrang">
-                    <span id="nhaccuaTrang-icon"><img src="../img/artist4.png"></i></span>
+                    <span id="nhaccuaTrang-icon"><img src="/web_nghe_nhac/public/assets/img/artist4.png"></i></span>
                     <span id="nhaccuaTrang-text">Nhạc của Trang<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
                 </div>
             </div>
@@ -77,41 +110,47 @@
                     <tr>
                         <th rowspan="4">Lợi ích của tất cả các gói Premium</th>
                         <td class="benefit-items">
-                            <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                             Nghe nhạc không quảng cáo
                         </td>
                     </tr>
                     <tr>
                         <td class="benefit-items">
-                            <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                             Chất lượng âm thanh cao
                         </td>
                     </tr>
                     <tr>
                         <td class="benefit-items">
-                            <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                             Sắp xếp danh sách chờ
                         </td>
                     </tr>
                     <tr>
                         <td class="benefit-items">
-                            <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                             Phát nhạc theo thứ tự bất kỳ
                         </td>
                     </tr>
                 </table>
             </div>
-
             <div class="container-2">
+                <form action="pack-info.php" method="POST">
                 <div class="mini">
                     <label class="pre">Premium</label>
                     <label class="type">Mini</label>
                     <label class="price">15.000VND/tuần</label>
                     <p>1 tài khoản di động duy nhất</p>
-                    <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi khong có kết nối mạng</p>
+                    <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi không có kết nối mạng</p>
                     <p>Chất lượng âm thanh cơ bản</p>
+                    <input type="hidden" name="package_type" value="Mini">
+                    <input type="hidden" name="price" value="15.000VND">
+                    <input type="hidden" name="duration" value="1 tuần">
+                    <input type="hidden" name="description" value="1 tài khoản di động duy nhất">
                     <button type="submit" class="buy">Mua ngay</button>
                 </div>
+                </form>
+                <form action="pack-info.php" method="POST">
                 <div class="individual">
                     <label class="pre">Premium</label>
                     <label class="type">Individual</label>
@@ -119,8 +158,14 @@
                     <p>1 tài khoản Premium</p>
                     <p>Hủy bất cứ lúc nào</p>
                     <p>Đăng ký và thanh toán một lần</p>
+                    <input type="hidden" name="package_type" value="Individual">
+                    <input type="hidden" name="price" value="59.000VND">
+                    <input type="hidden" name="duration" value="1 tháng">
+                    <input type="hidden" name="description" value="1 tài khoản Premium">
                     <button type="submit" class="buy">Mua ngay</button>
                 </div>
+                </form>
+                <form action="pack-info.php" method="POST">
                 <div class="student">
                     <label class="pre">Premium</label>
                     <label class="type">Student</label>
@@ -129,8 +174,13 @@
                     <p>Giảm giá cho sinh viên đủ điều kiện</p>
                     <p>Hủy bất cứ lúc nào</p>
                     <p>Đăng ký và thanh toán một lúc</p>
+                    <input type="hidden" name="package_type" value="Student">
+                    <input type="hidden" name="price" value="29.000VND">
+                    <input type="hidden" name="duration" value="1 tháng">
+                    <input type="hidden" name="description" value="1 tài khoản Premium đã xác minh">
                     <button type="submit" class="buy">Mua ngay</button>
                 </div>
+                </form>
             </div>
         </div>
 
@@ -139,34 +189,41 @@
                 <h2>Lợi ích của tất cả các gói Premium</h2>
                 <div class="pack-description">
                     <div class="pack-benefit-items">
-                        <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                         <p>Nghe nhạc không quảng cáo</p>
                     </div>
                     <div class="pack-benefit-items">
-                        <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                         <p>Chất lượng âm thanh cao</p>
                     </div>
                     <div class="pack-benefit-items">
-                        <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
                         <p>Sắp xếp danh sách chờ</p>
                     </div>
                     <div class="pack-benefit-items">
-                        <img src="/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" class="tick">
                         <p>Phát nhạc theo thứ tự bất kỳ</p>
                     </div>
                 </div>
             </div>
 
             <div class="pack-container-2">
+                <form action="pack-info.php" method="POST">
                 <div class="pack-mini">
                     <label class="pre">Premium</label>
                     <label class="type">Mini</label>
                     <label class="price">15.000VND/tuần</label>
                     <p>1 tài khoản di động duy nhất</p>
-                    <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi khong có kết nối mạng</p>
+                    <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi không có kết nối mạng</p>
                     <p>Chất lượng âm thanh cơ bản</p>
+                    <input type="hidden" name="package_type" value="Mini">
+                    <input type="hidden" name="price" value="15.000VND">
+                    <input type="hidden" name="duration" value="1 tuần">
+                    <input type="hidden" name="description" value="1 tài khoản di động duy nhất">
                     <button type="submit" class="buy">Mua ngay</button>
                 </div>
+                </form>
+                <form action="pack-info.php" method="POST">
                 <div class="pack-individual">
                     <label class="pre">Premium</label>
                     <label class="type">Individual</label>
@@ -174,8 +231,14 @@
                     <p>1 tài khoản Premium</p>
                     <p>Hủy bất cứ lúc nào</p>
                     <p>Đăng ký và thanh toán một lần</p>
+                    <input type="hidden" name="package_type" value="Individual">
+                    <input type="hidden" name="price" value="59.000VND">
+                    <input type="hidden" name="duration" value="1 tháng">
+                    <input type="hidden" name="description" value="1 tài khoản Premium">
                     <button type="submit" class="buy">Mua ngay</button>
                 </div>
+                </form>
+                <form action="pack-info.php" method="POST">
                 <div class="pack-student">
                     <label class="pre">Premium</label>
                     <label class="type">Student</label>
@@ -184,8 +247,13 @@
                     <p>Giảm giá cho sinh viên đủ điều kiện</p>
                     <p>Hủy bất cứ lúc nào</p>
                     <p>Đăng ký và thanh toán một lúc</p>
+                    <input type="hidden" name="package_type" value="Student">
+                    <input type="hidden" name="price" value="29.000VND">
+                    <input type="hidden" name="duration" value="1 tháng">
+                    <input type="hidden" name="description" value="1 tài khoản Premium đã xác minh">
                     <button type="submit" class="buy">Mua ngay</button>
                 </div>
+                </form>
             </div>
         </div>
         <div id="info-div" style="display:none;"> <!--Thông tin bài hát nghệ sĩ-->
@@ -207,7 +275,7 @@
             </div>
             <div id="info-body">
                 <div id="infodiv-song">
-                    <img src="../img/song3.png" alt="">
+                    <img src="/web_nghe_nhac/public/assets/img/song3.png" alt="">
                     <span id="info-namesong">I can do it with a broken heart<br><span id="info-authorsong">Taylor
                             Swift</span></span>
                 </div>
@@ -246,7 +314,7 @@
 
     <div background-color="black" id="fot"> <!--div chân play pause-->
         <div id="mini-song">
-            <img id="f-img-song" src="../img/song3.png" alt="">
+            <img id="f-img-song" src="/web_nghe_nhac/public/assets/img/song3.png" alt="">
             <div id="mini-name">I can do it with a broken heart<br><span id="mini-author">Taylor Swift</span></div>
             <button id="mini-plus">+</button>
         </div>
