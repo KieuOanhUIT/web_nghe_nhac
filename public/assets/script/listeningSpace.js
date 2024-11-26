@@ -8,9 +8,7 @@ const mainControlBtn = document.getElementById('mainControlBtn');
 const mainControlIcon = document.getElementById('mainControlIcon');
 const lyricsBtn = document.getElementById('lyricsBtn');
 const lyricsIcon = document.getElementById('lyricsIcon');
-// const backBtn = document.getElementById('backBtn');
 const backIcon = document.getElementById('backIcon');
-// const nextBtn = document.getElementById('nextBtn');
 const nextIcon = document.getElementById('nextIcon');
 const returnBtn = document.getElementById('returnBtn');
 const returnIcon = document.getElementById('returnIcon');
@@ -59,8 +57,6 @@ async function loadSongs() {
     }
 }
 
-
-
 // Play or Resume the song
 mainControlBtn.addEventListener('click', () => {
     if (audioPlayer.paused) {
@@ -103,7 +99,6 @@ audioPlayer.addEventListener('timeupdate', () => {
             `${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
     }
 });
-
 
 //Change progress when user click on progress container
 progressContainer.addEventListener('click', (e) => {
@@ -165,41 +160,6 @@ $(document.body).ready(function () {
     })
 
 });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const nextBtn = document.getElementById('nextBtn');
-//     const backBtn = document.getElementById('backBtn');
-
-//     if (nextBtn) {
-//         nextBtn.addEventListener('click', () => {
-//             console.log('Next button clicked');
-//             if (window.songs && window.songs.length > 0) {
-//                 window.currentSongIndex = (window.currentSongIndex + 1) % window.songs.length; // Quay vòng
-//                 console.log('Next song index:', window.currentSongIndex); // Debug chỉ số
-//                 displaySong(window.songs[window.currentSongIndex]); // Hiển thị bài hát theo chỉ số mới
-//                 audioPlayer.play(); // Tự động phát bài mới
-//                 mainControlIcon.setAttribute('icon', 'material-symbols:pause-rounded'); // Đổi biểu tượng thành pause
-//             }
-//         });
-//     } else {
-//         console.error('Next button not found');
-//     }
-
-//     if (backBtn) {
-//         backBtn.addEventListener('click', () => {
-//             console.log('Back button clicked');
-//             if (window.songs && window.songs.length > 0) {
-//                 window.currentSongIndex = (window.currentSongIndex - 1 + window.songs.length) % window.songs.length; // Quay vòng
-//                 console.log('Back song index:', window.currentSongIndex); // Debug chỉ số
-//                 displaySong(window.songs[window.currentSongIndex]); // Hiển thị bài hát theo chỉ số mới
-//                 audioPlayer.play(); // Tự động phát bài mới
-//                 mainControlIcon.setAttribute('icon', 'material-symbols:pause-rounded'); // Đổi biểu tượng thành pause
-//             }
-//         });
-//     } else {
-//         console.error('Back button not found');
-//     }
-// });
 
 window.currentSongIndex = 0; // Đặt giá trị ban đầu
 

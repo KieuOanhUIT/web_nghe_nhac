@@ -36,24 +36,7 @@
                             </div>
 
                             <div class="NameEvaluate">
-                                <div class="box-E">
-                                    <div class="Name">
-                                        <p>Nguyen Khoa Quan</p>
-                                    </div>
-                                    <div class="Eva">
-                                        <div class="Eva-Oval">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-empty"></span>
-                                        </div>
-                                        <div class="Eva-status">
-
-                                            <p>good</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -77,3 +60,4 @@
                 </div>
 
             </div>
+            <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
