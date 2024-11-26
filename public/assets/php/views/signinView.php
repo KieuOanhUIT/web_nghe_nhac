@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($user) {
                     // Lưu thông tin người dùng vào session và chuyển hướng đến trang home
                     $_SESSION['user'] = $user; // Lưu thông tin người dùng vào session
+                    $_SESSION['user_id'] = $user['MaTaiKhoan'];
                     header("Location: /web_nghe_nhac/app/pages/home.php"); 
                     exit();
                 } else {

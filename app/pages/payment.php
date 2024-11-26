@@ -2,24 +2,114 @@
 session_start();
 
 // Kiểm tra nếu dữ liệu đã có trong session
-if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], $_SESSION['description'])) {
+if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], $_SESSION['description'], $_SESSION['user_id'])) {
     // Lấy thông tin từ session
     $time = $_SESSION['duration'];
     $price = $_SESSION['price'];
-    $total = $_SESSION['price'];  // Nếu tổng là giá, bạn có thể thay đổi tùy theo logic
+    $total = $_SESSION['price'];  // Giữ giá trị này nếu không có logic tính toán bổ sung
     $description = $_SESSION['description'];
     $pack = $_SESSION['package_type'];
+    $user_id = $_SESSION['user_id'];
 
-    // Nếu bạn muốn hiển thị ngày bắt đầu, bạn có thể lấy ngày hiện tại hoặc truyền thêm thông tin từ session
-    $start_date = date('d-m-Y');  // Giả sử ngày bắt đầu là ngày hiện tại
-    echo "<p>Bắt đầu từ: $start_date</p>";
-
-    // Bạn có thể tiếp tục xử lý thanh toán, ví dụ: kết nối với cổng thanh toán.
+    // Lấy ngày bắt đầu là ngày hiện tại
+    $start_date = date('Y-m-d');  // Đảm bảo ngày bắt đầu có định dạng 'Y-m-d'
+    
+    // Lấy mã gói và ngày kết thúc dựa trên loại gói
+    $ma_goi = getPackageCode($pack); // Lấy mã gói tương ứng với package_type
+    if ($ma_goi === 0) {
+        echo "Gói không hợp lệ.";
+        exit();
+    }
+    $end_date = calculateEndDate($pack, $start_date); // Tính ngày kết thúc
 
 } else {
-    // Nếu không có dữ liệu trong session, chuyển hướng về trang pack-info.php
-    echo "Không có thông tin đơn hàng. Vui lòng quay lại và chọn gói.";
+    // Nếu không có dữ liệu trong session hoặc người dùng chưa đăng nhập
+    echo "Không có thông tin đơn hàng hoặc bạn chưa đăng nhập. Vui lòng quay lại và chọn gói.";
     exit();
+}
+
+// Kiểm tra nếu form đã được gửi qua POST và người dùng đã chọn phương thức thanh toán
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['payment_method'])) { // Đảm bảo kiểm tra đúng tên của radio button
+        $payment_method = $_POST['payment_method']; // Lấy phương thức thanh toán
+
+        // Kiểm tra phương thức thanh toán hợp lệ
+        if (!in_array($payment_method, ['Momo', 'VNPay'])) {
+            echo "Phương thức thanh toán không hợp lệ.";
+            exit();
+        }
+
+        // Kết nối đến cơ sở dữ liệu để lưu phương thức thanh toán
+        // Kết nối đến cơ sở dữ liệu
+        include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file kết nối DB
+        $database = new Database();
+        $conn = $database->getConnection();
+        try {
+            $sql = "INSERT IGNORE INTO lichsumua (MaTaiKhoan, MaGoi, NgayBatDau, NgayKetThuc, PhuongThuc)
+                    VALUES (:user_id, :pack_id, :start_date, :end_date, :payment_method)";
+            $stmt = $conn->prepare($sql);
+
+            // Liên kết các giá trị với câu lệnh SQL
+            $stmt->bindParam(':user_id', $user_id); // Liên kết mã tài khoản
+            $stmt->bindParam(':pack_id', $ma_goi); // Liên kết mã gói
+            $stmt->bindParam(':start_date', $start_date);
+            $stmt->bindParam(':end_date', $end_date);
+            $stmt->bindParam(':payment_method', $payment_method); // Liên kết phương thức thanh toán
+
+            // Thực thi câu lệnh
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo "Lỗi khi cập nhật dữ liệu: " . $e->getMessage();
+            exit();
+        }
+
+        // Điều hướng tới file tương ứng sau khi lưu phương thức thanh toán
+        if ($payment_method === 'Momo') {
+            header('Location: momo.php');
+            exit();
+        } elseif ($payment_method === 'VNPay') {
+            header('Location: vnpay.php');
+            exit();
+        }
+    } else {
+        echo "Vui lòng chọn phương thức thanh toán.";
+        exit();
+    }
+}
+
+
+// Hàm tính toán ngày kết thúc dựa trên loại gói
+function calculateEndDate($package_type, $start_date) {
+    $start_timestamp = strtotime($start_date);
+
+    switch ($package_type) {
+        case 'Individual':
+        case 'Student':
+            $end_timestamp = strtotime("+1 month", $start_timestamp); // Gói "Individual" và "Student" kéo dài 1 tháng
+            break;
+        case 'Mini':
+            $end_timestamp = strtotime("+1 week", $start_timestamp); // Gói "Mini" kéo dài 1 tuần
+            break;
+        default:
+            $end_timestamp = $start_timestamp;
+    }
+
+    return date('Y-m-d', $end_timestamp);
+}
+
+// Hàm chuyển đổi package_type sang mã gói (MaGoi)
+function getPackageCode($package_type) {
+    switch ($package_type) {
+        case 'Individual':
+            return 2; // Mã gói cho "individual"
+        case 'Student':
+            return 3; // Mã gói cho "student"
+        case 'Mini':
+            return 1; // Mã gói cho "mini"
+        default:
+            return 0; // Trường hợp không xác định, có thể xử lý thêm tùy ý
+    }
 }
 ?>
 
@@ -183,7 +273,7 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], 
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
         </button>
     </div>
-
+    
     <div class="container">
         <p>Gói của bạn</p>
         <div class="info">
@@ -208,14 +298,15 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], 
                 </div>
             </div>
         </div>
+        <form method="POST" action="payment.php">
         <div class="method">
             <div class="radio-item">
-                <input type="radio" name="payment-method" id="method" value="Momo">
+                <input type="radio" name="payment_method" id="method" value="Momo">
                 <img src="/web_nghe_nhac/public/assets/img/arcticons--momo.svg" alt="icon" class="icon">
                 <label>Momo</label>
             </div>
             <div class="radio-item">
-                <input type="radio" name="payment-method" id="method" value="VNPay">
+                <input type="radio" name="payment_method" id="method" value="VNPay">
                 <img src="/web_nghe_nhac/public/assets/img/arcticons--v-vnpay.svg" alt="icon" class="icon">
                 <label>VNPay</label>
             </div>
@@ -223,6 +314,7 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['duration'], 
         <div class="Thanh-toan">
             <button type="submit" class="Thanhtoan">Thanh toán</button>
         </div>
+    </form>
     </div>
     <script>
         // Hàm quay lại trang trước đó

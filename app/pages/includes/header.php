@@ -50,7 +50,7 @@
                     <iconify-icon icon="ri:notification-4-line"></iconify-icon>
                 </div>
                 <div class="package" id="window">
-                    <iconify-icon icon="material-symbols:select-window-2"></iconify-icon>
+                    <a href="pack-info.php"><iconify-icon icon="material-symbols:select-window-2"></iconify-icon></a>
                 </div>
                 <div class="account">
                     <iconify-icon icon="mdi:account"></iconify-icon>
