@@ -99,18 +99,13 @@ label,
 .result-table table {
     width: 100%;
     border-collapse: collapse;
-    background-color: red;
-}
-
-.result-table table,
-.result-table th,
-.result-table td {
     border: none;
+    background-color: transparent;
 }
 
 .result-table th,
 .result-table td {
-    padding: 8px;
+    padding: 10px;
     text-align: left;
 }
 

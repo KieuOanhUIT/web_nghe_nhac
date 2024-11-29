@@ -55,4 +55,3 @@ echo json_encode([
     'data' => $result,
     'total_revenue' => $totalRevenue,
 ]);
-?>
