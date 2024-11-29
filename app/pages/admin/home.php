@@ -56,7 +56,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             <table id="result">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="all" value=""></th>
                         <th>Tên gói</th>
                         <th>Mốc thời gian</th>
                         <th>Số người đăng ký</th>
