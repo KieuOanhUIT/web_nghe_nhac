@@ -5,14 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../../public/assets/css/header_main.css">
-    <link rel="stylesheet" href="../../public/assets/css/main.css">
-    <link rel="stylesheet" href="../../public/assets/css/listeningSpace.css">
-    <link rel="stylesheet" href="../../public/assets/css/main_cpm.css">
-    <link rel="stylesheet" href="../../public/assets/css/left_side.css">
-    <link rel="stylesheet" href="../../public/assets/css/right_side.css">
-    <link rel="stylesheet" href="../../public/assets/css/lyric.css">
-    <link rel="stylesheet" href="../../public/assets/css/search.css">
+    <link rel="stylesheet" href="../../../public/assets/css/header_main.css">
+    <link rel="stylesheet" href="../../../public/assets/css/admin_left_side.css">
+    <link rel="stylesheet" href="../../../public/assets/css/report.css">
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,12 +21,12 @@
     <header>
         <div class="controlbar">
             <div class="logo">
-            <a href="home.php"><img src="../../public/assets/img/logo.svg" alt="logo"></a>
+                <a href="../home.php"><img src="../../../public/assets/img/logo.svg" alt="logo"></a>
             </div>
 
             <div class="searching">
-            <a href="home.php"><div class="home">
-                    <iconify-icon icon="ic:round-home"></iconify-icon>
+                <a href="../home.php"><div class="home">
+                <iconify-icon icon="ic:round-home"></iconify-icon>
                 </div></a>
                 <div class="input-wrapper" id="search-input">
                     <iconify-icon icon="lucide:search" name="search"></iconify-icon>
