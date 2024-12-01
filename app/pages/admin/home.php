@@ -29,7 +29,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/admin/header.php";
         <h1>Xin chào admin!</h1>
     </div>
     
-    <div class="report" style="display:none">
+    <div class="report" style="display:none; color: #fff;">
         <div class="searchBar">
             <!-- Chọn mốc thời gian -->
             <label class="label" for="date">Từ mốc</label>
