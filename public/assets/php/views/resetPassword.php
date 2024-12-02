@@ -12,12 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $new_password = $_POST['new_password'];
         $confirm_password = $_POST['confirm_password'];
 
-        // Kiểm tra mật khẩu mới và mật khẩu xác nhận có trùng khớp không
-        if ($new_password != $confirm_password) {
+        // Kiểm tra định dạng mật khẩu mới
+        $password_pattern = '/[0-9!@#$%^&*(),.?":{}|<>]/';
+        if (!preg_match($password_pattern, $new_password)) {
+            $errorMessage = "Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...)";
+        } elseif ($new_password != $confirm_password) {
             $errorMessage = "Mật khẩu mới và mật khẩu xác nhận không trùng khớp.";
         } else {
             // Kết nối cơ sở dữ liệu
-            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';  // Bao gồm file cấu hình
+            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
             $database = new Database();
             $conn = $database->getConnection();
 
@@ -36,17 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($result) {
                         $maNguoiDung = $result['MaNguoiDung']; // Lấy khóa ngoại MaNguoiDung từ kết quả
 
+                        // (Tuỳ chọn) Mã hóa mật khẩu bằng SHA256 hoặc để mật khẩu dạng gốc
+                        $encoded_password = hash('sha256', $new_password); // Thay đổi theo nhu cầu
+
                         // Cập nhật mật khẩu mới trong bảng taikhoan
                         $update_sql_taikhoan = "UPDATE taikhoan SET MatKhau = :new_password WHERE Email = :email";
                         $update_stmt_taikhoan = $conn->prepare($update_sql_taikhoan);
-                        $update_stmt_taikhoan->bindParam(':new_password', $new_password, PDO::PARAM_STR);
+                        $update_stmt_taikhoan->bindParam(':new_password', $encoded_password, PDO::PARAM_STR);
                         $update_stmt_taikhoan->bindParam(':email', $email, PDO::PARAM_STR);
                         $update_stmt_taikhoan->execute();
 
                         // Cập nhật thông tin liên quan trong bảng nguoidung
                         $update_sql_nguoidung = "UPDATE nguoidung SET MatKhau = :new_password WHERE Email = :email";
                         $update_stmt_nguoidung = $conn->prepare($update_sql_nguoidung);
-                        $update_stmt_nguoidung->bindParam(':new_password', $new_password, PDO::PARAM_STR);
+                        $update_stmt_nguoidung->bindParam(':new_password', $encoded_password, PDO::PARAM_STR);
                         $update_stmt_nguoidung->bindParam(':email', $email, PDO::PARAM_STR);
                         $update_stmt_nguoidung->execute();
 
@@ -73,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 
@@ -274,6 +281,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="submit" class="confirm">Xác nhận</button>
             </div>
         </form>
+        <!--Hiển thị thông báo lỗi-->
+        <?php if (isset($errorMessage)): ?>
+            <p class = "error-message"><?php echo $errorMessage;?></p>
+        <?php endif; ?>
     </div>
 
     <script>

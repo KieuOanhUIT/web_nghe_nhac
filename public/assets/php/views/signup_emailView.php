@@ -32,12 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } else {
-        echo "Không có dữ liệu email gửi lên";
+        $errorMessage = "Không có dữ liệu email gửi lên";
     }
 }
 ?>
 
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
     <meta charset="UTF-8">
@@ -215,6 +216,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="submit" class="next">Tiếp theo</button>
             </div>
         </form>
+        <!--Hiển thị thông báo lỗi-->
+        <?php if (isset($errorMessage)): ?>
+            <p class = "error-message"><?php echo $errorMessage;?></p>
+        <?php endif; ?>
         <div class="container-2-center">
             <div class="divider">
                 <hr class="custom-line-1" style="margin-right: 30px">
@@ -237,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>Đã có tài khoản? <a href="signinView.php">Đăng nhập ngay</a></p>
         </div>
     </div>
-
+    
     <script>
         // Hàm quay lại trang trước đó
         function goBack() {
@@ -250,3 +255,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </body>
+</html>

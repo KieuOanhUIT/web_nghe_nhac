@@ -52,17 +52,17 @@ try {
             } else {
                 // Hủy giao dịch nếu có lỗi khi thêm vào bảng `taikhoan`
                 $conn->rollBack();
-                echo "Lỗi khi thêm tài khoản: " . $stmtTaiKhoan->errorInfo()[2];
+               $errorMessage = "Lỗi khi thêm tài khoản: " . $stmtTaiKhoan->errorInfo()[2];
             }
         } else {
             // Hủy giao dịch nếu có lỗi khi thêm vào bảng `nguoidung`
             $conn->rollBack();
-            echo "Lỗi khi thêm người dùng: " . $stmtNguoiDung->errorInfo()[2];
+            $errorMessage= "Lỗi khi thêm người dùng: " . $stmtNguoiDung->errorInfo()[2];
         }
     }
 } catch (PDOException $e) {
     // Hiển thị lỗi nếu có vấn đề trong quá trình kết nối hoặc truy vấn
-    echo "Lỗi kết nối hoặc truy vấn: " . $e->getMessage();
+    $errorMessage = "Lỗi kết nối hoặc truy vấn: " . $e->getMessage();
 } finally {
     // Đóng kết nối
     $conn = null;
@@ -264,6 +264,10 @@ try {
             <p>Với việc ấn Đăng ký, bạn đã đồng ý với mọi Điều khoản và Điều kiện sử dụng của chúng tôi</p>
             <button class="sign-up">Đăng ký</button>
         </div>
+        <!--Hiển thị thông báo lỗi-->
+        <?php if (isset($errorMessage)): ?>
+            <p class = "error-message"><?php echo $errorMessage;?></p>
+        <?php endif; ?>
     </form>
     </div>
     <script>
@@ -279,6 +283,7 @@ try {
 
     </script>
 </body>
+</html>
 
 
 

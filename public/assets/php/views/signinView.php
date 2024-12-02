@@ -11,8 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Kiểm tra mật khẩu có ít nhất 8 ký tự và có chứa số hoặc ký tự đặc biệt
-        if (strlen($password) >= 8 && preg_match('/[0-9#@%&*]/', $password)) {
             // Kết nối cơ sở dữ liệu
             include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
             $database = new Database();
@@ -40,9 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
             }
-        } else {
-            $errorMessage = "Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...).";
-        }
     } else {
         $errorMessage = "Vui lòng nhập đầy đủ thông tin.";
     }
@@ -236,6 +231,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="sign-in">Đăng nhập</button>
         </div>
         </form>
+        <!--Hiển thị thông báo lỗi-->
+        <?php if (isset($errorMessage)): ?>
+            <p class = "error-message"><?php echo $errorMessage;?></p>
+        <?php endif; ?>
         <div class="container-2-center">
             <div class="divider">
                 <hr class="custom-line-1" style="margin-right: 30px">
@@ -284,3 +283,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </body>
+</html>

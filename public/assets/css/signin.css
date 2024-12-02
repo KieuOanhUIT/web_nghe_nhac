@@ -1,3 +1,4 @@
+/* General styling for tablet and mobile responsiveness */
 body {
     background-color: #000;
     background-image: url('/public/assets/img/img_bg_1.png');
@@ -6,7 +7,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     width: 100%;
-    height: 1492px;
+    height: 100vh; /* Ensure full viewport height */
     margin: 0;
     display: flex;
     justify-content: center;
@@ -25,7 +26,7 @@ body {
 
 .left-button,
 .right-button {
-    background-color: transparent; 
+    background-color: transparent;
     border: none;
     cursor: pointer;
     padding: 10px;
@@ -40,7 +41,7 @@ body {
 
 .left-button:hover img,
 .right-button:hover img {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .container-1 {
@@ -49,11 +50,12 @@ body {
     margin-bottom: 100px;
     position: absolute;
     top: 100px;
+    text-align: center;
 }
 
 .container-1-h2 {
     font-weight: 800;
-    font-size: 92px;
+    font-size: 80px;
 }
 
 .white-text {
@@ -103,9 +105,8 @@ input {
     margin-bottom: 20px;
 }
 
-
 .forget-password-container {
-    text-align: right; /* Căn phải nội dung trong phần tử cha */
+    text-align: right;
 }
 
 .forget-password {
@@ -116,7 +117,7 @@ input {
     margin-bottom: 30px;
     margin-top: 10px;
     cursor: pointer;
-    display: inline-block; /* Đảm bảo liên kết là một khối nội tuyến */
+    display: inline-block;
 }
 
 .sign-in {
@@ -126,7 +127,6 @@ input {
     font-weight: 800;
     font-family: 'Inter', sans-serif;
     color: white;
-
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -176,7 +176,6 @@ button:hover {
     font-weight: 800;
     font-family: 'Inter', sans-serif;
     color: white;
-
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -232,4 +231,117 @@ button:hover {
     width: 30px; 
     height: 30px; 
     filter: brightness(0) invert(1);
+}
+
+.error-message {
+    color: #ff4c4c; /* Màu đỏ nổi bật */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Tablet specific adjustments for 768x1024 */
+@media (max-width: 1024px) and (max-height: 1024px) {
+    .container-1 {
+        width: 80%;
+        margin-bottom: 50px;
+        top: 80px;
+    }
+
+    .container-1-h2 {
+        font-size: 60px;
+        line-height: 1.2; /* Adjust text spacing */
+    }
+
+    .container-2 {
+        width: 80%;
+        padding: 30px;
+        height: auto;
+    }
+
+    input {
+        width: 90%;
+        font-size: 16px;
+        height: 50px;
+    }
+
+    .sign-in, .social-button {
+        width: 90%;
+        font-size: 20px;
+        height: 70px;
+    }
+
+    .navigation-buttons {
+        top: 15px;
+        left: 15px;
+    }
+
+    .left-button img, .right-button img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Add padding for mobile */
+    }
+
+    .container-1 {
+        width: 95%;
+        margin-top: 30px;
+    }
+
+    .container-1-h2 {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    .container-2 {
+        width: 100%;
+        top: 150px;
+        padding: 20px;
+    }
+
+    input {
+        width: 100%;
+        font-size: 14px;
+        height: 45px;
+    }
+
+    .sign-in, .social-button {
+        width: 100%;
+        font-size: 18px;
+        height: 60px;
+    }
+
+    .navigation-buttons {
+        top: 10px;
+        left: 10px;
+    }
+
+    .left-button img, .right-button img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .iconPass {
+        width: 25px;
+        height: 25px;
+    }
+
+    .hoac-text {
+        font-size: 14px;
+    }
 }

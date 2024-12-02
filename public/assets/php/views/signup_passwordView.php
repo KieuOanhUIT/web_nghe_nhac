@@ -1,29 +1,39 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
-    // Lấy giá trị mật khẩu từ POST
-    $password = $_POST['password'];
+// Khởi tạo thông báo lỗi trống
+$errorMessage = '';
 
-    // Kiểm tra mật khẩu có ít nhất 8 ký tự, có chứa ít nhất 1 số hoặc ký tự đặc biệt
-    if (strlen($password) >= 8 && preg_match('/[0-9#@%&*]/', $password)) {
-        // Lưu giá trị mật khẩu vào session
-        $_SESSION['password'] = $password;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['password'])) {
+        // Lấy giá trị mật khẩu từ POST
+        $password = trim($_POST['password']); // Loại bỏ khoảng trắng thừa
 
-        // Chuyển hướng người dùng đến trang signup_infoView.php
-        header("Location: signup_infoView.php");
-        exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
+        // Kiểm tra mật khẩu có ít nhất 8 ký tự, có chứa ít nhất 1 số hoặc ký tự đặc biệt
+        if (strlen($password) >= 8 && preg_match('/[0-9!@#$%^&*(),.?":{}|<>]/', $password)) {
+            // Mã hóa mật khẩu (nếu cần lưu trữ hoặc sử dụng)
+            $_SESSION['password'] = password_hash($password, PASSWORD_BCRYPT);
+
+            // Chuyển hướng người dùng đến trang signup_infoView.php
+            header("Location: signup_infoView.php");
+            exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
+        } else {
+            // Nếu mật khẩu không hợp lệ, hiển thị thông báo lỗi
+            $errorMessage = "Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...)";
+        }
     } else {
-        // Nếu mật khẩu không hợp lệ, hiển thị thông báo lỗi
-        echo "<p>Mật khẩu phải có ít nhất 8 ký tự và chứa ít nhất 1 số hoặc ký tự đặc biệt (#, @, %, &,...)</p>";
+        // Nếu trường 'password' không tồn tại trong POST
+        $errorMessage = "Không có dữ liệu password gửi lên.";
     }
-} else {
-    // Hiển thị thông báo nếu không có dữ liệu password gửi lên
-    echo "Không có dữ liệu password gửi lên.";
 }
+
+// Tại đây, biến $errorMessage sẽ chỉ được thiết lập nếu có yêu cầu POST và xảy ra lỗi.
 ?>
 
+
+
 <!DOCTYPE html>
+<html lang = "en">
 <head>
 
     <meta charset="UTF-8">
@@ -199,7 +209,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
             <label for="password">Mật khẩu</label><br>
             <div class="input-container">
                 <input type="password" id="password" name="password" placeholder="**********" style="margin-bottom:30px">
-                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword()" style="cursor: pointer;">;
+                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon"
+                onclick="togglePassword()" style="cursor: pointer;">;
             </div>
         </div>
         <div class="container-2-center">
@@ -211,6 +222,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
             <button type = "submit" class="next">Tiếp theo</button>
         </div>
         </form>
+         <!--Hiển thị thông báo lỗi-->
+         <?php if (isset($errorMessage)): ?>
+            <p class = "error-message"><?php echo $errorMessage;?></p>
+        <?php endif; ?>
     </div>
 
     <script>
@@ -236,5 +251,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['password'])) {
         function goForward() {
             window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
         }
-        </script>
+    </script>
 </body>
+</html>
