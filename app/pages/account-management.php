@@ -1,3 +1,9 @@
+<?php
+header('Access-Control-Allow-Origin: *'); // Cho phép tất cả các domain
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); // Các phương thức cho phép
+header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các header cho phép
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +19,7 @@
 <body>
     <!-- header -->
     <?php
-    include './includes/header.php';
+    include './includes/header.php'
     ?>
 
     <main>
@@ -56,8 +62,8 @@
                 <table>
                     <colgroup>
                         <col style="width: 34px;">
-                        <col style="width: 50px;">
-                        <col style="width: 240px;">
+                        <col style="width: 180px;">
+                        <col style="width: 340px;">
                         <col style="width: 240px;">
                         <col style="width: 240px;">
                         <col style="width: 240px;">
@@ -67,8 +73,8 @@
 
                         <tr>
                             <th><input type="checkbox" id="selectAll"></th>
-                            <th>#</th>
-                            <th>Tên tài khoản</th>
+                            <th>Mã tài khoản</th>
+                            <th>Tên người dùng</th>
                             <th>Gói đang dùng</th>
                             <th>Ngày bắt đầu gói</th>
                             <th>Ngày kết thúc gói</th>
@@ -76,59 +82,9 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td><input type="checkbox" id="checkbox"></td>
-                            <td>1</td>
-                            <td>Nguyen Van An</td>
-                            <td>Premium</td>
-                            <td>11/11/2024</td>
-                            <td>10/12/2024</td>
-                        </tr>
+                        <!-- Dùng .js để load dữ liệu vào -->
 
-                        <tr>
-                            <td><input type="checkbox" id="checkbox"></td>
-                            <td>1</td>
-                            <td>Nguyen Van An</td>
-                            <td>Premium</td>
-                            <td>11/11/2024</td>
-                            <td>10/12/2024</td>
-                        </tr>
 
-                        <tr>
-                            <td><input type="checkbox" id="checkbox"></td>
-                            <td>1</td>
-                            <td>Nguyen Van An</td>
-                            <td>Premium</td>
-                            <td>11/11/2024</td>
-                            <td>10/12/2024</td>
-                        </tr>
-
-                        <tr>
-                            <td><input type="checkbox" id="checkbox"></td>
-                            <td>1</td>
-                            <td>Nguyen Van An</td>
-                            <td>Premium</td>
-                            <td>11/11/2024</td>
-                            <td>10/12/2024</td>
-                        </tr>
-
-                        <tr>
-                            <td><input type="checkbox" id="checkbox"></td>
-                            <td>1</td>
-                            <td>Nguyen Van An</td>
-                            <td>Premium</td>
-                            <td>11/11/2024</td>
-                            <td>10/12/2024</td>
-                        </tr>
-
-                        <tr>
-                            <td><input type="checkbox" id="checkbox"></td>
-                            <td>1</td>
-                            <td>Nguyen Van An</td>
-                            <td>Premium</td>
-                            <td>11/11/2024</td>
-                            <td>10/12/2024</td>
-                        </tr>
 
                     </tbody>
                 </table>
@@ -139,14 +95,142 @@
         </div>
 
         </div>
-
-
-
-
-
     </main>
-
 
 </body>
 
 </html>
+
+<script>
+    //load dữ liệu từ csdl lên bảng tài khoản
+    $(document).ready(function() {
+        // code để load dữ liệu từ csdl lên bảng tài khoản
+        $.ajax({
+            url: "./model-account-management.php",
+            type: "GET",
+            success: function(response) {
+                // duyệt data vào table trong thẻ div tableaccount
+                var data = JSON.parse(response);
+                var table = $(".tableAccount table tbody");
+                for (var i = 0; i < data.length; i++) {
+                    var row = $("<tr></tr>");
+                    row.append("<td><input type='checkbox' id='checkbox'></td>");
+                    row.append("<td>" + data[i].MaTaiKhoan + "</td>");
+                    row.append("<td>" + data[i].TenNguoiDung + "</td>");
+                    row.append("<td>" + data[i].TenGoi + "</td>");
+                    row.append("<td>" + data[i].NgayBatDau + "</td>");
+                    row.append("<td>" + data[i].NgayKetThuc + "</td>");
+                    table.append(row);
+                }
+
+
+            }
+        });
+    });
+
+
+    //khi chọn checkboxAll thì tất cả các checkbox còn lại điều được chon
+    $("#selectAll").change(function() {
+        $(".tableAccount table tbody input[type='checkbox']").prop("checked", $(this).prop("checked"));
+    });
+
+    // CẬP NHẬT TÀI KHOẢN
+
+    var rowData;
+    //lắng nghe sự kiện từ checkbox của hàng của table, khi nhấn vào #figure-updateAccount thì mở hộp thoại cập nhật và hiển thị thông tin của hàng mà checkbox được chọn 
+    $(document).on("change", ".tableAccount table tbody input[type='checkbox']", function() {
+        if ($(this).prop("checked")) {
+
+
+            // code để lấy thông tin của hàng mà checkbox đang chọn
+            // Lấy hàng chứa checkbox
+            var currentRow = $(this).closest("tr");
+
+            rowData = currentRow.find("td").map(function() {
+                return $(this).text().trim();
+            }).get(); // Chuyển kết quả thành mảng
+
+            // In ra mảng chứa dữ liệu từng cột
+            // alert("ID: " + rowData[1] + "\nTên tài khoản: " + rowData[2] + "\nEmail: " + rowData[3] + rowData[4]);
+        }
+    });
+
+    // Cập nhật tài khoản
+    $(document).on('click', "#figure-updateAccount", function() {
+        // hiển thị nội dung tài khoản lên upddateAccount formaddacconut 
+        // code để hiển thị thông tin và gán giá trị cho các input của form addaccout
+        $('  #formaddAccount2 input[type="text"]').val(rowData[2]);
+        $('  #formaddAccount2 select').val(rowData[3]);
+        $(' #formaddAccount2 input[type="date"][name="datestart"]').val(rowData[4]);
+        $(' #formaddAccount2 input[type="date"][name="datefinish"]').val(rowData[5]);
+    });
+
+    //sự kiện cập nhật
+    $(document).on('submit', '#formaddAccount2', function(event) {
+
+        event.preventDefault(); //ngan reloai trang
+        var MaTaiKhoan = rowData[1];
+        var TenNguoiDung = $('#formaddAccount2 input[name="username"]').val();
+        var TenGoi = $('#formaddAccount2 select[name="pakage"]').val();
+        var datestart = $('#formaddAccount2 input[name="datestart"]').val();
+        var datefinish = $('#formaddAccount2 input[name="datefinish"]').val();
+
+
+
+        // Gửi dữ liệu bằng AJAX mà không chuyển trang
+        $.ajax({
+            url: "./includes/model_admin_left_update.php", // Đường dẫn tới file xử lý PHP
+            type: "POST",
+            data: {
+                MaNguoiDung: MaTaiKhoan,
+                username: TenNguoiDung,
+                pakage: TenGoi,
+                datestart: datestart,
+                datefinish: datefinish
+
+            },
+            success: function(response) {
+                alert("Cập nhật tài khoản thành công!\n" + response);
+                // Bạn có thể thực hiện các hành động khác sau khi xóa thành công (ví dụ: cập nhật giao diện).
+                // Cập nhật giao diện bảng bằng cách xóa hàng của bảng
+                location.reload();
+
+
+            },
+            error: function(xhr, status, error) {
+                alert("Có lỗi xảy ra: " + error);
+            }
+        });
+    });
+
+
+    //XÓA TÀI KHOẢN
+
+    $(document).on('click', '#figure-deleteAccount', function() {
+        var MaTaiKhoan = rowData[1];
+        var TenNguoiDung = rowData[2];
+        var TenGoi = rowData[3];
+
+        // Gửi dữ liệu bằng AJAX mà không chuyển trang
+        $.ajax({
+            url: "./includes/model_admin_left_delete.php", // Đường dẫn tới file xử lý PHP
+            type: "POST",
+            data: {
+                MaTaiKhoan: MaTaiKhoan,
+                TenNguoiDung: TenNguoiDung,
+                TenGoi: TenGoi
+            },
+            success: function(response) {
+                alert("Xóa tài khoản thành công!\n" + response);
+                // Bạn có thể thực hiện các hành động khác sau khi xóa thành công (ví dụ: cập nhật giao diện).
+                // Cập nhật giao diện bảng bằng cách xóa hàng của bảng
+                location.reload();
+
+
+            },
+            error: function(xhr, status, error) {
+                alert("Có lỗi xảy ra: " + error);
+            }
+        });
+    });
+</script>

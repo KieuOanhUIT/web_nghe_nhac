@@ -24,8 +24,8 @@ echo "Kết nối thành công";
 
 <!-- Lấy mã người dùng từ email và mật khẩu, tên đăng nhập -->
 <?php
-$email = 'minhanh.nguyen@gmail.com';
-// $email = $_SESSION['email'];
+//$email = 'minhanh.nguyen@gmail.com';
+$email = $_SESSION['email'];
 $password = $_SESSION['password'];
 
 $sqlMaNguoiDung = "SELECT nguoidung.MaNguoiDung 
@@ -48,8 +48,8 @@ if (isset($rowMaNguoiDung['MaNguoiDung'])) {
 
 <?php
 // Lấy dữ liệu mã nghệ sỹ để hiện thị thông tin nghệ sỹ
-$mans = '1';
-//$mans = $_REQUEST["manghesy"];
+//$mans = '1';
+$mans = $_REQUEST["manghesy"];
 
 
 

@@ -1,20 +1,24 @@
-    // Hiển thị thêm tài khoản
+
+// Hiển thị thêm tài khoản
     $(document).ready(function() {
         $('#figure-addAccount').click(function() {
-            $('.addAccount').show();
+            $('#addaccount').show();
         });
 
-        $('#return').click(function() {
-            $('.addAccount').hide();
+        $('.return-add').click(function() {
+            $('#addaccount').hide();
         });
     });
 
-$(document).ready(function () { 
-    $('#figure-updateAccount').click(function () { 
-        $('.updateAccount').show();
+    //Hiển thị cập nhật tài khoản
+    $(document).ready(function() {
+        $('#figure-updateAccount').click(function() {
+            $('#updateaccount').show();
 
+        })
+        $('.return-update').click(function() {
+            $('#updateaccount').hide();
+        });
     })
-    $('#return').click(function () {
-        $('.updateAccount').hide();
-    });
-})
+
+    console.log("File admin_left.js được tải thành công!");

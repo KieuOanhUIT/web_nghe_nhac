@@ -319,16 +319,33 @@ th, td {
 
 }
 
-.addAccount #formaddAccount table {
+.addAccount #formaddAccount  table {
     margin-top: 20px;
     position: flex;
     width: 100%;
     border-collapse: collapse;
 }
 
-.addAccount #formaddAccount table tr {
+.addAccount #formaddAccount2 table {
+    margin-top: 20px;
+    position: flex;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.addAccount #formaddAccount  table tr {
     display: flex;
     flex-direction: column;
+    margin: 10px;
+    padding-left: 13px;
+
+
+}
+
+#updateaccount #formaddAccount2 table tr {
+    display: flex !important;
+        /* Cưỡng chế flex */
+            flex-direction: column;
     margin: 10px;
     padding-left: 13px;
 
@@ -559,4 +576,11 @@ header .general {
     height: 44px;
     align-items: center;
     width: auto;
+}
+
+tr:hover {
+    background-color: #2778b6;
+    /* Màu nền khi di chuột vào hàng */
+    cursor: pointer;
+    /* Thay đổi con trỏ khi di chuột để tăng trải nghiệm */
 }

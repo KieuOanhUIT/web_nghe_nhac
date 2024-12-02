@@ -10,6 +10,7 @@ body {
 
     text-align: center;
     margin: auto;
+    background-color: #000000;
 }
 
 main {
@@ -22,7 +23,7 @@ main {
 
 * {
     font-family: 'Inter', sans-serif;
-    color: #fff;
+    color: #000000;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -90,6 +91,7 @@ h4 {
     width: 100%;
     height: 100%;
     justify-content: center;
+    background-color: #000000;
 }
 
   .controlBar {
@@ -318,14 +320,14 @@ td {
 
 }
 
-  .addAccount #formaddAccount table {
+  .addAccount #formaddAccount  table {
     margin-top: 20px;
     position: flex;
     width: 100%;
     border-collapse: collapse;
 }
 
-  .addAccount #formaddAccount table tr {
+  .addAccount #formaddAccount  table tr {
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -431,4 +433,20 @@ input[type="date"]:focus,
     /* Màu chữ cho các tùy chọn */
     background-color: #333;
     /* Màu nền của menu dropdown */
+}
+
+.box {
+  position: relative;
+  padding-left: auto;
+  padding-right: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#updateaccount {
+  display: flex;
 }
