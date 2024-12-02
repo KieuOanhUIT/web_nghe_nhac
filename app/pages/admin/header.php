@@ -49,7 +49,7 @@
                     <iconify-icon icon="mdi:account"></iconify-icon>
 
                 </div>
-                <p class="op_50" href="">ĐĂNG XUẤT</p>
+
             </div>
         </div>
     </header>

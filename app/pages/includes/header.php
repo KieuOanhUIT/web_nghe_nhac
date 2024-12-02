@@ -54,7 +54,9 @@
                     <iconify-icon icon="mdi:account"></iconify-icon>
 
                 </div>
-                <p class="op_50" href="">ĐĂNG XUẤT</p>
+                <p class="op_50">
+                    <a href="/web_nghe_nhac/app/pages/logout.php" style="color: inherit; text-decoration: none;">ĐĂNG XUẤT</a>
+                </p>
             </div>
         </div>
     </header>
