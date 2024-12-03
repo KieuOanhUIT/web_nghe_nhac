@@ -180,3 +180,108 @@ input[type="radio"]:checked::before {
     background-color: #1DB954; /* Đổi màu khi hover */
     transform: scale(1.05);
 }
+
+/* Responsive for tablet and mobile devices */
+@media (max-width: 768px) {
+    body {
+        height: auto; /* Để body mở rộng khi nội dung dài */
+        padding: 10px; /* Thêm khoảng cách bên trong */
+        flex-direction: column; /* Căn chỉnh nội dung theo chiều dọc */
+    }
+
+    .navigation-buttons {
+        top: 10px; /* Giảm khoảng cách với cạnh trên */
+        left: 10px; /* Giảm khoảng cách với cạnh trái */
+    }
+
+    .left-button img {
+        width: 40px; /* Giảm kích thước hình ảnh */
+        height: 40px;
+    }
+
+    .container p {
+        font-size: 20px; /* Giảm kích thước chữ */
+        margin: 50px 0 10px; /* Tạo khoảng cách hợp lý */
+        text-align: center; /* Căn giữa chữ */
+    }
+
+    .info {
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        height: auto; /* Để chiều cao tự động */
+        padding: 10px; /* Giảm padding */
+        margin-bottom: 15px; /* Giảm khoảng cách giữa các info */
+    }
+
+    .info h3 {
+        font-size: 20px; /* Giảm kích thước tiêu đề */
+    }
+
+    .info .time, .info .price, .info .title, 
+    .info .description, .info .start-date, 
+    .info .total {
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+
+    .method {
+        width: 100%;
+        padding: 10px; /* Giảm padding */
+        gap: 10px; /* Giảm khoảng cách giữa các radio */
+        margin-bottom: 15px; /* Giảm khoảng cách phía dưới */
+    }
+
+    .radio-item {
+        gap: 10px; /* Giảm khoảng cách giữa radio và label */
+    }
+
+    input[type="radio"] {
+        width: 16px; /* Giảm kích thước radio */
+        height: 16px;
+    }
+
+    input[type="radio"]::before {
+        width: 8px; /* Giảm kích thước dấu check */
+        height: 8px;
+    }
+
+    .icon {
+        width: 20px; /* Giảm kích thước icon */
+        height: 20px;
+    }
+
+    .method label {
+        font-size: 16px; /* Giảm kích thước chữ */
+    }
+
+    .Thanh-toan {
+        margin: 0; /* Xóa khoảng cách bên phải */
+        justify-content: center; /* Căn giữa nút */
+    }
+
+    .Thanhtoan {
+        width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+        height: 40px; /* Giảm chiều cao nút */
+        font-size: 18px; /* Giảm kích thước chữ */
+    }
+}
+
+/* Responsive for smaller mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .info h3 {
+        font-size: 18px; /* Giảm kích thước tiêu đề hơn nữa */
+    }
+
+    .info .time, .info .price, .info .title, 
+    .info .description, .info .start-date, 
+    .info .total {
+        font-size: 12px; /* Giảm kích thước chữ thêm cho điện thoại nhỏ */
+    }
+
+    .method label {
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+
+    .Thanhtoan {
+        font-size: 16px; /* Giảm kích thước chữ */
+        border-radius: 8px; /* Làm nút bo tròn hơn */
+    }
+}

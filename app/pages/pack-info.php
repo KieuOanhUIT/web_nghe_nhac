@@ -47,62 +47,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 </head>
 
+
+<?php
+    require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
+?>
+    <!-- Popup thông báo -->
+    <div id="notificationPopup" class="notification-popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Thông báo</h3>
+            <span id="closePopup" class="close-popup">&times;</span>
+            <!-- Thông báo động sẽ được thêm vào đây bởi JavaScript -->
+        </div>
+    </div>
 <body>
-    <div class="head-bar"> <!-- div thanh tìm kiếm -->
-        <img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo" width="137px" height="45px">
-
-        <i id="home-icon" class="fas fa-home"></i>
-
-        <div class="timkiem-bar">
-            <i id="search-icon" class="fas fa-search"></i>
-            <input type="text">
-        </div>
-
-        <i id="micro-icon" class="fas fa-microphone"></i>
-
-        <i id="bell-icon" class="fas fa-bell"></i>
-
-        <i id="user-icon" class="fas fa-user"></i>
-
-        <button id="logout-button">ĐĂNG XUẤT</button>
-    </div> <!-- kết thúc div thanh tìm kiếm -->
-
-    <div class="main"> <!-- div phần thân -->
-        <div id="library"> <!--div thư viện-->
-
-            <i id="library-icon" class="fa-solid fa-books"></i>
-            <span id="library-text">Thư viện</span>
-            <button id="plus-button"><i class="fa-solid fa-plus"></i></button>
-
-            <button id="playlist-button">Playlist</button>
-            <button id="artist-button">Nghệ sĩ</button>
-
-            <div id="list-scroll">
-                <div id="danhsachyeuthich">
-                    <span id="heart-icon"><i class="fa-solid fa-heart"></i></span>
-                    <span id="danhsachyeuthich-text">Danh sách yêu thích<br><span
-                            id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="chillingwithheart">
-                    <span id="chillingwithheart-icon"><img src="/web_nghe_nhac/public/assets/img/artist1.png"></i></span>
-                    <span id="chillingwithheart-text">Chilling with heart<br><span
-                            id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="ArianaGrande">
-                    <span id="ArianaGrande-icon"><img src="/web_nghe_nhac/public/assets/img/artist2.png"></i></span>
-                    <span id="ArianaGrande-text">Ariana Grande<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
-                </div>
-                <div id="healingcucmanh">
-                    <span id="healingcucmanh-icon"><img src="/web_nghe_nhac/public/assets/img/artist3.png"></i></span>
-                    <span id="healingcucmanh-text">Healing cực mạnh<br><span
-                            id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="nhaccuaTrang">
-                    <span id="nhaccuaTrang-icon"><img src="/web_nghe_nhac/public/assets/img/artist4.png"></i></span>
-                    <span id="nhaccuaTrang-text">Nhạc của Trang<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
-                </div>
-            </div>
-        </div>
+<!-- leftBar -->
+<?php
+    require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
+?>
 
         <div class="pack-info">
             <div class="container-1">
@@ -414,6 +375,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
 
     </script>
+    <!-- File javaScript -->
+    <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/main_cpn.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
 </body>
 
 </html>

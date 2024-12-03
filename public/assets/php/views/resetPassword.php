@@ -237,11 +237,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <!--Nút điều hướng-->
     <div class="navigation-buttons">
-        <button class="left-button">
+        <button class="left-button" onclick="goBack()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-left-circle.svg" alt="icon_left" id="icon1">
-            <a href = "signinView.php"></a>
         </button>
-        <button class="right-button">
+        <button class="right-button" onclick="goForward()">
             <img src="/web_nghe_nhac/public/assets/img/bx--caret-right-circle.svg" alt="icon_right" id="icon1">
         </button>
     </div>
@@ -299,6 +298,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 passwordInput.type = "password";
                 icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
             }
+        }
+
+        // Hàm quay lại trang trước đó
+        function goBack() {
+            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
+        }
+
+        // Hàm quay lại trang tiếp theo
+        function goForward() {
+            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
         }
     </script>
 </body>
