@@ -1,57 +1,88 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
 require_once '../../core/functions.php';
+?>
 
-// Đọc dữ liệu JSON từ body
-$data = json_decode(file_get_contents("php://input"), true);
+<!DOCTYPE html>
+<html lang="en">
 
-// Lấy giá trị từ JSON
-$startMonth = $data['start_month'] ?? null;
-$endMonth = $data['end_month'] ?? null;
-$package = $data['package'] ?? 'all';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../public/assets/css/report.css">
+    <link rel="stylesheet" href="../../../public/assets/css/admin_left_side.css">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <title>Quản lý báo cáo</title>
+</head>
 
-// Điều kiện lọc truy vấn
-$whereClauses = [];
-$params = [];
+<body>
+    <!-- header -->
+    <?php
+    include 'header.php';
+    ?>
+    <img src="../../../public/assets/img/admin-bg.png" class="bgimage">
 
-if ($startMonth) {
-    $whereClauses[] = "DATE_FORMAT(ls.ngaybatdau, '%Y-%m') >= :start_month";
-    $params[':start_month'] = $startMonth;
-}
+    <main>
+        <!-- Định dạng nền của trang -->
+        <div class="mainLight"></div>
 
-if ($endMonth) {
-    $whereClauses[] = "DATE_FORMAT(ls.ngaybatdau, '%Y-%m') <= :end_month";
-    $params[':end_month'] = $endMonth;
-}
+        <!-- Màn hình chính -->
+        <div class="main-Space">
+            <!-- Chèn menu trái -->
+            <?php
+            include_once 'left_side.php';
+            ?>
 
-if ($package !== 'all') {
-    $whereClauses[] = "g.tengoi = :package";
-    $params[':package'] = $package;
-}
+            <!-- Phần nội dung chính -->
+            <div class="report" style="color: #fff;">
+        <div class="searchBar">
+            <!-- Chọn mốc thời gian -->
+            <label class="label" for="date">Từ mốc</label>
+            <input type="month" id="start-month" name="month-year">
 
-$whereSQL = !empty($whereClauses) ? 'WHERE ' . implode(' AND ', $whereClauses) : '';
+            <label class="label" for="date">Đến mốc</label>
+            <input type="month" id="end-month" name="month-year">
 
-$query = "SELECT g.tengoi AS package_name, 
-           DATE_FORMAT(ls.ngaybatdau, '%M %Y') AS time_period, 
-           COUNT(DISTINCT ls.mataikhoan) AS subscribers, 
-           SUM(g.gia) AS revenue 
-    FROM lichsumua ls 
-    JOIN goidichvu g ON ls.magoi = g.magoi 
-    $whereSQL
-    GROUP BY g.tengoi, DATE_FORMAT(ls.ngaybatdau, '%M %Y');
-";
 
-$result = db_query($query, $params);
+            <!-- Chọn gói dịch vụ -->
+            <label class="label" for="package">Gói:</label>
+            <select id="package" class="package">
+                <option value="all">All</option>
+                <option value="mini">Mini</option>
+                <option value="individual">Individual</option>
+                <option value="student">Student</option>
+            </select>
 
-if ($result === false) {
-    echo json_encode(['error' => 'Lỗi truy vấn cơ sở dữ liệu.']);
-    exit;
-}
+            <button id="search-btn" class="search-btn">Tra cứu</button>
+        </div>
+        <button id="export-btn" class="export-btn">Xuất</button>
 
-// Tính tổng doanh thu
-$totalRevenue = array_sum(array_column($result, 'revenue'));
+        <div class="result-table">
+            <table id="result">
+                <thead>
+                    <tr>
+                        <th>Tên gói</th>
+                        <th>Mốc thời gian</th>
+                        <th>Số người đăng ký</th>
+                        <th>Doanh thu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu sẽ được AJAX thêm vào đây -->
+                </tbody>
+            </table>
+        </div>
+        <div class="total">
+            <h3>Tổng doanh thu: <span id="total-revenue">0</span> VND</h3>
+        </div>
+    </div>
+        </div>
+    </main>
+</body>
 
-// Trả về JSON
-echo json_encode([
-    'data' => $result,
-    'total_revenue' => $totalRevenue,
-]);
+</html>
+
+<script src="/web_nghe_nhac/public/assets/script/report.js"></script>
