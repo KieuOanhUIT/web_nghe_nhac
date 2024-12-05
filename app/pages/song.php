@@ -1,19 +1,31 @@
 <?php
 require_once '../core/functions.php';
 
-// Bật hiển thị lỗi nếu có
+header('Content-Type: application/json');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Thiết lập tiêu đề Content-Type là application/json
-header('Content-Type: application/json');
+// Kiểm tra nếu có tham số id
+$id = $_GET['id'] ?? null;
 
-// Kết nối cơ sở dữ liệu
-require_once '../core/functions.php';
+if ($id) {
+    // Truy vấn lấy bài hát theo id
+    $query = "SELECT b.*, n.TenNgheSy, n.MaNgheSy 
+              FROM baihat b 
+              JOIN nghesy n ON b.MaNgheSy = n.MaNgheSy 
+              WHERE b.MaBaiHat = :id";
+    $params = [':id' => $id];
+    $result = db_query($query, $params);
 
-// Truy vấn lấy thông báo từ cơ sở dữ liệu
-$query = "SELECT * FROM baihat b JOIN nghesy n ON b.MaNgheSy = n.MaNgheSy ORDER BY MaBaiHat";
-$result = db_query($query); // Thực thi câu truy vấn
-$results = ['results' => $result];
-echo json_encode($results);
+    echo json_encode(['results' => $result ?: []]);
+} else {
+    // Truy vấn lấy toàn bộ bài hát
+    $query = "SELECT b.*, n.TenNgheSy, n.MaNgheSy  
+              FROM baihat b 
+              JOIN nghesy n ON b.MaNgheSy = n.MaNgheSy 
+              ORDER BY b.MaBaiHat";
+    $result = db_query($query);
+
+    echo json_encode(['results' => $result ?: []]);
+}
 ?>

@@ -113,21 +113,35 @@ function performSearch(keyword) {
 
             // Kiểm tra và hiển thị các bài hát
             results.songs.forEach(song => {
-                document.getElementById('search-items').innerHTML += `
-                    <div class="search-item">
-                        <a href="/web_nghe_nhac/song.php?id=${song.MaBaiHat}">
-                            <img src="/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
-                            <h3>${song.TenBaiHat}</h3>
-                        </a>
-                    </div>
+                // Tạo phần tử div cho mỗi bài hát
+                const songItem = document.createElement('div');
+                songItem.className = 'search-item';
+                songItem.innerHTML = `
+                    <img src="/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
+                    <h3>${song.TenBaiHat}</h3>
                 `;
+
+                // Thêm sự kiện click để gọi displaySong
+                songItem.addEventListener('click', () => {
+                    console.log(`Bài hát được chọn: ${song.TenBaiHat}`);
+                    displaySong({
+                        MaBaiHat: song.MaBaiHat,
+                        AnhBaiHat: song.AnhBaiHat,
+                        TenBaiHat: song.TenBaiHat,
+                        TenNgheSy: song.TenNgheSy,
+                        FileBaiHat: song.FileBaiHat,
+                        LoiBaiHat: song.LoiBaiHat
+                    });
+                });
+
             });
+
 
             // Kiểm tra và hiển thị các nghệ sĩ
             results.artists.forEach(artist => {
                 document.getElementById('search-items').innerHTML += `
                     <div class="search-item">
-                        <a href="/web_nghe_nhac/artist_details.php?id=${artist.MaNgheSy}">
+                        <a href="/web_nghe_nhac/artist_info.php?id=${artist.MaNgheSy}">
                             <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
                             <h3>${artist.TenNgheSy}</h3>
                         </a>
