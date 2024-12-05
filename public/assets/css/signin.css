@@ -223,8 +223,8 @@ button:hover {
 }
 
 .iconPass {
-    position: absolute; 
-    right: 5px; 
+    position: absolute;
+    right: 10px;
     top: 25px; 
     cursor: pointer; 
     width: 30px; 
@@ -271,6 +271,7 @@ button:hover {
         padding: 20px;
         max-height: 1024px; /* Giới hạn chiều cao tối đa của container-2 */
         overflow-y: auto; /* Cho phép cuộn dọc nếu cần */
+        top: 300px;
     }
 
     input {
@@ -290,44 +291,70 @@ button:hover {
     }
 }
 
-
-/* ================= Mobile (390x844) ================= */
-@media (max-width: 390px) and (max-height: 844px) {
+/* ================= Tablet (iPhone 12 Pro 400x900) ================= */
+@media (max-width: 400px) and (max-height: 900px) {
     body {
         display: flex;
         flex-direction: column;
         height: 100%;
-        overflow: auto; 
+        overflow: auto; /* Cho phép cuộn khi nội dung dài hơn chiều cao */
     }
 
     .container-1 {
-        width: 70%; 
+        width: 90%; /* Giảm chiều rộng để phù hợp với màn hình tablet */
     }
 
     .container-1-h2 {
-        font-size: 20px; 
+        font-size: 60px; /* Giảm kích thước font cho vừa màn hình iPad */
     }
 
     .container-2 {
-        width: 65%; 
-        padding: 20px;
-        max-height: 844px; 
-        overflow-y: auto; 
+        width: 350px; /* Điều chỉnh chiều rộng của container */
+        padding: 10px;
+        max-height: 900px; /* Giới hạn chiều cao tối đa của container-2 */
+        overflow-y: auto; /* Cho phép cuộn dọc nếu cần */
+    }
+
+    .container-2-top {
+        width: 330px;
     }
 
     input {
-        width: 100%; 
-        font-size: 16px; 
+        width: 100%; /* Đảm bảo các input full chiều rộng */
+        font-size: 16px; /* Điều chỉnh font cho phù hợp */
+        max-width: 300px;
+        justify-content: center;
     }
 
     .sign-in, .social-button {
-        font-size: 20px; 
-        height: 70px;
+        font-size: 14px; /* Thay đổi kích thước font cho các nút */
+        height: 50px;
+        max-width: 300px;
+    }
+
+    .container-2-center {
+        width: 330px;
     }
 
     .iconPass {
-        top: 20px;
+        top: 30px;
         width: 25px;
         height: 25px;
+        right: 270px;
+        align-self: center;
+    }
+
+    .container-2-bottom{
+        width: 330px;
+    }
+    
+    .custom-line {
+        width: 300px;
+    }
+
+    u {
+        font-size: 20px;
     }
 }
+
+
