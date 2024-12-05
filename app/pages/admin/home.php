@@ -11,7 +11,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/admin/header.php";
     width: 68%;
     right: 26px;
     top: 118px;
-    height:265px;
+    height:456px;
     color: #fff;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);

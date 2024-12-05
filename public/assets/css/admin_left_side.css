@@ -41,7 +41,7 @@ body {
     width: 329px;
 }
 
-.left-menu:hover {
+.menu-items:hover {
     background-color: #444;
 }
 
@@ -69,7 +69,7 @@ body {
 }
 
 .left-submenu li a:hover {
-    color: #24515A;
+    color: #e321f4;
 }
 
 iconify-icon {
