@@ -11,7 +11,6 @@
     background: rgba(255, 255, 255, 0.10);
     height: 629px;
     width: 331px;
-    border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     align-items: center;
     flex-direction: column;
@@ -58,7 +57,6 @@ iconify-icon:hover {
 
 .exit {
     color: white;
-    display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-start;
@@ -94,19 +92,17 @@ iconify-icon:hover {
     /* Đường viền thanh cuộn */
 }
 
+.imageSong, .hinhanh, .hinhanh1, .box-Evaluate, .seeReview, .seeReview-content, .rightBar{
+    border-radius: 10px;
+}
+
 
 .imageSong {
     max-width: 100%;
     max-height: 100%;
-    border-radius: 10px;
 }
 
-.hinhanh {
-    width: 100%;
-    height: 100%;
-}
-
-.hinhanh1 {
+.hinhanh, .hinhanh1 {
     width: 100%;
     height: 100%;
 }
@@ -155,7 +151,6 @@ iconify-icon:hover {
 
 .box-Evaluate {
     background-color: black;
-    border-radius: 10px;
     padding: 15px;
     max-width: 300px;
     /* Đặt giới hạn chiều rộng */
@@ -164,7 +159,6 @@ iconify-icon:hover {
 }
 
 .box-head {
-    display: flex;
     justify-content: space-between;
     /* Căn đều hai đầu */
     align-items: center;
@@ -204,14 +198,17 @@ iconify-icon:hover {
     margin: 0;
 }
 
-.Eva {
+.Eva, .Eva-Oval, .seeReview .seeReview-exit, .seeReview-content, .seeReview-comment, .boxSongEvalute .artist1,
+.box-Evaluate .artist1 .artist-image, .folow-artist, .folow-artist .name, .folow-artist #follow, .exit, .box-head {
     display: flex;
+}
+
+.Eva {
     align-items: center;
     margin-top: 5px;
 }
 
 .Eva-Oval {
-    display: flex;
     gap: 5px;
     margin-right: 10px;
     /* Khoảng cách giữa các chấm và chữ */
@@ -252,7 +249,6 @@ iconify-icon:hover {
     height: 660px;
     background: #000000;
     border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -263,7 +259,6 @@ iconify-icon:hover {
     height: 26px;
     width: 740px;
     margin: 24px auto;
-    display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
@@ -277,7 +272,6 @@ iconify-icon:hover {
 
 .seeReview-content {
     box-sizing: border-box;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 20px;
@@ -287,7 +281,6 @@ iconify-icon:hover {
 
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
     margin: auto;
 
     overflow-y: scroll;
@@ -337,7 +330,6 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     width: 740px;
     height: 44px;
     margin: 24px auto;
-    display: flex;
     justify-content: space-between;
 
 }
@@ -369,7 +361,6 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     margin-top: 20px;
     width: 281px;
     height: 216px;
-    display: flex;
     flex-direction: column;
     gap: 16px;
 }
@@ -377,7 +368,6 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 .box-Evaluate .artist1 .artist-image {
     width: auto;
     height: 160px;
-    display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -402,7 +392,6 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 
 .folow-artist {
     height: 40px;
-    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -417,7 +406,6 @@ form[name='myform'] .seeReview-nDot .dot-oval {
     font-weight: 800;
     font-size: 24px;
     line-height: 110%;
-    display: flex;
     align-items: center;
     color: #FFFFFF;
 }
@@ -425,7 +413,6 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 .folow-artist #follow {
     box-sizing: border-box;
 
-    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -446,4 +433,53 @@ form[name='myform'] .seeReview-nDot .dot-oval {
 .folow-artist #follow:hover {
     background-color: #414b4a;
     color: white;
+}
+/* Responsive cho kích thước màn hình */
+@media (max-width: 768px) {
+    .rightBar {
+        width: 90%;
+        height: auto;
+    }
+
+    .nameSong-Song {
+        font-size: 20px;
+    }
+
+    .nameSong-Artist {
+        font-size: 14px;
+    }
+
+    .folow-artist {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .folow-artist #follow {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .rightBar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .iconify-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nameSong-Song {
+        font-size: 18px;
+    }
+
+    .nameSong-Artist {
+        font-size: 12px;
+    }
+
+    .folow-artist {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

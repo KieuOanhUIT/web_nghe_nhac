@@ -53,7 +53,6 @@ button {
 .listeningSpace .infoText {
     display: flex;
     flex-direction: column;
-    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 0px;
@@ -75,14 +74,14 @@ button {
 }
 
 .listeningSpace .addToPlaylist iconify-icon {
-    font-size: 26px;
+    font-size: 24px;
     color: #fff;
 }
 
 /* Music Player */
 
 .listeningSpace .musicPlayer .controlbar iconify-icon {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 .listeningSpace .musicPlayer .controlbar #mainControlBtn iconify-icon {
@@ -169,4 +168,69 @@ button {
     margin: auto;
     margin-right: 30px;
     gap: 28px;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    .listeningSpace .info img {
+        width: 50px;
+        height: 50px;
+        margin-left: 8px;
+    }
+
+    .listeningSpace .infoText .name,
+    .listeningSpace .infoText .author {
+        font-size: 14px;
+    }
+
+    .listeningSpace .musicPlayer .controlbar {
+        gap: 5px;
+    }
+
+    .listeningSpace .general {
+        gap: 5px;
+    }
+
+    .listeningSpace .general .volumnSpace {
+        width: 120px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .listeningSpace .info img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .listeningSpace .infoText .name,
+    .listeningSpace .infoText .author {
+        font-size: 15px;
+    }
+
+    .listeningSpace .musicPlayer .controlbar {
+        gap: 16px;
+    }
+
+    .listeningSpace .general {
+        gap: 16px;
+    }
+
+    .listeningSpace .general .volumnSpace {
+        width: 140px;
+    }
+}
+
+@media (min-width: 769px) {
+    .listeningSpace .info img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .listeningSpace .musicPlayer .controlbar {
+        gap: 24px;
+    }
+
+    .listeningSpace .general .volumnSpace {
+        width: 160px;
+    }
 }

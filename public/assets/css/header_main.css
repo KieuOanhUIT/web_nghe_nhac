@@ -1,105 +1,151 @@
 header {
     box-sizing: border-box;
-
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 55px;
-    gap: 10px;
-
     position: fixed;
-    width: 1150px;
+    width: 90%;
+    max-width: 1150px;
     height: 65px;
     top: 24px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 24px;
+    z-index: 1000;
 }
 
 header .controlbar {
     display: flex;
-    position: fixed;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
-    gap: 96px;
-
-    background-color: transparent;
-
-    width: 1040px;
+    width: 100%;
     height: 45px;
+    gap: 20px;
+    background-color: transparent;
 }
-
 
 header .searching {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
     gap: 16px;
-
-    margin: 0 auto;
-    width: auto;
     height: 44px;
-
-    flex: none;
-    flex-grow: 0;
 }
 
 header .searching .home,
 header .searching .voice-searching,
 header .general .account {
     background: rgba(255, 255, 255, 0.25);
-    display: flex;
     border-radius: 40px;
     width: 44px;
     height: 44px;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 iconify-icon {
     font-size: 28px;
-    align-self: center;
     color: #fff;
 }
 
 header .searching .input-wrapper {
-    width: 340px;
+    flex: 1;
+    max-width: 340px; /* Kích thước tối đa trên màn hình lớn */
     height: 44px;
     background: rgba(255, 255, 255, 0.25);
     border-radius: 40px;
     display: flex;
-    flex-direction: row;
     align-items: center;
     padding: 0 15px;
+    transition: width 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
+}
+
+header .searching .input-wrapper input {
+    flex: 1;
+    height: 100%;
+    padding: 0 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
 }
 
 header .searching .input-wrapper img {
     width: 20px;
     height: 20px;
-    margin-right: 20px;
-}
-
-header .searching .input-wrapper input {
-    height: 40px;
-    width: 100%;
-    padding-left: 10px;
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    outline: none;
-    color: #fff;
+    margin-right: 10px;
 }
 
 header .general {
     display: flex;
     flex-direction: row;
-    gap: 24px;
-    height: 44px;
+    gap: 16px;
     align-items: center;
-    width: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+    }
+
+    header .controlbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    header .searching .input-wrapper {
+        max-width: 280px; /* Thu nhỏ trên màn hình tablet */
+    }
+
+    header .general {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    header .controlbar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header .searching {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header .searching .input-wrapper {
+        max-width: 200px; /* Thu nhỏ tối đa trên điện thoại */
+    }
+
+    header .general {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    header .searching .home,
+    header .searching .voice-searching,
+    header .general .account {
+        width: 36px;
+        height: 36px;
+    }
+
+    iconify-icon {
+        font-size: 24px;
+    }
 }
