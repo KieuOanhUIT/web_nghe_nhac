@@ -252,12 +252,18 @@ try {
             <!--Giới tính-->
             <label for="gender" style="margin-top: 30px; margin-bottom: 20px;">Giới tính</label>
             <div class="container-2-center">
-                <input type="radio" id="male" name="gender" value="Nam">
-                <label for="male">Nam</label>
-                <input type="radio" id="female" name="gender" value="Nu">
-                <label for="female">Nữ</label>
-                <input type="radio" id="other" name="gender" value="other">
-                <label for="other">Không tiết lộ</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="Nam">
+                    <label for="male">Nam</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="gender" value="Nu">
+                    <label for="female">Nữ</label>
+                </div>
+                <div>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Không tiết lộ</label>
+                </div>
             </div>
         </div>
         <div class="container-2-bottom">

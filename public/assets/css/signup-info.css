@@ -82,7 +82,7 @@ body {
     flex-direction: column;
 }
 
-.container-2-top, .container-2-center, .container-2-bottom {
+.container-2-top, .container-2-bottom {
     width: 552px;
     margin: 5px auto;
 }
@@ -103,7 +103,7 @@ input[type="date"] {
     color: #ffff;
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.8);
-    padding: 10px 40px 10px 10px;
+    padding: 10px 10px 10px 10px;
     font-size: 18px;
 }
 
@@ -139,17 +139,6 @@ h2{
     width: 552px;
 }
 
-.icon {
-    position: absolute; 
-    right: 5px; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    cursor: pointer; 
-    width: 24px; 
-    height: 24px; 
-    filter: brightness(0) invert(1);
-}
-
 input[type="radio"]{
     width: 30px; 
     height: 30px;
@@ -180,7 +169,6 @@ input[type="radio"]:checked::before {
     opacity: 1; /* Hiển thị khi được chọn */
 }
 
-
 p{
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -194,8 +182,18 @@ p{
 }
 
 .container-2-center {
+    width: 575px;;
     display: flex;
     align-items: center; 
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.container-2-center div {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }
 
 .container-2-center label {
@@ -220,7 +218,6 @@ input[type="date"] {
     color: #fff;
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.8);
-    padding: 10px;
     font-size: 18px;
     -webkit-appearance: none; /* Xóa bỏ giao diện mặc định của trình duyệt */
     -moz-appearance: none;
@@ -291,20 +288,15 @@ input[type="date"]::-moz-calendar-picker-indicator {
         top: 300px;
     }
 
-    input {
-        width: 100%; 
+    input[type="text"],
+    input[type="date"] {
+        width: 500px; 
         font-size: 16px; 
     }
 
-    .next, .social-button {
+    .sign-up {
         font-size: 20px; 
         height: 70px;
-    }
-
-    .icon {
-        top: 20px;
-        width: 25px;
-        height: 25px;
     }
 }
 
@@ -336,35 +328,71 @@ input[type="date"]::-moz-calendar-picker-indicator {
         width: 330px;
     }
 
-    input {
-        width: 100%; 
-        font-size: 16px; 
-        max-width: 300px;
-        justify-content: center;
+    input[type="text"],
+    input[type="date"] {
+        width: 300px;
+        height: 60px;
+        padding: 10px 10px 10px 10px;
     }
 
-    .next, .social-button {
-        font-size: 14px; 
-        height: 50px;
-        max-width: 300px;
-    }
-
-    .next {
-        margin-left: 10px;
-    }
     .container-2-center {
-        width: 330px;
+        width: 100%;
+        max-width: 330px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 
-    .icon {
-        top: 30px;
-        width: 25px;
-        height: 25px;
-        right: 250px;
-        align-self: center;
+    .container-2-center div {
+        display: flex; 
+        align-items: center;
+        gap: 10px;
+    }
+
+    .container-2-center label {
+        font-size: 20px;
+        margin: 0 10px 0 0px;
+    }
+
+    input[type="radio"] {
+        width: 24px; /* Kích thước nhỏ hơn cho mobile */
+        height: 24px;
+        border: 2px solid rgba(255, 255, 255, 0.8); 
+        cursor: pointer;
+        background-color: transparent;
+        appearance: none; /* Xóa giao diện mặc định */
+        border-radius: 50%;
+        position: relative;
+        margin-right: 5px; /* Khoảng cách giữa radio và label */
+    }  
+    
+    input[type="radio"]::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px; /* Kích thước dấu chọn nhỏ hơn */
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8); /* Màu dấu chọn */
+        opacity: 0; /* Ẩn mặc định */
+        transition: opacity 0.2s ease-in-out;
     }
 
     .container-2-bottom{
+        width: 330px;
+    }
+
+    .sign-up {
+        font-size: 14px; 
+        height: 50px;
+        max-width: 300px;
+        margin-left: 10px;
+    }   
+
+    p {
         width: 330px;
     }
 }
