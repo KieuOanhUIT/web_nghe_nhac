@@ -284,6 +284,10 @@ button:hover {
         height: 70px;
     }
 
+    .sign-in {
+        margin-left: 10px;
+    }
+
     .iconPass {
         top: 20px;
         width: 25px;
