@@ -44,7 +44,7 @@
 
                             <div class="artist-image">
                                 <div class="textNgheSi">Nghệ sỹ</div>
-                                <img src="" alt="" class="hinhanh1 artist-image">
+                                <a href="" id="artist-info"><img src="" alt="" class="hinhanh1 artist-image"></a>
                             </div>
 
                             <div class="folow-artist">
