@@ -248,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!--Tiêu đề-->
     <div class="container-1">
         <h2 class="container-1-h2">
-            <span class="white-text" style="margin-right: 10px">Thay đổi</span>
+            <span class="white-text" style="margin-right: 8px">Thay đổi</span>
             <span class="gradient-text">mật khẩu</span>
         </h2>
     </div>

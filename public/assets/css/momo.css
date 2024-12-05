@@ -33,3 +33,21 @@ h1 {
     color: white;
     margin-top: 200px;
 }
+
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        max-width: 768px;
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}
