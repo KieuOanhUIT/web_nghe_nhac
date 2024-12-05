@@ -11,6 +11,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/assets/css/account-management.css">
+    <link rel="stylesheet" href="../../public/assets/css/admin_left_side.css">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
     <title>Document</title>
@@ -19,7 +20,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
 <body>
     <!-- header -->
     <?php
-    include './includes/header.php'
+    include 'admin/header.php'
     ?>
 
     <main>
@@ -32,7 +33,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
             <!--Chèn controlbar vào -->
             <?php
             // Hiển thị menu chức năng
-            include_once '../pages/includes/admin_left.php';
+            include_once '../pages/admin/left_side.php';
             ?>
 
 

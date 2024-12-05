@@ -72,7 +72,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/admin/header.php";
         </div>
     </div>
 </body>
-<script src="/web_nghe_nhac/public/assets/script/admin.js"></script>
+<!-- <script src="/web_nghe_nhac/public/assets/script/admin.js"></script> -->
 <script src="/web_nghe_nhac/public/assets/script/report.js"></script>
 
 </html>
