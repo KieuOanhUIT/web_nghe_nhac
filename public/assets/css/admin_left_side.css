@@ -19,6 +19,14 @@ body {
     top: 118px;
 }
 
+.menu-items{
+    
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px 20px 20px 10px;
+    gap: 5px;
+}
+
 .left-menu {
     color: white;
     text-decoration: none;
@@ -30,12 +38,7 @@ body {
     display: inline-flex; /* Đặt các phần tử con (icon và chữ) nằm ngang */
     justify-content: center;
     align-items: center;
-    padding: 24px;
-    gap: 10px;
     width: 329px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px 20px 20px 10px;
 }
 
 .left-menu:hover {
@@ -45,13 +48,15 @@ body {
 /* Đảm bảo rằng submenu sẽ bị ẩn mặc định */
 .left-submenu {
     list-style-type: none;
-    padding-left: 20px;
+    padding-left: 60px;
     margin: 0;
-    /* display: none;  */
+    padding-bottom:15px;
+    gap: 10px;
+    margin-top: -10px;
 }
 
 .left-submenu li {
-    padding: 10px;
+    padding: 5px;
 }
 
 .left-submenu li a {
@@ -60,11 +65,14 @@ body {
     display: flex;
     align-items: center;
     font-size: 16px;
+    gap: 10px;
 }
 
 .left-submenu li a:hover {
     color: #24515A;
 }
+
 iconify-icon {
-    font-size: 24px;
+    font-size: 20px;
 }
+
