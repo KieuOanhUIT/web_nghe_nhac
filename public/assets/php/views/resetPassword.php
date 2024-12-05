@@ -259,19 +259,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="container-2-top">
                 <!--Email-->
                 <label for="email">Email</label><br>
-                <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px" required><br>
+                <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
                 
                 <!--Mật khẩu mới-->
                 <label for="new_password">Mật khẩu mới</label><br>
                 <div class="input-container">
-                    <input type="password" id="new_password" name="new_password" placeholder="**********" style="margin-bottom:30px" required>
+                    <input type="password" id="new_password" name="new_password" placeholder="**********" style="margin-bottom:30px">
                     <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword('new_password', this)" style="cursor: pointer;">
                 </div>
                 
                 <!--Xác thực lại mật khẩu-->
                 <label for="confirm_password">Xác thực lại mật khẩu</label><br>
                 <div class="input-container">
-                    <input type="password" id="confirm_password" name="confirm_password" placeholder="**********" style="margin-bottom:30px" required>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="**********" style="margin-bottom:30px">
                     <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="icon" class="icon" onclick="togglePassword('confirm_password', this)" style="cursor: pointer;">
                 </div>
             </div>

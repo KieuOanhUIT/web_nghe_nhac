@@ -1,34 +1,3 @@
-<?php
-session_start();  // Khởi tạo session để lưu trữ dữ liệu tạm thời
-
-// Kiểm tra nếu form đã được gửi qua phương thức POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Kiểm tra và lấy thông tin từ các trường đã gửi
-    $package_type = isset($_POST['package_type']) ? htmlspecialchars($_POST['package_type']) : '';
-    $price = isset($_POST['price']) ? htmlspecialchars($_POST['price']) : '';
-    $duration = isset($_POST['duration']) ? htmlspecialchars($_POST['duration']) : '';
-    $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
-
-    // Kiểm tra xem dữ liệu có đầy đủ không
-    if (empty($package_type) || empty($price) || empty($duration)) {
-        echo "Dữ liệu chưa đầy đủ. Vui lòng kiểm tra lại.";
-    } else {
-        // Lưu thông tin vào session để sử dụng trong trang payment.php
-        $_SESSION['package_type'] = $package_type;
-        $_SESSION['price'] = $price;
-        $_SESSION['duration'] = $duration;
-        $_SESSION['description'] = $description;
-
-        // Sau khi lưu dữ liệu vào session, chuyển hướng đến trang payment.php
-        header("Location: payment.php");
-        exit();  // Đảm bảo dừng lại ngay sau khi chuyển hướng
-    }
-} else {
-    // Nếu không phải là phương thức POST, bạn có thể xử lý lỗi hoặc chuyển hướng
-    echo "Không có dữ liệu gửi đến.";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,8 +67,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </form>
             </div>
 
-            <div class="pack-info">
-            <div class="container-1">
+            <div class="centerSpace scrollable">
+
+                <div class="wrapperSlider">
+                <div class="container-1">
                 <table>
                     <tr>
                         <th rowspan="4">Lợi ích của tất cả các gói Premium</th>
@@ -176,9 +147,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
                 </form>
             </div>
-        </div>
-
-        <div class="pack" style="display: none;"> <!--div thông tin các gói-->
+            <div class="pack" style="display: none;"> <!--div thông tin các gói-->
             <div class="pack-container-1">
                 <h2>Lợi ích của tất cả các gói Premium</h2>
                 <div class="pack-description">
@@ -250,8 +219,10 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </form>
             </div>
         </div>
+        </div>
 
-                    
+
+                </div>
 
                 <!-- search -->
                 <div class="searches-container" id="search-container" style="display: none;">
@@ -342,50 +313,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             </div>
         </div>
     </main>
-
-    <script>
-        document.getElementById('progress-slider').addEventListener('input', function () {
-            const value = this.value;
-            const max = this.max;
-            const percentage = (value / max) * 100;
-
-            // Update the background of the slider based on the value
-            this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
-        });
-        document.getElementById('volume').addEventListener('input', function () {
-            const value = this.value;
-            const max = this.max;
-            const percentage = (value / max) * 100;
-
-            // Update the background of the slider based on the value
-            this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
-        });
-
-        // Lấy các phần tử cần thiết
-        const fot = document.getElementById('fot');
-        const packInfo = document.querySelector('.pack-info');
-        const pack = document.querySelector('.pack');
-        const infoDiv = document.getElementById('info-div');
-        const infoExit=document.getElementById('info-exit');
-
-        // Lắng nghe sự kiện click vào div#fot
-        fot.addEventListener('click', function () {
-            // Ẩn div.pack-info và hiển thị div.pack-song
-            packInfo.style.display = 'none';
-            pack.style.display = 'flex';
-            infoDiv.style.display = 'flex';
-
-        });
-
-        infoExit.addEventListener('click', function () {
-            // Ẩn div.pack-info và hiển thị div.pack-song
-            packInfo.style.display = 'block';
-            pack.style.display = 'none';
-            infoDiv.style.display = 'none';
-
-        });
-
-    </script>
 
     <!-- File javaScript -->
     <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>

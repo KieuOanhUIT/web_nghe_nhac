@@ -3,39 +3,45 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['email'])) {
-        $email = $_POST['email'];  // Gán giá trị email vào biến
+        $email = trim($_POST['email']);  // Loại bỏ khoảng trắng ở đầu và cuối
 
-        $_SESSION['email'] = $email;
-
-        // Kết nối đến cơ sở dữ liệu thông qua PDO
-        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';  // Bao gồm file cấu hình
-
-        // Khởi tạo kết nối
-        $database = new Database();
-        $conn = $database->getConnection();
-
-        // Truy vấn kiểm tra email có trong cơ sở dữ liệu không
-        $sql = "SELECT * FROM nguoidung WHERE Email = :email";  // Sử dụng PDO với tham số tên
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR); // Gán giá trị email vào PDO
-
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-
-        if (count($result) > 0) {
-            // Nếu email đã tồn tại
-            $errorMessage = "Email này đã được đăng ký, vui lòng thử email khác.";
+        // Kiểm tra định dạng email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errorMessage = "Định dạng email không hợp lệ, vui lòng thử lại.";
         } else {
-            // Nếu email chưa tồn tại, lưu vào session và chuyển đến trang tiếp theo
             $_SESSION['email'] = $email;
-            header("Location: signup_passwordView.php");
-            exit();
+
+            // Kết nối đến cơ sở dữ liệu thông qua PDO
+            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';  // Bao gồm file cấu hình
+
+            // Khởi tạo kết nối
+            $database = new Database();
+            $conn = $database->getConnection();
+
+            // Truy vấn kiểm tra email có trong cơ sở dữ liệu không
+            $sql = "SELECT * FROM nguoidung WHERE Email = :email";  // Sử dụng PDO với tham số tên
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR); // Gán giá trị email vào PDO
+
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+
+            if (count($result) > 0) {
+                // Nếu email đã tồn tại
+                $errorMessage = "Email này đã được đăng ký, vui lòng thử email khác.";
+            } else {
+                // Nếu email chưa tồn tại, lưu vào session và chuyển đến trang tiếp theo
+                $_SESSION['email'] = $email;
+                header("Location: signup_passwordView.php");
+                exit();
+            }
         }
     } else {
-        $errorMessage = "Không có dữ liệu email gửi lên";
+        $errorMessage = "Không có dữ liệu email gửi lên.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
