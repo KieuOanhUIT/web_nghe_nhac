@@ -18,46 +18,51 @@ try {
         $date_of_birth = $_POST['date'];
         $gender = $_POST['gender'];
 
-        // Bắt đầu một giao dịch
-        $conn->beginTransaction();
-
-        // Thêm người dùng vào bảng `nguoidung`
-        $sqlNguoiDung = "INSERT INTO `nguoidung` (`TenNguoiDung`, `NgaySinh`, `GioiTinh`, `Email`, `MatKhau`) 
-                         VALUES (?, ?, ?, ?, ?)";
-        $stmtNguoiDung = $conn->prepare($sqlNguoiDung);
-        $stmtNguoiDung->bindParam(1, $ho_ten);
-        $stmtNguoiDung->bindParam(2, $date_of_birth);
-        $stmtNguoiDung->bindParam(3, $gender);
-        $stmtNguoiDung->bindParam(4, $email);
-        $stmtNguoiDung->bindParam(5, $password);
-
-        if ($stmtNguoiDung->execute()) {
-            // Lấy MaNguoiDung vừa tạo
-            $maNguoiDung = $conn->lastInsertId();
-
-            // Thêm tài khoản vào bảng `taikhoan`
-            $sqlTaiKhoan = "INSERT INTO `taikhoan` (`MaTaiKhoan`, `Email`, `MatKhau`, `MaNguoiDung`) 
-                            VALUES (NULL, ?, ?, ?)";
-            $stmtTaiKhoan = $conn->prepare($sqlTaiKhoan);
-            $stmtTaiKhoan->bindParam(1, $email);
-            $stmtTaiKhoan->bindParam(2, $password);  // Giả sử password đã được mã hóa (hash)
-            $stmtTaiKhoan->bindParam(3, $maNguoiDung);
-
-            if ($stmtTaiKhoan->execute()) {
-                // Xác nhận giao dịch
-                $conn->commit();
-                echo "Đăng ký thành công!";
-                header("Location: signinView.php");
-                exit();
-            } else {
-                // Hủy giao dịch nếu có lỗi khi thêm vào bảng `taikhoan`
-                $conn->rollBack();
-               $errorMessage = "Lỗi khi thêm tài khoản: " . $stmtTaiKhoan->errorInfo()[2];
-            }
+        // Kiểm tra xem tất cả các trường có được điền đầy đủ hay không
+        if (empty($ho_ten) || empty($date_of_birth) || empty($gender)) {
+            $errorMessage = "Vui lòng điền đầy đủ thông tin!";
         } else {
-            // Hủy giao dịch nếu có lỗi khi thêm vào bảng `nguoidung`
-            $conn->rollBack();
-            $errorMessage= "Lỗi khi thêm người dùng: " . $stmtNguoiDung->errorInfo()[2];
+            // Bắt đầu một giao dịch
+            $conn->beginTransaction();
+
+            // Thêm người dùng vào bảng `nguoidung`
+            $sqlNguoiDung = "INSERT INTO `nguoidung` (`TenNguoiDung`, `NgaySinh`, `GioiTinh`, `Email`, `MatKhau`) 
+                             VALUES (?, ?, ?, ?, ?)";
+            $stmtNguoiDung = $conn->prepare($sqlNguoiDung);
+            $stmtNguoiDung->bindParam(1, $ho_ten);
+            $stmtNguoiDung->bindParam(2, $date_of_birth);
+            $stmtNguoiDung->bindParam(3, $gender);
+            $stmtNguoiDung->bindParam(4, $email);
+            $stmtNguoiDung->bindParam(5, $password);
+
+            if ($stmtNguoiDung->execute()) {
+                // Lấy MaNguoiDung vừa tạo
+                $maNguoiDung = $conn->lastInsertId();
+
+                // Thêm tài khoản vào bảng `taikhoan`
+                $sqlTaiKhoan = "INSERT INTO `taikhoan` (`MaTaiKhoan`, `Email`, `MatKhau`, `MaNguoiDung`) 
+                                VALUES (NULL, ?, ?, ?)";
+                $stmtTaiKhoan = $conn->prepare($sqlTaiKhoan);
+                $stmtTaiKhoan->bindParam(1, $email);
+                $stmtTaiKhoan->bindParam(2, $password);  // Giả sử password đã được mã hóa (hash)
+                $stmtTaiKhoan->bindParam(3, $maNguoiDung);
+
+                if ($stmtTaiKhoan->execute()) {
+                    // Xác nhận giao dịch
+                    $conn->commit();
+                    echo "Đăng ký thành công!";
+                    header("Location: signinView.php");
+                    exit();
+                } else {
+                    // Hủy giao dịch nếu có lỗi khi thêm vào bảng `taikhoan`
+                    $conn->rollBack();
+                    $errorMessage = "Lỗi khi thêm tài khoản: " . $stmtTaiKhoan->errorInfo()[2];
+                }
+            } else {
+                // Hủy giao dịch nếu có lỗi khi thêm vào bảng `nguoidung`
+                $conn->rollBack();
+                $errorMessage = "Lỗi khi thêm người dùng: " . $stmtNguoiDung->errorInfo()[2];
+            }
         }
     }
 } catch (PDOException $e) {
@@ -245,10 +250,10 @@ try {
         <div class="container-2-top">
             <!--Họ và tên-->
             <label for="ho_ten">Họ và tên</label><br>
-            <input type="text" id="ho_ten" name="ho_ten" style="margin-bottom:30px" required>
+            <input type="text" id="ho_ten" name="ho_ten" style="margin-bottom:30px">
             <!--Ngày tháng năm sinh-->
             <label for="date">Ngày tháng năm sinh</label><br>
-            <input type="date" id="date" name="date" placeholder="dd/MM/yyyy" required>
+            <input type="date" id="date" name="date" placeholder="dd/MM/yyyy">
             <!--Giới tính-->
             <label for="gender" style="margin-top: 30px; margin-bottom: 20px;">Giới tính</label>
             <div class="container-2-center">
