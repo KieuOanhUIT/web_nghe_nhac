@@ -109,9 +109,10 @@ function performSearch(keyword) {
             const results = JSON.parse(response);
 
             // Clear previous results
-            document.getElementById('search-items').innerHTML = '';
+            const searchItems = document.getElementById('search-items');
+            searchItems.innerHTML = '';
 
-            // Kiểm tra và hiển thị các bài hát
+            // Hiển thị các bài hát
             results.songs.forEach(song => {
                 // Tạo phần tử div cho mỗi bài hát
                 const songItem = document.createElement('div');
@@ -121,37 +122,48 @@ function performSearch(keyword) {
                     <h3>${song.TenBaiHat}</h3>
                 `;
 
-                // Thêm sự kiện click để gọi displaySong
+                // Thêm sự kiện click để lấy thông tin chi tiết bài hát
                 songItem.addEventListener('click', () => {
-                    console.log(`Bài hát được chọn: ${song.TenBaiHat}`);
-                    displaySong({
-                        MaBaiHat: song.MaBaiHat,
-                        AnhBaiHat: song.AnhBaiHat,
-                        TenBaiHat: song.TenBaiHat,
-                        TenNgheSy: song.TenNgheSy,
-                        FileBaiHat: song.FileBaiHat,
-                        LoiBaiHat: song.LoiBaiHat
+                    console.log(`Loading song: ${song.MaBaiHat}`);
+                    
+                    // Gửi yêu cầu AJAX tới song.php để lấy thông tin chi tiết bài hát
+                    $.ajax({
+                        url: '/web_nghe_nhac/app/pages/song.php',
+                        type: 'GET',
+                        data: { id: song.MaBaiHat },
+                        success: function(response) {
+                            if (response.results && response.results.length > 0) {
+                                // Hiển thị bài hát với displaySong
+                                displaySong(response.results[0]);
+                            } else {
+                                console.error('Không tìm thấy thông tin bài hát.');
+                            }
+                        },
+                        error: function() {
+                            console.error('Không thể tải bài hát.');
+                        }
                     });
                 });
 
+                searchItems.appendChild(songItem);
             });
 
-
-            // Kiểm tra và hiển thị các nghệ sĩ
+            // Hiển thị các nghệ sĩ
             results.artists.forEach(artist => {
-                document.getElementById('search-items').innerHTML += `
-                    <div class="search-item">
-                        <a href="/web_nghe_nhac/artist_info.php?id=${artist.MaNgheSy}">
-                            <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
-                            <h3>${artist.TenNgheSy}</h3>
-                        </a>
-                    </div>
+                const artistItem = document.createElement('div');
+                artistItem.className = 'search-item';
+                artistItem.innerHTML = `
+                    <a href="/web_nghe_nhac/artist_info.php?id=${artist.MaNgheSy}">
+                        <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
+                        <h3>${artist.TenNgheSy}</h3>
+                    </a>
                 `;
+                searchItems.appendChild(artistItem);
             });
 
-            // Nếu không có kết quả, hiển thị thông báo
+            // Nếu không có kết quả
             if (results.songs.length === 0 && results.artists.length === 0) {
-                document.getElementById('search-items').innerHTML = '<p>Không tìm thấy kết quả nào.</p>';
+                searchItems.innerHTML = '<p>Không tìm thấy kết quả nào.</p>';
             }
         },
         error: function() {
@@ -159,3 +171,4 @@ function performSearch(keyword) {
         }
     });
 }
+

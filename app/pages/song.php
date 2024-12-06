@@ -10,7 +10,7 @@ $id = $_GET['id'] ?? null;
 
 if ($id) {
     // Truy vấn lấy bài hát theo id
-    $query = "SELECT b.*, n.TenNgheSy, n.MaNgheSy 
+    $query = "SELECT b.*, n.TenNgheSy, n.MaNgheSy, n.AnhNgheSy 
               FROM baihat b 
               JOIN nghesy n ON b.MaNgheSy = n.MaNgheSy 
               WHERE b.MaBaiHat = :id";
@@ -20,7 +20,7 @@ if ($id) {
     echo json_encode(['results' => $result ?: []]);
 } else {
     // Truy vấn lấy toàn bộ bài hát
-    $query = "SELECT b.*, n.TenNgheSy, n.MaNgheSy  
+    $query = "SELECT b.*, n.TenNgheSy, n.MaNgheSy, n.AnhNgheSy 
               FROM baihat b 
               JOIN nghesy n ON b.MaNgheSy = n.MaNgheSy 
               ORDER BY b.MaBaiHat";
