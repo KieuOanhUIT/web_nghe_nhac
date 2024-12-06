@@ -155,7 +155,7 @@
             // Gửi dữ liệu đến server
             $.ajax({
 
-                url: './includes/model_admin_left_add.php',
+                url: '../includes/model_admin_left_add.php',
                 type: 'POST',
                 data: {
                     username: username,

@@ -179,7 +179,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
 
         // Gửi dữ liệu bằng AJAX mà không chuyển trang
         $.ajax({
-            url: "./includes/model_admin_left_update.php", // Đường dẫn tới file xử lý PHP
+            url: "../includes/model_admin_left_update.php", // Đường dẫn tới file xử lý PHP
             type: "POST",
             data: {
                 MaNguoiDung: MaTaiKhoan,
@@ -213,7 +213,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
 
         // Gửi dữ liệu bằng AJAX mà không chuyển trang
         $.ajax({
-            url: "./includes/model_admin_left_delete.php", // Đường dẫn tới file xử lý PHP
+            url: "../includes/model_admin_left_delete.php", // Đường dẫn tới file xử lý PHP
             type: "POST",
             data: {
                 MaTaiKhoan: MaTaiKhoan,

@@ -91,89 +91,6 @@ h4 {
     top:500px;
 }
 
-.controlBar {
-        display: flex;
-        position: relative;
-        max-width: 329px;
-        max-height: 286px;
-        left: 20px;
-        top: 127px;
-        flex-direction: column;
-
-}
-
-.controlBar .manageSong{
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 24px;
-        gap: 10px;
-        width: 329px;
-        height: 74px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(202, 197, 197, 0.15);
-        border-radius: 10px 20px 20px 10px;
-
-        font-family: 'ExtraBold', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-  
-}
-
-
-.controlBar .manageAccount {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 24px;
-        gap: 10px;
-    
-        width: 329px;
-        height: 286px;
-    
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 10px 20px 20px 10px;
-
-        margin-top: 20px;
-}
-
-
-
-#account{
-    font-family: 'ExtraBold', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    margin:0%;
-}
-
-
-
-.controlBar .Report {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 24px;
-        gap: 10px;
-    
-        width: 329px;
-        height: 74px;
-    
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 10px 20px 20px 10px;
-        margin-top: 20px;
-        font-family: 'ExtraBold', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-    
-}
 
 p {
     margin-top: 36px;
@@ -182,7 +99,6 @@ p {
     align-items: center;
     flex-direction: row;
     gap: 10px;
-    font-size: 18px;
     font-family: 'Inter', 'Semibold', 'Helvetica Neue', Helvetica, Arial;
     font-weight: bold;
 }
@@ -282,64 +198,43 @@ th, td {
 /* định dạng thêm tài khoản */
 
 
-.addAccount {
-    position: relative;
+.addAccount, .updateAccount {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 440px;
-    height: 680px;
-
+    height: 550px;
     background: #000000;
     padding-top: 20px;
-    margin-top: 2px;
     border: 2px solid rgb(144, 143, 143);
     border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
     z-index: 100000;
-
+}
+h1 {
+    font-size:20px;
 }
 
-.addAccount #formaddAccount  table {
-    margin-top: 20px;
+.addAccount #formaddAccount  table, .updateAccount #formaddAccount2 table {
+    margin-top: -30px;
     position: flex;
     width: 100%;
     border-collapse: collapse;
 }
 
-.addAccount #formaddAccount2 table {
-    margin-top: 20px;
+/* .addAccount #formaddAccount2 table {
+    margin-top: 10px;
     position: flex;
     width: 100%;
     border-collapse: collapse;
-}
+} */
 
-.addAccount #formaddAccount  table tr {
+.addAccount #formaddAccount  table tr, .updateAccount #formaddAccount2 table tr {
     display: flex;
     flex-direction: column;
     margin: 10px;
     padding-left: 13px;
-
-
 }
-
-#updateaccount #formaddAccount2 table tr {
-    display: flex !important;
-        /* Cưỡng chế flex */
-            flex-direction: column;
-    margin: 10px;
-    padding-left: 13px;
-
-
-}
-
-div#updateaccount {
-    margin-top: 20px;
-}
-
-div#addaccount {
-    margin-top: 20px;
-}
-
-
 
 input[type="text"],
 input[type="date"],
@@ -352,7 +247,7 @@ input[type="date"],
     padding: 10px 10px;
 
     width: 370px;
-    height: 56px;
+    height: 40px;
 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -383,49 +278,34 @@ input[type="date"]:focus,
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-input[type="submit"] {
+input[type="submit"],
+button {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 6px 24px;
-    gap: 10px;
-
-    width: 77px;
-    height: 36px;
-
+    padding: 10px 20px;
+    width: 100px;
     background: #296265;
     border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
 }
 
-.addAccount #add {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 24px;
-    gap: 10px;
-
-    width: 77px;
-    height: 36px;
-
-    background: #296265;
-    border-radius: 5px;
-    margin-left: 292px;
-
+button:hover {
+    background: #3b7d7d;
 }
 
-.addAccount #return {
+#return {
     display: flex;
     margin-left: 50px;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     z-index: 1000;
 }
 
-.addAccount #return:hover {
+#return:hover {
     background: rgba(243, 241, 241, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.4);
 
@@ -445,7 +325,6 @@ p:hover {
     cursor: pointer;
     padding: 3px;
     transition: background 0.2s ease, border 0.2s ease;
-    color: aqua;
 }
 
 iconify-icon {
@@ -454,8 +333,6 @@ iconify-icon {
 }
 
 tr:hover {
-    background-color: #2778b6;
-    /* Màu nền khi di chuột vào hàng */
     cursor: pointer;
     /* Thay đổi con trỏ khi di chuột để tăng trải nghiệm */
 }
@@ -506,22 +383,6 @@ tr:hover {
         padding: 8px; /* Giảm khoảng cách trong các ô */
         font-size: 14px; /* Giảm kích thước chữ */
     }
-
-    .controlBar {
-        flex-direction: column; /* Chuyển về dạng cột */
-        align-items: center;
-        max-width: 100%; /* Chiếm toàn bộ chiều rộng */
-        left: auto;
-        top: 10px;
-    }
-
-    .controlBar .manageSong,
-    .controlBar .manageAccount,
-    .controlBar .Report {
-        width: 90%; /* Thu hẹp các nút quản lý */
-        height: auto;
-        padding: 16px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -540,7 +401,7 @@ tr:hover {
         height: 30px; /* Chiều cao nhỏ hơn */
     }
 
-    .tableAccount table {
+    .tableAccount table{
         width: 100%; /* Đảm bảo không bị tràn */
     }
 
@@ -550,18 +411,5 @@ tr:hover {
 
     .tableAccount tr {
         display: block; /* Chuyển từng hàng thành khối */
-    }
-
-    .controlBar {
-        flex-direction: column; /* Sắp xếp theo dạng cột */
-        align-items: center;
-    }
-
-    .controlBar .manageSong,
-    .controlBar .manageAccount,
-    .controlBar .Report {
-        width: 100%; /* Chiếm toàn bộ chiều rộng */
-        padding: 12px;
-        font-size: 16px; /* Giảm kích thước chữ */
     }
 }
