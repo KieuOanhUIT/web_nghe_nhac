@@ -2,14 +2,13 @@
     font-family: 'Inter';
     src: url('../font/Inter-Medium.otf') format('opentype');
     font-style: normal;
-    color: #fff;
 }
 
 * {
     background-color: #000000;
     font-family: "Inter", "Times New Roman";
     color: #fff
-};
+}
 
 html,
 body {
