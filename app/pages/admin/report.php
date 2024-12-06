@@ -23,7 +23,7 @@ require_once '../../core/functions.php';
     <?php
     include 'header.php';
     ?>
-    <img src="../../../public/assets/img/admin-bg.png" class="bgimage">
+    <img src="../../../public/assets/img/admin-bg.png" alt="" class="bgimage">
 
     <main>
         <!-- Định dạng nền của trang -->
@@ -40,10 +40,10 @@ require_once '../../core/functions.php';
             <div class="report" style="color: #fff;">
         <div class="searchBar">
             <!-- Chọn mốc thời gian -->
-            <label class="label" for="date">Từ mốc</label>
+            <label class="label" for="start-month">Từ mốc</label>
             <input type="month" id="start-month" name="month-year">
 
-            <label class="label" for="date">Đến mốc</label>
+            <label class="label" for="end-month">Đến mốc</label>
             <input type="month" id="end-month" name="month-year">
 
 
