@@ -6,11 +6,8 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
     margin: 0;
-    /* Loại bỏ margin mặc định */
     width: 100%;
-    /* Chiếm toàn bộ chiều rộng màn hình */
     height: 100vh;
-    /* Điều chỉnh tự động theo nội dung */
     font-family: 'Inter', sans-serif;
 }
 
@@ -21,9 +18,9 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 1380px;
+    height: auto;
     display: flex;
 }
-
 /*Xử lý các gói dịch vụ*/
 .pack-info {
     box-sizing: border-box;
@@ -242,16 +239,78 @@ p {
     }
 }
 
-/* Mobile (<= 400px) */
+/* Tablet (<= 768px) */
 @media screen and (max-width: 400px) {
-    .mainSpace {
-        gap: 5px; /* Thu hẹp khoảng cách */
+    body {
+        overflow-y: auto;
+    }
+    .main {
+        overflow-y: auto;
     }
 
-    .mainSpace .leftBar,
-    .mainSpace .centerSpace,
+    .header {
+        width: 100%;
+    }
+    
+    .mainSpace {
+        flex-direction: column; /* Chuyển thành dạng cột */
+        gap: 10px;
+        overflow-y: auto;
+    }
+
+    .mainSpace .leftBar {
+        width: 100%;
+        flex: none;
+        max-width: 380px;
+        margin-left: 5px;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 24px;
+    
+        width: 100%;
+        height: 456px;
+        overflow-x: hidden;
+    
+    }
+
+    .mainSpace .centerSpace {
+        width: 100%;
+        flex: none;
+        max-width: 380px;
+        margin-left: 5px;
+    }
+
+    .pack-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .container-1 {
+        width: 90%;
+        max-width: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+    
+    .container-2 {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
     .mainSpace .rightBar {
         width: 100%;
-        margin: 0; /* Loại bỏ margin */
+        flex: none;
+        margin-right: 0;
     }
 }

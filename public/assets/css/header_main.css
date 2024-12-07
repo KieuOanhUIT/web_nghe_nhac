@@ -134,38 +134,85 @@ header .general {
     }
 }
 
-/* Responsive cho Mobile (<= 400px) */
+/* Mobile (<= 400px) */
 @media screen and (max-width: 400px) {
+    /* Điều chỉnh chiều rộng và padding của header */
     header {
-        padding: 10px 15px; /* Giảm padding cho nhỏ hơn */
-        flex-direction: column;
-        top: 5px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px; /* Thêm khoảng cách giữa các phần tử */
     }
 
-    header .controlbar {
-        flex-direction: column;
-        gap: 8px;
+    /* Điều chỉnh kích thước logo */
+    .logo {
+        width: 120px; /* Giảm kích thước logo */
+    }
+
+    /* Các phần tử điều hướng (menu) */
+    .menu {
+        display: none; /* Ẩn menu theo dạng hàng ngang */
+    }
+
+    /* Thêm một nút burger để mở menu */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 24px; /* Tăng kích thước icon */
+    }
+
+    .menu.active {
+        display: block; /* Khi menu toggle, hiển thị menu */
         width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 10px;
     }
 
-    header .searching {
+    /* Các liên kết trong menu */
+    .menu a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    /* Điều chỉnh khoảng cách giữa các mục trong header */
+    .header-items {
+        display: flex;
         flex-direction: column;
-        gap: 8px;
-        width: 100%; /* Chiếm toàn bộ chiều rộng */
-    }
-
-    header .searching .input-wrapper {
         width: 100%;
-        padding: 0 10px;
+        text-align: center;
+        gap: 10px;
     }
 
-    header .searching .input-wrapper input {
-        font-size: 12px; /* Giảm kích thước font */
+    /* Điều chỉnh vị trí các icon trong header */
+    .header-icons {
+        display: none; /* Ẩn các icon */
     }
 
-    iconify-icon {
-        font-size: 20px; /* Giảm kích thước biểu tượng */
+    .search-bar {
+        width: 100%;
+        margin: 10px 0;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Điều chỉnh button đăng xuất */
+    .logout-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+        width: 100%;
+        text-align: center;
+    }
+
+    header img {
+        display: none; /* Ẩn hình ảnh trong header */
     }
 }
-
-
