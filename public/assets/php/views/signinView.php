@@ -11,38 +11,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-            // Kết nối cơ sở dữ liệu
-            include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file cấu hình
-            $database = new Database();
-            $conn = $database->getConnection();
+        // Kết nối cơ sở dữ liệu
+        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; 
+        $database = new Database();
+        $conn = $database->getConnection();
 
-            if ($conn) {
-                // Truy vấn kiểm tra email và mật khẩu
-                $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-                $stmt->execute();
-                
-                // Lấy dữ liệu người dùng
-                $user = $stmt->fetch();
-                if ($user) {
-                    // Lưu thông tin người dùng vào session và chuyển hướng đến trang home
-                    $_SESSION['user'] = $user; // Lưu thông tin người dùng vào session
-                    $_SESSION['user_id'] = $user['MaTaiKhoan'];
-                    header("Location: /web_nghe_nhac/app/pages/home.php"); 
-                    exit();
+        if ($conn) {
+            // Truy vấn kiểm tra email và mật khẩu
+            $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->execute();
+            
+            // Lấy dữ liệu người dùng
+            $user = $stmt->fetch();
+            if ($user) {
+                // Lưu thông tin người dùng vào session
+                $_SESSION['user'] = $user;
+                $_SESSION['user_id'] = $user['MaTaiKhoan'];
+
+                // Kiểm tra quyền và chuyển hướng
+                if ($user['Quyen'] === 'Admin') {
+                    header("Location: /web_nghe_nhac/app/pages/admin/home.php");
+                } elseif ($user['Quyen'] === 'User') {
+                    header("Location: /web_nghe_nhac/app/pages/home.php");
                 } else {
-                    $errorMessage = "Email hoặc mật khẩu không đúng.";
+                    $errorMessage = "Quyền không hợp lệ.";
                 }
+                exit();
             } else {
-                $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
+                $errorMessage = "Email hoặc mật khẩu không đúng.";
             }
+        } else {
+            $errorMessage = "Không thể kết nối cơ sở dữ liệu.";
+        }
     } else {
         $errorMessage = "Vui lòng nhập đầy đủ thông tin.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 
