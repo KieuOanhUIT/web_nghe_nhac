@@ -15,7 +15,7 @@ main {
         display: flow-root;
         background-color: #000000;
         justify-content: center;
-        text-align: center;
+        text-align: left;
         width: 100%;
         height: 100%;
 }
@@ -33,6 +33,7 @@ html,
 body {
     scroll-behavior: smooth;
     height: 100%;
+    text-align: left;
 
 }
 
@@ -153,7 +154,7 @@ p {
 
 }
 
-#find {
+.accountSpace .findSong #find {
 
         display: flex;
         flex-direction: row;
@@ -168,7 +169,15 @@ p {
         background: #296265;
         border-radius: 61px;
         border: 0px;
+        cursor: pointer;
         
+}
+
+.accountSpace .findSong button:hover {
+    background-color: #0056b3;
+        /* Màu nền khi hover (xanh đậm hơn) */
+        box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.5);
+        /* Hiệu ứng phát sáng */
 }
 
 .search-ic {
@@ -198,11 +207,16 @@ th, td {
 /* định dạng thêm tài khoản */
 
 
+<<<<<<< HEAD
+.updateaccount, .addAccount {
+    position: relative;
+=======
 .addAccount, .updateAccount {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     width: 440px;
     height: 550px;
     background: #000000;
@@ -223,7 +237,11 @@ h1 {
 }
 
 /* .addAccount #formaddAccount2 table {
+<<<<<<< HEAD
+    margin-top: 20px;
+=======
     margin-top: 10px;
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     position: flex;
     width: 100%;
     border-collapse: collapse;
@@ -236,6 +254,30 @@ h1 {
     padding-left: 13px;
 }
 
+<<<<<<< HEAD
+#updateaccount #formaddAccount2 table tr {
+    display: flex !important;
+        /* Cưỡng chế flex */
+            flex-direction: column;
+    margin: 10px;
+    padding-left: 13px;
+
+
+}
+
+div#updateaccount {
+   /* margin-top: 20px;*/
+   padding-left: 50px;
+}
+
+#addaccount {
+    margin-top: 20px;
+}
+
+
+
+=======
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
 input[type="text"],
 input[type="date"],
 #pakage {
@@ -292,11 +334,33 @@ button {
     border: none;
 }
 
+<<<<<<< HEAD
+.updateaccount #add, .addAccount #add {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+
+    width: 77px;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+    margin-left: 292px;
+
+}
+
+.updateaccount #return ,.addAccount #return {
+=======
 button:hover {
     background: #3b7d7d;
 }
 
 #return {
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     display: flex;
     margin-left: 50px;
     width: 30px;
@@ -333,10 +397,17 @@ iconify-icon {
 }
 
 tr:hover {
+<<<<<<< HEAD
+    background-color: #aacce6;
+    /* Màu nền khi di chuột vào hàng */
+=======
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     cursor: pointer;
     /* Thay đổi con trỏ khi di chuột để tăng trải nghiệm */
 }
 
+<<<<<<< HEAD
+=======
 /* Media Queries cho màn hình nhỏ hơn */
 @media (max-width: 768px) {
     .accountSpace .findSong {
@@ -413,3 +484,4 @@ tr:hover {
         display: block; /* Chuyển từng hàng thành khối */
     }
 }
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed

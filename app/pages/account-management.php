@@ -234,4 +234,34 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
             }
         });
     });
+
+
+    //CHỨC NĂNG TÌM KIẾM 
+    $(document).ready(function() {
+        $('#boxFind').on('input', function() {
+            // Lấy giá trị từ ô tìm kiếm
+            var text = $(this).val().toLowerCase().trim();
+
+            // Nếu ô tìm kiếm trống, hiển thị lại toàn bộ bảng
+            if (text === '') {
+                $('.tableAccount table tbody tr').show();
+                return;
+            }
+
+            // Ẩn tất cả các hàng trong bảng
+            $('.tableAccount table tbody tr').hide();
+
+            // Hiển thị các hàng có ô (cell) chứa từ khóa
+            $('.tableAccount table tbody tr').filter(function() {
+                var found = false;
+                $(this).find('td').each(function() {
+                    if ($(this).text().toLowerCase().includes(text)) {
+                        found = true; // Nếu tìm thấy từ khóa trong ô, đánh dấu
+                        return false; // Dừng kiểm tra các ô khác trong hàng
+                    }
+                });
+                return found; // Chỉ hiển thị hàng nếu có từ khóa
+            }).show();
+        });
+    });
 </script>

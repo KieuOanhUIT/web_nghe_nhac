@@ -24,9 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: payment.php");
         exit();  // Đảm bảo dừng lại ngay sau khi chuyển hướng
     }
-} else {
-    // Nếu không phải là phương thức POST, bạn có thể xử lý lỗi hoặc chuyển hướng
-    echo "Không có dữ liệu gửi đến.";
 }
 ?>
 
@@ -182,7 +179,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
                 </form>
             </div>
-            <div class="pack" style="display: none;"> <!--div thông tin các gói-->
+            <div class="pack" style="display:none;"> <!--div thông tin các gói-->
             <div class="pack-container-1">
                 <h2>Lợi ích của tất cả các gói Premium</h2>
                 <div class="pack-description">
@@ -275,7 +272,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             
         </div>
         <!-- rightBar -->
-        <div class="rightBar">
+        <div class="rightBar" id="rightBar" style="display:none;">
             <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
             ?>
@@ -345,20 +342,47 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             </div>
         </div>
     </main>
-    <script>
-        document.getElementById("info").addEventListener("click", function() {
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Lưu nội dung gốc của pack-info
     var packInfo = document.querySelector(".pack-info");
-    var pack = document.querySelector(".pack");
+    var originalPackInfoContent = packInfo.innerHTML;
 
-    // Thay đổi nội dung của pack-info thành nội dung của pack
-    packInfo.innerHTML = pack.innerHTML;
+    // Xử lý khi nhấn vào icon "info"
+    document.getElementById("info").addEventListener("click", function () {
+        var pack = document.querySelector(".pack");
+        var rightBar = document.getElementById("rightBar");
 
-    // Hiển thị pack-info và ẩn pack (nếu muốn)
-    packInfo.style.display = "block";
-    pack.style.display = "none";
+        // Thay thế nội dung của pack-info bằng nội dung của pack
+        packInfo.innerHTML = pack.innerHTML;
+
+        // Ẩn pack-info
+        packInfo.style.display = "block";
+
+        // Hiển thị pack và rightBar
+        pack.style.display = "block";
+        rightBar.style.display = "block";
+    });
+
+    // Xử lý khi nhấn vào icon "exit" trong rightBar
+    document.getElementById("rightBar").addEventListener("click", function (event) {
+        if (event.target && event.target.id === "exit-lbl") {
+            var pack = document.querySelector(".pack");
+            var rightBar = document.getElementById("rightBar");
+
+            // Khôi phục nội dung gốc của pack-info
+            packInfo.innerHTML = originalPackInfoContent;
+
+            // Ẩn pack và rightBar
+            pack.style.display = "none";
+            rightBar.style.display = "none";
+
+            // Hiển thị lại pack-info
+            packInfo.style.display = "block";
+        }
+    });
 });
-    </script>
-    
+</script>    
 
     <!-- File javaScript -->
     <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>

@@ -80,7 +80,7 @@
         </table>
     </form>
 </div>
-
+<!-- updateaccount -->
 <div class="addAccount" id="updateaccount" style="display: none;">
     <form id="formaddAccount2" action="" method="post">
 
