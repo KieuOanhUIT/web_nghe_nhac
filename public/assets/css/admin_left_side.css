@@ -12,12 +12,14 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    position: absolute;
+    position: relative;  /* Điều chỉnh từ absolute thành relative để linh hoạt hơn */
     width: 329px;
-    height: 474px;
+    height: auto;  /* Chiều cao tự động để dễ dàng thay đổi khi thu nhỏ */
     left: 26px;
     top: 118px;
+    flex-wrap: wrap;  /* Cho phép các phần tử nằm dưới nhau khi thu nhỏ */
 }
+
 
 .menu-items{
     
@@ -74,5 +76,56 @@ body {
 
 iconify-icon {
     font-size: 20px;
+}
+
+/* Điều chỉnh trên tablet */
+@media (max-width: 768px) {
+    .left-li {
+        width: 140px; /* Giảm chiều rộng */
+        left: 5px;
+    }
+
+    .left-menu {
+        width: 160px; /* Giảm chiều rộng */
+        font-size: 16px;
+        height: 50px;
+        padding: 0 5px;
+        gap: 5px;
+    }
+
+    .left-submenu {
+        padding-left: 0px;
+        gap: 5px;
+    }
+    .left-submenu li a {
+        font-size: 14px;
+        gap: 10px;
+    }
+}
+
+/* Điều chỉnh trên điện thoại */
+@media (max-width: 480px) {
+    .left-li {
+        width: 80px; /* Giảm chiều rộng */
+        left: 8px;
+    }
+
+    .left-menu {
+        width: 70px; /* Giảm chiều rộng */
+        font-size: 12px;
+        height: 40px;
+        padding: 3px 8px;
+        gap: 8px;
+    }
+
+    .left-submenu {
+        padding-left: 10px;
+        gap: 8px;
+    }
+    .left-submenu li a {
+        font-size: 0px;
+        gap: 0px;
+        padding-left: 8px;
+    }
 }
 
