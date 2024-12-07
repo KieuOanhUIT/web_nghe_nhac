@@ -40,23 +40,27 @@ require_once '../../core/functions.php';
             <div class="report" style="color: #fff;">
         <div class="searchBar">
             <!-- Chọn mốc thời gian -->
-            <label class="label" for="start-month">Từ mốc</label>
-            <input type="month" id="start-month" name="month-year">
+             <div class="date-range">
+                <label class="label" for="start-month">Từ mốc</label>
+                <input type="month" id="start-month" name="month-year">
 
-            <label class="label" for="end-month">Đến mốc</label>
-            <input type="month" id="end-month" name="month-year">
-
+                <label class="label" for="end-month">Đến mốc</label>
+                <input type="month" id="end-month" name="month-year">
+             </div>
 
             <!-- Chọn gói dịch vụ -->
-            <label class="label" for="package">Gói:</label>
-            <select id="package" class="package">
-                <option value="all">All</option>
-                <option value="mini">Mini</option>
-                <option value="individual">Individual</option>
-                <option value="student">Student</option>
+            <div class="select-package">
+                <label class="label" for="package">Gói:</label>
+                <select id="package" class="package">
+                    <option value="all">All</option>
+                    <option value="mini">Mini</option>
+                    <option value="individual">Individual</option>
+                    <option value="student">Student</option>
             </select>
-
             <button id="search-btn" class="search-btn">Tra cứu</button>
+
+            </div>
+
         </div>
         <button id="export-btn" class="export-btn">Xuất</button>
 
@@ -76,7 +80,7 @@ require_once '../../core/functions.php';
             </table>
         </div>
         <div class="total">
-            <h3>Tổng doanh thu: <span id="total-revenue">0</span> VND</h3>
+            <h3>Tổng doanh thu: <span id="total-revenue">0</span></h3>
         </div>
     </div>
         </div>
