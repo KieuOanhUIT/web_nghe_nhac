@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo '/web_nghe_nhac-main/public/assets/css/artist.css'; ?>">
+    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/artist.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
     <link rel="stylesheet"
@@ -14,10 +14,10 @@
 </head>
 
 <?php
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/control/playlistControl.php';
+include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\control\playlistControl.php';
 if (!isset($playlists)) {
-    include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/config/config.php';
-    include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/models/playlistModel.php';
+    include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';
+    include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\models\playlistModel.php';
 
     $database = new Database();
     $db = $database->getConnection();
@@ -26,7 +26,7 @@ if (!isset($playlists)) {
 }
 // Khởi tạo kết nối Database và Controller
 if (!isset($controller)) {
-    include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/control/playlistControl.php';
+    include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\control\playlistControl.php';
     $database = new Database();
     $db = $database->getConnection();
     $controller = new PlaylistController($db);
@@ -38,7 +38,7 @@ if (!isset($controller)) {
     <!--lớp phủ làm tối màn hình cho pop up-->
     <div class="head-bar">
         <!-- div thanh tìm kiếm -->
-        <img src="/web_nghe_nhac-main/public/assets/img/logo.svg" alt="logo" width="137px" height="45px">
+        <img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo" width="137px" height="45px">
 
         <i id="home-icon" class="fas fa-home"></i>
 
@@ -76,7 +76,7 @@ if (!isset($controller)) {
                         $tenDSP = $playlist['TenDSP'];
                         $loaiDSP = $playlist['LoaiDSP'];
                         $imgName = $playlist['AnhDSP'];
-                        $imgPath = "/web_nghe_nhac-main/public/assets/img/playlist/$imgName";
+                        $imgPath = "/web_nghe_nhac/public/assets/img/playlist/$imgName";
 
                         // Dữ liệu truyền vào JavaScript: mã, tên, loại, đường dẫn ảnh
                         echo "<div id='playlist$maDSP' onclick=\"updateArtistView('$maDSP', '$tenDSP', '$loaiDSP', '$imgPath')\">
@@ -100,7 +100,7 @@ if (!isset($controller)) {
             <!--div nghệ sĩ-->
             <div id="main-artist">
                 <span id="avatar-artist">
-                    <img src="/web_nghe_nhac-main/public/assets/img/playlist/playlist<?php echo $maDSP; ?>.jpg"
+                    <img src="/web_nghe_nhac/public/assets/img/playlist/playlist<?php echo $maDSP; ?>.jpg"
                         alt="Playlist">
                 </span>
                 <div class="info-artist">
@@ -264,7 +264,7 @@ if (!isset($controller)) {
     <!--kết thúc div chân play pause-->
     <div id="create-newlist">
         <div id="return">
-            <img src="/web_nghe_nhac-main/public/assets/icon/ic-return.svg" alt="">
+            <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
         </div>
 
         <div id="lbl-create">
@@ -273,7 +273,7 @@ if (!isset($controller)) {
 
         <form name="create-newlist" id="newlist-form">
             <button id="choose-image" onclick="document.getElementById('file-upload').click(); return false;">
-                <img src="/web_nghe_nhac-main/public/assets/img/insert-img.svg" alt="">
+                <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
             </button>
             <input type="file" id="file-upload" style="display: none;" accept="image/jpeg, image/png, image/jpg">
             <!--upload ảnh-->
@@ -293,7 +293,7 @@ if (!isset($controller)) {
     </div>
     <div id="them-bh-playlist">
         <div id="return">
-            <img src="/web_nghe_nhac-main/public/assets/icon/ic-return.svg" alt="">
+            <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
         </div>
         <p style="margin: 28px 0;">Thêm bài hát</p>
         <form id="form-them-bh">
@@ -324,7 +324,7 @@ if (!isset($controller)) {
             </form>
         </div>
     </div>
-    <script src="/web_nghe_nhac-main/public/assets/script/playlist.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/playlist.js"></script>
 </body>
 
 </html>

@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
-
+<div class="header">
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
 ?>
+</div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +66,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
             ?>
-
             <!-- Create new list -->
             <div class="create-newlist">
                 <div class="return">

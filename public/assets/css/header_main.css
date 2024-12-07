@@ -91,61 +91,81 @@ header .general {
     align-items: center;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
+/* Responsive cho Tablet (<= 768px) */
+@media screen and (max-width: 768px) {
     header {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 20px;
+        padding: 10px 20px; /* Điều chỉnh padding cho vừa không gian */
+        flex-direction: column; /* Chuyển sang dạng cột khi thu nhỏ */
+        align-items: center; /* Căn giữa các phần tử */
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
     }
 
     header .controlbar {
-        flex-direction: column;
-        align-items: stretch;
+        justify-content: center;
         gap: 10px;
-    }
-
-    header .searching .input-wrapper {
-        max-width: 280px; /* Thu nhỏ trên màn hình tablet */
-    }
-
-    header .general {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 10px 15px;
-    }
-
-    header .controlbar {
-        flex-direction: column;
-        gap: 8px;
+        width: 100%; /* Đảm bảo chiều rộng các phần tử là 100% */
     }
 
     header .searching {
-        flex-direction: column;
-        gap: 8px;
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        margin-top: 10px;
     }
 
     header .searching .input-wrapper {
-        max-width: 200px; /* Thu nhỏ tối đa trên điện thoại */
+        width: 100%; /* Cho phép thanh tìm kiếm chiếm toàn bộ không gian */
+        padding: 0 10px;
+    }
+
+    header .searching .input-wrapper input {
+        font-size: 14px; /* Điều chỉnh kích thước font cho phù hợp */
     }
 
     header .general {
-        justify-content: center;
-        gap: 8px;
-    }
-
-    header .searching .home,
-    header .searching .voice-searching,
-    header .general .account {
-        width: 36px;
-        height: 36px;
+        width: 100%;
+        justify-content: center; /* Căn giữa các biểu tượng */
+        margin-top: 10px;
     }
 
     iconify-icon {
         font-size: 24px;
     }
 }
+
+/* Responsive cho Mobile (<= 400px) */
+@media screen and (max-width: 400px) {
+    header {
+        padding: 10px 15px; /* Giảm padding cho nhỏ hơn */
+        flex-direction: column;
+        top: 5px;
+    }
+
+    header .controlbar {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    header .searching {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+    }
+
+    header .searching .input-wrapper {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    header .searching .input-wrapper input {
+        font-size: 12px; /* Giảm kích thước font */
+    }
+
+    iconify-icon {
+        font-size: 20px; /* Giảm kích thước biểu tượng */
+    }
+}
+
+
