@@ -1,4 +1,3 @@
-
 <li class="left-li">
     <div class="menu-items">
         <a href="#" class="left-menu">Quản lý bài hát</a>
@@ -20,97 +19,97 @@
         <a href="/web_nghe_nhac/app/pages/admin/report.php" class="left-menu" id="report"><iconify-icon icon="carbon:report"></iconify-icon>Báo cáo</a>
     </div>
 </li>
-    <script src="/web_nghe_nhac/public/assets/script/admin_left_side.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/admin_left_side.js"></script>
 
-        <!-- Thêm tài khoản -->
-        <div class="addAccount" id="addaccount" style="display: none;">
-            <form id="formaddAccount" action="" method="POST">
-                <table>
-                    <tr>
-                        <!-- Icon quay lai -->
-                        <span class="return-add" id="return"><iconify-icon icon="ic:round-arrow-back-ios-new" width="1.2em" height="1.2em" style="color: white"></iconify-icon></span>
-                    </tr>
+<!-- Thêm tài khoản -->
+<div class="addAccount" id="addaccount" style="display: none;">
+    <form id="formaddAccount" action="" method="POST">
+        <table>
+            <tr>
+                <!-- Icon quay lai -->
+                <span class="return-add" id="return"><iconify-icon icon="ic:round-arrow-back-ios-new" width="1.2em" height="1.2em" style="color: white"></iconify-icon></span>
+            </tr>
 
-                    <tr>
-                        <h1>Thêm tài khoản</h1>
+            <tr>
+                <h1>Thêm tài khoản</h1>
 
-                    </tr>
-                    <tr>
-                        <td><span style="width: 325px;">Tên người dùng</span></td>
-                        <td><input type="text" name="username" required></td>
-                    </tr>
-                    <tr>
-                        <td>Gói sử dụng</td>
-                        <td>
-                            <select id="pakage" name="pakage">
-                                <option value="Mini">Mini</option>
-                                <option value="Individual">Individual</option>
-                                <option value="Student">Student</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ngày Bắt đầu gói</td>
-                        <td><input type="date" name="datestart" required></td>
-                    </tr>
-                    <tr>
-                        <td>Ngày kết thúc gói</td>
-                        <td><input type="date" name="datefinish" required></td>
-                    </tr>
-                    <tr>
-                        <td><button id="add" type="submit">Tạo</button></td>
-                    </tr>
-                </table>
-            </form>
+            </tr>
+            <tr>
+                <td><span style="width: 325px;">Tên người dùng</span></td>
+                <td><input type="text" name="username" required></td>
+            </tr>
+            <tr>
+                <td>Gói sử dụng</td>
+                <td>
+                    <select id="pakage" name="pakage">
+                        <option value="Mini">Mini</option>
+                        <option value="Individual">Individual</option>
+                        <option value="Student">Student</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày Bắt đầu gói</td>
+                <td><input type="date" name="datestart" required></td>
+            </tr>
+            <tr>
+                <td>Ngày kết thúc gói</td>
+                <td><input type="date" name="datefinish" required></td>
+            </tr>
+            <tr>
+                <td><button id="add" type="submit">Tạo</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<!-- updateaccount -->
+<div class="addAccount" id="updateaccount" style="display: none;">
+    <form id="formaddAccount2" action="" method="post">
+
+        <span class="return-update" id="return"><iconify-icon icon="ic:round-arrow-back-ios-new" width="1.2em" height="1.2em" style="color: white"></iconify-icon></span>
+
+        <h1>Cập nhật tài khoản</h1>
+        <div class="wrap-box">
+            <div class="box">
+                <span style="width: 325px;">Tên người dùng</span>
+                <input type="text" name="username" required readonly>
+            </div>
+
+            <div class="box">
+                <span style="width: 325px;">Gói sử dụng</span>
+                <select id="pakage" name="pakage" required disabled>
+                    <option value="Mini">Mini</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Student">Student</option>
+                </select>
+            </div>
+
+            <div class="box">
+                <span style="width: 325px;">Ngày Bắt đầu gói</span>
+                <input type="date" name="datestart" required>
+            </div>
+
+            <div class="box">
+                <span style="width: 325px;">Ngày kết thúc gói</span>
+                <input type="date" name="datefinish" required>
+            </div>
+
+            <div class="box">
+                <button id="add" type="submit">Cập nhật</button>
+            </div>
         </div>
 
-        <div class="addAccount" id="updateaccount" style="display: none;">
-            <form id="formaddAccount2" action="" method="post">
-
-                <span class="return-update" id="return"><iconify-icon icon="ic:round-arrow-back-ios-new" width="1.2em" height="1.2em" style="color: white"></iconify-icon></span>
-
-                <h1>Cập nhật tài khoản</h1>
-                <div class="wrap-box">
-                    <div class="box">
-                        <span style="width: 325px;">Tên người dùng</span>
-                        <input type="text" name="username" required readonly>
-                    </div>
-
-                    <div class="box">
-                        <span style="width: 325px;">Gói sử dụng</span>
-                        <select id="pakage" name="pakage" required disabled>
-                            <option value="Mini">Mini</option>
-                            <option value="Individual">Individual</option>
-                            <option value="Student">Student</option>
-                        </select>
-                    </div>
-
-                    <div class="box">
-                        <span style="width: 325px;">Ngày Bắt đầu gói</span>
-                        <input type="date" name="datestart" required>
-                    </div>
-
-                    <div class="box">
-                        <span style="width: 325px;">Ngày kết thúc gói</span>
-                        <input type="date" name="datefinish" required>
-                    </div>
-
-                    <div class="box">
-                        <button id="add" type="submit">Cập nhật</button>
-                    </div>
-                </div>
 
 
 
-
-            </form>
-
+    </form>
 
 
-        </div> 
-    </div>
-    <!-- chèn script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</div>
+</div>
+<!-- chèn script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </body>
 

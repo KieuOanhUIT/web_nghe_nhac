@@ -25,7 +25,7 @@ main {
         display: flow-root;
         background-color: #000000;
         justify-content: center;
-        text-align: center;
+        text-align: left;
         width: 100%;
         height: 100%;
 }
@@ -43,6 +43,7 @@ html,
 body {
     scroll-behavior: smooth;
     height: 100%;
+    text-align: left;
 
 }
 
@@ -258,7 +259,7 @@ p {
 
 }
 
-#find {
+.accountSpace .findSong #find {
 
         display: flex;
         flex-direction: row;
@@ -273,7 +274,15 @@ p {
         background: #296265;
         border-radius: 61px;
         border: 0px;
+        cursor: pointer;
         
+}
+
+.accountSpace .findSong button:hover {
+    background-color: #0056b3;
+        /* Màu nền khi hover (xanh đậm hơn) */
+        box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.5);
+        /* Hiệu ứng phát sáng */
 }
 
 .search-ic {
@@ -303,7 +312,7 @@ th, td {
 /* định dạng thêm tài khoản */
 
 
-.addAccount {
+.updateaccount, .addAccount {
     position: relative;
     width: 440px;
     height: 680px;
@@ -326,12 +335,12 @@ th, td {
     border-collapse: collapse;
 }
 
-.addAccount #formaddAccount2 table {
+/* .addAccount #formaddAccount2 table {
     margin-top: 20px;
     position: flex;
     width: 100%;
     border-collapse: collapse;
-}
+} */
 
 .addAccount #formaddAccount  table tr {
     display: flex;
@@ -353,10 +362,11 @@ th, td {
 }
 
 div#updateaccount {
-    margin-top: 20px;
+   /* margin-top: 20px;*/
+   padding-left: 50px;
 }
 
-div#addaccount {
+#addaccount {
     margin-top: 20px;
 }
 
@@ -419,7 +429,7 @@ input[type="submit"] {
     border-radius: 5px;
 }
 
-.addAccount #add {
+.updateaccount #add, .addAccount #add {
 
     display: flex;
     flex-direction: row;
@@ -437,7 +447,7 @@ input[type="submit"] {
 
 }
 
-.addAccount #return {
+.updateaccount #return ,.addAccount #return {
     display: flex;
     margin-left: 50px;
     width: 24px;
@@ -579,8 +589,9 @@ header .general {
 }
 
 tr:hover {
-    background-color: #2778b6;
+    background-color: #aacce6;
     /* Màu nền khi di chuột vào hàng */
     cursor: pointer;
     /* Thay đổi con trỏ khi di chuột để tăng trải nghiệm */
 }
+
