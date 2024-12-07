@@ -182,7 +182,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
                 </form>
             </div>
-            <div class="pack" style="display: none;"> <!--div thông tin các gói-->
+            <div class="pack" style="display:none;"> <!--div thông tin các gói-->
             <div class="pack-container-1">
                 <h2>Lợi ích của tất cả các gói Premium</h2>
                 <div class="pack-description">
@@ -275,7 +275,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             
         </div>
         <!-- rightBar -->
-        <div class="rightBar">
+        <div class="rightBar" id="rightBar" style="display:none;">
             <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
             ?>
@@ -346,18 +346,49 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         </div>
     </main>
     <script>
-        document.getElementById("info").addEventListener("click", function() {
+    document.getElementById("info").addEventListener("click", function() {
+        var packInfo = document.querySelector(".pack-info");
+        var pack = document.querySelector(".pack");
+        var rightBar = document.getElementById("rightBar");
+
+        // Lấy nội dung của pack và rightBar
+        var packContent = pack.innerHTML;
+        var rightBarContent = rightBar.innerHTML;
+
+        // Kết hợp nội dung của pack và rightBar
+        packInfo.innerHTML = packContent;
+
+        // Hiển thị pack-info
+        packInfo.style.display = "block";
+        rightBar.style.display = "block";
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    // Lưu nội dung gốc của pack-info
     var packInfo = document.querySelector(".pack-info");
-    var pack = document.querySelector(".pack");
+    var originalPackInfoContent = packInfo.innerHTML;
 
-    // Thay đổi nội dung của pack-info thành nội dung của pack
-    packInfo.innerHTML = pack.innerHTML;
+    // Lắng nghe sự kiện click trên icon exit trong rightBar
+    document.getElementById("rightBar").addEventListener("click", function (event) {
+        if (event.target && event.target.id === "exit-lbl") {
+            var pack = document.querySelector(".pack");
+            var rightBar = document.getElementById("rightBar");
 
-    // Hiển thị pack-info và ẩn pack (nếu muốn)
-    packInfo.style.display = "block";
-    pack.style.display = "none";
+            // Khôi phục nội dung gốc của pack-info
+            packInfo.innerHTML = originalPackInfoContent;
+
+            // Ẩn pack và rightBar
+            pack.style.display = "none";
+            rightBar.style.display = "none";
+
+            // Hiển thị lại pack-info
+            packInfo.style.display = "block";
+        }
+    });
 });
-    </script>
+
+</script>
+
+
     
 
     <!-- File javaScript -->
