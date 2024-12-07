@@ -1,9 +1,7 @@
 <?php
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/config/config.php';
-
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
 class SongManageModel {
     private $db;
-    private $table_name = "baihat";
     
     //Hàm khởi tạo
     public function __construct($db) {
@@ -68,7 +66,7 @@ class SongManageModel {
 
     // Lấy mã nghệ sỹ từ tên nghệ sỹ
     public function getMaNgheSy($tenNgheSy) {
-        $sql = "SELECT MaNgheSy FROM nghesy WHERE TenNgheSy = :tenNgheSy";
+        $sql = "SELECT MaNgheSy FROM nghesy WHERE TenNgheSy = :tenNgheSy LIMIT 1";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':tenNgheSy', $tenNgheSy);
         $stmt->execute();

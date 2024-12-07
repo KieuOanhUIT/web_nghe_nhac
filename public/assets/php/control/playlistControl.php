@@ -1,6 +1,6 @@
 <?php
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/config/config.php';
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/models/playlistModel.php';
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/models/playlistModel.php';
 
 class PlaylistController {
     private $playlistModel;
@@ -61,7 +61,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'view') {
     $controller = new PlaylistController($db);
 
     $playlists = $controller->showAllPlaylists();
-    include '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/views/playlistView.php';
+    include '/xampp/htdocs/web_nghe_nhac/public/assets/php/views/playlistView.php';
 }
 
 //Hiển thị playlist mặc định
@@ -87,7 +87,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'default') {
             'maDSP' => $maDSP,
             'tenPlaylist' => $tenPlaylist,
             'loaiDSP' => $loaiDSP,
-            'imgPath' => "/web_nghe_nhac-main/public/assets/img/playlist/$imgPath",
+            'imgPath' => "/web_nghe_nhac/public/assets/img/playlist/$imgPath",
             'songCount' => $songCount
         ]);
     } else {

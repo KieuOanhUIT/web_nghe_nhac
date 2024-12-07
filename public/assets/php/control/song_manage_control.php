@@ -1,6 +1,5 @@
 <?php
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/config/config.php';
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/models/song_manage_model.php';
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/models/song_manage_model.php';
 
 class SongManageController {
     private $songManageModel;
@@ -99,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $imageFileName,
         $loiBaiHat,
         $maTheLoai,
-        $maNgheSy['MaNgheSy']
+        $maNgheSy
     );
 
     if ($result) {

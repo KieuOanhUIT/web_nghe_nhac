@@ -21,7 +21,7 @@ document.getElementById("search-button").addEventListener("click", function() {
     }
 
     // Gửi yêu cầu AJAX tới server
-    fetch(`/web_nghe_nhac-main/public/assets/php/control/song_manage_control.php?action=search&tuKhoa=${encodeURIComponent(searchInput)}`)
+    fetch(`/web_nghe_nhac/public/assets/php/control/song_manage_control.php?action=search&tuKhoa=${encodeURIComponent(searchInput)}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Có lỗi kết nối xảy ra khi tìm kiếm.");
@@ -43,7 +43,7 @@ document.getElementById("search-button").addEventListener("click", function() {
                     <div id="song">
                         <input id="checkbox" type="checkbox">
                         <span id="stt">${index + 1}</span>
-                        <img id="img" src="/web_nghe_nhac-main/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
+                        <img id="img" src="/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
                         <span id="title">
                             <span id="tenBH">${song.TenBaiHat}</span>
                             <span id="tenNS">${song.TenNgheSy}</span>
@@ -63,7 +63,7 @@ document.getElementById("search-button").addEventListener("click", function() {
 document.getElementById('search-input').addEventListener('input', function() {
     if (this.value === '') {
         // Gửi yêu cầu lấy toàn bộ bài hát khi input rỗng
-        fetch(`/web_nghe_nhac-main/public/assets/php/control/song_manage_control.php?action=getAll`)
+        fetch(`/web_nghe_nhac/public/assets/php/control/song_manage_control.php?action=getAll`)
             .then(response => response.json())
             .then(songs => {
                 // Hiển thị danh sách bài hát
@@ -75,7 +75,7 @@ document.getElementById('search-input').addEventListener('input', function() {
                         <div class="song">
                             <input class="checkbox" type="checkbox">
                             <span class="stt">${index + 1}</span>
-                            <img class="img" src="/web_nghe_nhac-main/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
+                            <img class="img" src="/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}">
                             <span class="title">
                                 <span class="tenBH">${song.TenBaiHat}</span>
                                 <span class="tenNS">${song.TenNgheSy}</span>
@@ -90,7 +90,7 @@ document.getElementById('search-input').addEventListener('input', function() {
     }
 });
 //Thêm bài hát
-document.getElementById('form').addEventListener('submit', function (event) {
+document.getElementById('form-them-bh').addEventListener('submit', function (event) {
     event.preventDefault(); // Ngăn form tự reload trang
 
     // Lấy dữ liệu từ các input
@@ -127,7 +127,7 @@ document.getElementById('form').addEventListener('submit', function (event) {
     formData.append('theloai', maTheLoai);
     formData.append('lyrics', lyrics);
     // Gửi dữ liệu qua Fetch API
-    fetch('/web_nghe_nhac-main/public/assets/php/control/song_manage_control.php', {
+    fetch('/web_nghe_nhac/public/assets/php/control/song_manage_control.php', {
         method: 'POST',
         body: formData,
     })
@@ -167,7 +167,7 @@ document.getElementById('button-xoa-bai-hat').addEventListener('click', function
 
     console.log('Dữ liệu gửi đi:', formData); // Debug FormData
 
-    fetch('/web_nghe_nhac-main/public/assets/php/control/song_manage_control.php', {
+    fetch('/web_nghe_nhac/public/assets/php/control/song_manage_control.php', {
         method: 'POST',
         body: formData,
     })
@@ -209,7 +209,7 @@ document.getElementById("button-cap-nhat-bai-hat").addEventListener("click", asy
         const selectedSongId = selectedCheckboxes[0].value;
 
         // Lấy thông tin bài hát từ server
-        const response = await fetch(`/web_nghe_nhac-main/public/assets/php/control/song_manage_control.php?action=getSongById&id=${selectedSongId}`);
+        const response = await fetch(`/web_nghe_nhac/public/assets/php/control/song_manage_control.php?action=getSongById&id=${selectedSongId}`);
         const songData = await response.json();
 
         if (songData) {
@@ -260,7 +260,7 @@ document.getElementById("cap-nhat-submit").addEventListener("click", async funct
 
     // Gửi yêu cầu cập nhật
     try {
-        const response = await fetch("/web_nghe_nhac-main/public/assets/php/control/song_manage_control.php", {
+        const response = await fetch("/web_nghe_nhac/public/assets/php/control/song_manage_control.php", {
             method: "POST",
             body: formData,
         });
@@ -296,14 +296,15 @@ document.getElementById("cap-nhat-return").addEventListener("click", function ()
     popup.style.display = "none";
     overlay.style.display = "none"
 });
-// Đóng popup thêm bài hát khi nhấn nút quay lại
-document.getElementById("return").addEventListener("click", function () {
-    const popup = document.getElementById("them-bh-popup");
-    const overlay = document.getElementById("overlay");
-    popup.style.display = "none";
-    overlay.style.display = "none"
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("them-bh-return").addEventListener("click", function () {
+        const popup = document.getElementById("them-bh-popup");
+        const overlay = document.getElementById("overlay");
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    });
 });
-// Đóng popup khi nhấn nút quay lại
+// Mở popup khi nhấn nút thêm bài hát
 document.getElementById("thembaihat-div").addEventListener("click", function () {
     const popup = document.getElementById("them-bh-popup");
     const overlay = document.getElementById("overlay");

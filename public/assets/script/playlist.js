@@ -21,7 +21,7 @@ function playSong(songs, index) {
     const maBaiHat = songs[index].MaBaiHat;
 
     // Gọi API để lấy đánh giá
-    fetch(`/web_nghe_nhac-main/public/assets/php/control/playlistControl.php?action=getReview&MaBaiHat=${maBaiHat}`)
+    fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=getReview&MaBaiHat=${maBaiHat}`)
     .then(response => response.json()) // Chuyển phản hồi thành JSON
     .then(data => {
         // Nếu không có đánh giá, gán giá trị mặc định
@@ -38,7 +38,7 @@ function playSong(songs, index) {
     })
     .catch(error => console.error(`Lỗi khi lấy đánh giá bài hát:`, error));
 
-    audioPlayer.src = `/web_nghe_nhac-main/public/song/${song.FileBaiHat}`; 
+    audioPlayer.src = `/web_nghe_nhac/public/song/${song.FileBaiHat}`; 
     //
     audioPlayer.play();
     console.log(`Đang phát: ${song.TenBaiHat} - ${song.TenNgheSy}`);
@@ -91,7 +91,7 @@ function updateArtistView(maDSP, tenDSP, loaiDSP, imgPath) {
 
     if (loaiDSP === 'Playlist') {
         // Fetch số bài hát từ server
-        fetch(`/web_nghe_nhac-main/public/assets/php/control/playlistControl.php?action=count&maDSP=${maDSP}`)
+        fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=count&maDSP=${maDSP}`)
             .then(response => response.text())
             .then(songCount => {
                 document.getElementById('artist-follower').innerHTML = `${songCount} bài hát`;
@@ -222,7 +222,7 @@ function displayReview(reviews) {
 //Load playlist mặc định
 document.addEventListener('DOMContentLoaded', function() {
     // Gọi playlist mặc định từ server khi tải trang
-    fetch('/web_nghe_nhac-main/public/assets/php/control/playlistControl.php?action=default')
+    fetch('/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=default')
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -346,7 +346,7 @@ document.getElementById('newlist-form').addEventListener('submit', async (e) => 
 
     try {
         // Gửi dữ liệu đến server
-        const response = await fetch('/web_nghe_nhac-main/public/assets/php/control/playlistControl.php', {
+        const response = await fetch('/web_nghe_nhac/public/assets/php/control/playlistControl.php', {
             method: 'POST',
             body: formData,
         });
@@ -395,7 +395,7 @@ document.getElementById('form-them-bh').addEventListener('submit', function(even
     console.log('Dữ liệu gửi để tìm bài hát:', tenBaiHat);
 
     // URL tìm bài hát bằng phương thức GET
-    const findSongUrl = `/web_nghe_nhac-main/public/assets/php/control/playlistControl.php?songName=${encodedSongName}`;
+    const findSongUrl = `/web_nghe_nhac/public/assets/php/control/playlistControl.php?songName=${encodedSongName}`;
 
 
     fetch(findSongUrl)
@@ -418,7 +418,7 @@ document.getElementById('form-them-bh').addEventListener('submit', function(even
                 console.log('Dữ liệu gửi (FormData):', [...formData.entries()]);
 
                 // Gửi yêu cầu thêm bài hát vào playlist
-                return fetch('/web_nghe_nhac-main/public/assets/php/control/playlistControl.php', {
+                return fetch('/web_nghe_nhac/public/assets/php/control/playlistControl.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -452,7 +452,7 @@ document.getElementById('form-them-bh').addEventListener('submit', function(even
 // Hàm tải lại danh sách bài hát trong playlist
 function loadSongs(maDSP) {
     // Fetch danh sách bài hát từ server
-    fetch(`/web_nghe_nhac-main/public/assets/php/control/playlistControl.php?action=songs&maDSP=${maDSP}`)
+    fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=songs&maDSP=${maDSP}`)
         .then(response => response.json())
         .then(songs => {
             currentSongs = songs; // Lưu danh sách bài hát
@@ -465,7 +465,7 @@ function loadSongs(maDSP) {
                 songDiv.id = `song${index}`;
                 songDiv.innerHTML = `
                     <span id="stt">${index + 1}</span>
-                    <span><img src="/web_nghe_nhac-main/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}"></span>
+                    <span><img src="/web_nghe_nhac/public/assets/img/data-songs-image/${song.AnhBaiHat}" alt="${song.TenBaiHat}"></span>
                     <span id="namesong">
                         ${song.TenBaiHat}<br>
                         <span id="author">${song.TenNgheSy}</span>
@@ -548,7 +548,7 @@ function confirmDeleteSong(songId, maDSP) {
     cancelButton.addEventListener('click', () => {
         deleteForm.style.display = 'none';
         const overlay = document.getElementById('overlay');
-        overlay.style.display = 'block';
+        overlay.style.display = 'none';
     });
 
     // Xác nhận xóa bài hát
@@ -562,7 +562,7 @@ function confirmDeleteSong(songId, maDSP) {
         formData.append('maDSP', maDSP);
 
         // Gửi yêu cầu xóa bài hát qua fetch API
-        fetch(`/web_nghe_nhac-main/public/assets/php/control/playlistControl.php`, {
+        fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php`, {
             method: 'POST',
             body: formData, // Gửi FormData thay vì JSON
         })
@@ -610,7 +610,7 @@ document.getElementById("delete-playlist-button").addEventListener("click", () =
         formData.append('maDSP', currentPlaylist); // Gửi mã danh sách phát hiện tại
 
         // Gửi yêu cầu POST đến server
-        fetch(`/web_nghe_nhac-main/public/assets/php/control/playlistControl.php`, {
+        fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php`, {
             method: "POST",
             body: formData
         })
