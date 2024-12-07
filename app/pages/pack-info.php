@@ -24,9 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: payment.php");
         exit();  // Đảm bảo dừng lại ngay sau khi chuyển hướng
     }
-} else {
-    // Nếu không phải là phương thức POST, bạn có thể xử lý lỗi hoặc chuyển hướng
-    echo "Không có dữ liệu gửi đến.";
 }
 ?>
 
@@ -345,29 +342,29 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
             </div>
         </div>
     </main>
-    <script>
-    document.getElementById("info").addEventListener("click", function() {
-        var packInfo = document.querySelector(".pack-info");
-        var pack = document.querySelector(".pack");
-        var rightBar = document.getElementById("rightBar");
-
-        // Lấy nội dung của pack và rightBar
-        var packContent = pack.innerHTML;
-        var rightBarContent = rightBar.innerHTML;
-
-        // Kết hợp nội dung của pack và rightBar
-        packInfo.innerHTML = packContent;
-
-        // Hiển thị pack-info
-        packInfo.style.display = "block";
-        rightBar.style.display = "block";
-    });
+<script>
     document.addEventListener("DOMContentLoaded", function () {
     // Lưu nội dung gốc của pack-info
     var packInfo = document.querySelector(".pack-info");
     var originalPackInfoContent = packInfo.innerHTML;
 
-    // Lắng nghe sự kiện click trên icon exit trong rightBar
+    // Xử lý khi nhấn vào icon "info"
+    document.getElementById("info").addEventListener("click", function () {
+        var pack = document.querySelector(".pack");
+        var rightBar = document.getElementById("rightBar");
+
+        // Thay thế nội dung của pack-info bằng nội dung của pack
+        packInfo.innerHTML = pack.innerHTML;
+
+        // Ẩn pack-info
+        packInfo.style.display = "block";
+
+        // Hiển thị pack và rightBar
+        pack.style.display = "block";
+        rightBar.style.display = "block";
+    });
+
+    // Xử lý khi nhấn vào icon "exit" trong rightBar
     document.getElementById("rightBar").addEventListener("click", function (event) {
         if (event.target && event.target.id === "exit-lbl") {
             var pack = document.querySelector(".pack");
@@ -385,11 +382,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         }
     });
 });
-
-</script>
-
-
-    
+</script>    
 
     <!-- File javaScript -->
     <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
