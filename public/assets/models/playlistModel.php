@@ -1,5 +1,5 @@
 <?php
-include_once '/xampp/htdocs/web_nghe_nhac-main/public/assets/php/config/config.php';
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
 
 class PlaylistModel {
     private $db;

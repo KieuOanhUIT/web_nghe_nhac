@@ -1,9 +1,9 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('/public/assets/font/Inter-BoldItalic.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  color: #fff;
+  font-family: 'Inter', sans-serif;
+    src: url('/public/assets/font/Inter-BoldItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    color: #fff;
 }
 
 body {
