@@ -5,22 +5,12 @@
     font-style: normal;
     color: #fff;
 }
-@font-face {
-    font-family: 'Inter', sans-serif;
-    src: url('/public/assets/font/Inter-Medium.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    color: #fff;
-}
+
 body {
     text-align: center;
     margin: auto;
 }
 
-.adminleft {
-    display: contents;
-        margin-top: 25px;
-}
 main {
         display: flow-root;
         background-color: #000000;
@@ -84,7 +74,7 @@ h4 {
 }
 .mainLight {
     position: fixed;
-    width: 1030px;
+    width: 900px;
     height: 651px;
     left: 318px;
     top: 200px;
@@ -98,98 +88,10 @@ h4 {
 }
 
 .main-Space {
-    display: flex;  
-    position: relative;
-    width: 1440px;
-    height: 860px;
-    left: 0px;
-    top: 0px;  
-
+    padding-right: 100px;
+    top:500px;
 }
 
-.controlBar {
-        display: flex;
-        position: relative;
-        max-width: 329px;
-        max-height: 286px;
-        left: 30px;
-        top: 127px;
-        flex-direction: column;
-
-}
-
-.controlBar .manageSong{
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 24px;
-        gap: 10px;
-        width: 329px;
-        height: 74px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(202, 197, 197, 0.15);
-        border-radius: 10px 20px 20px 10px;
-
-        font-family: 'ExtraBold', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-  
-}
-
-
-.controlBar .manageAccount {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 24px;
-        gap: 10px;
-    
-        width: 329px;
-        height: 286px;
-    
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 10px 20px 20px 10px;
-
-        margin-top: 20px;
-}
-
-
-
-#account{
-    font-family: 'ExtraBold', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    margin:0%;
-}
-
-
-
-.controlBar .Report {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 24px;
-        gap: 10px;
-    
-        width: 329px;
-        height: 74px;
-    
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 10px 20px 20px 10px;
-        margin-top: 20px;
-        font-family: 'ExtraBold', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-    
-}
 
 p {
     margin-top: 36px;
@@ -198,26 +100,24 @@ p {
     align-items: center;
     flex-direction: row;
     gap: 10px;
-    font-size: 18px;
     font-family: 'Inter', 'Semibold', 'Helvetica Neue', Helvetica, Arial;
     font-weight: bold;
 }
 
 .accountSpace {
 
-    
+        margin-left: -20px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 24px;
-        gap: 40px;
+        padding: 24px 0;
+        gap: 20px;
     
         position: absolute;
-        width: 1032px;
-        height: 600px;
+        width: 880px;
         left: 390px;
-        top: 126px;
+        top: 117px;
         overflow-y: scroll;
     
         background: rgba(255, 255, 255, 0.1);
@@ -229,30 +129,25 @@ p {
 
 .accountSpace .findSong {
     display: flex;
-    height: 44px;
-    width: 487px; 
-    gap: 40px;
-   
+    justify-content: center; /* Căn giữa tìm kiếm */
+    flex-wrap: wrap; /* Gói lại khi không đủ không gian */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
 }
 
 .accountSpace .findSong .boxInput {
-    width: 340px;
-    height: 44px;
-    display: flex;
+    width: 100%; /* Mặc định chiếm toàn bộ chiều rộng màn hình */
+    max-width: 300px; /* Giới hạn chiều rộng tối đa */    display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .accountSpace .findSong .boxInput #boxFind {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
     
         gap: 10px;
-        width: 340px;
-        height: 44px;
         background: rgba(255, 255, 255, 0.25);
         border-radius: 30px;
+        height: 44px;
         padding: 0%;
         border: 0px;
         padding-left: 50px;
@@ -296,7 +191,7 @@ table {
         flex-direction: column;
         align-items: flex-start;
         padding: 0px;
-        width: 984px;
+        width: 100%;
         border-color: transparent;
         background-color: transparent;
 }
@@ -312,45 +207,54 @@ th, td {
 /* định dạng thêm tài khoản */
 
 
+<<<<<<< HEAD
 .updateaccount, .addAccount {
     position: relative;
+=======
+.addAccount, .updateAccount {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     width: 440px;
-    height: 680px;
-
+    height: 550px;
     background: #000000;
     padding-top: 20px;
-    margin-top: 2px;
     border: 2px solid rgb(144, 143, 143);
     border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
     z-index: 100000;
-
+}
+h1 {
+    font-size:20px;
 }
 
-.addAccount #formaddAccount  table {
-    margin-top: 20px;
+.addAccount #formaddAccount  table, .updateAccount #formaddAccount2 table {
+    margin-top: -30px;
     position: flex;
     width: 100%;
     border-collapse: collapse;
 }
 
 /* .addAccount #formaddAccount2 table {
+<<<<<<< HEAD
     margin-top: 20px;
+=======
+    margin-top: 10px;
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     position: flex;
     width: 100%;
     border-collapse: collapse;
 } */
 
-.addAccount #formaddAccount  table tr {
+.addAccount #formaddAccount  table tr, .updateAccount #formaddAccount2 table tr {
     display: flex;
     flex-direction: column;
     margin: 10px;
     padding-left: 13px;
-
-
 }
 
+<<<<<<< HEAD
 #updateaccount #formaddAccount2 table tr {
     display: flex !important;
         /* Cưỡng chế flex */
@@ -372,6 +276,8 @@ div#updateaccount {
 
 
 
+=======
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
 input[type="text"],
 input[type="date"],
 #pakage {
@@ -383,7 +289,7 @@ input[type="date"],
     padding: 10px 10px;
 
     width: 370px;
-    height: 56px;
+    height: 40px;
 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -414,21 +320,21 @@ input[type="date"]:focus,
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-input[type="submit"] {
+input[type="submit"],
+button {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 6px 24px;
-    gap: 10px;
-
-    width: 77px;
-    height: 36px;
-
+    padding: 10px 20px;
+    width: 100px;
     background: #296265;
     border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
 }
 
+<<<<<<< HEAD
 .updateaccount #add, .addAccount #add {
 
     display: flex;
@@ -448,15 +354,22 @@ input[type="submit"] {
 }
 
 .updateaccount #return ,.addAccount #return {
+=======
+button:hover {
+    background: #3b7d7d;
+}
+
+#return {
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     display: flex;
     margin-left: 50px;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     z-index: 1000;
 }
 
-.addAccount #return:hover {
+#return:hover {
     background: rgba(243, 241, 241, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.4);
 
@@ -476,122 +389,99 @@ p:hover {
     cursor: pointer;
     padding: 3px;
     transition: background 0.2s ease, border 0.2s ease;
-    color: aqua;
-}
-
-
-/* dinh dang header */
-header {
-    z-index: 1000;
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: row;
-    padding: 10px 55px;
-    gap: 10px;
-
-    position: fixed;
-    width: 1150px;
-    height: 65px;
-    top: 24px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 24px;
-}
-
-header .controlbar {
-    display: flex;
-    position: fixed;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px;
-    gap: 96px;
-
-    background-color: transparent;
-
-    width: 1040px;
-    height: 45px;
-}
-
-
-header .searching {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 16px;
-
-    margin: 0 auto;
-    width: auto;
-    height: 44px;
-
-    flex: none;
-    flex-grow: 0;
-}
-
-header .searching .home,
-header .searching .voice-searching,
-header .general .account {
-    background: rgba(255, 255, 255, 0.25);
-    display: flex;
-    border-radius: 40px;
-    width: 44px;
-    height: 44px;
-    justify-content: center;
 }
 
 iconify-icon {
-    font-size: 28px;
     align-self: center;
     color: #fff;
 }
 
-header .searching .input-wrapper {
-    width: 340px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 15px;
-}
-
-header .searching .input-wrapper img {
-    width: 20px;
-    height: 20px;
-    margin-right: 20px;
-}
-
-header .searching .input-wrapper input {
-    height: 40px;
-    width: 100%;
-    padding-left: 10px;
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    outline: none;
-    color: #fff;
-}
-
-header .general {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    height: 44px;
-    align-items: center;
-    width: auto;
-}
-
 tr:hover {
+<<<<<<< HEAD
     background-color: #aacce6;
     /* Màu nền khi di chuột vào hàng */
+=======
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed
     cursor: pointer;
     /* Thay đổi con trỏ khi di chuột để tăng trải nghiệm */
 }
 
+<<<<<<< HEAD
+=======
+/* Media Queries cho màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .accountSpace .findSong {
+        width: 90%; /* Chiếm 90% chiều rộng màn hình */
+        gap: 20px;
+    }
+
+    .accountSpace .findSong .boxInput {
+        width: 70%; /* Giảm độ rộng */
+    }
+
+    .tableAccount table {
+        width: 100%; /* Để bảng chiếm toàn bộ chiều rộng */
+    }
+
+    .tableAccount th, .tableAccount td {
+        padding: 6px; /* Giảm khoảng cách trong ô */
+    }
+}
+
+/* Media Queries sửa đổi để hỗ trợ thu nhỏ tốt hơn */
+@media (max-width: 768px) {
+    .accountSpace {
+        width: 95%; /* Giảm chiều rộng để vừa với màn hình */
+        left: auto; /* Căn giữa */
+        right: auto;
+        padding: 16px; /* Giảm khoảng cách */
+    }
+
+    .accountSpace .findSong {
+        width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+        gap: 15px; /* Thu nhỏ khoảng cách giữa các phần tử */
+    }
+
+    .accountSpace .findSong .boxInput {
+        width: 70%; /* Tối ưu hóa độ rộng cho tìm kiếm */
+    }
+
+    .tableAccount table {
+        width: 100%; /* Tối đa chiều rộng bảng */
+    }
+
+    .tableAccount th, .tableAccount td {
+        padding: 8px; /* Giảm khoảng cách trong các ô */
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+}
+
+@media (max-width: 480px) {
+    .accountSpace {
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        padding: 12px; /* Tăng cường khoảng cách nhỏ */
+    }
+
+    .accountSpace .findSong {
+        width: 100%; /* Chiếm toàn bộ màn hình */
+        gap: 10px;
+    }
+
+    .accountSpace .findSong .boxInput {
+        width: 100%; /* Đầy đủ chiều rộng */
+        height: 30px; /* Chiều cao nhỏ hơn */
+    }
+
+    .tableAccount table{
+        width: 100%; /* Đảm bảo không bị tràn */
+    }
+
+    .tableAccount th, .tableAccount td {
+        width: 100%; /* Chiều rộng tự động */
+    }
+
+    .tableAccount tr {
+        display: block; /* Chuyển từng hàng thành khối */
+    }
+}
+>>>>>>> b067d212a493b64d402f3b147692091961d00eed

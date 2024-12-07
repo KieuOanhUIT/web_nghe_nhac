@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5; url=home.php">
+    <meta http-equiv="refresh" content="500; url=home.php">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/vnpay.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">

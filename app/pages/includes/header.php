@@ -51,7 +51,7 @@
                     <a href="pack-info.php"><iconify-icon icon="material-symbols:select-window-2"></iconify-icon></a>
                 </div>
                 <div class="account">
-                    <iconify-icon icon="mdi:account"></iconify-icon>
+                <a href="../../../public/assets/php/profile-info.php"><iconify-icon icon="mdi:account"></iconify-icon></a>
 
                 </div>
                 <p class="op_50">

@@ -20,12 +20,23 @@ function displaySong(song) {
             : `/web_nghe_nhac/public/assets/img/dsyeuthich.png`;
     });
 
-    // Cập nhật hình ảnh bài hát
+    // Cập nhật hình ảnh nghệ sỹ
     const artistImages = document.querySelectorAll('.artist-image');
     artistImages.forEach(img => {
         img.src = song.AnhNgheSy 
             ? `/web_nghe_nhac/public/assets/img/data-artists-image/${song.AnhNgheSy}` 
             : `/web_nghe_nhac/public/assets/img/dsyeuthich.png`;
+    });
+
+    // Cập nhật link nghệ sỹ
+    const artistInfo = document.querySelectorAll('.artist-info');
+    artistInfo.forEach(info => {
+        info.innerHTML = `
+            <a href="/web_nghe_nhac/artist_info.php?id=${song.MaNgheSy}">
+                <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${song.AnhNgheSy}" alt="${song.TenNgheSy}">
+                <h3>${song.TenNgheSy}</h3>
+            </a>
+        `;
     });
 
     // Cập nhật tên bài hát

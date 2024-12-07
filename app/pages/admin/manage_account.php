@@ -62,13 +62,12 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
             <div class="tableAccount">
                 <table>
                     <colgroup>
-                        <col style="width: 34px;">
-                        <col style="width: 180px;">
-                        <col style="width: 340px;">
-                        <col style="width: 240px;">
-                        <col style="width: 240px;">
-                        <col style="width: 240px;">
-
+                        <col class="col-small">
+                        <col class="col-medium">
+                        <col class="col-large">
+                        <col class="col-medium">
+                        <col class="col-large">
+                        <col class="col-large">
                     </colgroup>
                     <thead>
 
@@ -180,7 +179,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
 
         // Gửi dữ liệu bằng AJAX mà không chuyển trang
         $.ajax({
-            url: "./includes/model_admin_left_update.php", // Đường dẫn tới file xử lý PHP
+            url: "../includes/model_admin_left_update.php", // Đường dẫn tới file xử lý PHP
             type: "POST",
             data: {
                 MaNguoiDung: MaTaiKhoan,
@@ -214,7 +213,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
 
         // Gửi dữ liệu bằng AJAX mà không chuyển trang
         $.ajax({
-            url: "./includes/model_admin_left_delete.php", // Đường dẫn tới file xử lý PHP
+            url: "../includes/model_admin_left_delete.php", // Đường dẫn tới file xử lý PHP
             type: "POST",
             data: {
                 MaTaiKhoan: MaTaiKhoan,
