@@ -1,0 +1,830 @@
+body {
+    background-image: url('/web_nghe_nhac-main/public/assets/img/image-bg.png');
+    background-color: rgb(0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    background-attachment: fixed;
+    width: 1440px;
+    height: 781px;
+    font-family: 'Inter', sans-serif;
+    margin: 0 auto;
+    display: flex;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối với độ trong suốt */
+    z-index: 999; /* Đảm bảo lớp phủ nằm dưới popup */
+    display: none; /* Ẩn lớp phủ khi không cần thiết */
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+#menu {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    width: 329px;
+    height: 474px;
+    margin-left: 26px;
+    z-index: 1;
+}
+
+#qlbh {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    gap: 10px;
+
+    width: 329px;
+    height: 286px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px 20px 20px 10px;
+}
+
+#qlbh-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 28px;
+
+    width: 281px;
+    height: 26px;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+#qlbh-body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0px;
+
+    width: 281px;
+    height: 192px;
+    margin-top: auto;
+}
+
+#qlbh-body button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+
+    width: 281px;
+    height: 24px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+#qlbh-body #qlbh-funtion-logo {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 40px;
+}
+
+#qltk {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    gap: 10px;
+
+    width: 329px;
+    height: 74px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px 20px 20px 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+#baocao {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    gap: 18px;
+
+    width: 329px;
+    height: 74px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px 20px 20px 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+#main {
+    box-sizing: border-box;
+    display: flex;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    gap: 40px;
+
+    width: 1030px;
+    height: 718px;
+    margin-left: 25px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px 10px 10px 20px;
+    z-index: 1;
+}
+
+#main-head {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+#search-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+
+    width: 487px;
+    height: 44px;
+}
+
+#search-typing {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 9px 20px;
+    gap: 10px;
+
+    width: 340px;
+    height: 44px;
+
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+}
+
+#search-typing input[type=text] {
+    width: 280px;
+
+    background-color: transparent;
+    color: white;
+    margin-left: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 18px;
+
+    width: 107px;
+    height: 42px;
+
+    background: #296265;
+    border-radius: 61px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#main-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    width: 982px;
+    height: 586px;
+}
+
+#songs-title {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+
+    width: 919px;
+    height: 24px;
+    color: white;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #CCCCCC;
+}
+
+#songs-title span:nth-child(1) {
+    width: 55px;
+    margin-left: 66px;
+}
+
+#songs-title span:nth-child(2) {
+    width: 567px;
+}
+
+#songs-list {
+    height: 658px;
+    width: 982px;
+    margin-top: 12px;
+    overflow-y: auto;
+
+    scrollbar-width: thin; /* Thanh cuộn nhỏ */
+    scrollbar-color: #1DB954 transparent; /* Màu của thanh cuộn và khung */
+}
+
+#songs-list div {
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    padding: 0 12px;
+    margin-bottom: 12px;
+}
+
+#songs-list input[type=checkbox] {
+    box-sizing: border-box;
+
+    width: 20px;
+    height: 20px;
+
+    border: 3px solid #FFFFFF;
+    border-radius: 2px;
+    background-color: transparent;
+    appearance: none;
+    
+}
+
+#songs-list input[type=checkbox]:checked {
+    content: '✔';
+    background-color:slategray;
+}
+
+#songs-list input[type=checkbox]:checked::before
+{
+    content: '';
+    display: block;
+    color: white; /* Màu của dấu kiểm */
+    width: 9px; /* Kích thước của hình vuông nhỏ */
+    height: 9px;
+    background-color: white;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#songs-list .stt /*Số thứ tự*/ {
+    width: 50px;
+    margin-left: 28px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+}
+#songs-list img {
+    margin-left: 39px;
+    margin-right: 20px;
+    width: 63px;
+    height: 63px;
+    border-radius: 4px;
+}
+
+#songs-list .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+
+    width: 484px;
+    height: 56px;
+}
+
+#songs-list .title .tenBH {
+    width: 484px;
+    height: 26px;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+
+    display: flex;
+    align-items: center;
+}
+
+#songs-list .title .tenNS {
+    width: 484px;
+    height: 24px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    display: flex;
+    align-items: center;
+
+    color: #CCCCCC;
+}
+
+#songs-list .type {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #FFFFFF;
+    margin-right: auto;
+    margin-left: 34px; 
+}
+
+/*Thêm bài hát*/
+#them-bh-popup {
+    display: none;
+    position: absolute;
+
+    box-sizing: border-box;
+    width: 440px;
+    height: 825px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    
+    flex-direction: column;
+    background: #000000;
+    z-index: 1000;
+}
+
+#return {
+    box-sizing: border-box;
+    height: 50px;
+    width: 50px;
+    margin-left: 25px;
+    margin-top: 25px;
+    margin-bottom: 13px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+#popup-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 325px;
+    height: 700px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #FFFFFF;
+}
+#choose-image {
+    display: flex;
+    background-color: transparent;
+    border: transparent !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 103px;
+    height: 103px;
+    cursor: pointer;
+    align-items: center; /* Căn giữa nội dung theo trục dọc */
+    justify-content: center; /* Căn giữa nội dung theo trục ngang */
+    overflow: hidden; /* Ẩn các phần thừa của ảnh */
+}
+#choose-image img {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+#name-bh {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 325px;
+    height: 86px;
+}
+#form p {
+    margin: 0px 0px 6px 0px;
+}
+input[name=name-bh], input[name=name-artist] {
+
+    box-sizing: border-box;
+    padding: 17px 20px;
+    width: 325px;
+    height: 56px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+}
+#select-theloai {
+    box-sizing: border-box;
+    padding: 17px 20px;
+    width: 325px;
+    height: 56px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+}
+#select-theloai option {
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+}
+#select-theloai option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+#lyrics {
+    width: 324px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'inter', 'extra bold';
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+textarea[name=lyrics] {
+    box-sizing: border-box;
+    width: 324px;
+    height: 112px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    padding: 17px;
+    resize: none; /* Loại bỏ khả năng thay đổi kích thước */
+    overflow-wrap: break-word; /* Cho phép văn bản tự động xuống dòng */
+    word-wrap: break-word; /* Hỗ trợ trình duyệt cũ */
+    text-align: left; /* Căn văn bản sang trái */
+    vertical-align: top; /* Căn văn bản theo chiều dọc */
+    line-height: 1.4; /* Khoảng cách giữa các dòng */
+    font-family: 'Inter', sans-serif;
+}
+input[type=submit] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+
+    width: 77px;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+    border: none;
+
+    margin-top: 12px;
+    margin-left: auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+input[type=submit]:active {
+    transform: scale(0.9);
+}
+#upload-bai-hat-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+
+    width: 200pxpx;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+    border: none;
+
+    margin-top: 12px;
+    margin-right: auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#upload-bai-hat-button:active {
+    transform: scale(0.9);
+}
+
+/*Cập nhật bài hát*/
+#cap-nhat-bh-popup {
+    display: none;
+    position: absolute;
+
+    box-sizing: border-box;
+    width: 440px;
+    height: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    
+    flex-direction: column;
+    background: #000000;
+    z-index: 1000;
+}
+
+#cap-nhat-return {
+    box-sizing: border-box;
+    height: 50px;
+    width: 50px;
+    margin-left: 25px;
+    margin-top: 25px;
+    margin-bottom: 13px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+#cap-nhat-popup-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+#cap-nhat-bh-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 325px;
+    height: 700px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #FFFFFF;
+}
+#cap-nhat-choose-image {
+    display: flex;
+    background-color: transparent;
+    border: transparent !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 103px;
+    height: 103px;
+    cursor: pointer;
+    align-items: center; /* Căn giữa nội dung theo trục dọc */
+    justify-content: center; /* Căn giữa nội dung theo trục ngang */
+    overflow: hidden; /* Ẩn các phần thừa của ảnh */
+}
+#cap-nhat-choose-image img {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+#cap-nhat-name-bh {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 325px;
+    height: 86px;
+}
+#cap-nhat-bh-form p {
+    margin: 0px 0px 6px 0px;
+}
+#cap-nhat-ten-bai-hat, #cap-nhat-ten-nghe-sy {
+
+    box-sizing: border-box;
+    padding: 17px 20px;
+    width: 325px;
+    height: 56px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+}
+#cap-nhat-select-theloai {
+    box-sizing: border-box;
+    padding: 17px 20px;
+    width: 325px;
+    height: 56px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+}
+#cap-nhat-select-theloai option {
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+}
+#cap-nhat-select-theloai option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+#cap-nhat-lyrics {
+    width: 324px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'inter', 'extra bold';
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+textarea[name=cap-nhat-lyrics] {
+    box-sizing: border-box;
+    width: 324px;
+    height: 112px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    padding: 17px;
+    resize: none; /* Loại bỏ khả năng thay đổi kích thước */
+    overflow-wrap: break-word; /* Cho phép văn bản tự động xuống dòng */
+    word-wrap: break-word; /* Hỗ trợ trình duyệt cũ */
+    text-align: left; /* Căn văn bản sang trái */
+    vertical-align: top; /* Căn văn bản theo chiều dọc */
+    line-height: 1.4; /* Khoảng cách giữa các dòng */
+    font-family: 'Inter', sans-serif;
+}
+#cap-nhat-submit { /*Nút cập nhật*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+
+    width: 120px;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+    border: none;
+
+    margin-top: 12px;
+    margin-left: auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#cap-nhat-submit:active { /*Nút cập nhật*/
+    transform: scale(0.9);
+}
+#cap-nhat-upload-bh { /*Nút upload*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px;
+    gap: 10px;
+
+    width: 200pxpx;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+    border: none;
+
+    margin-top: 12px;
+    margin-right: auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#cap-nhat-upload-bh:active { /*Nút upload*/
+    transform: scale(0.9);
+}
+
