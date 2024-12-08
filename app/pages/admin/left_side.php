@@ -1,6 +1,6 @@
 <li class="left-li">
     <div class="menu-items">
-        <a href="#" class="left-menu">Quản lý bài hát</a>
+        <a href="/web_nghe_nhac/app/pages/admin/manage_song.php" class="left-menu">Quản lý bài hát</a>
         <ul class="left-submenu">
             <li><a href="#" id="thembaihat-div">
                     <!--Thêm id để kích hoạt button các chức năng quản lý bài hát-->
