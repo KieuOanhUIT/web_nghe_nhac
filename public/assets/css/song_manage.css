@@ -5,10 +5,11 @@ body {
     background-size: 60%;
     background-position: center;
     background-attachment: fixed;
-    width: 1440px;
-    height: 781px;
-    font-family: 'Inter', sans-serif;
+    width: 100%;
+    height: 780px;
+    font-family: Arial, sans-serif;
     margin: 0 auto;
+    color: #fff;
 }
 
 #overlay {
@@ -27,140 +28,6 @@ button {
     background-color: transparent;
 }
 
-#menu {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-
-    width: 329px;
-    height: 474px;
-    margin-left: 26px;
-    z-index: 1;
-}
-
-#qlbh {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px;
-    gap: 10px;
-
-    width: 329px;
-    height: 286px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px 20px 20px 10px;
-}
-
-#qlbh-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    gap: 28px;
-
-    width: 281px;
-    height: 26px;
-
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 110%;
-    color: #FFFFFF;
-}
-
-#qlbh-body {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-    align-items: center;
-    justify-content: center;
-    padding: 24px 0px;
-
-    width: 281px;
-    height: 192px;
-    margin-top: auto;
-}
-
-#qlbh-body button {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    color: white;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 150%;
-
-    width: 281px;
-    height: 24px;
-    padding: 0px;
-    cursor: pointer;
-}
-
-#qlbh-body #qlbh-funtion-logo {
-    max-width: 100%;
-    max-height: 100%;
-    margin-left: 40px;
-}
-
-#qltk {
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    gap: 10px;
-
-    width: 329px;
-    height: 74px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px 20px 20px 10px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 110%;
-    align-items: center;
-
-    color: #FFFFFF;
-}
-
-#baocao {
-    box-sizing: border-box;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    gap: 18px;
-
-    width: 329px;
-    height: 74px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px 20px 20px 10px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 110%;
-    color: #FFFFFF;
-}
-
 #main {
     box-sizing: border-box;
     position: absolute;
@@ -168,15 +35,13 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px;
-    gap: 40px;
-
-    width: 1030px;
+    padding: 24px 0 24px 24px;
+    gap: 30px;
+    width: 100%;
+    max-width: 850px;
     height: 718px;
     top: 118px;
     left: 380px;
-    margin-left: 25px;
-
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px 10px 10px 20px;
@@ -196,7 +61,7 @@ button {
     align-items: flex-start;
     gap: 40px;
 
-    width: 487px;
+    width: 500px;
     height: 44px;
 }
 
@@ -222,7 +87,7 @@ button {
     margin-left: 5px;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
 }
 
@@ -230,18 +95,17 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 9px 18px;
+    padding: 9px 20px;
 
-    width: 107px;
+    width: 120px;
     height: 42px;
 
     background: #296265;
     border-radius: 61px;
 
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
     color: #FFFFFF;
     cursor: pointer;
@@ -252,8 +116,8 @@ button {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-
-    width: 982px;
+    width:100%;
+    max-width: 800px;
     height: 586px;
 }
 
@@ -261,36 +125,36 @@ button {
     display: flex;
     align-items: center;
     gap: 34px;
-
-    width: 919px;
+    width:100%;
+    max-width: 800px;
     height: 24px;
     color: white;
 
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
     color: #CCCCCC;
 }
 
 #songs-title span:nth-child(1) {
-    width: 55px;
-    margin-left: 66px;
+    width: 40px;
+    margin-left: 68px;
 }
 
 #songs-title span:nth-child(2) {
-    width: 567px;
+    width: 500px;
 }
 
 #songs-list {
     height: 658px;
-    width: 982px;
+    width:100%;
+    max-width: 800px;
     margin-top: 12px;
     overflow-y: auto;
 
     scrollbar-width: thin; /* Thanh cuộn nhỏ */
-    scrollbar-color: #1DB954 transparent; /* Màu của thanh cuộn và khung */
+    scrollbar-color: #296265 transparent; /* Màu của thanh cuộn và khung */
 }
 
 #songs-list div {
@@ -339,11 +203,11 @@ button {
 
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
 }
 #songs-list img {
-    margin-left: 39px;
+    margin-left: 25px;
     margin-right: 20px;
     width: 63px;
     height: 63px;
@@ -356,12 +220,12 @@ button {
     align-items: flex-start;
     gap: 6px;
 
-    width: 484px;
+    width: 430px;
     height: 56px;
 }
 
 #songs-list .title .tenBH {
-    width: 484px;
+    width: 430px;
     height: 26px;
 
     font-style: normal;
@@ -374,12 +238,12 @@ button {
 }
 
 #songs-list .title .tenNS {
-    width: 484px;
+    width: 430px;
     height: 24px;
 
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
 
     display: flex;
@@ -391,23 +255,23 @@ button {
 #songs-list .type {
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
 
     color: #FFFFFF;
     margin-right: auto;
-    margin-left: 34px; 
+    margin-left: 24px; 
 }
 
 /*Thêm bài hát*/
-#them-bh-popup {
+#them-bh-popup, /*Cập nhật bài hát*/
+#cap-nhat-bh-popup {
     display: none;
     position: absolute;
-
+    border-radius: 10px;
     box-sizing: border-box;
-    width: 440px;
-    height: 825px;
-    top: 50%;
+    width: 350px;
+    height: 675px;
     left: 50%;
     transform: translate(-50%, -50%);
     align-items: center;
@@ -417,7 +281,7 @@ button {
     z-index: 1000;
 }
 
-#them-bh-return {
+#them-bh-return, #cap-nhat-return {
     box-sizing: border-box;
     height: 50px;
     width: 50px;
@@ -427,35 +291,31 @@ button {
     cursor: pointer;
     align-self: flex-start;
 }
-#popup-title {
-    font-family: 'Inter';
+#popup-title, #cap-nhat-popup-title {
     font-style: normal;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 110%;
     display: flex;
     align-items: center;
 
     color: #FFFFFF;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
-#form {
+form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    padding-left: 25px;
 
     width: 325px;
     height: 700px;
 
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 150%;
-
-    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 100%;
 }
-#choose-image {
+#choose-image, #cap-nhat-choose-image{
     display: flex;
     background-color: transparent;
     border: transparent !important;
@@ -468,7 +328,7 @@ button {
     justify-content: center; /* Căn giữa nội dung theo trục ngang */
     overflow: hidden; /* Ẩn các phần thừa của ảnh */
 }
-#choose-image img {
+#choose-image img, #cap-nhat-choose-image img {
     box-sizing: border-box;
     max-width: 100%;
     max-height: 100%;
@@ -476,84 +336,57 @@ button {
     border-radius: 50%;
     object-fit: cover;
 }
-#name-bh {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 
-    width: 325px;
-    height: 86px;
+#form p, #cap-nhat-bh-form p {
+    margin: 0px 0px 3px 0px;
+    padding: 15px 0 5px;
 }
-#form p {
-    margin: 0px 0px 6px 0px;
-}
-input[name=name-bh], input[name=name-artist] {
-
+input[name=name-bh], input[name=name-artist], #select-theloai, textarea[name=lyrics],
+#cap-nhat-ten-bai-hat, #cap-nhat-ten-nghe-sy, #cap-nhat-select-theloai, textarea[name=cap-nhat-lyrics] {
     box-sizing: border-box;
-    padding: 17px 20px;
-    width: 325px;
-    height: 56px;
+    padding: 5px 20px;
+    width: 300px;
+    height: 36px;
 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 5px;
 
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     font-weight: 400;
 }
-#select-theloai {
-    box-sizing: border-box;
-    padding: 17px 20px;
-    width: 325px;
-    height: 56px;
 
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-
-    font-size: 16px;
-    color: white;
-    font-weight: 400;
-}
-#select-theloai option {
+#select-theloai option, #cap-nhat-select-theloai option {
     background-color: black;
     color: white;
     border: none;
     outline: none;
 }
-#select-theloai option:hover {
+#select-theloai option:hover, #cap-nhat-select-theloai option:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
-#lyrics {
+#lyrics, #cap-nhat-lyrics {
     width: 324px;
     margin-left: auto;
     margin-right: auto;
-    font-family: 'inter', 'extra bold';
-    font-size: 16px;
+    font-family: 'Arial', 'extra bold';
+    font-size: 14px;
     color: #FFFFFF;
     font-weight: 600;
 }
 
-textarea[name=lyrics] {
-    box-sizing: border-box;
-    width: 324px;
-    height: 112px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    font-weight: 400;
-    padding: 17px;
+textarea[name=lyrics], textarea[name=cap-nhat-lyrics] {
+    height: 92px;
+    padding: 10px;
     resize: none; /* Loại bỏ khả năng thay đổi kích thước */
     overflow-wrap: break-word; /* Cho phép văn bản tự động xuống dòng */
     word-wrap: break-word; /* Hỗ trợ trình duyệt cũ */
     text-align: left; /* Căn văn bản sang trái */
     vertical-align: top; /* Căn văn bản theo chiều dọc */
     line-height: 1.4; /* Khoảng cách giữa các dòng */
-    font-family: 'Inter', sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 input[type=submit] {
     display: flex;
@@ -561,9 +394,8 @@ input[type=submit] {
     justify-content: center;
     align-items: center;
     padding: 6px 24px;
-    gap: 10px;
 
-    width: 77px;
+    width: 87px;
     height: 36px;
 
     background: #296265;
@@ -571,212 +403,21 @@ input[type=submit] {
     border: none;
 
     margin-top: 12px;
-    margin-left: auto;
+    margin-right: 24px;;
 
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     cursor: pointer;
     transition: transform 0.2s;
 }
-input[type=submit]:active {
-    transform: scale(0.9);
-}
-#upload-bai-hat-button {
+#cap-nhat-submit {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 6px 24px;
-    gap: 10px;
-
-    width: 200pxpx;
-    height: 36px;
-
-    background: #296265;
-    border-radius: 5px;
-    border: none;
-
-    margin-top: 12px;
-    margin-right: auto;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-#upload-bai-hat-button:active {
-    transform: scale(0.9);
-}
-
-/*Cập nhật bài hát*/
-#cap-nhat-bh-popup {
-    display: none;
-    position: absolute;
-
-    box-sizing: border-box;
-    width: 440px;
-    height: 700px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-items: center;
-    
-    flex-direction: column;
-    background: #000000;
-    z-index: 1000;
-}
-
-#cap-nhat-return {
-    box-sizing: border-box;
-    height: 50px;
-    width: 50px;
-    margin-left: 25px;
-    margin-top: 25px;
-    margin-bottom: 13px;
-    cursor: pointer;
-    align-self: flex-start;
-}
-#cap-nhat-popup-title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 110%;
-    display: flex;
-    align-items: center;
-
-    color: #FFFFFF;
-    margin-bottom: 25px;
-}
-#cap-nhat-bh-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    width: 325px;
-    height: 700px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 150%;
-
-    color: #FFFFFF;
-}
-#cap-nhat-choose-image {
-    display: flex;
-    background-color: transparent;
-    border: transparent !important;
-    margin-left: auto;
-    margin-right: auto;
-    width: 103px;
-    height: 103px;
-    cursor: pointer;
-    align-items: center; /* Căn giữa nội dung theo trục dọc */
-    justify-content: center; /* Căn giữa nội dung theo trục ngang */
-    overflow: hidden; /* Ẩn các phần thừa của ảnh */
-}
-#cap-nhat-choose-image img {
-    box-sizing: border-box;
-    max-width: 100%;
-    max-height: 100%;
-
-    border-radius: 50%;
-    object-fit: cover;
-}
-#cap-nhat-name-bh {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    width: 325px;
-    height: 86px;
-}
-#cap-nhat-bh-form p {
-    margin: 0px 0px 6px 0px;
-}
-#cap-nhat-ten-bai-hat, #cap-nhat-ten-nghe-sy {
-
-    box-sizing: border-box;
-    padding: 17px 20px;
-    width: 325px;
-    height: 56px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-
-    font-size: 16px;
-    color: white;
-    font-weight: 400;
-}
-#cap-nhat-select-theloai {
-    box-sizing: border-box;
-    padding: 17px 20px;
-    width: 325px;
-    height: 56px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-
-    font-size: 16px;
-    color: white;
-    font-weight: 400;
-}
-#cap-nhat-select-theloai option {
-    background-color: black;
-    color: white;
-    border: none;
-    outline: none;
-}
-#cap-nhat-select-theloai option:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
-#cap-nhat-lyrics {
-    width: 324px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'inter', 'extra bold';
-    font-size: 16px;
-    color: #FFFFFF;
-    font-weight: 600;
-}
-
-textarea[name=cap-nhat-lyrics] {
-    box-sizing: border-box;
-    width: 324px;
-    height: 112px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    font-weight: 400;
-    padding: 17px;
-    resize: none; /* Loại bỏ khả năng thay đổi kích thước */
-    overflow-wrap: break-word; /* Cho phép văn bản tự động xuống dòng */
-    word-wrap: break-word; /* Hỗ trợ trình duyệt cũ */
-    text-align: left; /* Căn văn bản sang trái */
-    vertical-align: top; /* Căn văn bản theo chiều dọc */
-    line-height: 1.4; /* Khoảng cách giữa các dòng */
-    font-family: 'Inter', sans-serif;
-}
-#cap-nhat-submit { /*Nút cập nhật*/
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 24px;
-    gap: 10px;
 
     width: 120px;
     height: 36px;
@@ -786,20 +427,20 @@ textarea[name=cap-nhat-lyrics] {
     border: none;
 
     margin-top: 12px;
-    margin-left: auto;
+    margin-right: 24px;;
 
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     cursor: pointer;
     transition: transform 0.2s;
 }
-#cap-nhat-submit:active { /*Nút cập nhật*/
+
+input[type=submit]:active, #cap-nhat-submit:active, #upload-bai-hat-button:active, #cap-nhat-upload-bh:active {
     transform: scale(0.9);
 }
-#cap-nhat-upload-bh { /*Nút upload*/
+#upload-bai-hat-button, #cap-nhat-upload-bh {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -807,7 +448,7 @@ textarea[name=cap-nhat-lyrics] {
     padding: 6px 24px;
     gap: 10px;
 
-    width: 200pxpx;
+    width: fit-content;
     height: 36px;
 
     background: #296265;
@@ -817,15 +458,68 @@ textarea[name=cap-nhat-lyrics] {
     margin-top: 12px;
     margin-right: auto;
 
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     cursor: pointer;
     transition: transform 0.2s;
 }
-#cap-nhat-upload-bh:active { /*Nút upload*/
+#upload-bai-hat-button:active {
     transform: scale(0.9);
 }
 
+#cap-nhat-name-bh {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 325px;
+    height: 86px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    #main {
+        left: 180px;
+    }
+    
+    #songs-list .title, #songs-list .title .tenNS, #songs-list .title .tenBH {
+        width: 400px;
+    }
+    #songs-title span:nth-child(2) {
+        width: 470px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main {
+        left: 90px;
+    }
+    
+    #songs-list .title, #songs-list .title .tenBH {
+        width: 200px;
+        font-size: 20px;
+    }
+    #songs-list .title .tenNS{
+        font-size: 14px;
+    }
+    #songs-title span:nth-child(2) {
+        width: 400px;
+    }
+    #search-bar {
+        gap: 4px;
+    }
+
+    #search-typing {
+        padding: 8px;
+    }
+
+    #search-button {
+        font-size: 12px; /* Giảm kích thước chữ */
+    }
+    #songs-list input[type=checkbox] {
+        width: 15px !important;
+        height: 15px;
+    }
+}

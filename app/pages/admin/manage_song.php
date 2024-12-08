@@ -160,11 +160,11 @@ if (!isset($song_manage_controller)) {
         </button>
         <span id="cap-nhat-popup-title">Cập nhật bài hát</span>
         <form name="form-cap-nhat-bh" id=cap-nhat-bh-form>
-            <!--<button id="cap-nhat-choose-image" onclick="document.getElementById('file-upload').click(); return false;">
+            <button id="cap-nhat-choose-image" onclick="document.getElementById('file-upload').click(); return false;">
                 <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
             </button>
             <input type="file" id="cap-nhat-file-upload" accept="image/jpeg, image/png, image/jpg"
-                style="display: none;">-->
+                style="display: none;">
             <div id="cap-nhat-name-bh">
                 <p>Tên bài hát</p>
                 <input type="text" name="name-bh" id="cap-nhat-ten-bai-hat" required>
