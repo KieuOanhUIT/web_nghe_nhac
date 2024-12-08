@@ -39,7 +39,6 @@ button {
     gap: 30px;
     width: 100%;
     max-width: 850px;
-    height: 718px;
     top: 118px;
     left: 380px;
     background: rgba(255, 255, 255, 0.1);
@@ -118,7 +117,6 @@ button {
     gap: 12px;
     width:100%;
     max-width: 800px;
-    height: 586px;
 }
 
 #songs-title {
@@ -147,7 +145,8 @@ button {
 }
 
 #songs-list {
-    height: 658px;
+    height: 100%;
+    max-height: 1000px;
     width:100%;
     max-width: 800px;
     margin-top: 12px;
@@ -498,7 +497,8 @@ input[type=submit]:active, #cap-nhat-submit:active, #upload-bai-hat-button:activ
     }
     
     #songs-list .title, #songs-list .title .tenBH {
-        width: 200px;
+        max-width: 400px;
+        width: 100%;
         font-size: 20px;
     }
     #songs-list .title .tenNS{
@@ -508,15 +508,17 @@ input[type=submit]:active, #cap-nhat-submit:active, #upload-bai-hat-button:activ
         width: 400px;
     }
     #search-bar {
-        gap: 4px;
+        gap: 10px;
     }
 
     #search-typing {
         padding: 8px;
+        width: 270px;
     }
 
     #search-button {
         font-size: 12px; /* Giảm kích thước chữ */
+
     }
     #songs-list input[type=checkbox] {
         width: 15px !important;

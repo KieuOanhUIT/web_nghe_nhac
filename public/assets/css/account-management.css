@@ -207,16 +207,12 @@ th, td {
 /* định dạng thêm tài khoản */
 
 
-<<<<<<< HEAD
-.updateaccount, .addAccount {
-    position: relative;
-=======
+
 .addAccount, .updateAccount {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
->>>>>>> b067d212a493b64d402f3b147692091961d00eed
     width: 440px;
     height: 550px;
     background: #000000;
@@ -227,6 +223,7 @@ th, td {
 }
 h1 {
     font-size:20px;
+    text-align:center;
 }
 
 .addAccount #formaddAccount  table, .updateAccount #formaddAccount2 table {
@@ -236,17 +233,6 @@ h1 {
     border-collapse: collapse;
 }
 
-/* .addAccount #formaddAccount2 table {
-<<<<<<< HEAD
-    margin-top: 20px;
-=======
-    margin-top: 10px;
->>>>>>> b067d212a493b64d402f3b147692091961d00eed
-    position: flex;
-    width: 100%;
-    border-collapse: collapse;
-} */
-
 .addAccount #formaddAccount  table tr, .updateAccount #formaddAccount2 table tr {
     display: flex;
     flex-direction: column;
@@ -254,7 +240,6 @@ h1 {
     padding-left: 13px;
 }
 
-<<<<<<< HEAD
 #updateaccount #formaddAccount2 table tr {
     display: flex !important;
         /* Cưỡng chế flex */
@@ -265,19 +250,14 @@ h1 {
 
 }
 
-div#updateaccount {
-   /* margin-top: 20px;*/
-   padding-left: 50px;
+#formaddAccount2 {
+    margin-left: 35px;
 }
 
 #addaccount {
     margin-top: 20px;
 }
 
-
-
-=======
->>>>>>> b067d212a493b64d402f3b147692091961d00eed
 input[type="text"],
 input[type="date"],
 #pakage {
@@ -334,7 +314,6 @@ button {
     border: none;
 }
 
-<<<<<<< HEAD
 .updateaccount #add, .addAccount #add {
 
     display: flex;
@@ -344,23 +323,20 @@ button {
     padding: 6px 24px;
     gap: 10px;
 
-    width: 77px;
+    width: 107px;
     height: 36px;
 
     background: #296265;
     border-radius: 5px;
-    margin-left: 292px;
 
+    margin-left: 265px;
 }
 
 .updateaccount #return ,.addAccount #return {
-=======
-button:hover {
     background: #3b7d7d;
 }
 
 #return {
->>>>>>> b067d212a493b64d402f3b147692091961d00eed
     display: flex;
     margin-left: 50px;
     width: 30px;
@@ -397,44 +373,22 @@ iconify-icon {
 }
 
 tr:hover {
-<<<<<<< HEAD
     background-color: #aacce6;
     /* Màu nền khi di chuột vào hàng */
-=======
->>>>>>> b067d212a493b64d402f3b147692091961d00eed
     cursor: pointer;
     /* Thay đổi con trỏ khi di chuột để tăng trải nghiệm */
 }
-
-<<<<<<< HEAD
-=======
-/* Media Queries cho màn hình nhỏ hơn */
-@media (max-width: 768px) {
-    .accountSpace .findSong {
-        width: 90%; /* Chiếm 90% chiều rộng màn hình */
-        gap: 20px;
-    }
-
-    .accountSpace .findSong .boxInput {
-        width: 70%; /* Giảm độ rộng */
-    }
-
-    .tableAccount table {
-        width: 100%; /* Để bảng chiếm toàn bộ chiều rộng */
-    }
-
-    .tableAccount th, .tableAccount td {
-        padding: 6px; /* Giảm khoảng cách trong ô */
-    }
+#formaddAccount2 .box{
+    height: 100px;
+}
+#formaddAccount2 .box input, #formaddAccount2 .box select{
+    margin-top: 15px;
 }
 
 /* Media Queries sửa đổi để hỗ trợ thu nhỏ tốt hơn */
 @media (max-width: 768px) {
     .accountSpace {
-        width: 95%; /* Giảm chiều rộng để vừa với màn hình */
-        left: auto; /* Căn giữa */
-        right: auto;
-        padding: 16px; /* Giảm khoảng cách */
+        left: 195px; 
     }
 
     .accountSpace .findSong {
@@ -458,30 +412,6 @@ tr:hover {
 
 @media (max-width: 480px) {
     .accountSpace {
-        width: 100%; /* Chiếm toàn bộ chiều rộng */
-        padding: 12px; /* Tăng cường khoảng cách nhỏ */
-    }
-
-    .accountSpace .findSong {
-        width: 100%; /* Chiếm toàn bộ màn hình */
-        gap: 10px;
-    }
-
-    .accountSpace .findSong .boxInput {
-        width: 100%; /* Đầy đủ chiều rộng */
-        height: 30px; /* Chiều cao nhỏ hơn */
-    }
-
-    .tableAccount table{
-        width: 100%; /* Đảm bảo không bị tràn */
-    }
-
-    .tableAccount th, .tableAccount td {
-        width: 100%; /* Chiều rộng tự động */
-    }
-
-    .tableAccount tr {
-        display: block; /* Chuyển từng hàng thành khối */
+        left: 110px;
     }
 }
->>>>>>> b067d212a493b64d402f3b147692091961d00eed
