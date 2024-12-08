@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="../css/start.css">
+    <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
 
     <title>Bắt đầu</title>
     <!-- <script type="javascript" src="script.js"></script> -->
@@ -15,132 +16,132 @@
     <header>
         <div class="controlbar">
             <div class="logo">
-                <img src="../icon/logo.svg">
+                <img src="../img/logo.svg">
             </div>
             <nav class="menu">
-                <ul>
+                <ul id="nav">
                     <li><a href="#">TRANG CHỦ</a></li>
                     <li><a href="#">KHÁM PHÁ</a></li>
                     <li><a href="#">CHÚNG TÔI</a></li>
+                    <li class="signin">
+                        <a href="#">ĐĂNG NHẬP</a>
+                    </li>
+                    <li class="signup uiSemibold">
+                        <a>ĐĂNG KÝ</a>
+                    </li>
                 </ul>
             </nav>
-            <div class="others">
-                <div class="signin">
-                    <a href="#">ĐĂNG NHẬP</a>
-                </div>
-                <div class="signup">
-                    <button>ĐĂNG KÝ</button>
-                </div>
-            </div>
         </div>
+        <div id="mobileMenu" class="menuBtn">
+            <span class="iconify menuIcon" data-icon="ic:round-menu"></span>
+        </div>
+
     </header>
 
     <main>
-    <img class="bg-1" src="../img/img_bg_1.png">
-    <img class="bg-2" src="../img/img_bg_2.png">
-    <img class="bg-3" src="../img/img_bg_3.png">
-    <!-- am nhac khong gioi han -->
-    <div class="container-1">
-        <div class="container-1-top">
-            <h2>ÂM NHẠC KHÔNG GIỚI HẠN</h2>
-            <p>Mỗi giai điệu đều mang trong mình sự sáng tạo, tự do không biên giới và chính bạn sẽ là người tìm ra
-                chúng.</p>
+        <img class="bg-1" src="../img/img_bg_1.png">
+        <img class="bg-2" src="../img/img_bg_2.png">
+        <img class="bg-3" src="../img/img_bg_3.png">
+        <!-- am nhac khong gioi han -->
+        <div class="container-1">
+            <div class="container-1-top">
+                <h2>ÂM NHẠC KHÔNG GIỚI HẠN</h2>
+                <p>Mỗi giai điệu đều mang trong mình sự sáng tạo, tự do không biên giới và chính bạn sẽ là người tìm ra
+                    chúng.</p>
+            </div>
+            <div class="container-1-bottom">
+                <button>ĐĂNG KÝ</button>
+            </div>
         </div>
-        <div class="container-1-bottom">
-            <button>ĐĂNG KÝ</button>
-        </div>
-    </div>
 
-    <!-- bai hat thinh hanh -->
-    <div class="container-2">
-    <div class="container-2-top">
-        <h2>
-            <span class="gradient-text-baihat">BÀI HÁT</span> <br>
-            <span class="gradient-text-thinhhanh">THỊNH HÀNH</span>
-        </h2>
-        <p>Thế giới ngoài kia đang nghe gì hôm nay thế?</p>
-    </div>
-    
-    <div class="container-2-bottom">
-        <div class="container-2-bottom-1">
-            <div class="container-2-bottom-1-img">
-                <img src="../img/DLTTAD.png" alt="Bài hát 2">
+        <!-- bai hat thinh hanh -->
+        <div class="container-2">
+            <div class="container-2-top">
+                <h2>
+                    <span class="gradient-text-baihat">BÀI HÁT</span> <br>
+                    <span class="gradient-text-thinhhanh">THỊNH HÀNH</span>
+                </h2>
+                <p>Thế giới ngoài kia đang nghe gì hôm nay thế?</p>
             </div>
-            <div class="container-2-bottom-1-content">
-                <div class="container-2-bottom-1-content-top">
-                    <h4>Đừng làm trái tim anh đau</h4>
-                    <h6>Sơn Tùng MTP</h6>
-                </div>
-                <div class="container-2-bottom-1-content-bottom">
-                    <p><img src="../img/miniheadphone.png" alt="icon tai nghe"> 1 triệu lượt nghe</p>
-                </div>
-            </div>
-        </div>
-        <div class="container-2-bottom-2">
-            <div class="container-2-bottom-2-img">
-                <img src="../img/NN.png" alt="Bài hát 2">
-            </div>
-            <div class="container-2-bottom-2-content">
-                <div class="container-2-bottom-2-content-top">
-                    <h4>Ngáo ngơ</h4>
-                    <h6>ATSH</h6>
-                </div>
-                <div class="container-2-bottom-2-content-bottom">
-                    <p><img src="../img/miniheadphone.png" alt="icon tai nghe"> 1 triệu lượt nghe</p>
-                </div>
-            </div>
-        </div>
-        <div class="container-2-bottom-3">
-            <div class="container-2-bottom-3-img">
-                <img src="../img/MY.png" alt="Bài hát 3">
-            </div>
-            <div class="container-2-bottom-3-content">
-                <div class="container-2-bottom-3-content-top">
-                    <h4>Mộng Yu</h4>
-                    <h6>Amee x MCK</h6>
-                </div>
-                <div class="container-2-bottom-3-content-bottom">
-                    <p><img src="../img/miniheadphone.png" alt="icon tai nghe"> 1 triệu lượt nghe</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    
-    <!-- tao thu vien -->
-    <div class="container-3">
-        <div class="container-3-top">
-            <h2>
-                <span class="gradient-text-baihat">TẠO NÊN THƯ VIỆN<br>CỦA</span> 
-                <span class="gradient-text-thinhhanh">CHÍNH BẠN</span>
-            </h2>
-            <p>Xây dựng nên một thế giới âm nhạc của chỉ riêng bản thân bạn.</p>
-        </div>
-        <div class="container-3-bottom">
-            <img src="../img/gradient-o.png">
-            <img src="../img/dsyeuthich.png">
-            <img src="../img/gradient-o.png">
-            <img src="../img/gradient-o.png">
-            <div class="container-3-bottom-text">
-                <h4>Danh sách yêu thích</h4>
-                <h6>103 bài</h6>
-            </div>
-        </div>
-    </div>
-</div>
 
-</main>
-    
+            <div class="container-2-bottom">
+                <div class="container-2-bottom-1">
+                    <div class="container-2-bottom-1-img">
+                        <img src="../img/DLTTAD.png" alt="Bài hát 2">
+                    </div>
+                    <div class="container-2-bottom-1-content">
+                        <div class="container-2-bottom-1-content-top">
+                            <h4>Đừng làm trái tim anh đau</h4>
+                            <h6>Sơn Tùng MTP</h6>
+                        </div>
+                        <div class="container-2-bottom-1-content-bottom">
+                            <p><img src="../img/miniheadphone.png" alt="icon tai nghe"> 1 triệu lượt nghe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-2-bottom-2">
+                    <div class="container-2-bottom-2-img">
+                        <img src="../img/NN.png" alt="Bài hát 2">
+                    </div>
+                    <div class="container-2-bottom-2-content">
+                        <div class="container-2-bottom-2-content-top">
+                            <h4>Ngáo ngơ</h4>
+                            <h6>ATSH</h6>
+                        </div>
+                        <div class="container-2-bottom-2-content-bottom">
+                            <p><img src="../img/miniheadphone.png" alt="icon tai nghe"> 1 triệu lượt nghe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-2-bottom-3">
+                    <div class="container-2-bottom-3-img">
+                        <img src="../img/MY.png" alt="Bài hát 3">
+                    </div>
+                    <div class="container-2-bottom-3-content">
+                        <div class="container-2-bottom-3-content-top">
+                            <h4>Mộng Yu</h4>
+                            <h6>Amee x MCK</h6>
+                        </div>
+                        <div class="container-2-bottom-3-content-bottom">
+                            <p><img src="../img/miniheadphone.png" alt="icon tai nghe"> 1 triệu lượt nghe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- tao thu vien -->
+        <div class="container-3">
+            <div class="container-3-top">
+                <h2>
+                    <span class="gradient-text-baihat">TẠO NÊN THƯ VIỆN<br>CỦA</span>
+                    <span class="gradient-text-thinhhanh">CHÍNH BẠN</span>
+                </h2>
+                <p>Xây dựng nên một thế giới âm nhạc của chỉ riêng bản thân bạn.</p>
+            </div>
+            <div class="container-3-bottom">
+                <img src="../img/gradient-o.png">
+                <img src="../img/dsyeuthich.png">
+                <img src="../img/gradient-o.png">
+                <img src="../img/gradient-o.png">
+                <div class="container-3-bottom-text">
+                    <h4>Danh sách yêu thích</h4>
+                    <h6>103 bài</h6>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </main>
+
 </body>
 
 <footer>
-    <hr  align="center" position="absolute" width="1000px" left="calc(50% - 1040px/2)" top="21.5px"
-    border="1px solid rgba(255, 255, 255, 0.9)"
-    />
+    <hr class="hr-footer" align="center" width="700px" border="1px solid rgba(255, 255, 255, 0.9)" />
     <div class="container-footer w-container">
         <div class="w-row">
             <div class="footer-column-1">
-                <img src="../icon/logo.svg" alt="" width="30" class="logo">
+                <img src="../img/logo.svg" alt="" width="30" class="logo">
             </div>
             <div class="footer-column-2">
                 <div class="w-row">
@@ -175,5 +176,19 @@
     </div>
 
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuButton = document.getElementById("mobileMenu");
+        const menu = document.getElementById("nav")
+        const menuContainer = document.querySelector(".menu");
+
+        menuButton.addEventListener("click", () => {
+            menu.classList.toggle("active");
+            menuContainer.classList.toggle("active");
+        });
+    });
+
+</script>
 
 </html>
