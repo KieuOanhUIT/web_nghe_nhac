@@ -4,11 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/artist.css">
-=======
     <link rel="stylesheet" href="<?php echo '/web_nghe_nhac/public/assets/css/artist.css'; ?>">
->>>>>>> b498928449e0ac72898cc1f85e044b0706b1990c
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
     <link rel="stylesheet"
@@ -18,17 +14,10 @@
 </head>
 
 <?php
-<<<<<<< HEAD
-include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\control\playlistControl.php';
-if (!isset($playlists)) {
-    include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';
-    include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\models\playlistModel.php';
-=======
 include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/control/playlistControl.php';
 if (!isset($playlists)) {
     include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
     include_once '/xampp/htdocs/web_nghe_nhac/public/assets/models/playlistModel.php';
->>>>>>> b498928449e0ac72898cc1f85e044b0706b1990c
 
     $database = new Database();
     $db = $database->getConnection();
@@ -37,11 +26,7 @@ if (!isset($playlists)) {
 }
 // Khởi tạo kết nối Database và Controller
 if (!isset($controller)) {
-<<<<<<< HEAD
-    include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\control\playlistControl.php';
-=======
     include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/control/playlistControl.php';
->>>>>>> b498928449e0ac72898cc1f85e044b0706b1990c
     $database = new Database();
     $db = $database->getConnection();
     $controller = new PlaylistController($db);
