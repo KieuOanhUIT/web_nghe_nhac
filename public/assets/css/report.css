@@ -37,8 +37,8 @@ label,
 
     position: absolute;
     width: 68%;
-    right: 26px;
-    top: 118px;
+    right: 20px;
+    top: 125px;
 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -48,16 +48,87 @@ label,
 .searchBar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 35px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     width: 100%;
-    flex-wrap: wrap;
-    height: auto;
+    flex-wrap:wrap;
+    padding:20px;
 }
 
-.label {
-    margin-top: 12px;
-    margin-right: -15px;
+.date-range {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-range .label, .select-package .label {
+    margin-right: 3px;
+}
+
+.date-range input[type="month"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s;
+}
+
+.date-range input[type="month"]:focus {
+    border-color: #296265;
+    outline: none;
+    box-shadow: 0 0 4px rgba(41, 98, 101, 0.5);
+}
+
+/* Nhóm chọn gói dịch vụ */
+.select-package {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-package select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s;
+}
+
+.select-package select:focus {
+    border-color: #296265;
+    outline: none;
+    box-shadow: 0 0 4px rgba(41, 98, 101, 0.5);
+}
+/* Nút tra cứu */
+.search-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #296265;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-btn:hover {
+    background-color: #1f494b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.search-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 #start-month,
@@ -65,8 +136,8 @@ label,
 .package,
 .search-btn,
 #export-btn {
-    padding: 0 2px;
-    margin-right: 5px;
+    padding: 0 10px;
+    margin:10px 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -84,7 +155,7 @@ label,
 .search-btn,
 #export-btn {
     cursor: pointer;
-    width: 100px;
+    width: auto;
     justify-content: center;
     padding: 9px 18px;
     background: #296265;
@@ -101,6 +172,8 @@ label,
     border-collapse: collapse;
     border: none;
     background-color: transparent;
+    scrollbar-width: thin; /* Thanh cuộn nhỏ */
+    scrollbar-color: #296265 transparent; /* Màu của thanh cuộn và khung */
 }
 
 .result-table th,
@@ -126,87 +199,100 @@ label,
     align-self: flex-end;
 }
 
+option {
+    color: #dfdada;
+    /* Màu chữ cho các tùy chọn */
+    background-color: #333;
+    /* Màu nền của menu dropdown */
+}
+
+
 /* Điều chỉnh cho màn hình tablet (768px) */
 @media (max-width: 768px) {
-    .bgimage {
-        width: 700px;
-        left: 100px;
-        top: 120px;
+    .report {
+        left: 180px;
+        width: 580px;
     }
 
-    .report {
-        width: 80%;
-        right: 10px;
-        top: 100px;
-        padding: 15px;
+    .bgimage {
+        width: 700px;
+        left: 30px;
+        top: 170px;
     }
 
     .searchBar {
         flex-direction: column;
-        gap: 20px;
+        align-items: flex-start;
+        gap: 15px;
     }
 
-    #start-month,
-    #end-month,
-    .package,
-    .search-btn,
-    #export-btn {
+    .date-range,
+    .select-package {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        padding-right: 10px;
         width: 100%;
-        padding: 10px;
-        margin: 5px 0;
+        max-width: fit-content;
     }
 
-    .result-table table {
-        font-size: 14px;
-        gap: 20px;
+    .date-range input[type="month"],
+    .select-package select {
+        width: 100%;
+    }
+
+    .select-package label {
+        padding-right: 25px;
+    }
+
+    .search-btn {
+        width: 100%;
+        margin-left: 25px;
+        max-width: fit-content;
     }
 }
 
 /* Điều chỉnh cho màn hình điện thoại (480px) */
 @media (max-width: 480px) {
-    .bgimage {
-        width: 400px;
-        left: 50px;
-        top: 80px;
-        filter: blur(20px);
-    }
-
     .report {
-        width: 90%;
-        right: 5px;
-        top: 80px;
-        padding: 10px;
-        gap: 15px;
+        left: 100px;
+        width: 450px;
+    }
+    .bgimage {
+        width: 450px;
+        left: 30px;
+        top: 170px;
     }
 
     .searchBar {
         flex-direction: column;
+        align-items: flex-start;
         gap: 10px;
     }
 
-    #start-month,
-    #end-month,
-    .package,
-    .search-btn,
-    #export-btn {
+    .date-range,
+    .select-package {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        padding-right: 10px;
+        width: 90%;
+        max-width: fit-content;
+    }
+
+    .date-range input[type="month"],
+    .select-package select {
+        width: 80%;
+        font-size: 12px;
+    }
+
+    .select-package label {
+        padding-right: 2px;
+    }
+
+    .search-btn {
         width: 100%;
-        padding: 8px;
-        margin: 3px 0;
-    }
-
-    .search-btn,
-    #export-btn {
-        width: 80px;
-        padding: 5px;
-        font-size: 12px;
-    }
-
-    .result-table table {
-        font-size: 12px;
-    }
-
-    .result-table th,
-    .result-table td {
-        padding: 5px;
+        margin-left: 30px;
+        max-width: fit-content;
     }
 }
