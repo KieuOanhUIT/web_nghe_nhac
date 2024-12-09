@@ -67,11 +67,10 @@ function togglePlayPauseUI(isPlaying) {
     if (isPlaying) {
         playButton.classList.remove('fa-play');
         playButton.classList.add('fa-pause');
-        circleButton.style.padding = '0px';
     } else {
         playButton.classList.remove('fa-pause');
         playButton.classList.add('fa-play');
-        circleButton.style.padding = '0px 0px 0px 11px';
+        
     }
 }
 
@@ -113,6 +112,8 @@ function updateArtistView(maDSP, tenDSP, loaiDSP, imgPath) {
 }
 
 function togglePlayPause() {
+    const playButton = document.getElementById('playbutton');
+    const circleButton = document.getElementById('circle');
     if (isPlaying) {
         console.log("Tạm dừng bài hát hiện tại.");
         audioPlayer.pause(); // Dừng nhạc
