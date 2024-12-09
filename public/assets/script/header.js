@@ -153,7 +153,7 @@ function performSearch(keyword) {
                 const artistItem = document.createElement('div');
                 artistItem.className = 'search-item';
                 artistItem.innerHTML = `
-                    <a href="/web_nghe_nhac/artist_info.php?id=${artist.MaNgheSy}">
+                    <a href="/web_nghe_nhac/public/assets/php/artist_info.php?id=${artist.MaNgheSy}">
                         <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${artist.AnhNgheSy}" alt="${artist.TenNgheSy}">
                         <h3>${artist.TenNgheSy}</h3>
                     </a>

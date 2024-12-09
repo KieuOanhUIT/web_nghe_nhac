@@ -1,4 +1,4 @@
-const audioPlayer = document.getElementById('audioPlayer');
+// const audioPlayer = document.getElementById('audioPlayer');
 const progressContainer = document.getElementById('progressContainer');
 const progress = document.getElementById('progress');
 const currentTime = document.getElementById('currentTime');

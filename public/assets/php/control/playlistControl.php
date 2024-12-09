@@ -61,7 +61,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'view') {
     $controller = new PlaylistController($db);
 
     $playlists = $controller->showAllPlaylists();
-    include '/xampp/htdocs/web_nghe_nhac/public/assets/php/views/playlistView.php';
+    include '/web_nghe_nhac/public/assets/php/views/playlistView.php';
 }
 
 //Hiển thị playlist mặc định

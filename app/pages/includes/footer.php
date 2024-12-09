@@ -60,3 +60,6 @@
         </div>
     </div>
 </div>
+        <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
+        <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
+
