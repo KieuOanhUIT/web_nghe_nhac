@@ -5,6 +5,7 @@ function displaySong(song) {
     }
 
     console.log('Song id:', song.MaBaiHat);
+    console.log('Artist id:', song.MaNgheSy);
 
     // Thêm ID bài hát vào listeningSpace
     const listeningSpace = document.getElementById('songID'); // Đảm bảo phần tử này tồn tại
@@ -32,11 +33,12 @@ function displaySong(song) {
     const artistInfo = document.querySelectorAll('.artist-info');
     artistInfo.forEach(info => {
         info.innerHTML = `
-            <a href="/web_nghe_nhac/artist_info.php?id=${song.MaNgheSy}">
+            <a href="/web_nghe_nhac/public/assets/php/artist_info.php?manghesy=${song.MaNgheSy}">
                 <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${song.AnhNgheSy}" alt="${song.TenNgheSy}">
                 <h3>${song.TenNgheSy}</h3>
             </a>
         `;
+        console.log('Artist id:', song.MaNgheSy);
     });
 
     // Cập nhật tên bài hát
