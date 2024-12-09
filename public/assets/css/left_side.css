@@ -374,3 +374,9 @@ input[type=submit] {
     color: white;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+    .create-newlist {
+        width: 90%;
+    }
+}
