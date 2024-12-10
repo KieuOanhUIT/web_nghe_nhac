@@ -61,8 +61,8 @@ function AddImageSong($name_image_Song)
 //Ham lay anh nghe si
 function AddImageArtist($name_image_Artist)
 {
-    $base_url = "../img/data-artists-image/"; // Đư��ng d��n gốc đến thư mục chứa ảnh
-    return $base_url . $name_image_Artist; // Trả về đư��ng d��n đầy đ��
+    $base_url = "../img/data-artists-image/"; // ĐĐường dẫn gốc đến thư mục chứa ảnh
+    return $base_url . $name_image_Artist; // Trả về Đường dẫn đầy đủ
 }
 ?>
 
@@ -80,6 +80,7 @@ function AddImageArtist($name_image_Artist)
         rel="stylesheet">
     <title>Artist Info</title>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -88,42 +89,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 ?>
     <div class="main">
         <!-- div phần thân -->
-        <div id="library">
-            <!--div thư viện-->
-
-            <i id="library-icon" class="fa-solid fa-books"></i>
-            <span id="library-text">Thư viện</span>
-            <button id="plus-button"><i class="fa-solid fa-plus"></i></button>
-
-            <button id="playlist-button">Playlist</button>
-            <button id="artist-button">Nghệ sĩ</button>
-
-            <div id="list-scroll">
-                <div id="danhsachyeuthich">
-                    <span id="heart-icon"><i class="fa-solid fa-heart"></i></span>
-                    <span id="danhsachyeuthich-text">Danh sách yêu thích<br><span
-                            id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="chillingwithheart">
-                    <span id="chillingwithheart-icon"><img src="../img/artist1.png"></i></span>
-                    <span id="chillingwithheart-text">Chilling with heart<br><span
-                            id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="ArianaGrande">
-                    <span id="ArianaGrande-icon"><img src="../img/artist2.png"></i></span>
-                    <span id="ArianaGrande-text">Ariana Grande<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
-                </div>
-                <div id="healingcucmanh">
-                    <span id="healingcucmanh-icon"><img src="../img/artist3.png"></i></span>
-                    <span id="healingcucmanh-text">Healing cực mạnh<br><span
-                            id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="nhaccuaTrang">
-                    <span id="nhaccuaTrang-icon"><img src="../img/artist4.png"></i></span>
-                    <span id="nhaccuaTrang-text">Nhạc của Trang<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
-                </div>
-            </div>
-        </div>
+<?php
+require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
+?>
 
         <div id="artist">
             <!--div nghệ sĩ-->
@@ -177,71 +145,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 ?>
 
                 <!--Nhan nut the doi-->
-                <form action="" method="POST">
-                    <button type="submit" name="follow" id="follow-button"><?php echo $FollowerTest ?></button>
-                </form>
+                    <button name="follow" id="follow-button"><?php echo $FollowerTest ?></button>
 
-                <!--Xu nut follows-->
-
-                <?php
-
-
-                // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['follow'])) {
-                //     //kiem tra xem nguoi dùng này đã theo dõi nghệ sĩ này chưa
-                //     $sqlTest = "SELECT *
-                //     from theodoi
-                //     where theodoi.MaNguoiDung ='" . $MaNguoiDung . "' and theodoi.MaNgheSy ='" . $mans . "' ";
-                //     $resultTest = mysqli_query($conn, $sqlTest);
-                //     $Test = false;
-                //     // Nếu đã theo dõi thì gán bằng true, chưa theo dõi thì gán bằng false 
-                //     while ($rowTest = mysqli_fetch_assoc($resultTest)) {
-                //         $Test = true;
-                //     }
-
-                //     // Nếu chưa theo dõi thì thêm vào bảng theodoi
-                //     if (!$Test) {
-                //         $sqlTheoDoi = "INSERT INTO theodoi (MaNgheSy,MaNguoiDung) VALUES (?,?)";
-                //         $stmt = mysqli_prepare($conn, $sqlTheoDoi);
-                //         if ($stmt === false) {
-                //             die("Lỗi chuẩn bị câu lệnh: " . mysqli_error($conn));
-                //         }
-                //         // Gắn giá trị vào các tham số trong prepared statement
-                //         mysqli_stmt_bind_param($stmt, "ii", $mans, $MaNguoiDung); // truyền dữ liệu vào
-                //         if (mysqli_stmt_execute($stmt)) {
-                //             // Nếu thực thi thành công, chuyển hướng để tránh reload lại dữ liệu
-                //             //header("Location: " . $_SERVER['PHP_SELF']);
-                //             exit();
-                //         } else {
-                //             echo "Lỗi khi thêm dữ liệu: " . mysqli_error($conn);
-                //         }
-
-                //         //thay đổi giá trị của #follow-button thành đã theo dõi 
-                //         $FollowerTest = 'Đã theo dõi';
-                //         echo '<style> #follow-button { width: 200px; } </style>';
-                //     } else {
-                //         // Xóa dữ liệu theo dõi nếu đã theo dõi
-                //         $sqlDelete = "DELETE FROM theodoi WHERE MaNguoiDung =? AND MaNgheSy =?";
-                //         $stmt = mysqli_prepare($conn, $sqlDelete);
-                //         if ($stmt === false) {
-                //             die("Loi chuẩn bị câu lệnh: " . mysqli_error($conn));
-                //         }
-                //         // Gắn giá trị vào các tham số trong prepared statement
-                //         mysqli_stmt_bind_param($stmt, "ii", $mans, $MaNguoiDung); // truyền dữ liệu vào
-                //         if (mysqli_stmt_execute($stmt)) {
-                //             // Nếu thực thi thành công, chuyển hướng để tránh reload lại dữ liệu
-                //             //header("Location: " . $_SERVER['PHP_SELF']);
-                //             exit();
-                //         } else {
-                //             echo "Loi khi xóa dữ liệu: " . mysqli_error($conn);
-                //         }
-
-                //         //thay đổi giá trị của #follow-button thành "theo dõi"
-                //         $FollowerTest = 'Theo dõi';
-                //         echo '<style> #follow-button { width: 150px; } </style>';
-                //     }
-                // }
-
-                ?>
                 <button id="threebars"><i class="fa-solid fa-bars"></i></button>
             </div>
             <div id="listsong">
@@ -282,24 +187,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_sid
     <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/listeningSpace.php";
 ?>
-    <script>
-    document.getElementById('progress-slider').addEventListener('input', function() {
-        const value = this.value;
-        const max = this.max;
-        const percentage = (value / max) * 100;
-
-        // Update the background of the slider based on the value
-        this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
-    });
-    document.getElementById('volume').addEventListener('input', function() {
-        const value = this.value;
-        const max = this.max;
-        const percentage = (value / max) * 100;
-
-        // Update the background of the slider based on the value
-        this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
-    });
-    </script>
 </body>
 
 </html>
