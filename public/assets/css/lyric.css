@@ -7,7 +7,8 @@
 }
 
 .centerSpace .wrapper-lyric {
-    max-width: 100%;
+    max-width: 1030px;
+    width: 100%;
     height: 481px;
     margin: 24px 24px 24px 24px;
     position: relative;
@@ -35,4 +36,22 @@
     font-size: 60px;
     margin-top: 0px;
 
+}
+
+/* Thiết bị tablet */
+@media (max-width: 768px) {
+    .wrapper-lyric {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* Thiết bị điện thoại */
+@media (max-width: 400px) {
+    .wrapper-lyric {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 320px;
+    }
 }

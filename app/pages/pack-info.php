@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div class="header">
-<?php
+    <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
 ?>
 </div>
@@ -50,225 +50,226 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 </head>
 
 
-    <!-- Popup thông báo -->
-    <div id="notificationPopup" class="notification-popup" style="display: none;">
-        <div class="popup-content">
-            <h3>Thông báo</h3>
-            <span id="closePopup" class="close-popup">&times;</span>
-            <!-- Thông báo động sẽ được thêm vào đây bởi JavaScript -->
-        </div>
+<!-- Popup thông báo -->
+<div id="notificationPopup" class="notification-popup" style="display: none;">
+    <div class="popup-content">
+        <h3>Thông báo</h3>
+        <span id="closePopup" class="close-popup">&times;</span>
+        <!-- Thông báo động sẽ được thêm vào đây bởi JavaScript -->
     </div>
+</div>
 
-    <main>
-        <!-- Main space -->
-        <div class="mainSpace">
-            <!-- leftBar -->
-            <?php
+<main>
+    <!-- Main space -->
+    <div class="mainSpace">
+        <!-- leftBar -->
+        <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
             ?>
-            <!-- Create new list -->
-            <div class="create-newlist">
-                <div class="return">
-                    <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
-                </div>
-
-
-                <div class="lbl-create">
-                    <p>Tạo danh sách mới</p>
-                </div>
-
-                <form name="create-newlist" action="">
-                    <button class="choose-image">
-                        <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
-                    </button>
-                    <input type="file" id="file-upload" style="display: none;">
-                    <!-- <img id="image-preview" src="" alt="Preview"> -->
-
-                    <div class="name-list">
-                        <p>Tên danh sách</p>
-                        <input type="text" name="name-list">
-                    </div>
-
-                    <div class="scription">
-                        <p>Mô tả</p>
-                        <input type="textarea" name="scription">
-                    </div>
-
-                    <input type="submit" value="Tạo">
-                </form>
+        <!-- Create new list -->
+        <div class="create-newlist">
+            <div class="return">
+                <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
             </div>
 
-            <div class="centerSpace scrollable">
+
+            <div class="lbl-create">
+                <p>Tạo danh sách mới</p>
+            </div>
+
+            <form name="create-newlist" action="">
+                <button class="choose-image">
+                    <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
+                </button>
+                <input type="file" id="file-upload" style="display: none;">
+                <!-- <img id="image-preview" src="" alt="Preview"> -->
+
+                <div class="name-list">
+                    <p>Tên danh sách</p>
+                    <input type="text" name="name-list">
+                </div>
+
+                <div class="scription">
+                    <p>Mô tả</p>
+                    <input type="textarea" name="scription">
+                </div>
+
+                <input type="submit" value="Tạo">
+            </form>
+        </div>
+
+        <div class="centerSpace scrollable">
 
             <div class="pack-info">
-            <div class="container-1">
-                <table>
-                    <tr>
-                        <th rowspan="4">Lợi ích của tất cả các gói Premium</th>
-                        <td class="benefit-items">
-                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                            Nghe nhạc không quảng cáo
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="benefit-items">
-                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                            Chất lượng âm thanh cao
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="benefit-items">
-                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                            Sắp xếp danh sách chờ
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="benefit-items">
-                            <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                            Phát nhạc theo thứ tự bất kỳ
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="container-2">
-                <form action="pack-info.php" method="POST">
-                <div class="mini">
-                    <label class="pre">Premium</label>
-                    <label class="type">Mini</label>
-                    <label class="price">15.000VND/tuần</label>
-                    <p>1 tài khoản di động duy nhất</p>
-                    <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi không có kết nối mạng</p>
-                    <p>Chất lượng âm thanh cơ bản</p>
-                    <input type="hidden" name="package_type" value="Mini">
-                    <input type="hidden" name="price" value="15.000VND">
-                    <input type="hidden" name="duration" value="1 tuần">
-                    <input type="hidden" name="description" value="1 tài khoản di động duy nhất">
-                    <button type="submit" class="buy">Mua ngay</button>
+                <div class="container-1">
+                    <table>
+                        <tr>
+                            <th rowspan="4">Lợi ích của tất cả các gói Premium</th>
+                            <td class="benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                Nghe nhạc không quảng cáo
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                Chất lượng âm thanh cao
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                Sắp xếp danh sách chờ
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                Phát nhạc theo thứ tự bất kỳ
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                </form>
-                <form action="pack-info.php" method="POST">
-                <div class="individual">
-                    <label class="pre">Premium</label>
-                    <label class="type">Individual</label>
-                    <label class="price">59.000VND/tuần</label>
-                    <p>1 tài khoản Premium</p>
-                    <p>Hủy bất cứ lúc nào</p>
-                    <p>Đăng ký và thanh toán một lần</p>
-                    <input type="hidden" name="package_type" value="Individual">
-                    <input type="hidden" name="price" value="59.000VND">
-                    <input type="hidden" name="duration" value="1 tháng">
-                    <input type="hidden" name="description" value="1 tài khoản Premium">
-                    <button type="submit" class="buy">Mua ngay</button>
+                <div class="container-2">
+                    <form action="pack-info.php" method="POST">
+                        <div class="mini">
+                            <label class="pre">Premium</label>
+                            <label class="type">Mini</label>
+                            <label class="price">15.000VND/tuần</label>
+                            <p>1 tài khoản di động duy nhất</p>
+                            <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi không có kết nối mạng</p>
+                            <p>Chất lượng âm thanh cơ bản</p>
+                            <input type="hidden" name="package_type" value="Mini">
+                            <input type="hidden" name="price" value="15.000VND">
+                            <input type="hidden" name="duration" value="1 tuần">
+                            <input type="hidden" name="description" value="1 tài khoản di động duy nhất">
+                            <button type="submit" class="buy">Mua ngay</button>
+                        </div>
+                    </form>
+                    <form action="pack-info.php" method="POST">
+                        <div class="individual">
+                            <label class="pre">Premium</label>
+                            <label class="type">Individual</label>
+                            <label class="price">59.000VND/tuần</label>
+                            <p>1 tài khoản Premium</p>
+                            <p>Hủy bất cứ lúc nào</p>
+                            <p>Đăng ký và thanh toán một lần</p>
+                            <input type="hidden" name="package_type" value="Individual">
+                            <input type="hidden" name="price" value="59.000VND">
+                            <input type="hidden" name="duration" value="1 tháng">
+                            <input type="hidden" name="description" value="1 tài khoản Premium">
+                            <button type="submit" class="buy">Mua ngay</button>
+                        </div>
+                    </form>
+                    <form action="pack-info.php" method="POST">
+                        <div class="student">
+                            <label class="pre">Premium</label>
+                            <label class="type">Student</label>
+                            <label class="price">29.000VND/tuần</label>
+                            <p>1 tài khoản Premium đã xác minh</p>
+                            <p>Giảm giá cho sinh viên đủ điều kiện</p>
+                            <p>Hủy bất cứ lúc nào</p>
+                            <p>Đăng ký và thanh toán một lúc</p>
+                            <input type="hidden" name="package_type" value="Student">
+                            <input type="hidden" name="price" value="29.000VND">
+                            <input type="hidden" name="duration" value="1 tháng">
+                            <input type="hidden" name="description" value="1 tài khoản Premium đã xác minh">
+                            <button type="submit" class="buy">Mua ngay</button>
+                        </div>
+                    </form>
                 </div>
-                </form>
-                <form action="pack-info.php" method="POST">
-                <div class="student">
-                    <label class="pre">Premium</label>
-                    <label class="type">Student</label>
-                    <label class="price">29.000VND/tuần</label>
-                    <p>1 tài khoản Premium đã xác minh</p>
-                    <p>Giảm giá cho sinh viên đủ điều kiện</p>
-                    <p>Hủy bất cứ lúc nào</p>
-                    <p>Đăng ký và thanh toán một lúc</p>
-                    <input type="hidden" name="package_type" value="Student">
-                    <input type="hidden" name="price" value="29.000VND">
-                    <input type="hidden" name="duration" value="1 tháng">
-                    <input type="hidden" name="description" value="1 tài khoản Premium đã xác minh">
-                    <button type="submit" class="buy">Mua ngay</button>
-                </div>
-                </form>
-            </div>
-            <div class="pack" style="display:none;"> <!--div thông tin các gói-->
-            <div class="pack-container-1">
-                <h2>Lợi ích của tất cả các gói Premium</h2>
-                <div class="pack-description">
-                    <div class="pack-benefit-items">
-                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                        <p>Nghe nhạc không quảng cáo</p>
+                <div class="pack" style="display:none;">
+                    <!--div thông tin các gói-->
+                    <div class="pack-container-1">
+                        <h2>Lợi ích của tất cả các gói Premium</h2>
+                        <div class="pack-description">
+                            <div class="pack-benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                <p>Nghe nhạc không quảng cáo</p>
+                            </div>
+                            <div class="pack-benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                <p>Chất lượng âm thanh cao</p>
+                            </div>
+                            <div class="pack-benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
+                                <p>Sắp xếp danh sách chờ</p>
+                            </div>
+                            <div class="pack-benefit-items">
+                                <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" class="tick">
+                                <p>Phát nhạc theo thứ tự bất kỳ</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pack-benefit-items">
-                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                        <p>Chất lượng âm thanh cao</p>
-                    </div>
-                    <div class="pack-benefit-items">
-                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" alt="tick" class="tick">
-                        <p>Sắp xếp danh sách chờ</p>
-                    </div>
-                    <div class="pack-benefit-items">
-                        <img src="/web_nghe_nhac/public/assets/img/subway--tick.svg" class="tick">
-                        <p>Phát nhạc theo thứ tự bất kỳ</p>
+
+                    <div class="pack-container-2">
+                        <form action="pack-info.php" method="POST">
+                            <div class="pack-mini">
+                                <label class="pre">Premium</label>
+                                <label class="type">Mini</label>
+                                <label class="price">15.000VND/tuần</label>
+                                <p>1 tài khoản di động duy nhất</p>
+                                <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi không có kết nối mạng</p>
+                                <p>Chất lượng âm thanh cơ bản</p>
+                                <input type="hidden" name="package_type" value="Mini">
+                                <input type="hidden" name="price" value="15.000VND">
+                                <input type="hidden" name="duration" value="1 tuần">
+                                <input type="hidden" name="description" value="1 tài khoản di động duy nhất">
+                                <button type="submit" class="buy">Mua ngay</button>
+                            </div>
+                        </form>
+                        <form action="pack-info.php" method="POST">
+                            <div class="pack-individual">
+                                <label class="pre">Premium</label>
+                                <label class="type">Individual</label>
+                                <label class="price">59.000VND/tuần</label>
+                                <p>1 tài khoản Premium</p>
+                                <p>Hủy bất cứ lúc nào</p>
+                                <p>Đăng ký và thanh toán một lần</p>
+                                <input type="hidden" name="package_type" value="Individual">
+                                <input type="hidden" name="price" value="59.000VND">
+                                <input type="hidden" name="duration" value="1 tháng">
+                                <input type="hidden" name="description" value="1 tài khoản Premium">
+                                <button type="submit" class="buy">Mua ngay</button>
+                            </div>
+                        </form>
+                        <form action="pack-info.php" method="POST">
+                            <div class="pack-student">
+                                <label class="pre">Premium</label>
+                                <label class="type">Student</label>
+                                <label class="price">29.000VND/tuần</label>
+                                <p>1 tài khoản Premium đã xác minh</p>
+                                <p>Giảm giá cho sinh viên đủ điều kiện</p>
+                                <p>Hủy bất cứ lúc nào</p>
+                                <p>Đăng ký và thanh toán một lúc</p>
+                                <input type="hidden" name="package_type" value="Student">
+                                <input type="hidden" name="price" value="29.000VND">
+                                <input type="hidden" name="duration" value="1 tháng">
+                                <input type="hidden" name="description" value="1 tài khoản Premium đã xác minh">
+                                <button type="submit" class="buy">Mua ngay</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <div class="pack-container-2">
-                <form action="pack-info.php" method="POST">
-                <div class="pack-mini">
-                    <label class="pre">Premium</label>
-                    <label class="type">Mini</label>
-                    <label class="price">15.000VND/tuần</label>
-                    <p>1 tài khoản di động duy nhất</p>
-                    <p>Nghe tối đa 30 bài hát trên 1 thiết bị khi không có kết nối mạng</p>
-                    <p>Chất lượng âm thanh cơ bản</p>
-                    <input type="hidden" name="package_type" value="Mini">
-                    <input type="hidden" name="price" value="15.000VND">
-                    <input type="hidden" name="duration" value="1 tuần">
-                    <input type="hidden" name="description" value="1 tài khoản di động duy nhất">
-                    <button type="submit" class="buy">Mua ngay</button>
+            <!-- search -->
+            <div class="searches-container" id="search-container" style="display: none;">
+                <div class="header">
+                    <h2>Tìm kiếm gần đây</h2>
+                    <span class="clear-history" onclick="clearSearchHistory()">Xóa lịch sử tìm kiếm</span>
                 </div>
-                </form>
-                <form action="pack-info.php" method="POST">
-                <div class="pack-individual">
-                    <label class="pre">Premium</label>
-                    <label class="type">Individual</label>
-                    <label class="price">59.000VND/tuần</label>
-                    <p>1 tài khoản Premium</p>
-                    <p>Hủy bất cứ lúc nào</p>
-                    <p>Đăng ký và thanh toán một lần</p>
-                    <input type="hidden" name="package_type" value="Individual">
-                    <input type="hidden" name="price" value="59.000VND">
-                    <input type="hidden" name="duration" value="1 tháng">
-                    <input type="hidden" name="description" value="1 tài khoản Premium">
-                    <button type="submit" class="buy">Mua ngay</button>
+                <div class="search-items" id="search-items">
+                    <!-- Các mục tìm kiếm sẽ được thêm vào đây bởi JavaScript -->
                 </div>
-                </form>
-                <form action="pack-info.php" method="POST">
-                <div class="pack-student">
-                    <label class="pre">Premium</label>
-                    <label class="type">Student</label>
-                    <label class="price">29.000VND/tuần</label>
-                    <p>1 tài khoản Premium đã xác minh</p>
-                    <p>Giảm giá cho sinh viên đủ điều kiện</p>
-                    <p>Hủy bất cứ lúc nào</p>
-                    <p>Đăng ký và thanh toán một lúc</p>
-                    <input type="hidden" name="package_type" value="Student">
-                    <input type="hidden" name="price" value="29.000VND">
-                    <input type="hidden" name="duration" value="1 tháng">
-                    <input type="hidden" name="description" value="1 tài khoản Premium đã xác minh">
-                    <button type="submit" class="buy">Mua ngay</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-
-                <!-- search -->
-                <div class="searches-container" id="search-container" style="display: none;">
-                    <div class="header">
-                        <h2>Tìm kiếm gần đây</h2>
-                        <span class="clear-history" onclick="clearSearchHistory()">Xóa lịch sử tìm kiếm</span>
-                    </div>
-                    <div class="search-items" id="search-items">
-                <!-- Các mục tìm kiếm sẽ được thêm vào đây bởi JavaScript -->
-                    </div>
 
             </div>
 
-                <!-- lyric -->
-                <div class="wrapper-lyric" style="display: none;" id="lyric">
-                    <p>Lời bài hát</p>
-                </div>
-            
+            <!-- lyric -->
+            <div class="wrapper-lyric" style="display: none;" id="lyric">
+                <p>Lời bài hát</p>
+            </div>
+
         </div>
         <!-- rightBar -->
         <div class="rightBar" id="rightBar" style="display:none;">
@@ -340,15 +341,15 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
             </div>
         </div>
-    </main>
+</main>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     // Lưu nội dung gốc của pack-info
     var packInfo = document.querySelector(".pack-info");
     var originalPackInfoContent = packInfo.innerHTML;
 
     // Xử lý khi nhấn vào icon "info"
-    document.getElementById("info").addEventListener("click", function () {
+    document.getElementById("info").addEventListener("click", function() {
         var pack = document.querySelector(".pack");
         var rightBar = document.getElementById("rightBar");
 
@@ -364,7 +365,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
     });
 
     // Xử lý khi nhấn vào icon "exit" trong rightBar
-    document.getElementById("rightBar").addEventListener("click", function (event) {
+    document.getElementById("rightBar").addEventListener("click", function(event) {
         if (event.target && event.target.id === "exit-lbl") {
             var pack = document.querySelector(".pack");
             var rightBar = document.getElementById("rightBar");
@@ -381,16 +382,16 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         }
     });
 });
-</script>    
+</script>
 
-    <!-- File javaScript -->
-    <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/main_cpn.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
-    
+<!-- File javaScript -->
+<script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/main_cpn.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/header.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/song.js"></script>
+
 </body>
 
 </html>

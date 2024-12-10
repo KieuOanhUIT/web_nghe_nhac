@@ -25,12 +25,15 @@
             </div>
 
             <div class="searching">
-                <a href="../home.php"><div class="home">
-                <iconify-icon icon="ic:round-home"></iconify-icon>
-                </div></a>
+                <a href="../home.php">
+                    <div class="home">
+                        <iconify-icon icon="ic:round-home"></iconify-icon>
+                    </div>
+                </a>
                 <div class="input-wrapper" id="search-input">
                     <iconify-icon icon="lucide:search" name="search"></iconify-icon>
-                    <input id="search-bar" type="text" class="search-input" placeholder="Tìm kiếm..." name="keyword" oninput="performSearch(this.value)">
+                    <input id="search-bar" type="text" class="search-input" placeholder="Tìm kiếm..." name="keyword"
+                        oninput="performSearch(this.value)">
                 </div>
 
                 <div class="voice-searching">
@@ -43,14 +46,17 @@
                     <iconify-icon icon="ri:notification-4-line"></iconify-icon>
                 </div>
                 <div class="package" id="window">
-                    <a href="pack-info.php"><iconify-icon icon="material-symbols:select-window-2"></iconify-icon></a>
+                    <a href="pack-info.php">
+                        <iconify-icon icon="material-symbols:select-window-2"></iconify-icon>
+                    </a>
                 </div>
                 <div class="account">
                     <iconify-icon icon="mdi:account"></iconify-icon>
 
                 </div>
                 <p class="op_50">
-                    <a href="/web_nghe_nhac/app/pages/logout.php" style="color: #fff; text-decoration: none;">ĐĂNG XUẤT</a>
+                    <a href="/web_nghe_nhac/app/pages/logout.php" style="color: #fff; text-decoration: none;">ĐĂNG
+                        XUẤT</a>
                 </p>
 
             </div>

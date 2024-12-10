@@ -2,177 +2,179 @@
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
 ?>
 
-    <!-- Popup thông báo -->
-    <div id="notificationPopup" class="notification-popup" style="display: none;">
-        <div class="popup-content">
-            <h3>Thông báo</h3>
-            <span id="closePopup" class="close-popup">&times;</span>
-            <!-- Thông báo động sẽ được thêm vào đây bởi JavaScript -->
-        </div>
+<!-- Popup thông báo -->
+<div id="notificationPopup" class="notification-popup" style="display: none;">
+    <div class="popup-content">
+        <h3>Thông báo</h3>
+        <span id="closePopup" class="close-popup">&times;</span>
+        <!-- Thông báo động sẽ được thêm vào đây bởi JavaScript -->
     </div>
+</div>
 
-    <main>
-        <!-- Main space -->
-        <div class="mainSpace">
-            <!-- leftBar -->
-            <?php
+<main>
+    <!-- Main space -->
+    <div class="mainSpace">
+        <!-- leftBar -->
+        <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
             ?>
 
-            <!-- Create new list -->
-            <div class="create-newlist">
-                <div class="return">
-                    <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
-                </div>
-
-
-                <div class="lbl-create">
-                    <p>Tạo danh sách mới</p>
-                </div>
-
-                <form name="create-newlist" action="">
-                    <button class="choose-image">
-                        <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
-                    </button>
-                    <input type="file" id="file-upload" style="display: none;">
-                    <!-- <img id="image-preview" src="" alt="Preview"> -->
-
-                    <div class="name-list">
-                        <p>Tên danh sách</p>
-                        <input type="text" name="name-list">
-                    </div>
-
-                    <div class="scription">
-                        <p>Mô tả</p>
-                        <input type="textarea" name="scription">
-                    </div>
-
-                    <input type="submit" value="Tạo">
-                </form>
+        <!-- Create new list -->
+        <div class="create-newlist">
+            <div class="return">
+                <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
             </div>
 
-            <div class="centerSpace scrollable">
 
-                <div class="wrapperSlider">
-                    <!-- Slider -->
-                    <div class="sliderContainer">
-                        <div class="trending">
-                            <iconify-icon icon="solar:fire-bold"></iconify-icon>
-                            <div class="trendingTopic">
-                                <h3>Top bài hát&nbsp;</h3>
-                                <h3 style="color: #296265;"> thịnh hành</h3>
+            <div class="lbl-create">
+                <p>Tạo danh sách mới</p>
+            </div>
+
+            <form name="create-newlist" action="">
+                <button class="choose-image">
+                    <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
+                </button>
+                <input type="file" id="file-upload" style="display: none;">
+                <!-- <img id="image-preview" src="" alt="Preview"> -->
+
+                <div class="name-list">
+                    <p>Tên danh sách</p>
+                    <input type="text" name="name-list">
+                </div>
+
+                <div class="scription">
+                    <p>Mô tả</p>
+                    <input type="textarea" name="scription">
+                </div>
+
+                <input type="submit" value="Tạo">
+            </form>
+        </div>
+
+        <div class="centerSpace scrollable">
+
+            <div class="wrapperSlider">
+                <!-- Slider -->
+                <div class="sliderContainer">
+                    <div class="trending">
+                        <iconify-icon icon="solar:fire-bold"></iconify-icon>
+                        <div class="trendingTopic">
+                            <h3>Top bài hát&nbsp;</h3>
+                            <h3 style="color: #296265;"> thịnh hành</h3>
+                        </div>
+                    </div>
+
+
+                    <div id="slider">
+                        <div class="info">
+                            <h3 id="nameInfo" class="name">Ngáo ngơ</h3>
+                            <p id="authodInfo" class="author p2">Erik, Jsol, Orange, HIEUTHUHAI, Anh Tú Atus</p>
+                        </div>
+                        <ul class="dots">
+                            <li class="active"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="shadow"></div>
+                        <div class="imgList">
+                            <div class="itemImg">
+                                <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/ngao_ngo.jpg"
+                                    alt="">
+                            </div>
+                            <div class="itemImg">
+                                <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/dlttad.jpg" alt="">
+                            </div>
+                            <div class="itemImg">
+                                <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/mong_yu.jpg" alt="">
+                            </div>
+                            <div class="itemImg">
+                                <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/seenderella.jpg"
+                                    alt="">
+                            </div>
+                            <div class="itemImg">
+                                <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/mong_yu.jpg" alt="">
                             </div>
                         </div>
+                    </div>
+                </div>
 
+                <!-- Popular Artist -->
+                <div class="popularArtistContainer">
+                    <div class="popularArtistTopic">
+                        <h4>Nghệ sĩ phổ biến</h4>
+                    </div>
 
-                        <div id="slider">
+                    <div id="artistScroll" class="scrollable">
+                        <div class="artistItem">
+                            <img src="/web_nghe_nhac/public/assets/img/artists/hieuthuhai.jpg" alt=""
+                                class="avatarArtist">
                             <div class="info">
-                                <h3 id="nameInfo" class="name">Ngáo ngơ</h3>
-                                <p id="authodInfo" class="author p2">Erik, Jsol, Orange, HIEUTHUHAI, Anh Tú Atus</p>
+                                <p class="ui_semibold">HIEUTHUHAI</p>
+                                <p class="ui_regular op_75">Nghệ sĩ</p>
                             </div>
-                            <ul class="dots">
-                                <li class="active"></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                            <div class="shadow"></div>
-                            <div class="imgList">
-                                <div class="itemImg">
-                                    <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/ngao_ngo.jpg" alt="">
-                                </div>
-                                <div class="itemImg">
-                                    <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/dlttad.jpg" alt="">
-                                </div>
-                                <div class="itemImg">
-                                    <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/mong_yu.jpg" alt="">
-                                </div>
-                                <div class="itemImg">
-                                    <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/seenderella.jpg" alt="">
-                                </div>
-                                <div class="itemImg">
-                                    <img id="imageSlider1" src="/web_nghe_nhac/public/assets/img/slider/mong_yu.jpg" alt="">
-                                </div>
+                        </div>
+
+                        <div class="artistItem">
+                            <img src="/web_nghe_nhac/public/assets/img/artists/amee.webp" alt="" class="avatarArtist">
+                            <div class="info">
+                                <p class="ui_semibold">AMEE</p>
+                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                            </div>
+                        </div>
+
+                        <div class="artistItem">
+                            <img src="/web_nghe_nhac/public/assets/img/artists/son_tung_mtp.jpg" alt=""
+                                class="avatarArtist">
+                            <div class="info">
+                                <p class="ui_semibold">Sơn Tùng MTP</p>
+                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                            </div>
+                        </div>
+
+                        <div class="artistItem">
+                            <img src="/web_nghe_nhac/public/assets/img/artists/soobin.jpg" alt="" class="avatarArtist">
+                            <div class="info">
+                                <p class="ui_semibold">Soobin</p>
+                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                            </div>
+                        </div>
+
+                        <div class="artistItem">
+                            <img src="/web_nghe_nhac/public/assets/img/artists/vu.jpg" alt="" class="avatarArtist">
+                            <div class="info">
+                                <p class="ui_semibold">Vũ</p>
+                                <p class="ui_regular op_75">Nghệ sĩ</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Popular Artist -->
-                    <div class="popularArtistContainer">
-                        <div class="popularArtistTopic">
-                            <h4>Nghệ sĩ phổ biến</h4>
-                        </div>
-
-                        <div id="artistScroll" class="scrollable">
-                            <div class="artistItem">
-                                <img src="/web_nghe_nhac/public/assets/img/artists/hieuthuhai.jpg" alt="" class="avatarArtist">
-                                <div class="info">
-                                    <p class="ui_semibold">HIEUTHUHAI</p>
-                                    <p class="ui_regular op_75">Nghệ sĩ</p>
-                                </div>
-                            </div>
-
-                            <div class="artistItem">
-                                <img src="/web_nghe_nhac/public/assets/img/artists/amee.webp" alt="" class="avatarArtist">
-                                <div class="info">
-                                    <p class="ui_semibold">AMEE</p>
-                                    <p class="ui_regular op_75">Nghệ sĩ</p>
-                                </div>
-                            </div>
-
-                            <div class="artistItem">
-                                <img src="/web_nghe_nhac/public/assets/img/artists/son_tung_mtp.jpg" alt="" class="avatarArtist">
-                                <div class="info">
-                                    <p class="ui_semibold">Sơn Tùng MTP</p>
-                                    <p class="ui_regular op_75">Nghệ sĩ</p>
-                                </div>
-                            </div>
-
-                            <div class="artistItem">
-                                <img src="/web_nghe_nhac/public/assets/img/artists/soobin.jpg" alt="" class="avatarArtist">
-                                <div class="info">
-                                    <p class="ui_semibold">Soobin</p>
-                                    <p class="ui_regular op_75">Nghệ sĩ</p>
-                                </div>
-                            </div>
-
-                            <div class="artistItem">
-                                <img src="/web_nghe_nhac/public/assets/img/artists/vu.jpg" alt="" class="avatarArtist">
-                                <div class="info">
-                                    <p class="ui_semibold">Vũ</p>
-                                    <p class="ui_regular op_75">Nghệ sĩ</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
-                <!-- search -->
-                <div class="searches-container" id="search-container" style="display: none;">
-                    <div class="header">
-                        <h2>Tìm kiếm gần đây</h2>
-                        <span class="clear-history" onclick="clearSearchHistory()">Xóa lịch sử tìm kiếm</span>
-                    </div>
-                    <div class="search-items" id="search-items">
-                <!-- Các mục tìm kiếm sẽ được thêm vào đây bởi JavaScript -->
-                    </div>
 
             </div>
 
-                <!-- lyric -->
-                <div class="wrapper-lyric" style="display: none;" id="lyric">
-                    <p>Lời bài hát</p>
+            <!-- search -->
+            <div class="searches-container" id="search-container" style="display: none;">
+                <div class="header">
+                    <h2>Tìm kiếm gần đây</h2>
+                    <span class="clear-history" onclick="clearSearchHistory()">Xóa lịch sử tìm kiếm</span>
                 </div>
-            
+                <div class="search-items" id="search-items">
+                    <!-- Các mục tìm kiếm sẽ được thêm vào đây bởi JavaScript -->
+                </div>
+
+            </div>
+
+            <!-- lyric -->
+            <div class="wrapper-lyric" style="display: none;" id="lyric">
+                <p>Lời bài hát</p>
+            </div>
+
         </div>
         <!-- rightBar -->
-        <div class="rightBar">
-            <?php
+        <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
             ?>
-        </div>
 
         <!-- Listening Space -->
         <div class="listeningSpace">
@@ -237,16 +239,16 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                 </div>
             </div>
         </div>
-    </main>
+</main>
 
-    <!-- File javaScript -->
-    <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/main_cpn.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
-    <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
-    
+<!-- File javaScript -->
+<script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/main_cpn.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/leftBar.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/header.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/song.js"></script>
+
 </body>
 
 </html>

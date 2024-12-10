@@ -36,7 +36,7 @@
     <header>
         <div class="controlbar">
             <div class="logo">
-                <a href="home.php"><img src="../../public/assets/img/logo.svg" alt="logo"></a>
+                <a href="home.php"><img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo"></a>
             </div>
 
             <div class="searching">

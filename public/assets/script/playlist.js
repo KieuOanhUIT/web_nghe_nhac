@@ -1,5 +1,3 @@
-// Khởi tạo trình phát nhạc toàn cục
-let audioPlayer = new Audio();
 let playingPlaylist = null;
 let currentPlaylist = null; // Lưu trữ playlist hiện tại
 let currentSongs = []; // Danh sách bài hát hiện tại
@@ -270,7 +268,7 @@ function infoClickShow() {
         const infoDiv = document.getElementById('info-div');
         const artistDiv = document.getElementById('artist');
         artistDiv.style.width = '680px'; // Thu hẹp div artist 
-        infoDiv.style.width = '330px'; // Hiển thị div info
+        infoDiv.style.maxWidth = '330px'; // Hiển thị div info
         infoDiv.style.border = '1px solid rgba(255, 255, 255, 0.15)';
         infoDiv.style.padding = '24px 25px';
 };
@@ -282,7 +280,7 @@ function infoClickHide() {
         const infoDiv = document.getElementById('info-div');
         const artistDiv = document.getElementById('artist');
         artistDiv.style.width = '1030px'; // mở rộng div artist
-        infoDiv.style.width = '0px'; // Đóng div info
+        infoDiv.style.maxWidth = '0px'; // Đóng div info
         infoDiv.style.border = '0px';
         infoDiv.style.padding = '0px';
 };
