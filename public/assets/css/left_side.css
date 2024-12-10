@@ -1,382 +1,276 @@
-@font-face {
-    font-family: 'Inter';
-    src: url('/MVC/View/font/Inter-Medium.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    color: #fff;
-}
-
-.leftBar {
-    align-items: flex-start;
-    background: rgba(255, 255, 255, 0.10);
-    height: 630px;
-    width: 331px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    margin-left: 30px;
-    position: relative;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-
 body {
-    background-color: #000000;
+    background-image: url('/web_nghe_nhac/public/assets/img/image-bg.png');
+    background-color: rgb(0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0 auto; /* Loại bỏ margin mặc định */
+    width: 1440px; /* Chiếm toàn bộ chiều rộng màn hình */
+    height: 860px; /* Điều chỉnh tự động theo nội dung */
+    font-family: 'Inter', sans-serif;
 }
-
-iconify-icon:hover {
-    color: green;
-
-}
-
-.wrapper {
-
+.head-bar {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px;
-    gap: 24px;
-
-    /*width: 281px;
-    height: 582px;
-    color: aliceblue;
-    background: none;*/
-
-    max-width: 100%;
-    /* Giới hạn kích thước tối đa bằng chiều rộng của thẻ cha */
-    height: 480px;
-    /* Giới hạn kích thước tối đa bằng chiều cao của thẻ cha */
-    overflow: hidden;
-    /* Ẩn nội dung vượt quá kích thước */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1); ;
+    border-width: 1px;
+    border-style: solid ;
+    border-radius: 24px;
+    box-sizing: border-box;
+    width: 1150px;
+    height: 65px;
+    margin: 24px auto; /* Căn giữa div theo chiều ngang */
+    padding: 10px 55px;
+    align-items: center; /*Căn element giữa theo chiều ngang*/
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước tổng thể của div */
+}
+#home-icon {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    padding: 10px 10px;
+    border-radius: 50%; /* Tạo hình tròn */
+    margin-right: 16px;
+    font-size: 20px;
+}
+#home-icon:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: black;
+    border-radius: 50%; /* Tạo hình tròn */
+}
+.head-bar img {
+    margin-right: 116.4px; /* Khoảng cách giữa logo và nút home */
+}
+.timkiem-bar {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.1); ;
+    border-width: 1px;
+    border-style: solid ;
+    border-radius: 24px;
+    width: 340px;
+    height: 44px;
+    font-size: 20px;
+    margin-top: 2.7906976744186046511627906976744 vh;
+    padding: 9px 10px;
+    align-items: center; /*Căn element giữa theo chiều ngang*/
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước tổng thể của div */
+    margin-right: 16px;
+}
+#search-icon {
+    color: white;
+    text-align: center;
+    padding: 10px 10px;
+    margin-right: 5px;
+    font-size: 20px;
+}
+#micro-icon {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    padding: 10px 13px;
+    border-radius: 50%; /* Tạo hình tròn */
+    margin-right: 116.4px;
+    font-size: 20px;
+}
+#micro-icon:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: black;
+    border-radius: 50%; /* Tạo hình tròn */
+}
+#bell-icon {
+    color: white;
+    text-align: center;
+    padding: 10px 13px;
+    border-radius: 50%; /* Tạo hình tròn */
+    margin-right: 20px;
+    font-size: 20px;
+}
+#bell-icon:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: black;
+    border-radius: 50%; /* Tạo hình tròn */
+}
+#user-icon {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.25); 
+    text-align: center;
+    padding: 10px 13px;
+    border-radius: 50%; /* Tạo hình tròn */
+    margin-right: 16px;
+    font-size: 20px;
+}
+#user-icon:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: black;
+    border-radius: 50%; /* Tạo hình tròn */
+}
+#logout-button {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    width: 100px;
+    height: 33px;
+    padding: 0px 0px;
+    border: none;
+    font-family: 'Inter', sans-serif; /* Áp dụng font Inter */
+    font-weight: 600; /* Đặt trọng lượng là Semi Bold */
+    font-size: 16;
+    border-radius: 8px;
+}
+#logout-button:hover {
+    color: whitesmoke; /* Đổi màu chữ khi hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Nền nhẹ khi hover */
+}
+.head-bar input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 16px;
+    width: 300px;
+    padding-right: 10px;
+    color: white;
 }
 
-.lib,
-div,
-iconify-icon,
-p {
+.main {
+    display: flex;
+    box-sizing: border-box;
+    margin-top: 29px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1380px;
+    display: flex;
+}
+#library {
+    box-sizing: border-box;
+    width: 330px;
+    height: 630px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.15);
+    padding: 24px 24px;
+}
+#library-icon {
+    color: white;
+    font-size: 26px;
+    margin-right: 20px;
+}
+#library-text {
+    color: white;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif; /* Áp dụng font Inter */
+    font-weight: 650;
+    margin-right: 97px;
+}
+#plus-button {
     background-color: transparent;
     color: white;
-
+    outline: none;
+    border: none;
+    font-size: 20px;
+    border-radius: 50%;
 }
-
-
-.head {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 26px;
-    width: 100%;
-    height: 86px;
+#plus-button:hover {
+    color: rgba(255, 255, 255, 0.5);
 }
-
-.head-1 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 103px;
-    width: 100%;
-    height: 26px;
-    justify-content: space-between;
-
-}
-
-
-.head-2 .playlist {
-    font-family: 'Inter';
-    font-size: 15.5px;
-}
-
-.head-2 .artist {
-    font-family: 'Inter';
-    font-size: 15.5px;
-}
-
-.head-2 .artist:hover {
-    background-color: #ffffff;
-    /* Màu nền khi hover */
-    color: #000000;
-    /* Đổi màu chữ thành đen */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-    /* Phát sáng */
-}
-
-.head-2 .playlist:hover {
-    background-color: #ffffff;
-    /* Màu nền khi hover */
-    color: #000000;
-    /* Đổi màu chữ thành đen */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-    /* Phát sáng */
-}
-
-
-
-.lib {
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 20px;
-
-    width: 152px;
-    height: 26px;
-
-
-}
-
-iconify-icon {
-    font-size: 26px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
-}
-
-.TV {
-    font-family: "Inter", "extra-bold";
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.head-2 {
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 20px;
-
-    width: 198px;
-    height: 32px;
-}
-
-.playlist,
-.artist {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 16px;
-    gap: 10px;
-
-    width: 87px;
-    height: 32px;
-
-    background: rgba(255, 255, 255, 0.25);
+#playlist-button, #artist-button {
+    color: white;
     border-radius: 26px;
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 91px;
+    height: 32px;
+    margin-right: 20px;
+    margin-top: 28px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif; /* Áp dụng font Inter */
+    font-weight: 500;
 }
-
-
-.list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 24px;
-
-    width: 100%;
+#playlist-button:hover, #artist-button:hover {
+    color: black;   
+}
+#list-scroll {
+    margin-top: 40px;
+    width: 107%;
     height: 456px;
-    overflow-x: hidden;
-
+    overflow-y: scroll;
 }
 
-.list::-webkit-scrollbar {
-    width: 8px;
-    /* Độ rộng thanh cuộn */
+/* Cơ bản cho tất cả playlist */
+#list-scroll div {
+    height: 84px;
+    width: 255px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 12px; /* Thêm bo tròn cho toàn div */
+    transition: background-color 0.3s ease; /* Tạo hiệu ứng mượt */
 }
 
-/* Thanh cuộn */
-.list::-webkit-scrollbar-thumb {
-    background: transparent;/trong suốt */ border-radius: 4px;
-    /* Đường viền thanh cuộn */
+/* Hiệu ứng hover cho các playlist */
+#list-scroll div:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Nền sáng lên khi hover */
 }
 
-
-.BH {
-    font-family: "Inter", "Semibold";
-    font-size: 16px;
-}
-
-.NS {
-    font-family: "Inter", "Regular";
-    font-size: 16px;
-    font-weight: 100px;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 100;
-}
-
-.image {
+/* Cấu hình icon */
+#list-scroll div img, 
+#list-scroll div i {
     width: 72px;
     height: 72px;
-
+    border-radius: 12px; /* Đảm bảo bo góc */
+    margin-right: 20px;
+    transition: transform 0.3s ease; /* Hiệu ứng khi hover icon */
 }
 
-.box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 20px;
-    width: 249px;
-    height: 72px;
-
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-    cursor: pointer;
-
+#list-scroll div:hover img, 
+#list-scroll div:hover i {
+    transform: scale(1.1); /* Tăng kích thước icon khi hover */
 }
 
-/****************************************************/
-/*tạo danh sách phát mới*/
-.create-newlist {
-    position: absolute;
-    background-color: #000000;
-    box-sizing: border-box;
-    width: 440px;
-    height: 674px;
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    align-items: center;
-    flex-direction: column;
-    display: none;
-    z-index: 1000;
-
-
-}
-
-.create-newlist .return {
-    height: 50.74px;
-    width: 50.74px;
-    margin-left: 25px;
-    margin-top: 25px;
-}
-
-.create-newlist .lbl-create {
-
-    width: 221px;
-    height: 26px;
-    left: calc(50% - 221px/2 + 0.5px);
-    top: 103px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 110%;
-
-    display: flex;
-    align-items: center;
-
-    color: #FFFFFF;
-
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Inter', 'extra bold';
-    font-size: 24px;
-}
-
-.create-newlist .name-list {
-    display: block;
-    width: 325px;
-    height: 74.75px;
-    margin: 25px auto;
-    gap: 6px;
-    font-family: 'inter', 'extra bold';
-    font-size: 16px;
-
-}
-
-input[name=name-list] {
-
-    box-sizing: border-box;
-    padding: 17px 53px;
-    width: 325px;
-    height: 56px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-
+/* Văn bản trong playlist */
+#list-scroll div span {
     color: white;
-}
-
-
-.create-newlist .scription {
-    width: 324px;
-    height: 190px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'inter', 'extra bold';
     font-size: 16px;
-}
-
-input[name=scription] {
-    box-sizing: border-box;
-    width: 324px;
-    height: 160px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-    color: white;
-    padding: 17px;
-
-
-}
-
-.choose-image {
-    display: flex;
-    background-color: transparent;
-    border: transparent !important;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-}
-
-input[type=submit] {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 24px;
-    gap: 10px;
-
-    width: 77px;
-    height: 36px;
-    left: 305px;
-    top: 598px;
-
-    background: #296265;
-    border-radius: 5px;
-
-    margin-right: 56px;
-    margin-left: auto;
-
-    font-family: 'Inter';
-    font-style: normal;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
 }
 
-@media only screen and (max-width: 768px) {
-    .create-newlist {
-        width: 90%;
-    }
+/* Màu sắc cho phần chữ nhỏ hơn */
+#list-scroll div span #playlist-text {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 16px;
+    font-weight: 450;
+    margin-top: 4px;
+}
+
+#list-scroll div {
+    margin-bottom: 20px;
+}
+#list-scroll::-webkit-scrollbar {
+    width: 8px; /* Độ rộng của scrollbar */
+}
+
+#list-scroll::-webkit-scrollbar-track {
+    background: transparent; /* Nền của khung cuộn */
+}
+
+#list-scroll::-webkit-scrollbar-thumb {
+    background-color: #1DB954; /* Màu của thanh cuộn */
+    border-radius: 10px; /* Làm tròn góc */
+    border: 2px solid transparent; /* Để thanh cuộn không có viền nổi bật */
+}
+
+/* Custom scrollbar for Firefox */
+#list-scroll {
+    scrollbar-width: thin; /* Thanh cuộn nhỏ */
+    scrollbar-color: #1DB954 transparent; /* Màu của thanh cuộn và khung */
 }

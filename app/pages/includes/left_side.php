@@ -1,98 +1,59 @@
-<!-- leftBar -->
-<div class="leftBar">
+<?php
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/control/playlistControl.php';
+if (!isset($playlists)) {
+    include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
+    include_once '/xampp/htdocs/web_nghe_nhac/public/assets/models/playlistModel.php';
 
-<div class="wrapper">
-    <div class="head">
-        <div class="head-1">
-            <div class="lib">
-                <iconify-icon icon="fluent:library-24-filled"></iconify-icon>
-                <p class="TV">Thư viện</p>
+    $database = new Database();
+    $db = $database->getConnection();
+    $playlistModel = new PlaylistModel($db);
+    $playlists = $playlistModel->getAllPlaylists();
+}
+// Khởi tạo kết nối Database và Controller
+if (!isset($controller)) {
+    include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/control/playlistControl.php';
+    $database = new Database();
+    $db = $database->getConnection();
+    $controller = new PlaylistController($db);
+}
+?>
+<div id="library">
+            <!--div thư viện-->
+            <div style="width: auto; display: flex;">
+                <i id="library-icon" class="fa-solid fa-books"></i>
+                <span id="library-text">Thư viện</span>
+                <button type="submit" id="plus-button" style="cursor: pointer;"><i
+                        class="fa-solid fa-plus"></i></button>
+                <!--plus-->
             </div>
-            <div class="plus">
-                <iconify-icon icon="ic:sharp-plus"></iconify-icon>
+            <div id="type-playlist" style="width: auto;">
+                <button id="playlist-button">Playlist</button>
+                <button id="artist-button">Nghệ sĩ</button>
+            </div>
+            <div id="list-scroll">
+                <?php
+                if (!empty($playlists)) {
+                    foreach ($playlists as $playlist) {
+                        $maDSP = $playlist['MaDSP'];
+                        $tenDSP = $playlist['TenDSP'];
+                        $loaiDSP = $playlist['LoaiDSP'];
+                        $imgName = $playlist['AnhDSP'];
+                        $imgPath = "/web_nghe_nhac/public/assets/img/playlist/$imgName";
+
+                        // Dữ liệu truyền vào JavaScript: mã, tên, loại, đường dẫn ảnh
+                        echo "<div id='playlist$maDSP' onclick=\"updateArtistView('$maDSP', '$tenDSP', '$loaiDSP', '$imgPath')\">
+                                <span id='chillingwithheart-icon'>
+                                    <img src='$imgPath' alt='$tenDSP'>
+                                </span>
+                                <span id='chillingwithheart-text'>
+                                    $tenDSP
+                                    <br><span id='playlist-text'>" . ($loaiDSP === 'Playlist' ? 'Playlist' : 'Nghệ sĩ') . "</span>
+                                </span>
+                            </div>";
+                    }
+                } else {
+                    echo "Không có danh sách phát nào!";
+                }
+            ?>
             </div>
         </div>
-
-        <div class="head-2">
-            <div class="playlist">
-                Playlist
-            </div>
-            <div class="artist">
-                Nghệ sĩ
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="list">
-        <div class="box">
-            <div class="image">
-
-                <!--chèn hình ảnh-->
-                <img src="/web_nghe_nhac/public/assets/img/ha.svg" alt="">
-            </div>
-            <div class="song-artist">
-                <p class="BH"><!--chen ten bai hat-->Healing cực mạnh</p>
-                <p class="NS"><!--chen ten nghe si-->Playlist</p>
-            </div>
-        </div>
-        <div class="box">
-            <div class="image">
-                <!--chèn hình ảnh-->
-                <img src="/web_nghe_nhac/public/assets/img/ha1.svg" alt="">
-            </div>
-            <div class="song-artist">
-                <p class="BH"><!--chen ten bai hat-->Nhạc của Trang </p>
-                <p class="NS"><!--chen ten nghe si-->Nghệ sĩ</p>
-            </div>
-
-        </div>
-        <div class="box">
-            <div class="image">
-
-                <!--chèn hình ảnh-->
-                <img src="/web_nghe_nhac/public/assets/img/ha.svg" alt="">
-            </div>
-            <div class="song-artist">
-                <p class="BH"><!--chen ten bai hat-->Healing cực mạnh</p>
-                <p class="NS"><!--chen ten nghe si-->Playlist</p>
-            </div>
-        </div>
-        <div class="box">
-            <div class="image">
-                <!--chèn hình ảnh-->
-                <img src="/web_nghe_nhac/public/assets/img/ha1.svg" alt="">
-            </div>
-            <div class="song-artist">
-                <p class="BH"><!--chen ten bai hat-->Nhạc của Trang </p>
-                <p class="NS"><!--chen ten nghe si-->Nghệ sĩ</p>
-            </div>
-
-        </div>
-        <div class="box">
-            <div class="image">
-
-                <!--chèn hình ảnh-->
-                <img src="/web_nghe_nhac/public/assets/img/ha.svg" alt="">
-            </div>
-            <div class="song-artist">
-                <p class="BH"><!--chen ten bai hat-->Healing cực mạnh</p>
-                <p class="NS"><!--chen ten nghe si-->Playlist</p>
-            </div>
-        </div>
-        <div class="box">
-            <div class="image">
-                <!--chèn hình ảnh-->
-                <img src="/web_nghe_nhac/public/assets/img/ha1.svg" alt="">
-            </div>
-            <div class="song-artist">
-                <p class="BH"><!--chen ten bai hat-->Nhạc của Trang </p>
-                <p class="NS"><!--chen ten nghe si-->Nghệ sĩ</p>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-</div>
