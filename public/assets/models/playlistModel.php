@@ -41,7 +41,7 @@ class PlaylistModel {
     }
 
     public function getSongsFromPlaylist($maDSP) {
-        $query = "SELECT b.MaBaiHat, b.TenBaiHat, b.AnhBaiHat, b.FileBaiHat, ct.NgayThem, n.TenNgheSy
+        $query = "SELECT b.MaBaiHat, b.TenBaiHat, b.AnhBaiHat, b.FileBaiHat, b.LoiBaiHat, ct.NgayThem, n.TenNgheSy, n.MaNgheSy
                   FROM baihat b
                   JOIN ct_danhsachphat ct ON b.MaBaiHat = ct.MaBaiHat
                   JOIN nghesy n ON n.MaNgheSy = b.MaNgheSy

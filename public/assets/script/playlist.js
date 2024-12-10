@@ -17,6 +17,23 @@ function playSong(songs, index) {
 
     const song = songs[index];
     const maBaiHat = songs[index].MaBaiHat;
+    // Gửi yêu cầu AJAX tới song.php để lấy thông tin chi tiết bài hát
+    $.ajax({
+        url: '/web_nghe_nhac/app/pages/song.php',
+        type: 'GET',
+        data: { id: song.MaBaiHat },
+        success: function(response) {
+            if (response.results && response.results.length > 0) {
+                // Hiển thị bài hát với displaySong
+                displaySong(response.results[0]);
+            } else {
+                console.error('Không tìm thấy thông tin bài hát.');
+            }
+        },
+        error: function() {
+            console.error('Không thể tải bài hát.');
+        }
+    });
 
     // Gọi API để lấy đánh giá
     fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=getReview&MaBaiHat=${maBaiHat}`)
@@ -44,15 +61,20 @@ function playSong(songs, index) {
 
     // Khi bài hát kết thúc, phát bài kế tiếp
     audioPlayer.onended = () => {
-        if (currentIndex + 1 < songs.length) {
-            currentIndex++;
-            playSong(songs, currentIndex);
-            highlightSongPlaying(currentIndex);
+        if (isRepeating) {
+            audioPlayer.currentTime = 0;
+            audioPlayer.play();
         } else {
-            console.log("Danh sách phát đã hết.");
-            togglePlayPauseUI(false);
-            isPlaying = false;
-            highlightSongPlaying(null);
+            if (currentIndex + 1 < songs.length) {
+                currentIndex++;
+                playSong(songs, currentIndex);
+                highlightSongPlaying(currentIndex);
+            } else {
+                console.log("Danh sách phát đã hết.");
+                togglePlayPauseUI(false);
+                isPlaying = false;
+                highlightSongPlaying(null);
+            }
         }
     };
 }
@@ -65,10 +87,11 @@ function togglePlayPauseUI(isPlaying) {
     if (isPlaying) {
         playButton.classList.remove('fa-play');
         playButton.classList.add('fa-pause');
+        mainControlIcon.setAttribute('icon', 'material-symbols:pause-rounded');
     } else {
         playButton.classList.remove('fa-pause');
         playButton.classList.add('fa-play');
-        
+        mainControlIcon.setAttribute('icon', 'solar:play-bold');
     }
 }
 
