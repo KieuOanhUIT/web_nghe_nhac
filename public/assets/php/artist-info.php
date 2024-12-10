@@ -98,9 +98,14 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
             <!--Lay thong tin nghe si -->
             <?php
             //Code lấy thông tin nghe si từ database và hiển thị ảnh, tên, số lượt theo dõi ở đây.
-            $sql = "SELECT nghesy.MaNgheSy,nghesy.TenNgheSy, nghesy.SoNguoiTheoDoi, nghesy.AnhNgheSy, baihat.TenBaiHat, baihat.AnhBaiHat, baihat.NgayDang
-                FROM baihat join nghesy on baihat.MaNgheSy = nghesy.MaNgheSy
-                WHERE nghesy.MaNgheSy= '" . $mans . "' ";
+            $mans = isset($_GET['manghesy']) ? $_GET['manghesy'] : null;
+            if ($mans) {
+                $sql = "SELECT nghesy.MaNgheSy,nghesy.TenNgheSy, nghesy.SoNguoiTheoDoi, nghesy.AnhNgheSy, baihat.TenBaiHat, baihat.AnhBaiHat, baihat.NgayDang
+                    FROM baihat join nghesy on baihat.MaNgheSy = nghesy.MaNgheSy
+                    WHERE nghesy.MaNgheSy= '" . $mans . "' ";
+            } else {
+                echo "Không tìm thấy mã nghệ sĩ.";
+            }
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 

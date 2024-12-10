@@ -30,7 +30,7 @@ function displaySong(song) {
             // Cập nhật link nghệ sỹ (parent <a>)
     const artistLink = img.closest('#artist-info');
     if (artistLink) {
-        artistLink.href = `/web_nghe_nhac/public/assets/php/artist_info.php?manghesy=${song.MaNgheSy}`;
+        artistLink.href = `/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=${song.MaNgheSy}`;
     }
     });
 
