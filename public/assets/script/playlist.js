@@ -308,6 +308,7 @@ function infoClickHide() {
         infoDiv.style.padding = '0px';
 };
 
+//Hàm thêm danh sách phát
 document.getElementById('newlist-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Ngăn form gửi đi mặc định
 
@@ -381,7 +382,7 @@ document.getElementById('newlist-form').addEventListener('submit', async (e) => 
     const result = JSON.parse(textResponse);
         if (result.success) {
             alert('Thêm danh sách phát thành công!');
-            window.location.reload(); // Refresh lại trang hoặc chuyển hướng
+            window.location.href = "/web_nghe_nhac/public/assets/php/views/playlistView.php";
         } else {
             alert('Đã xảy ra lỗi: ' + result.message);
         }

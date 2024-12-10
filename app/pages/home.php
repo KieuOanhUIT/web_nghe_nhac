@@ -17,40 +17,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         <!-- leftBar -->
         <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
-            ?>
-
-        <!-- Create new list -->
-        <div class="create-newlist">
-            <div class="return">
-                <img src="/web_nghe_nhac/public/assets/icon/ic-return.svg" alt="">
-            </div>
-
-
-            <div class="lbl-create">
-                <p>Tạo danh sách mới</p>
-            </div>
-
-            <form name="create-newlist" action="">
-                <button class="choose-image">
-                    <img src="/web_nghe_nhac/public/assets/img/insert-img.svg" alt="">
-                </button>
-                <input type="file" id="file-upload" style="display: none;">
-                <!-- <img id="image-preview" src="" alt="Preview"> -->
-
-                <div class="name-list">
-                    <p>Tên danh sách</p>
-                    <input type="text" name="name-list">
-                </div>
-
-                <div class="scription">
-                    <p>Mô tả</p>
-                    <input type="textarea" name="scription">
-                </div>
-
-                <input type="submit" value="Tạo">
-            </form>
-        </div>
-
+        ?>
         <div class="centerSpace scrollable">
 
             <div class="wrapperSlider">
@@ -174,7 +141,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         <!-- rightBar -->
         <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
-            ?>
+        ?>
 
         <!-- Listening Space -->
         <div class="listeningSpace">
@@ -248,6 +215,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
 <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
 <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
+<script src="/web_nghe_nhac/public/assets/script/playlist.js"></script>
 
 </body>
 
