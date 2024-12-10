@@ -27,19 +27,13 @@ function displaySong(song) {
         img.src = song.AnhNgheSy 
             ? `/web_nghe_nhac/public/assets/img/data-artists-image/${song.AnhNgheSy}` 
             : `/web_nghe_nhac/public/assets/img/dsyeuthich.png`;
+            // Cập nhật link nghệ sỹ (parent <a>)
+    const artistLink = img.closest('#artist-info');
+    if (artistLink) {
+        artistLink.href = `/web_nghe_nhac/public/assets/php/artist_info.php?manghesy=${song.MaNgheSy}`;
+    }
     });
 
-    // Cập nhật link nghệ sỹ
-    const artistInfo = document.querySelectorAll('.artist-info');
-    artistInfo.forEach(info => {
-        info.innerHTML = `
-            <a href="/web_nghe_nhac/public/assets/php/artist_info.php?manghesy=${song.MaNgheSy}">
-                <img src="/web_nghe_nhac/public/assets/img/data-artists-image/${song.AnhNgheSy}" alt="${song.TenNgheSy}">
-                <h3>${song.TenNgheSy}</h3>
-            </a>
-        `;
-        console.log('Artist id:', song.MaNgheSy);
-    });
 
     // Cập nhật tên bài hát
     const songNames = document.querySelectorAll('.songName');
