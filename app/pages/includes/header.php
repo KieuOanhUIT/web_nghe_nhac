@@ -36,11 +36,11 @@
     <header>
         <div class="controlbar">
             <div class="logo">
-                <a href="home.php"><img src="../../public/assets/img/logo.svg" alt="logo"></a>
+                <a href="/web_nghe_nhac/app/pages/home.php"><img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo"></a>
             </div>
 
             <div class="searching">
-                <a href="home.php">
+                <a href="/web_nghe_nhac/app/pages/home.php">
                     <div class="home">
                         <iconify-icon icon="ic:round-home"></iconify-icon>
                     </div>

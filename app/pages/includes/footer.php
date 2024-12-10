@@ -7,7 +7,7 @@
             <p class="author ui_regular op_75 songAuthor">Tên nghệ sĩ</p>
         </div>
 
-        <div class="addToPlaylist">
+        <div class="addToPlaylist" id="addToPlaylist">
             <iconify-icon icon="ic:round-plus"></iconify-icon>
         </div>
     </div>
@@ -60,6 +60,6 @@
         </div>
     </div>
 </div>
-        <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
         <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
+        <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js"></script>
 
