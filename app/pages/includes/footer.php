@@ -1,10 +1,10 @@
 <div class="listeningSpace">
     <div class="info">
-        <img src="" alt="" class="picOfSong songImage">
+        <img src="/web_nghe_nhac/public/assets/img/data-songs-image/dgtrr.jpg" alt="songImage" class="picOfSong songImage">
 
         <div class="infoText">
-            <p class="name ui_semibold songName">Tên bài hát</p>
-            <p class="author ui_regular op_75 songAuthor">Tên nghệ sĩ</p>
+            <p class="name ui_semibold songName">Đi giữa trời rực rỡ</p>
+            <p class="author ui_regular op_75 songAuthor">Ngô Lan Hương</p>
         </div>
 
         <div class="addToPlaylist" id="addToPlaylist">
@@ -14,7 +14,7 @@
 
     <!-- Music player -->
     <div class="musicPlayer">
-        <audio id="audioPlayer" src=""></audio>
+        <audio id="audioPlayer" src="/web_nghe_nhac/public/song/dgtrr.mp3"></audio>
         <div class="controlbar">
             <button id="lyricsBtn">
                 <iconify-icon id="lyricsIcon" class="" icon="maki:karaoke"></iconify-icon>
@@ -42,7 +42,7 @@
             <div class="progressContainer" id="progressContainer">
                 <div class="progress" id="progress"></div>
             </div>
-            <span id="duration" class="progressTime remaining">0:00</span>
+            <span id="duration" class="progressTime remaining">3:12</span>
         </div>
     </div>
 

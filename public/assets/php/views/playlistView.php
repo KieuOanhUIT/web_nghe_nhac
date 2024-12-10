@@ -68,53 +68,59 @@ if (!isset($controller)) {
         </div>
 
         <div id="artist">
+            <!-- lyric -->
+            <div class="wrapper-lyric" style="display: none;" id="lyric">
+                <p>Lời bài hát</p>
+            </div>
             <!--div nghệ sĩ-->
-            <div id="main-artist">
-                <span id="avatar-artist">
-                    <img src="/web_nghe_nhac/public/assets/img/playlist/playlist<?php echo $maDSP; ?>.jpg"
-                        alt="Playlist">
-                </span>
-                <div class="info-artist">
-                    <div id="artist-text">
-                        <?php 
-                        // Hiển thị "Nghệ sĩ" hoặc "Danh sách phát" dựa trên LoaiDSP
-                        echo $loaiDSP === 'Nghệ sĩ' ? 'Nghệ sĩ' : 'Playlist'; 
-                        ?>
-                        <br>
-                    </div>
-                    <div id="artist-name">
-                        <b><?php echo isset($tenPlaylist) ? $tenPlaylist : 'Loading tên playlist...'; ?></b><br>
-                    </div>
-                    <div id="artist-follower">
-                        <?php 
-                        // Hiển thị số người theo dõi hoặc số lượng bài hát
-                        if ($loaiDSP === 'Nghệ sĩ') {
-                            echo "123.456.789 người theo dõi";
-                        } else {
-                            echo isset($songCount) ? "$songCount bài hát" : "Loading số lượng bài hát...";;
-                        }
-                        ?>
+            <div class="wrapperSlider">
+                <div id="main-artist">
+                    <span id="avatar-artist">
+                        <img src="/web_nghe_nhac/public/assets/img/playlist/playlist<?php echo $maDSP; ?>.jpg"
+                            alt="Playlist">
+                    </span>
+                    <div class="info-artist">
+                        <div id="artist-text">
+                            <?php 
+                            // Hiển thị "Nghệ sĩ" hoặc "Danh sách phát" dựa trên LoaiDSP
+                            echo $loaiDSP === 'Nghệ sĩ' ? 'Nghệ sĩ' : 'Playlist'; 
+                            ?>
+                            <br>
+                        </div>
+                        <div id="artist-name">
+                            <b><?php echo isset($tenPlaylist) ? $tenPlaylist : 'Loading tên playlist...'; ?></b><br>
+                        </div>
+                        <div id="artist-follower">
+                            <?php 
+                            // Hiển thị số người theo dõi hoặc số lượng bài hát
+                            if ($loaiDSP === 'Nghệ sĩ') {
+                                echo "123.456.789 người theo dõi";
+                            } else {
+                                echo isset($songCount) ? "$songCount bài hát" : "Loading số lượng bài hát...";;
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="play">
-                <button id="circle" onclick="togglePlayPause()"><i id="playbutton"
-                        class="fa-solid fa-play"></i></button>
-                <button id="threedots"><i class="fa-solid fa-ellipsis"></i></button>
-                <button id="follow-button">Theo dõi</button>
-                <button id="add-song-button"><i class="fa-solid fa-plus-large"></i></button>
-                <button id="delete-playlist-button"><i class="fa-solid fa-trash"></i></button>
-                <button id="threebars"><i class="fa-solid fa-bars"></i></button>
-            </div>
-            <div id="listsong">
-                <div id="listsong-title">
-                    <span id="sharp-title">#</span>
-                    <span id="tenbaihat-title">Tên bài hát</span>
-                    <span id="ngaythem-title">Ngày thêm</span>
+                <div id="play">
+                    <button id="circle" onclick="togglePlayPause()"><i id="playbutton"
+                            class="fa-solid fa-play"></i></button>
+                    <button id="threedots"><i class="fa-solid fa-ellipsis"></i></button>
+                    <button id="follow-button">Theo dõi</button>
+                    <button id="add-song-button"><i class="fa-solid fa-plus-large"></i></button>
+                    <button id="delete-playlist-button"><i class="fa-solid fa-trash"></i></button>
+                    <button id="threebars"><i class="fa-solid fa-bars"></i></button>
                 </div>
-                <div id="songs"></div>
-                <!--listsong của playlist-->
-                <audio id="audio-player" controls style="display: none;"></audio> <!-- Thẻ audio để phát nhạc -->
+                <div id="listsong">
+                    <div id="listsong-title">
+                        <span id="sharp-title">#</span>
+                        <span id="tenbaihat-title">Tên bài hát</span>
+                        <span id="ngaythem-title">Ngày thêm</span>
+                    </div>
+                    <div id="songs"></div>
+                    <!--listsong của playlist-->
+                    <audio id="audio-player" controls style="display: none;"></audio> <!-- Thẻ audio để phát nhạc -->
+                </div>
             </div>
         </div>
 
