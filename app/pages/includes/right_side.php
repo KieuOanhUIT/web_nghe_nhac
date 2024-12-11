@@ -10,17 +10,17 @@
                         <div class="boxSong">
                             <div class="imageSong">
                                 <!--chèn hình ảnh-->
-                                <img src="" alt="" class="hinhanh songImage">
+                                <img src="/web_nghe_nhac/public/assets/img/data-songs-image/dgtrr.jpg" alt="" class="hinhanh songImage">
 
                             </div>
 
                             <div class="nameSong">
                                 <div class="nameSong-Song songName">
-                                    Tên bài hát
+                                    Đi giữa trời rực rỡ
                                 </div>
 
                                 <div class="nameSong-Artist songAuthor">
-                                    Tên nghệ sỹ
+                                    Ngô Lan Hương
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
 
                             <div class="artist-image">
                                 <div class="textNgheSi">Nghệ sỹ</div>
-                                <a href="" id="artist-info"><img src="" alt="" class="hinhanh1 artist-image"></a>
+                                <a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=17" id="artist-info"><img src="/web_nghe_nhac/public/assets/img/data-artists-image/nlh.jpg" alt="" class="hinhanh1 artist-image"></a>
                             </div>
 
                             <div class="folow-artist">
