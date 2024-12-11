@@ -1,14 +1,15 @@
 <?php
 include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/control/playlistControl.php';
-if (!isset($playlists)) {
-    include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
-    include_once '/xampp/htdocs/web_nghe_nhac/public/assets/models/playlistModel.php';
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/config/config.php';
+include_once '/xampp/htdocs/web_nghe_nhac/public/assets/models/playlistModel.php';
 
+if (!isset($playlists)) {
     $database = new Database();
     $db = $database->getConnection();
     $playlistModel = new PlaylistModel($db);
     $playlists = $playlistModel->getAllPlaylists();
 }
+
 // Khởi tạo kết nối Database và Controller
 if (!isset($controller)) {
     include_once '/xampp/htdocs/web_nghe_nhac/public/assets/php/control/playlistControl.php';
@@ -93,8 +94,7 @@ if (!isset($controller)) {
             <div class="wrapperSlider">
                 <div id="main-artist">
                     <span id="avatar-artist">
-                        <img src="/web_nghe_nhac/public/assets/img/playlist/playlist<?php echo $maDSP; ?>.jpg"
-                            alt="Playlist">
+                        <img src="/web_nghe_nhac/public/assets/img/playlist/<?php echo $AnhDSP; ?>" alt="Playlist">
                     </span>
                     <div class="info-artist">
                         <div id="artist-text">
@@ -124,7 +124,9 @@ if (!isset($controller)) {
                 <button id="circle" onclick="togglePlayPause()"><i id="playbutton"
                         class="fa-solid fa-play"></i></button>
                 <button id="threedots"><i class="fa-solid fa-ellipsis"></i></button>
-                <button id="follow-button">Theo dõi</button>
+                <button id="follow-button"
+                    style="<?php echo ($loaiDSP === 'Playlist') ? 'display: none !important;' : 'display: block;'; ?>">Theo
+                    dõi</button>
                 <button id="add-song-button"><i class="fa-solid fa-plus-large"></i></button>
                 <button id="delete-playlist-button"><i class="fa-solid fa-trash"></i></button>
                 <button id="threebars"><i class="fa-solid fa-bars"></i></button>
@@ -210,7 +212,17 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_sid
             </form>
         </div>
     </div>
-    <script src="/web_nghe_nhac/public/assets/script/playlist.js"></script>
+    <script src="/web_nghe_nhac/public/assets/script/playlist.js">
+    const initialPlaylistId = "<?php echo $maDSP; ?>";
+    const initialSongs = <?php echo $songsJson; ?>;
+    const playlists = <?php echo $playlistsJson; ?>;
+
+    // Khởi tạo giao diện với playlist ban đầu
+    document.addEventListener("DOMContentLoaded", () => {
+        updateArtistView(initialPlaylistId, "<?php echo $tenPlaylist; ?>", "<?php echo $loaiDSP; ?>",
+            "<?php echo $imgPath; ?>");
+    });
+    </script>
 </body>
 
 </html>

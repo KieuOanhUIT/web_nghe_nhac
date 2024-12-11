@@ -33,7 +33,7 @@ class PlaylistModel {
     }
 
     public function getPlaylistById($maDSP) {
-        $query = "SELECT * FROM danhsachphat WHERE MaDSP = :maDSP LIMIT 1";
+        $query = "SELECT * FROM danhsachphat WHERE MaDSP = :maDSP";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':maDSP', $maDSP);
         $stmt->execute();
@@ -50,7 +50,7 @@ class PlaylistModel {
         $stmt->bindParam(':maDSP', $maDSP);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } //sửa ct.NgayThem
+    }
 
     //Hàm lấy mã danh sách phát lớn nhất
     public function getMaxPlaylistId () {

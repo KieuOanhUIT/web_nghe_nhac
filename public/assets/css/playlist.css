@@ -100,6 +100,11 @@ body {
     overflow-y: scroll;
 }
 
+#list-scroll a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Cơ bản cho tất cả playlist */
 #list-scroll div {
     height: 84px;
@@ -691,7 +696,7 @@ body {
     border-radius: 10px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -53%) scale(0.76);
     font-size: 20px;
     align-items: center;
     flex-direction: column;
