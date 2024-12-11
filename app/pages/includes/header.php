@@ -67,7 +67,7 @@
                     </a>
                 </div>
                 <div class="account">
-                    <a href="../../../public/assets/php/profile-info.php">
+                    <a href="/web_nghe_nhac/public/assets/php/profile-info.php">
                         <iconify-icon icon="mdi:account"></iconify-icon>
                     </a>
 

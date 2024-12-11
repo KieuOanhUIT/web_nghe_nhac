@@ -35,15 +35,6 @@ img,
     overflow-y: auto;
 }
 
-/* Ẩn thanh cuộn mặc định */
-.centerSpace .searches-container::-webkit-scrollbar {
-    width: 8px;
-}
-
-.centerSpace .searches-container::-webkit-scrollbar-thumb {
-    background: transparent;
-}
-
 /* Định dạng chữ trong phần tìm kiếm */
 .centerSpace .searches-container p {
     max-width: 100%;
@@ -74,7 +65,6 @@ img,
     display: block;
     width: 100%;
     max-width: 800px;
-    background: #1a1a1a;
     border-radius: 12px;
     position: relative;
     z-index: 1;
@@ -89,7 +79,7 @@ img,
 }
 
 .header h2 {
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .clear-history {
@@ -220,14 +210,6 @@ img,
 /* Các mục thông báo đã đọc không hiển thị dấu chấm */
 .notification-item.read .unread-indicator {
     display: none; /* Ẩn dấu chấm nếu đã đọc */
-}
-.notification-popup::-webkit-scrollbar {
-    width: 8px;
-    /* Độ rộng của thanh cuộn */
-}
-
-.notification-popup::-webkit-scrollbar-thumb {
-    background: transparent;
 }
 
 /* Popup thông báo */

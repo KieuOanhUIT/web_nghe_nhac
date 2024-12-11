@@ -18,6 +18,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
         ?>
+        ?>
+
         <div class="centerSpace scrollable">
 
             <div class="wrapperSlider">
@@ -74,47 +76,64 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
                     </div>
 
                     <div id="artistScroll" class="scrollable">
-                        <div class="artistItem">
-                            <img src="/web_nghe_nhac/public/assets/img/artists/hieuthuhai.jpg" alt=""
-                                class="avatarArtist">
-                            <div class="info">
-                                <p class="ui_semibold">HIEUTHUHAI</p>
-                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                        <a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=3"
+                            style="text-decoration: none">
+                            <div class="artistItem">
+                                <img src="/web_nghe_nhac/public/assets/img/artists/hieuthuhai.jpg" alt=""
+                                    class="avatarArtist">
+                                <div class="info">
+                                    <p class="ui_semibold">HIEUTHUHAI</p>
+                                    <p class="ui_regular op_75">Nghệ sĩ</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
-                        <div class="artistItem">
-                            <img src="/web_nghe_nhac/public/assets/img/artists/amee.webp" alt="" class="avatarArtist">
-                            <div class="info">
-                                <p class="ui_semibold">AMEE</p>
-                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                        <a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=7"
+                            style="text-decoration: none">
+                            <div class="artistItem">
+                                <img src="/web_nghe_nhac/public/assets/img/artists/amee.webp" alt=""
+                                    class="avatarArtist">
+                                <div class="info">
+                                    <p class="ui_semibold">AMEE</p>
+                                    <p class="ui_regular op_75">Nghệ sĩ</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
-                        <div class="artistItem">
-                            <img src="/web_nghe_nhac/public/assets/img/artists/son_tung_mtp.jpg" alt=""
-                                class="avatarArtist">
-                            <div class="info">
-                                <p class="ui_semibold">Sơn Tùng MTP</p>
-                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                        <a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=5"
+                            style="text-decoration: none">
+                            <div class="artistItem">
+                                <img src="/web_nghe_nhac/public/assets/img/artists/son_tung_mtp.jpg" alt=""
+                                    class="avatarArtist">
+                                <div class="info">
+                                    <p class="ui_semibold">Sơn Tùng MTP</p>
+                                    <p class="ui_regular op_75">Nghệ sĩ</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
-                        <div class="artistItem">
-                            <img src="/web_nghe_nhac/public/assets/img/artists/soobin.jpg" alt="" class="avatarArtist">
-                            <div class="info">
-                                <p class="ui_semibold">Soobin</p>
-                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                        <a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=10"
+                            style="text-decoration: none">
+                            <div class="artistItem">
+                                <img src="/web_nghe_nhac/public/assets/img/data-artists-image/wrenevan.jpg" alt=""
+                                    class="avatarArtist">
+                                <div class="info">
+                                    <p class="ui_semibold">Wren Evan</p>
+                                    <p class="ui_regular op_75">Nghệ sĩ</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
-                        <div class="artistItem">
-                            <img src="/web_nghe_nhac/public/assets/img/artists/vu.jpg" alt="" class="avatarArtist">
-                            <div class="info">
-                                <p class="ui_semibold">Vũ</p>
-                                <p class="ui_regular op_75">Nghệ sĩ</p>
+                        <a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=2"
+                            style="text-decoration: none">
+                            <div class="artistItem">
+                                <img src="/web_nghe_nhac/public/assets/img/artists/vu.jpg" alt="" class="avatarArtist">
+                                <div class="info">
+                                    <p class="ui_semibold">Vũ</p>
+                                    <p class="ui_regular op_75">Nghệ sĩ</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
