@@ -186,6 +186,64 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_sid
     <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/listeningSpace.php";
 ?>
+
+<script>
+    //nút theo dõi
+    $(document).ready(function() {
+            $('#follow-button').on('click', function() {
+                // Lấy giá trị của nút và các tham số liên quan
+                var val_button_follow = $('#follow-button').text().trim();
+                var MaNguoiDung = <?php echo json_encode($MaNguoiDung); ?>;
+                var mans = <?php echo json_encode($mans); ?>;
+
+                if (!MaNguoiDung || !mans) {
+                    console.error("MaNguoiDung hoặc MaNgheSi không hợp lệ.");
+                    return;
+                }
+
+                // Gửi dữ liệu qua AJAX
+                $.ajax({
+                    url: './model-artist-info.php',
+                    type: 'POST',
+                    data: {
+                        val_button_follow: val_button_follow,
+                        MaNguoiDung: MaNguoiDung,
+                        MaNgheSi: mans
+                    },
+                    success: function(response) {
+                        console.log("Response từ server:", response);
+
+                        // Kiểm tra phản hồi JSON từ PHP
+                        try {
+                            var res = JSON.parse(response);
+                            if (res.success) {
+                                alert(res.message);
+                                if (val_button_follow === 'Theo dõi') {
+
+                                    $('#follow-button').text('Đã theo dõi').css('width: 100px', 'background-color', '#ddd');
+                                    $('#artist-follower').html(res.numberFollower + " người theo dõi");
+
+                                } else {
+                                    $('#follow-button').text('Theo dõi').css('background-color', '#1DB954');
+                                    $('#artist-follower').html(res.numberFollower + " người theo dõi");
+                                }
+                            } else {
+                                alert('Có lỗi xảy ra: ' + res.message);
+                            }
+                        } catch (e) {
+                            console.error('Lỗi khi parse JSON:', e);
+                            alert('Phản hồi không hợp lệ từ server.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", status, error);
+                        alert('Lỗi khi kết nối tới server.');
+                    }
+                });
+            });
+        });
+
+</script>
 </body>
 
 </html>

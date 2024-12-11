@@ -365,7 +365,7 @@ body {
     margin-top: 24px;
     width: 100%;
     max-width: 981px;
-    height: 238px;
+     height: 350px;
 }
 #listsong-title {
     display: flex;
@@ -384,14 +384,14 @@ body {
 }
 #songs {
     width: 100%;
-    height: 202px;
+    height: 300px;
     overflow-y: auto; /* Thêm thanh cuộn dọc khi cần */
     /*scrollbar-width: thin;  Thanh cuộn nhỏ */
     scrollbar-color: transparent transparent;
     padding-right: 20px;
 }
 #songs div {
-    height: 63px;
+    /* height: 63px; */
     display: flex;
     padding: 8px 12px; /* Thêm khoảng cách giữa các playlist */
     margin-bottom: 16px;
@@ -1196,6 +1196,11 @@ input[name=tenbh] {
         z-index: 5;
     }
 
+}
+
+#artist-following-title{
+    font-size: 40px;
+    font-weight: 800;
 }
 
 /* Thiết bị điện thoại */
