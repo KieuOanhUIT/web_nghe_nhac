@@ -77,39 +77,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 ?>
 
     <div class="main"> <!-- div phần thân -->
-        <div id="library"> <!--div thư viện-->
-
-            <i id="library-icon" class="fa-solid fa-books"></i>
-            <span id="library-text">Thư viện</span>
-            <button id="plus-button"><i class="fa-solid fa-plus"></i></button>
-
-            <button id="playlist-button">Playlist</button>
-            <button id="artist-button">Nghệ sĩ</button>
-
-            <div id="list-scroll">
-                <div id="danhsachyeuthich">
-                    <span id="heart-icon"><i class="fa-solid fa-heart"></i></span>
-                    <span id="danhsachyeuthich-text">Danh sách yêu thích<br><span id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="chillingwithheart">
-                    <span id="chillingwithheart-icon"><img src="../img/artist1.png"></i></span>
-                    <span id="chillingwithheart-text">Chilling with heart<br><span id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="ArianaGrande">
-                    <span id="ArianaGrande-icon"><img src="../img/artist2.png"></i></span>
-                    <span id="ArianaGrande-text">Ariana Grande<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
-                </div>
-                <div id="healingcucmanh">
-                    <span id="healingcucmanh-icon"><img src="../img/artist3.png"></i></span>
-                    <span id="healingcucmanh-text">Healing cực mạnh<br><span id="playlist-text"><br>Playlist</span></span>
-                </div>
-                <div id="nhaccuaTrang">
-                    <span id="nhaccuaTrang-icon"><img src="../img/artist4.png"></i></span>
-                    <span id="nhaccuaTrang-text">Nhạc của Trang<br><span id="playlist-text"><br>Nghệ sĩ</span></span>
-                </div>
-            </div>
-        </div>
-
+    <?php
+require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
+?>
         <div id="artist"> <!--div nghệ sĩ-->
             <div id="main-artist">
 
