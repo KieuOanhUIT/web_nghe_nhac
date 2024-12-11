@@ -5,6 +5,7 @@ let currentIndex = -1; // Chỉ số bài hát hiện tại
 let isPlaying = false; // Trạng thái phát nhạc
 //songs: mảng bài hát truyền từ control
 
+
 // Hàm phát nhạc từ bài hát cụ thể
 function playSong(songs, index) {
     if (index < 0 || index >= songs.length) {
@@ -244,7 +245,16 @@ function displayReview(reviews) {
 //Load playlist mặc định
 document.addEventListener('DOMContentLoaded', function() {
     // Gọi playlist mặc định từ server khi tải trang
-    fetch('/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=default')
+    // Kiểm tra URL để lấy tham số 'id'
+    const urlParams = new URLSearchParams(window.location.search);
+    const playlistId = urlParams.get('id'); // Lấy giá trị của tham số 'id'
+
+    // Xác định URL API tùy thuộc vào việc 'id' có tồn tại hay không
+    const fetchUrl = playlistId
+        ? `/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=getPlaylist&id=${playlistId}`
+        : '/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=default';
+
+        fetch(fetchUrl)
         .then(response => response.json())
         .then(data => {
             if (data.error) {

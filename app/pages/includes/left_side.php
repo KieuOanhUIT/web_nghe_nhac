@@ -47,8 +47,7 @@ if (!isset($controller)) {
                 // Tạo đường dẫn tới playlistView.php
                 $playlistUrl = "/web_nghe_nhac/public/assets/php/views/playlistView.php?id=$maDSP";
 
-                // Dữ liệu truyền vào JavaScript: mã, tên, loại, đường dẫn ảnh
-                echo "<a href='$playlistUrl' onclick=\"updateArtistView('$maDSP', '$tenDSP', '$loaiDSP', '$imgPath')\" style='text-decoration: none; color: inherit;'>
+                echo "<a href='$playlistUrl' style='text-decoration: none; color: inherit;'>
                         <div id='playlist$maDSP'>
                             <span id='chillingwithheart-icon'>
                                 <img src='$imgPath' alt='$tenDSP'>
@@ -63,7 +62,7 @@ if (!isset($controller)) {
         } else {
             echo "Không có danh sách phát nào!";
         }
-    ?>
+        ?>
     </div>
 </div>
 <div id="create-newlist">

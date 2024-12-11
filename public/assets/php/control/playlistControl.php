@@ -24,6 +24,10 @@ class PlaylistController {
         return $this->playlistModel->getPlaylistById(1); // 1 là mã DSP mặc định
     }
 
+    public function getPlaylistById($playlistId) {
+        return $this->playlistModel->getPlaylistById($playlistId);
+    }
+
     // Hàm lấy bài hát theo playlist
     public function getSongsByPlaylist($maDSP) {
         return $this->playlistModel->getSongsFromPlaylist($maDSP);
@@ -92,6 +96,41 @@ if (isset($_GET['action']) && $_GET['action'] === 'default') {
         ]);
     } else {
         echo json_encode(['error' => 'Không có danh sách phát nào!']);
+    }
+    exit;
+}
+
+// Hiển thị playlist dựa trên ID
+if (isset($_GET['action']) && $_GET['action'] === 'getPlaylist' && isset($_GET['id'])) {
+    $database = new Database();
+    $db = $database->getConnection();
+    $controller = new PlaylistController($db);
+
+    // Lấy ID playlist từ URL
+    $playlistId = $_GET['id'];
+
+    // Tìm playlist theo ID
+    $playlist = $controller->getPlaylistById($playlistId);
+    if ($playlist) {
+        $maDSP = $playlist['MaDSP'];
+        $tenPlaylist = $playlist['TenDSP'];
+        $loaiDSP = $playlist['LoaiDSP'];
+        $imgPath = $playlist['AnhDSP'];
+
+        // Lấy số lượng bài hát trong playlist
+        $songCount = $controller->getPlaylistDetails($maDSP);
+
+        // Trả về dữ liệu playlist dưới dạng JSON
+        echo json_encode([
+            'maDSP' => $maDSP,
+            'tenPlaylist' => $tenPlaylist,
+            'loaiDSP' => $loaiDSP,
+            'imgPath' => "/web_nghe_nhac/public/assets/img/playlist/$imgPath",
+            'songCount' => $songCount
+        ]);
+    } else {
+        // Nếu không tìm thấy playlist
+        echo json_encode(['error' => 'Không tìm thấy danh sách phát!']);
     }
     exit;
 }
