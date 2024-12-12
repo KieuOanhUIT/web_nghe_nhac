@@ -88,13 +88,18 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
 ?>
 
         <div id="artist">
+            <!-- lyric -->
+            <div class="wrapper-lyric" style="display: none;" id="lyric">
+                <p>Lời bài hát</p>
+            </div>
             <!--div nghệ sĩ-->
             <!--Lay thong tin nghe si -->
+            <div class="wrapperSlider">
             <?php
             //Code lấy thông tin nghe si từ database và hiển thị ảnh, tên, số lượt theo dõi ở đây.
             $mans = isset($_GET['manghesy']) ? $_GET['manghesy'] : null;
             if ($mans) {
-                $sql = "SELECT nghesy.MaNgheSy,nghesy.TenNgheSy, nghesy.SoNguoiTheoDoi, nghesy.AnhNgheSy, baihat.TenBaiHat, baihat.AnhBaiHat, baihat.NgayDang
+                $sql = "SELECT nghesy.MaNgheSy,nghesy.TenNgheSy, nghesy.SoNguoiTheoDoi, nghesy.AnhNgheSy, baihat.TenBaiHat, baihat.AnhBaiHat, baihat.NgayDang, baihat.MaBaiHat, baihat.FileBaiHat, baihat.LoiBaiHat
                     FROM baihat join nghesy on baihat.MaNgheSy = nghesy.MaNgheSy
                     WHERE nghesy.MaNgheSy= '" . $mans . "' ";
             } else {
@@ -122,7 +127,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
 
 
             <div id="play">
-                <button id="circle"><i id="playbutton" class="fa-solid fa-play"></i></button>
+                <button id="circle" onclick="togglePlayPause()"><i id="playbutton" class="fa-solid fa-play"></i></button>
                 <button id="threedots"><i class="fa-solid fa-ellipsis"></i></button>
 
 
@@ -160,6 +165,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
                     $i = 1;
                     if ($result->num_rows > 0) {
                         while ($row) {
+                            echo '<div class="song-item" data-id="' . $row["MaBaiHat"] . '" data-file="' . $row["FileBaiHat"] . '" data-name="' . htmlspecialchars($row["TenBaiHat"]) . '" data-artist="' . htmlspecialchars($row["TenNgheSy"]) . '" data-image="' . htmlspecialchars($row["AnhBaiHat"]) . '" data-lyric="' . htmlspecialchars($row["LoiBaiHat"]) . '">';
                             echo '<div id="song1">';
                             echo '<span id="stt">' . $i . '</span>';
                             echo '<span><img src="' . AddImageSong($row["AnhBaiHat"]) . '" alt="Ảnh bài hát"></span>';
@@ -168,14 +174,19 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
                             echo '</span>';
                             echo '<span id="date">' . $row["NgayDang"] . '</span>';
                             echo '</div>';
+                            echo '</div>';
                             $i++;
                             $row = $result->fetch_assoc();
                         }
                     }
                     ?>
 
-                </div>
+                </div></div>
             </div>
+            
+            <script src="/web_nghe_nhac/public/assets/script/song.js">
+            <script src="/web_nghe_nhac/public/assets/script/listeningSpace.js">
+
         </div>
 
         <?php

@@ -135,3 +135,27 @@ async function loadReviews(songId) {
         console.error('Lỗi khi tải đánh giá:', error);
     }
 }
+
+// Lắng nghe sự kiện click trên danh sách bài hát
+document.getElementById('songs').addEventListener('click', function (event) {
+    const songItem = event.target.closest('.song-item'); // Tìm phần tử chứa thông tin bài hát
+    if (songItem) {
+        const songData = {
+            MaBaiHat: songItem.dataset.id,
+            FileBaiHat: songItem.dataset.file,
+            TenBaiHat: songItem.dataset.name,
+            TenNgheSy: songItem.dataset.artist,
+            AnhBaiHat: songItem.dataset.image,
+            LoiBaiHat: songItem.dataset.lyric
+        };
+
+        // Gọi hàm displaySong để phát nhạc
+        displaySong(songData);
+
+        // Phát nhạc
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.src = `/web_nghe_nhac/public/song/${songData.FileBaiHat}`;
+        audioPlayer.play();
+        mainControlIcon.setAttribute('icon', 'material-symbols:pause-rounded');
+    }
+});

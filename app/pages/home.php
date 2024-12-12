@@ -18,8 +18,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
         <?php
             require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
         ?>
-        ?>
-
+        
         <div class="centerSpace scrollable">
 
             <div class="wrapperSlider">
