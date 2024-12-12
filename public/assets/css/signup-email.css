@@ -25,7 +25,8 @@ body {
 
 .left-button,
 .right-button {
-    background-color: transparent; /* Nút giữ nguyên màu trong suốt */
+    background-color: transparent;
+    /* Nút giữ nguyên màu trong suốt */
     border: none;
     cursor: pointer;
     padding: 10px;
@@ -40,7 +41,7 @@ body {
 
 .left-button:hover img,
 .right-button:hover img {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .container-1 {
@@ -85,7 +86,7 @@ body {
     margin-bottom: 50px;
 }
 
-label{
+label {
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 800;
@@ -176,7 +177,7 @@ button:hover {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.custom-line { 
+.custom-line {
     border: none;
     border-top: 2px solid rgba(255, 255, 255, 0.5);
     width: 505px;
@@ -196,7 +197,7 @@ button:hover {
     margin-right: 20px;
 }
 
-.sign-up{
+.sign-up {
     border: none;
     background-color: transparent;
     font-size: 24px;
@@ -204,17 +205,30 @@ button:hover {
 }
 
 .error-message {
-    color: #ff4c4c; /* Màu đỏ nổi bật */
+    color: #ff4c4c;
+    /* Màu đỏ nổi bật */
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
+p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -226,32 +240,42 @@ button:hover {
         display: flex;
         flex-direction: column;
         height: 100%;
-        overflow: auto; /* Cho phép cuộn khi nội dung dài hơn chiều cao */
+        overflow: auto;
+        /* Cho phép cuộn khi nội dung dài hơn chiều cao */
     }
 
     .container-1 {
-        width: 90%; /* Giảm chiều rộng để phù hợp với màn hình tablet */
+        width: 90%;
+        /* Giảm chiều rộng để phù hợp với màn hình tablet */
     }
 
     .container-1-h2 {
-        font-size: 60px; /* Giảm kích thước font cho vừa màn hình iPad */
+        font-size: 60px;
+        /* Giảm kích thước font cho vừa màn hình iPad */
     }
 
     .container-2 {
-        width: 85%; /* Điều chỉnh chiều rộng của container */
+        width: 85%;
+        /* Điều chỉnh chiều rộng của container */
         padding: 20px;
-        max-height: 800px; /* Giới hạn chiều cao tối đa của container-2 */
-        overflow-y: auto; /* Cho phép cuộn dọc nếu cần */
+        max-height: 800px;
+        /* Giới hạn chiều cao tối đa của container-2 */
+        overflow-y: auto;
+        /* Cho phép cuộn dọc nếu cần */
         top: 300px;
     }
 
     input {
-        width: 100%; /* Đảm bảo các input full chiều rộng */
-        font-size: 16px; /* Điều chỉnh font cho phù hợp */
+        width: 100%;
+        /* Đảm bảo các input full chiều rộng */
+        font-size: 16px;
+        /* Điều chỉnh font cho phù hợp */
     }
 
-    .next, .social-button {
-        font-size: 20px; /* Thay đổi kích thước font cho các nút */
+    .next,
+    .social-button {
+        font-size: 20px;
+        /* Thay đổi kích thước font cho các nút */
         height: 70px;
     }
 }
@@ -262,22 +286,28 @@ button:hover {
         display: flex;
         flex-direction: column;
         height: 100%;
-        overflow: auto; /* Cho phép cuộn khi nội dung dài hơn chiều cao */
+        overflow: auto;
+        /* Cho phép cuộn khi nội dung dài hơn chiều cao */
     }
 
     .container-1 {
-        width: 90%; /* Giảm chiều rộng để phù hợp với màn hình tablet */
+        width: 90%;
+        /* Giảm chiều rộng để phù hợp với màn hình tablet */
     }
 
     .container-1-h2 {
-        font-size: 45px; /* Giảm kích thước font cho vừa màn hình iPad */
+        font-size: 45px;
+        /* Giảm kích thước font cho vừa màn hình iPad */
     }
 
     .container-2 {
-        width: 350px; /* Điều chỉnh chiều rộng của container */
+        width: 350px;
+        /* Điều chỉnh chiều rộng của container */
         padding: 10px;
-        max-height: 700px; /* Giới hạn chiều cao tối đa của container-2 */
-        overflow-y: auto; /* Cho phép cuộn dọc nếu cần */
+        max-height: 700px;
+        /* Giới hạn chiều cao tối đa của container-2 */
+        overflow-y: auto;
+        /* Cho phép cuộn dọc nếu cần */
     }
 
     .container-2-top {
@@ -285,14 +315,18 @@ button:hover {
     }
 
     input {
-        width: 100%; /* Đảm bảo các input full chiều rộng */
-        font-size: 16px; /* Điều chỉnh font cho phù hợp */
+        width: 100%;
+        /* Đảm bảo các input full chiều rộng */
+        font-size: 16px;
+        /* Điều chỉnh font cho phù hợp */
         max-width: 300px;
         justify-content: center;
     }
 
-    .next, .social-button {
-        font-size: 14px; /* Thay đổi kích thước font cho các nút */
+    .next,
+    .social-button {
+        font-size: 14px;
+        /* Thay đổi kích thước font cho các nút */
         height: 50px;
         max-width: 300px;
     }
@@ -300,14 +334,15 @@ button:hover {
     .next {
         margin-left: 10px;
     }
+
     .container-2-center {
         width: 330px;
     }
 
-    .container-2-bottom{
+    .container-2-bottom {
         width: 330px;
     }
-    
+
     .custom-line {
         width: 300px;
     }
@@ -315,8 +350,12 @@ button:hover {
     u {
         font-size: 20px;
     }
+
+    p {
+        font-size: 16px;
+    }
+
+    a {
+        font-size: 20px;
+    }
 }
-
-
-
-
