@@ -201,6 +201,16 @@ if (!isset($song_manage_controller)) {
             </div>
         </form>
     </div>
+    <div id="xoa-bh-admin">
+        <p>Bạn muốn xóa bài hát?</p>
+        <div id="div-form-xoa-bh-admin">
+            <button id="cancel-button-admin">Cancel</button>
+            <form id="form-xoa-bh-admin">
+                <input type="hidden" id="song-id-admin" name="songId" value="">
+                <input type="submit" value="Xóa" id="xoa-bh-submit-admin">
+            </form>
+        </div>
+    </div>
     <script src="/web_nghe_nhac/public/assets/script/song_manage.js"></script>
     <script src="/web_nghe_nhac/public/assets/script/admin_left_side.js"></script>
     <script src="/web_nghe_nhac/public/assets/script/admin_left.js"></script>

@@ -173,6 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         }
     }
 
+    // Xóa các đánh giá liên quan đến mã bài hát (tránh lỗi khóa ngoại)
+    $deleteReviewsResult = $model->deleteReviewsBySongIds($songIds);
+
     //Thực hiện xóa bài hát
     $result = $model->deleteSongsByIds($songIds);
 

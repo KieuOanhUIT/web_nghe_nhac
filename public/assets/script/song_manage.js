@@ -149,51 +149,79 @@ document.getElementById('form-them-bh').addEventListener('submit', function (eve
     .catch(error => console.error('Error:', error));
 });
 
-document.getElementById('button-xoa-bai-hat').addEventListener('click', function () {
-    const selectedCheckboxes = document.querySelectorAll('.checkbox:checked');
-    if (selectedCheckboxes.length === 0) {
-        alert('Vui lòng chọn ít nhất một bài hát để xóa.');
-        return;
-    }
-
-    const selectedSongIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
-
-    // Kiểm tra dữ liệu trước khi gửi
-    console.log('Danh sách mã bài hát gửi đi:', selectedSongIds);
-
-    const formData = new FormData();
-    formData.append('action', 'deleteSongs');
-    formData.append('songIds', JSON.stringify(selectedSongIds));
-
-    console.log('Dữ liệu gửi đi:', formData); // Debug FormData
-
-    fetch('/web_nghe_nhac/public/assets/php/control/song_manage_control.php', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.text()) // Đọc phản hồi dưới dạng text
-    .then(textResponse => {
-        console.log('Phản hồi từ server:', textResponse);  // Log ra phản hồi để kiểm tra
-    
-        try {
-            const data = JSON.parse(textResponse);  // Thử phân tích chuỗi JSON
-            if (data.success) {
-                alert(data.message);
-                location.reload();
-            } else {
-                console.error('Lỗi từ server:', data.message);  // Log lỗi trả về từ server
-                alert('Có lỗi xảy ra: ' + data.message);  // Thông báo lỗi cho người dùng
-            }
-        } catch (error) {
-            console.error('Lỗi khi phân tích JSON:', error);  // Nếu có lỗi trong việc phân tích JSON
-            console.error('Nội dung phản hồi:', textResponse);  // Log lại phản hồi để kiểm tra
-        }
-    })
-    .catch(error => {
-        console.error('Lỗi khi gửi request:', error);  // Lỗi khi gửi request
+document.addEventListener("DOMContentLoaded", function () {
+    // Đóng popup khi nhấn nút Cancel
+    document.getElementById("cancel-button-admin").addEventListener("click", function () {
+        const popup = document.getElementById("xoa-bh-admin");
+        const overlay = document.getElementById("overlay");
+        popup.style.display = "none";
+        overlay.style.display = "none";
     });
-    
+
+    // Mở popup khi nhấn nút Xóa bài hát
+    document.getElementById("button-xoa-bai-hat").addEventListener("click", function () {
+        const selectedCheckboxes = document.querySelectorAll('.checkbox:checked');
+
+        if (selectedCheckboxes.length === 0) {
+            alert('Vui lòng chọn ít nhất một bài hát để xóa.');
+            return;
+        }
+
+        const popup = document.getElementById("xoa-bh-admin");
+        const overlay = document.getElementById("overlay");
+
+        popup.style.display = "flex";
+        overlay.style.display = "block";
+
+        // Gán danh sách ID bài hát vào thuộc tính data
+        const selectedSongIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+        popup.setAttribute("data-song-ids", JSON.stringify(selectedSongIds));
+    });
+
+    // Gửi yêu cầu xóa bài hát khi nhấn nút Xóa trong popup
+    document.getElementById("xoa-bh-submit-admin").addEventListener("click", function () {
+        const popup = document.getElementById("xoa-bh-admin");
+        const selectedSongIds = JSON.parse(popup.getAttribute("data-song-ids"));
+
+        console.log('Danh sách mã bài hát gửi đi:', selectedSongIds);
+
+        const formData = new FormData();
+        formData.append('action', 'deleteSongs');
+        formData.append('songIds', JSON.stringify(selectedSongIds));
+
+        console.log('Dữ liệu gửi đi:', formData); // Debug FormData
+
+        fetch('/web_nghe_nhac/public/assets/php/control/song_manage_control.php', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.text())
+            .then(textResponse => {
+                console.log('Phản hồi từ server:', textResponse); // Log phản hồi từ server
+
+                try {
+                    const data = JSON.parse(textResponse); // Thử phân tích JSON
+                    if (data.success) {
+                        alert(data.message);
+                        location.reload(); // Reload lại trang nếu thành công
+                    } else {
+                        alert('Có lỗi xảy ra: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Lỗi phân tích JSON:', error);
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi khi gửi request:', error);
+            });
+
+        // Đóng popup
+        const overlay = document.getElementById("overlay");
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    });
 });
+
 
 let selectedMaBaiHat = null; // Khai báo biến toàn cục 1 mã bài hát được chọn
 //Hiện giá trị bài hát lên form
@@ -296,6 +324,7 @@ document.getElementById("cap-nhat-return").addEventListener("click", function ()
     popup.style.display = "none";
     overlay.style.display = "none"
 });
+// Đóng popup thêm bài hát khi nhấn nút quay lại
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("them-bh-return").addEventListener("click", function () {
         const popup = document.getElementById("them-bh-popup");

@@ -142,10 +142,11 @@ if (!isset($controller)) {
                 <audio id="audio-player" controls style="display: none;"></audio> <!-- Thẻ audio để phát nhạc -->
             </div>
         </div>
+        <?php
+        require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
+        ?>
     </div>
-    <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
-?>
+
     </div> <!-- kết thúc div phần thân -->
     <!--Insert footer vào đây nhé-->
     <?php include '/xampp/htdocs/web_nghe_nhac/app/pages/includes/footer.php'; ?>
@@ -212,17 +213,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_sid
             </form>
         </div>
     </div>
-    <script src="/web_nghe_nhac/public/assets/script/playlist.js">
-    const initialPlaylistId = "<?php echo $maDSP; ?>";
-    const initialSongs = <?php echo $songsJson; ?>;
-    const playlists = <?php echo $playlistsJson; ?>;
-
-    // Khởi tạo giao diện với playlist ban đầu
-    document.addEventListener("DOMContentLoaded", () => {
-        updateArtistView(initialPlaylistId, "<?php echo $tenPlaylist; ?>", "<?php echo $loaiDSP; ?>",
-            "<?php echo $imgPath; ?>");
-    });
-    </script>
+    <script src="/web_nghe_nhac/public/assets/script/playlist.js"></script>
 </body>
 
 </html>
