@@ -49,7 +49,7 @@
 
                             <div class="folow-artist">
                                 <div class="name songAuthor">
-                                    <p>Tên nghệ sỹ</p>
+                                    <p>Ngô Lan Hương</p>
                                 </div>
                                 <button id="follow">Theo dõi</button>
                             </div>
