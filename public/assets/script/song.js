@@ -46,6 +46,11 @@ function displaySong(song) {
     songAuthors.forEach(author => {
         author.textContent = song.TenNgheSy || 'Unknown Artist';
     });
+    
+    if (typeof currentPlaylist !== 'undefined' && currentPlaylist) {
+        // Đặt thời gian phát lại về 0
+        audioPlayer.currentTime = 0;
+    }
 
     // Cập nhật nguồn âm thanh
     const audioPlayer = document.getElementById('audioPlayer');
