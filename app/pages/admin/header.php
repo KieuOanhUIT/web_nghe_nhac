@@ -1,6 +1,3 @@
-<?php
-include('../includes/check_login.php'); 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +21,8 @@ include('../includes/check_login.php');
     <header>
         <div class="controlbar">
             <div class="logo">
-                <a href="/web_nghe_nhac/app/pages/home.php"><img src="/web_nghe_nhac/public/assets/img/logo.svg" alt="logo"></a>
+                <a href="/web_nghe_nhac/app/pages/home.php"><img src="/web_nghe_nhac/public/assets/img/logo.svg"
+                        alt="logo"></a>
             </div>
 
             <div class="searching">

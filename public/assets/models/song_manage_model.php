@@ -83,6 +83,24 @@ class SongManageModel {
         return $stmt->execute($songIds);
     }
 
+    public function deleteReviewsBySongIds($songIds) {
+        try {
+            $placeholders = implode(',', array_fill(0, count($songIds), '?'));
+            $query = "DELETE FROM danhgia WHERE MaBaiHat IN ($placeholders)";
+            $stmt = $this->db->prepare($query);
+
+            foreach ($songIds as $index => $songId) {
+                $stmt->bindValue($index + 1, $songId, PDO::PARAM_INT);
+            }
+
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log("Lỗi khi xóa đánh giá: " . $e->getMessage());
+            return false;
+        }
+    }
+
+
     public function updateSong($MaBaiHat, $TenBaiHat, $LoiBaiHat, $MaTheLoai, $MaNgheSy) {
         try {
 

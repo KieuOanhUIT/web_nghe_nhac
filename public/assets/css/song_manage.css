@@ -477,6 +477,100 @@ input[type=submit]:active, #cap-nhat-submit:active, #upload-bai-hat-button:activ
     height: 86px;
 }
 
+/*form xóa bài hát*/
+#xoa-bh-admin {
+    position: absolute;
+    background-color: #000000;
+    box-sizing: border-box;
+    width: 440px;
+    height: 170px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    align-items: center;
+    display: none; /*Ẩn hiện form*/
+    z-index: 1000;
+
+    transition: display 0.5s ease; /* Thêm hiệu ứng chuyển động */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 110%;
+    align-items: center;
+    flex-direction: column;
+
+    color: #FFFFFF;
+    padding: 15px 20px;
+}
+
+#div-form-xoa-bh-admin {
+    display: flex;
+    width: 100%;
+    height: 36px;
+}
+
+#form-xoa-bh-admin {
+    width: 100px;
+    height: auto;
+    margin-right: 50px;
+    margin-left: auto;
+}
+
+#xoa-bh-submit-admin {
+    border: none;
+    padding: 6px 24px;
+
+    width: 100px;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+
+    margin-top: 0px;
+    margin-right: 50px;
+    margin-left: auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: scale 0.5ms;
+}
+
+#cancel-button-admin {
+    border: none;
+    padding: 6px 24px;
+
+    width: 100px;
+    height: 36px;
+
+    background: #296265;
+    border-radius: 5px;
+
+    justify-content: center;
+
+    margin-left: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: scale 1ms;
+}
+
+#xoa-bh-submit-admin:active, #cancel-button-admin:active {
+    transform: scale(0.95);
+}
+
 /* Responsive */
 @media screen and (max-width: 768px) {
     #main {

@@ -233,3 +233,98 @@ button {
         width: 160px;
     }
 }
+
+/*Kích thước mobile*/
+@media (max-width: 400px) {
+    .listeningSpace {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        gap: 10px;
+        background-color: #000; /* Tùy chọn: nền đen */
+    }
+
+    /* Ẩn phần thông tin tên bài hát và tác giả */
+    .listeningSpace .infoText, .addToPlaylist {
+        display: none;
+    }
+
+    /* Ảnh bài hát hình tròn */
+    .listeningSpace .info img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Hình tròn */
+        margin: 0;
+    }
+
+    /* Controller điều khiển bài hát */
+    .listeningSpace .musicPlayer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        flex: 1; /* Co dãn chiếm không gian giữa */
+    }
+
+    .listeningSpace .musicPlayer .controlbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* Khoảng cách giữa các nút */
+    }
+
+    .listeningSpace .musicPlayer .controlbar iconify-icon {
+        font-size: 20px;
+    }
+
+    .listeningSpace .musicPlayer .controlbar #mainControlBtn iconify-icon {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        color: #000;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Thanh "timeDisplay" nằm dưới controller */
+    .listeningSpace .timeDisplay {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; /* Chiều rộng toàn bộ */
+        font-size: 12px; /* Chữ nhỏ hơn */
+    }
+
+    /* Nút "info" và thanh âm lượng ở bên phải */
+    .listeningSpace .general {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .listeningSpace .general .volumnSpace {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 80px;
+    }
+
+    .listeningSpace .volumnContainer {
+        height: 3px;
+        width: 60px;
+    }
+
+    .listeningSpace .general iconify-icon {
+        font-size: 18px;
+    }
+}

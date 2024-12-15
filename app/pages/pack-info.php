@@ -1,4 +1,5 @@
-<?php  
+<?php 
+session_start(); // Khởi tạo session để lưu trữ dữ liệu tạm thời
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
