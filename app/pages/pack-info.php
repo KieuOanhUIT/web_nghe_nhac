@@ -1,9 +1,6 @@
 <?php 
 session_start(); // Khởi tạo session để lưu trữ dữ liệu tạm thời
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 // Kiểm tra nếu form đã được gửi qua phương thức POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lấy và làm sạch dữ liệu đầu vào để tránh tấn công XSS
