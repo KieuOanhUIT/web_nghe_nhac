@@ -28,7 +28,7 @@ body {
     top: 113px; /*Đời đời nhớ ơn*/
     left: 50%;
     transform: translateX(-50%);
-    height: 70%;
+    height: -webkit-fill-available;
     width: 100%;
     max-width: 1380px;
 

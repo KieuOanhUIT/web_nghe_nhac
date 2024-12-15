@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Lưu thông tin người dùng vào session
                 $_SESSION['user'] = $user;
                 $_SESSION['user_id'] = $user['MaTaiKhoan'];
+                $_SESSION['email'] = $email;
 
                 // Kiểm tra quyền và chuyển hướng
                 if ($user['Quyen'] === 'Admin') {

@@ -1,4 +1,5 @@
-<?php  // Khởi tạo session để lưu trữ dữ liệu tạm thời
+<?php 
+session_start(); // Khởi tạo session để lưu trữ dữ liệu tạm thời
 
 // Kiểm tra nếu form đã được gửi qua phương thức POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

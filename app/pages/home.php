@@ -233,7 +233,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.ph
 <script src="/web_nghe_nhac/public/assets/script/rightBar.js"></script>
 <script src="/web_nghe_nhac/public/assets/script/header.js"></script>
 <script src="/web_nghe_nhac/public/assets/script/song.js"></script>
-<script src="/web_nghe_nhac/public/assets/script/playlist.js"></script>
+<!-- <script src="/web_nghe_nhac/public/assets/script/playlist.js"></script> -->
 
 </body>
 
