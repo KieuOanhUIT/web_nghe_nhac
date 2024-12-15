@@ -1,5 +1,5 @@
-
-
+<?php
+session_start();?>
 
 <!--kết nối csdl-->
 <?php
@@ -179,7 +179,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
                     }
                     ?>
 
-                </div></div>
+                </div>
             </div>
             
             <script src="/web_nghe_nhac/public/assets/script/song.js">
@@ -190,7 +190,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
         <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
 ?>
-    </div> <!-- kết thúc div phần thân -->
     
     <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/listeningSpace.php";
