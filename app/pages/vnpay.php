@@ -49,13 +49,14 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['name'], $_SE
             <p><strong>Thông tin gói dịch vụ:</strong> <?php echo $service_package; ?></p>
             <p><strong>Tổng tiền:</strong> <?php echo $total_amount; ?> VND</p>
         </div>
-        <form action="/process-payment" method="POST">
+        <form action="process-payment.php" method="POST">
             <div class="form-group">
                 <!-- Hiển thị ảnh QR phù hợp với gói dịch vụ -->
                 <img src="<?php echo $qr_image; ?>" alt="QR Code for <?php echo $service_package; ?>">
             </div>
+            <p class="note">Sau khi quét mã hãy nhấn thanh toán để đợi xử lý giao dịch</p>
+            <button type="submit" class="btn">Thanh toán</button>
         </form>
-        <p class="note">You will be redirected to MoMo for payment processing.</p>
     </div>
 </body>
 </html>
