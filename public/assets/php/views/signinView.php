@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn = $database->getConnection();
 
         if ($conn) {
-            // Truy vấn kiểm tra email và mật khẩu
+            // Truy vấn kiểm tra email và mật khẩu từ bảng taikhoan
             $sql = "SELECT * FROM taikhoan WHERE Email = :email AND MatKhau = :password";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
             
-            // Lấy dữ liệu người dùng
+            // Lấy dữ liệu người dùng từ bảng taikhoan
             $user = $stmt->fetch();
             if ($user) {
                 // Lưu thông tin người dùng vào session
@@ -32,6 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['user_id'] = $user['MaTaiKhoan'];
                 $_SESSION['email'] = $email;
 
+                // Lấy tên khách hàng từ bảng nguoidung thông qua MaNguoiDung
+                $sql_name = "SELECT TenNguoiDung FROM nguoidung WHERE MaNguoiDung = :maNguoiDung";
+                $stmt_name = $conn->prepare($sql_name);
+                $stmt_name->bindParam(':maNguoiDung', $user['MaNguoiDung'], PDO::PARAM_INT);
+                $stmt_name->execute();
+                
+                // Lấy tên khách hàng
+                $user_name = $stmt_name->fetch();
+                if ($user_name) {
+                    $_SESSION['name'] = $user_name['TenNguoiDung']; // Giả sử TenKhachHang là cột tên khách hàng
+                }
+                
                 // Kiểm tra quyền và chuyển hướng
                 if ($user['Quyen'] === 'Admin') {
                     header("Location: /web_nghe_nhac/app/pages/admin/home.php");
@@ -52,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
