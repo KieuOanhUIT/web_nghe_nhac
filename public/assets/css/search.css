@@ -201,9 +201,13 @@ img,
 .unread-indicator {
     width: 8px;
     height: 8px;
-    background-color: #296265; /* Màu xanh */
+    background-color: #00ea62; /* Màu xanh */
     border-radius: 50%;
     margin-right: 10px; /* Khoảng cách giữa dấu chấm và tiêu đề thông báo */
+    display: inline-block;
+}
+
+.notification-item.unread .unread-indicator {
     display: inline-block;
 }
 

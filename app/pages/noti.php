@@ -9,9 +9,21 @@ header('Content-Type: application/json');
 // Kết nối cơ sở dữ liệu
 require_once '../core/functions.php';
 
+// Bắt đầu session
+session_start();
+
+// Kiểm tra xem người dùng đã đăng nhập hay chưa
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['status' => 'error', 'message' => 'User not logged in']);
+    exit;
+}
+
+// Lấy MaNguoiDung từ session
+$maNguoiDung = $_SESSION['user_id'];
+
 // Truy vấn lấy thông báo từ cơ sở dữ liệu
-$query = "SELECT MaThongBao, TieuDe, NoiDung, ThoiGian, TrangThai FROM thongbao ORDER BY TrangThai ASC"; 
-$result = db_query($query); // Thực thi câu truy vấn
+$query = "SELECT MaThongBao, TieuDe, NoiDung, ThoiGian, TrangThai FROM thongbao WHERE MaNguoiDung = ? ORDER BY TrangThai ASC, ThoiGian DESC"; 
+$result = db_query($query, [$maNguoiDung]); // Thực thi câu truy vấn
 
 // Kiểm tra nếu có kết quả
 if ($result) {

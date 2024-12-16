@@ -27,8 +27,8 @@ $(document).ready(function() {
             if (notifications.length > 0) {
                 notifications.forEach(notification => {
                     // Kiểm tra trạng thái của thông báo (0: chưa đọc, 1: đã đọc)
-                    const notificationClass = notification.TrangThai === 0 ? 'notification-item unread' : 'notification-item';
-                    const unreadIndicator = notification.TrangThai === 0 ? '<span class="unread-indicator"></span>' : '';
+                    const notificationClass = notification.TrangThai === "0" ? 'notification-item unread' : 'notification-item';
+                    const unreadIndicator = notification.TrangThai === "0" ? '<span class="unread-indicator"></span>' : '';
 
                     // Tạo HTML cho mỗi thông báo
                     const notificationHTML = `
@@ -66,6 +66,12 @@ $(document).ready(function() {
                     // Loại bỏ chấm xanh và thay đổi lớp
                     notificationElement.removeClass('unread').addClass('read');
                     notificationElement.find('.unread-indicator').remove();
+                    
+                    // Ẩn chấm xanh bằng cách thêm CSS
+                    const unreadIndicator = notificationElement.find('.unread-indicator');
+                    if (unreadIndicator.length > 0) {
+                        unreadIndicator.css('display', 'none'); // Thêm trực tiếp thuộc tính CSS
+                    }
                 } else {
                     console.error('Không thể cập nhật trạng thái thông báo.');
                 }
