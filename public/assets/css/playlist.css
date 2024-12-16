@@ -1262,10 +1262,11 @@ input[name=tenbh] {
         margin-left: 10px;
     }
     .main {
-        height: 792px;
+        height: 88%;
+        width: 495px;
     }
     #listsong {
-        height: auto;
+        height: 302px;
     }
     #songs {
         height: 314px;
@@ -1309,6 +1310,11 @@ input[name=tenbh] {
     }
     #info-artist-follow-img span {
         z-index: 5;
+    }
+
+    .rightBar {
+        margin-left: initial;
+        max-width: 320px;
     }
 }
 
