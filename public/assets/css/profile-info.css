@@ -440,7 +440,7 @@ body {
 #listsong {
     margin-top: 40px;
     width: 632px;
-    height: 288px;
+    height: fit-content;
 }
 
 #listsong-title {
@@ -791,4 +791,23 @@ body {
 
 #mini-plus:hover {
     color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 416px) {
+
+#artist {
+    margin-left: 0;
+}    
+
+.main {
+    width: 100%;
+    max-width: 416px;
+}
+
+#artist-follower {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 }

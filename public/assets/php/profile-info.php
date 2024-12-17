@@ -1,5 +1,3 @@
-
-
 <!--kết nối csdl-->
 <?php
 // Thông tin kết nối
@@ -16,7 +14,7 @@ $conn = new mysqli($servername, $username, $password, $database);
 <!-- Lấy mã người dùng từ email và mật khẩu, tên đăng nhập -->
 <?php
 $email = 'minhanh.nguyen@gmail.com';
- //$email = $_SESSION['email'];
+//$email = $_SESSION['email'];
 //$password = $_SESSION['password'];
 
 $sqlMaNguoiDung = "SELECT nguoidung.MaNguoiDung 
@@ -59,24 +57,24 @@ function AddImageArtist($name_image_Artist)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile-info.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile-info.css">
     <title>Profile-info</title>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 </head>
 
 <body>
-    
-<?php
-require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
-?>
+
+    <?php
+    require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/header.php";
+    ?>
 
     <div class="main"> <!-- div phần thân -->
-    <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
-?>
+        <?php
+        require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side.php";
+        ?>
         <div id="artist"> <!--div nghệ sĩ-->
             <div id="main-artist">
 
@@ -160,8 +158,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
                     while ($rowNgheSi) {
                         // In ra hình ảnh và tên của nghệ sĩ
                         echo '<div id="artist-following-each">';
-                        echo '<span><img src="' . AddImageArtist($rowNgheSi["AnhNgheSy"]) . '" alt=""><br></span>';
-                        echo '<span id="name-artist-following">' . $rowNgheSi["TenNgheSy"] . '</span>';
+                        echo '<span><img class="authorPic" src="' . AddImageArtist($rowNgheSi["AnhNgheSy"]) . '" alt=""><br></span>';
+                        echo '<span class="authorName" id="name-artist-following">' . $rowNgheSi["TenNgheSy"] . '</span>';
                         echo '</div>';
                         $rowNgheSi = $resultNgheSi->fetch_assoc();
                     }
@@ -171,31 +169,31 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/left_side
             </div>
         </div>
         <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
-?>
-    <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/listeningSpace.php";
-?>
-    <script>
-        document.getElementById('progress-slider').addEventListener('input', function() {
-            const value = this.value;
-            const max = this.max;
-            const percentage = (value / max) * 100;
+        require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/right_side.php";
+        ?>
+        <?php
+        require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/includes/listeningSpace.php";
+        ?>
+        <script>
+            document.getElementById('progress-slider').addEventListener('input', function() {
+                const value = this.value;
+                const max = this.max;
+                const percentage = (value / max) * 100;
 
-            // Update the background of the slider based on the value
-            this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
-        });
-        document.getElementById('volume').addEventListener('input', function() {
-            const value = this.value;
-            const max = this.max;
-            const percentage = (value / max) * 100;
+                // Update the background of the slider based on the value
+                this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
+            });
+            document.getElementById('volume').addEventListener('input', function() {
+                const value = this.value;
+                const max = this.max;
+                const percentage = (value / max) * 100;
 
-            // Update the background of the slider based on the value
-            this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
-        });
+                // Update the background of the slider based on the value
+                this.style.background = `linear-gradient(90deg, #1DB954 ${percentage}%, #ddd ${percentage}%)`;
+            });
 
-        //UP file ảnh người dùng
-    </script>
+            //UP file ảnh người dùng
+        </script>
 </body>
 
 </html>

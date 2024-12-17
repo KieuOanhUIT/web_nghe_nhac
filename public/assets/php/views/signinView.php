@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         // Kết nối cơ sở dữ liệu
-        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; 
+        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';
         $database = new Database();
         $conn = $database->getConnection();
 
@@ -23,13 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
-            
+
             // Lấy dữ liệu người dùng
             $user = $stmt->fetch();
             if ($user) {
                 // Lưu thông tin người dùng vào session
                 $_SESSION['user'] = $user;
                 $_SESSION['user_id'] = $user['MaTaiKhoan'];
+                $_SESSION['email'] = $email;
 
                 // Kiểm tra quyền và chuyển hướng
                 if ($user['Quyen'] === 'Admin') {
@@ -225,24 +226,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <!--Form đăng nhập-->
     <div class="container-2">
-    <form action="" method="POST">
-        <div class="container-2-top">
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
-            <label for="password">Mật khẩu</label><br>
-            <div class="input-container">
-                <input type="password" id="password" name="password" placeholder="**********">
-                <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
+        <form action="" method="POST">
+            <div class="container-2-top">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
+                <label for="password">Mật khẩu</label><br>
+                <div class="input-container">
+                    <input type="password" id="password" name="password" placeholder="**********">
+                    <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
+                </div>
+                <div class="forget-password-container"> <!-- Thêm phần tử cha -->
+                    <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
+                </div>
+                <button type="submit" class="sign-in">Đăng nhập</button>
             </div>
-            <div class="forget-password-container"> <!-- Thêm phần tử cha -->
-                <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
-            </div>
-            <button type="submit" class="sign-in">Đăng nhập</button>
-        </div>
         </form>
         <!--Hiển thị thông báo lỗi-->
         <?php if (isset($errorMessage)): ?>
-            <p class = "error-message"><?php echo $errorMessage;?></p>
+            <p class="error-message"><?php echo $errorMessage; ?></p>
         <?php endif; ?>
         <div class="container-2-center">
             <div class="divider">
@@ -267,12 +268,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <a href="signup_emailView.php" class="sign-up"><u>Đăng ký ngay</u></a>
         </div>
     </div>
-    
+
     <script>
         function togglePassword() {
             const passwordInput = document.getElementById("password");
             const icon = document.querySelector(".iconPass");
-            
+
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
                 icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
@@ -292,4 +293,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </body>
+
 </html>

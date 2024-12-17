@@ -1,6 +1,3 @@
-<?php
-include('check_login.php'); 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
