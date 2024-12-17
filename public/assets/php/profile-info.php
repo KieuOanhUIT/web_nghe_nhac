@@ -1,3 +1,6 @@
+<?php
+session_start(); ?>
+
 <!--kết nối csdl-->
 <?php
 // Thông tin kết nối
@@ -13,10 +16,10 @@ $conn = new mysqli($servername, $username, $password, $database);
 
 <!-- Lấy mã người dùng từ email và mật khẩu, tên đăng nhập -->
 <?php
-$email = 'minhanh.nguyen@gmail.com';
-//$email = $_SESSION['email'];
-//$password = $_SESSION['password'];
 
+// $email = 'minhanh.nguyen@gmail.com';
+$email = $_SESSION['email'];
+//$password = $_SESSION['password'];
 $sqlMaNguoiDung = "SELECT nguoidung.MaNguoiDung 
 FROM taikhoan 
 JOIN nguoidung ON taikhoan.MaNguoiDung = nguoidung.MaNguoiDung 

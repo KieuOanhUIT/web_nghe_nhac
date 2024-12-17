@@ -52,12 +52,18 @@
 @media (max-width: 768px) {
     .wrapper-lyric {
         box-sizing: border-box;
-        width: 100%;
         max-width: 320px;
+    }
+
+    .mainSpace .centerSpace {
+        width: 400px;
     }
 
     .centerSpace .wrapper-lyric {
         font-size: 30px;
+        height: 100%;
+        line-height: 1.5;
+        width: initial;
     }
 }
 
@@ -67,9 +73,14 @@
         box-sizing: border-box;
         width: 100%;
         max-width: 320px;
+        height: 100%;
     }
 
     .centerSpace .wrapper-lyric {
         font-size: 20px;
+        line-height: initial;
+    }
+    .mainSpace {
+        height: 70%;
     }
 }
