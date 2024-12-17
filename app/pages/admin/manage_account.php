@@ -68,6 +68,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
                         <col class="col-medium">
                         <col class="col-large">
                         <col class="col-large">
+                        <col class="col-medium">
                     </colgroup>
                     <thead>
 
@@ -78,6 +79,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
                             <th>Gói đang dùng</th>
                             <th>Ngày bắt đầu gói</th>
                             <th>Ngày kết thúc gói</th>
+                            <th>Phương thức</th>
                         </tr>
                     </thead>
 
@@ -120,6 +122,8 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
                     row.append("<td>" + data[i].TenGoi + "</td>");
                     row.append("<td>" + data[i].NgayBatDau + "</td>");
                     row.append("<td>" + data[i].NgayKetThuc + "</td>");
+                    row.append("<td>" + data[i].PhuongThuc + "</td>");
+
                     table.append(row);
                 }
 
@@ -163,6 +167,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
         $('  #formaddAccount2 select').val(rowData[3]);
         $(' #formaddAccount2 input[type="date"][name="datestart"]').val(rowData[4]);
         $(' #formaddAccount2 input[type="date"][name="datefinish"]').val(rowData[5]);
+        $(' #formaddAccount2 input[type="text"][name="phuongthuc"]').val(rowData[6]);
     });
 
     //sự kiện cập nhật
@@ -174,6 +179,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
         var TenGoi = $('#formaddAccount2 select[name="pakage"]').val();
         var datestart = $('#formaddAccount2 input[name="datestart"]').val();
         var datefinish = $('#formaddAccount2 input[name="datefinish"]').val();
+        var phuongthuc = $('#formaddAccount2 input[name="phuongthuc"]').val();
 
 
 
@@ -186,7 +192,8 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
                 username: TenNguoiDung,
                 pakage: TenGoi,
                 datestart: datestart,
-                datefinish: datefinish
+                datefinish: datefinish,
+                phuongthuc: phuongthuc
 
             },
             success: function(response) {

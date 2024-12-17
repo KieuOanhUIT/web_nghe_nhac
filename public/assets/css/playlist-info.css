@@ -53,7 +53,7 @@ body {
     width: 340px;
     height: 44px;
     font-size: 20px;
-    margin-top: 2.7906976744186046511627906976744 vh;
+    margin-top: 2.79vh;
     padding: 9px 10px;
     align-items: center; /*Căn element giữa theo chiều ngang*/
     box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước tổng thể của div */
@@ -116,7 +116,7 @@ body {
     border: none;
     font-family: 'Inter', sans-serif; /* Áp dụng font Inter */
     font-weight: 600; /* Đặt trọng lượng là Semi Bold */
-    font-size: 16;
+    font-size: 16px;
     border-radius: 8px;
 }
 #logout-button:hover {
@@ -440,7 +440,7 @@ body {
     position: relative; /* Đặt vị trí cho div cha */
     display: flex;
     margin-top: 24px;
-    width: 100%px;
+    width: 100%;
     height: 64px;
 }
 #circle #playbutton {
@@ -924,7 +924,7 @@ border-radius: 20px 10px 10px 20px;
 #rate-danhgia, #rate-tatca {
     color: white;
     font-size: 18px;
-    font-weight: 500px;
+    font-weight: 500;
 }
 #rate-tatca {
     margin-left: 115px;
@@ -933,7 +933,7 @@ border-radius: 20px 10px 10px 20px;
 #custom-name{
     color: white;
     font-size: 18px;
-    font-weight: 400px;
+    font-weight: 400;
 }
 #rate-comment {
     color: rgba(255, 255, 255, 0.75);
@@ -943,7 +943,7 @@ border-radius: 20px 10px 10px 20px;
 #info-artist-follow {
     margin-top: 20px;
     width: 281px;
-    height: 216x;
+    height: 216px;
     display: flex;
     flex-direction: column;
 }
@@ -992,7 +992,7 @@ border-radius: 20px 10px 10px 20px;
     border-radius: 26px;
     color: white;
     font-size: 16px;
-    font-weight: 400px;
+    font-weight: 400;
 }
 #info-artist-follow-title button:hover {
     color: black;

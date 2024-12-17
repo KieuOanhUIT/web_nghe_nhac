@@ -13,7 +13,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
-    <title>Playlist Info</title>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 </head>
 
@@ -38,8 +37,8 @@ if (!isset($song_manage_controller)) {
 
 <body>
     <div id="overlay"></div>
-    <?php include '/xampp/htdocs/web_nghe_nhac/app/pages/admin/header.php';?>
-    <?php include '/xampp/htdocs/web_nghe_nhac/app/pages/admin/left_side.php';?>
+    <?php include '/xampp/htdocs/web_nghe_nhac/app/pages/admin/header.php'; ?>
+    <?php include '/xampp/htdocs/web_nghe_nhac/app/pages/admin/left_side.php'; ?>
     <div id="main">
         <div id="main-head">
             <div id="search-bar">
@@ -67,16 +66,16 @@ if (!isset($song_manage_controller)) {
             </div>
             <div id="songs-list">
                 <?php
-                    if (!empty($songs)) {
-                        foreach ($songs as $index => $song) {
-                            $maBH = $song['MaBaiHat'];
-                            $tenBH = $song['TenBaiHat'];
-                            $anhBH = $song['AnhBaiHat'];
-                            $anhBHPath = "/web_nghe_nhac/public/assets/img/data-songs-image/$anhBH";
-                            $tenNgheSy = $song['TenNgheSy'];
-                            $theLoai = $song['TenTheLoai'];
+                if (!empty($songs)) {
+                    foreach ($songs as $index => $song) {
+                        $maBH = $song['MaBaiHat'];
+                        $tenBH = $song['TenBaiHat'];
+                        $anhBH = $song['AnhBaiHat'];
+                        $anhBHPath = "/web_nghe_nhac/public/assets/img/data-songs-image/$anhBH";
+                        $tenNgheSy = $song['TenNgheSy'];
+                        $theLoai = $song['TenTheLoai'];
 
-                            echo '<div class="song">
+                        echo '<div class="song">
                                     <input class="checkbox" type="checkbox" value="' . htmlspecialchars($maBH) . '">
                                     <span class="stt">' . ($index + 1) . '</span>
                                     <img class="img" src="' . htmlspecialchars($anhBHPath) . '" alt="' . htmlspecialchars($tenBH) . '">
@@ -86,10 +85,10 @@ if (!isset($song_manage_controller)) {
                                     </span>
                                     <span class="type">' . htmlspecialchars($theLoai) . '</span>
                                 </div>';
-                        }
-                    } else {
-                        echo "<p>Không có bài hát nào để hiển thị.</p>";
                     }
+                } else {
+                    echo "<p>Không có bài hát nào để hiển thị.</p>";
+                }
                 ?>
             </div>
         </div>

@@ -12,7 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         // Kết nối cơ sở dữ liệu
+<<<<<<< HEAD
+        include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';
+=======
         include '\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; 
+>>>>>>> 7b4d58e0f4f0b385741bdf3941afd20151a3c44c
         $database = new Database();
         $conn = $database->getConnection();
 
@@ -23,8 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
-            
+
             // Lấy dữ liệu người dùng từ bảng taikhoan
+
             $user = $stmt->fetch();
             if ($user) {
                 // Lưu thông tin người dùng vào session
@@ -241,6 +246,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="" method="POST">
             <div class="container-2-top">
                 <label for="email">Email</label><br>
+<<<<<<< HEAD
+                <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
+                <label for="password">Mật khẩu</label><br>
+                <div class="input-container">
+                    <input type="password" id="password" name="password" placeholder="**********">
+                    <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
+                </div>
+                <div class="forget-password-container"> <!-- Thêm phần tử cha -->
+=======
                 <input type="email" id="email" name="email" placeholder="name@domain.com"
                     style="margin-bottom:30px"><br>
                 <label for="password">Mật khẩu</label><br>
@@ -251,6 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="forget-password-container">
                     <!-- Thêm phần tử cha -->
+>>>>>>> 7b4d58e0f4f0b385741bdf3941afd20151a3c44c
                     <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
                 </div>
                 <button type="submit" class="sign-in">Đăng nhập</button>
@@ -258,7 +273,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
         <!--Hiển thị thông báo lỗi-->
         <?php if (isset($errorMessage)): ?>
+<<<<<<< HEAD
+            <p class="error-message"><?php echo $errorMessage; ?></p>
+=======
         <p class="error-message"><?php echo $errorMessage;?></p>
+>>>>>>> 7b4d58e0f4f0b385741bdf3941afd20151a3c44c
         <?php endif; ?>
         <div class="container-2-center">
             <div class="divider">
@@ -283,6 +302,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <a href="signup_emailView.php" class="sign-up"><u>Đăng ký ngay</u></a>
         </div>
     </div>
+<<<<<<< HEAD
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const icon = document.querySelector(".iconPass");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.src = "/web_nghe_nhac/public/assets/img/solar--eye-closed-bold.svg"; // Thay đổi icon khi hiện mật khẩu
+            } else {
+                passwordInput.type = "password";
+                icon.src = "/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg"; // Quay lại icon cũ khi ẩn mật khẩu
+            }
+        }
+        // Hàm quay lại trang trước đó
+        function goBack() {
+            window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
+        }
+=======
+>>>>>>> 7b4d58e0f4f0b385741bdf3941afd20151a3c44c
 
     <script>
     function togglePassword() {
