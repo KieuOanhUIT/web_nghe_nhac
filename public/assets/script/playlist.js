@@ -55,7 +55,8 @@ function playSong(songs, index) {
     .catch(error => console.error(`Lỗi khi lấy đánh giá bài hát:`, error));
 
     audioPlayer.src = `/web_nghe_nhac/public/song/${song.FileBaiHat}`; 
-    //
+    // Đặt thời gian phát lại về 0
+    audioPlayer.currentTime = 0;
     audioPlayer.play();
     console.log(`Đang phát: ${song.TenBaiHat} - ${song.TenNgheSy}`);
     isPlaying = true;

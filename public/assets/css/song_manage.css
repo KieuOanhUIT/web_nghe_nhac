@@ -37,10 +37,9 @@ button {
     align-items: center;
     padding: 24px 0 24px 24px;
     gap: 30px;
-    width: 100%;
-    max-width: 850px;
     top: 118px;
-    left: 380px;
+    left: 310px;
+    right: 10px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px 10px 10px 20px;
@@ -49,19 +48,22 @@ button {
 
 #main-head {
     width: 100%;
-    height: 44px;
+    height: auto;
     display: flex;
-    gap: 40px;
+    gap: 20px;
+    padding: 10px;
+    box-sizing: border-box;
     justify-content: center;
 }
 
 #search-bar {
     display: flex;
-    align-items: flex-start;
-    gap: 40px;
-
-    width: 500px;
-    height: 44px;
+    align-items: center;
+    gap: 20px;
+    width:100%;
+    max-width: 600px;
+    height: auto;
+    flex-wrap:wrap;
 }
 
 #search-typing {
@@ -70,16 +72,15 @@ button {
     align-items: center;
     padding: 9px 20px;
     gap: 10px;
-
-    width: 340px;
-    height: 44px;
+    flex: 1;
+    height: autoauto;
 
     background: rgba(255, 255, 255, 0.25);
     border-radius: 30px;
 }
 
 #search-typing input[type=text] {
-    width: 280px;
+    width: 100%;
 
     background-color: transparent;
     color: white;
@@ -96,11 +97,11 @@ button {
     align-items: center;
     padding: 9px 20px;
 
-    width: 120px;
-    height: 42px;
-
+    width: auto;
+    height: autoauto;
+    max-width: 150px;
     background: #296265;
-    border-radius: 61px;
+    border-radius: 600px;
 
     font-style: normal;
     font-weight: 600;
@@ -108,6 +109,7 @@ button {
     line-height: 150%;
     color: #FFFFFF;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 #main-body {
@@ -576,7 +578,25 @@ input[type=submit]:active, #cap-nhat-submit:active, #upload-bai-hat-button:activ
     #main {
         left: 180px;
     }
+
+    #main-head {
+        gap: 10px;
+    }
     
+    #search-bar {
+        flex-wrap: wrap; /* Cho phép xuống dòng */
+        gap: 10px;
+    }
+
+    #search-typing {
+        padding: 6px 10px; /* Giảm padding */
+    }
+
+    #search-button {
+        font-size: 12px; /* Giảm kích thước chữ */
+        padding: 6px 10px;
+    }
+
     #songs-list .title, #songs-list .title .tenNS, #songs-list .title .tenBH {
         width: 400px;
     }
@@ -601,19 +621,28 @@ input[type=submit]:active, #cap-nhat-submit:active, #upload-bai-hat-button:activ
     #songs-title span:nth-child(2) {
         width: 400px;
     }
+    
     #search-bar {
-        gap: 10px;
+        flex-direction: column; /* Chuyển sang hiển thị dạng cột */
+        align-items: stretch; /* Căn chỉnh rộng 100% */
+        gap: 5px;
     }
 
     #search-typing {
-        padding: 8px;
-        width: 270px;
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        padding: 5px 8px; /* Giảm padding */
+    }
+
+    #search-typing input[type="text"] {
+        font-size: 12px; /* Giảm kích thước chữ */
     }
 
     #search-button {
+        width: 100%; /* Nút tìm kiếm chiếm toàn bộ chiều rộng */
         font-size: 12px; /* Giảm kích thước chữ */
-
+        padding: 5px 8px; /* Giảm padding */
     }
+
     #songs-list input[type=checkbox] {
         width: 15px !important;
         height: 15px;

@@ -39,31 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // Kết nối đến cơ sở dữ liệu để lưu phương thức thanh toán
-        // Kết nối đến cơ sở dữ liệu
-        include_once 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php'; // Bao gồm file kết nối DB
-        $database = new Database();
-        $conn = $database->getConnection();
-        try {
-            $sql = "INSERT IGNORE INTO lichsumua (MaTaiKhoan, MaGoi, NgayBatDau, NgayKetThuc, PhuongThuc)
-                    VALUES (:user_id, :pack_id, :start_date, :end_date, :payment_method)";
-            $stmt = $conn->prepare($sql);
-
-            // Liên kết các giá trị với câu lệnh SQL
-            $stmt->bindParam(':user_id', $user_id); // Liên kết mã tài khoản
-            $stmt->bindParam(':pack_id', $ma_goi); // Liên kết mã gói
-            $stmt->bindParam(':start_date', $start_date);
-            $stmt->bindParam(':end_date', $end_date);
-            $stmt->bindParam(':payment_method', $payment_method); // Liên kết phương thức thanh toán
-
-            // Thực thi câu lệnh
-            $stmt->execute();
-
-        } catch (PDOException $e) {
-            echo "Lỗi khi cập nhật dữ liệu: " . $e->getMessage();
-            exit();
-        }
-
         // Điều hướng tới file tương ứng sau khi lưu phương thức thanh toán
         if ($payment_method === 'Momo') {
             header('Location: momo.php');

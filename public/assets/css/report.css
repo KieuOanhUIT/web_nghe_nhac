@@ -1,9 +1,9 @@
 /* Mặc định cho màn hình lớn (PC) */
 .bgimage {
     position: absolute;
-    width: 900px;
-    left: 300px;
-    top: 170px;
+    width: 80%;
+    left: auto;
+    top: auto;
     filter: blur(40px);
     color: #fff;
 }
@@ -33,12 +33,11 @@ label,
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    gap: 30px;
-
+    gap: 18px;
     position: absolute;
-    width: 68%;
-    right: 20px;
     top: 125px;
+    left: 310px;
+    right: 10px;
 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -50,10 +49,9 @@ label,
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    width: 100%;
+    gap: 20px !important;
+    width: auto;
     flex-wrap:wrap;
-    padding:20px;
 }
 
 .date-range {
@@ -214,12 +212,6 @@ option {
         width: 580px;
     }
 
-    .bgimage {
-        width: 700px;
-        left: 30px;
-        top: 170px;
-    }
-
     .searchBar {
         flex-direction: column;
         align-items: flex-start;
@@ -257,11 +249,6 @@ option {
     .report {
         left: 100px;
         width: 450px;
-    }
-    .bgimage {
-        width: 450px;
-        left: 30px;
-        top: 170px;
     }
 
     .searchBar {

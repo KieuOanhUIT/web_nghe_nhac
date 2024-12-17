@@ -74,10 +74,10 @@ h4 {
 }
 .mainLight {
     position: fixed;
-    width: 900px;
+    width: 80%;
+    left: auto;
+    top: auto;
     height: 651px;
-    left: 318px;
-    top: 200px;
     border-radius: 50%/50%;
 
     background: conic-gradient(from 24.89deg at 50% 50%, #3A2145 -6.85deg, #296265 31.06deg, #000000 109.37deg, #000000 139.56deg, #233949 214.7deg, #000000 244.08deg, #3A2145 353.15deg, #296265 391.06deg);
@@ -105,8 +105,7 @@ p {
 }
 
 .accountSpace {
-
-        margin-left: -20px;
+        left: 300px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -114,9 +113,11 @@ p {
         padding: 24px 0;
         gap: 20px;
     
+        
+    left: 310px;
+    right: 10px;
         position: absolute;
-        width: 880px;
-        left: 390px;
+        /* width: 80%; */
         top: 117px;
         overflow-y: scroll;
     
@@ -388,7 +389,7 @@ tr:hover {
 /* Media Queries sửa đổi để hỗ trợ thu nhỏ tốt hơn */
 @media (max-width: 768px) {
     .accountSpace {
-        left: 195px; 
+        left: 180px; 
     }
 
     .accountSpace .findSong {
@@ -412,6 +413,6 @@ tr:hover {
 
 @media (max-width: 480px) {
     .accountSpace {
-        left: 110px;
+        left: 90px;
     }
 }
