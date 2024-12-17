@@ -74,6 +74,12 @@
                 <td>Ngày kết thúc gói</td>
                 <td><input type="date" name="datefinish" required></td>
             </tr>
+
+            <tr>
+                <td><span style="width: 325px;">Phương thức</span></td>
+                <td><input type="text" name="phuongthuc"></td>
+            </tr>
+
             <tr>
                 <td><button id="add" type="submit">Tạo</button></td>
             </tr>
@@ -115,6 +121,13 @@
                 <input type="date" name="datefinish" required>
             </div>
 
+
+            <div class="box">
+                <span style="width: 325px;">Phương thức</span>
+                <input type="text" name="phuongthuc">
+            </div>
+
+
             <div class="box">
                 <button id="add" type="submit">Cập nhật</button>
             </div>
@@ -134,67 +147,69 @@
 </body>
 
 <script>
-// Hiển thị thêm tài khoản
-$(document).ready(function() {
-    $('#figure-addAccount').click(function() {
-        $('#addaccount').show();
-    });
+    // Hiển thị thêm tài khoản
+    $(document).ready(function() {
+        $('#figure-addAccount').click(function() {
+            $('#addaccount').show();
+        });
 
-    $('.return-add').click(function() {
-        $('#addaccount').hide();
-    });
-});
-
-//Hiển thị cập nhật tài khoản
-$(document).ready(function() {
-    $('#figure-updateAccount').click(function() {
-        $('#updateaccount').show();
-
-    })
-    $('.return-update').click(function() {
-        $('#updateaccount').hide();
-    });
-})
-
-// CHỨC NĂNG THÊM TÀI KHOẢN
-$(document).ready(function() {
-    $('#addaccount #formaddAccount').submit(function(event) {
-        event.preventDefault(); // Ngăn không cho form submit mặc định
-        console.log("Form submitted"); // Kiểm tra submit
-        // Lấy dữ liệu từ form
-        var username = $('#formaddAccount input[name="username"]').val();
-        var pakage = $('#formaddAccount select[name="pakage"]').val();
-        var datestart = $('#formaddAccount input[name="datestart"]').val();
-        var datefinish = $('#formaddAccount input[name="datefinish"]').val();
-        // Kiểm tra dữ liệu đầu vào
-        if (username == "" || pakage == "" || datestart == "" || datefinish == "") {
-            alert("Vui lòng nhập đ�� thông tin!");
-            return false;
-        }
-        // Gửi dữ liệu đến server
-        $.ajax({
-
-            url: '../includes/model_admin_left_add.php',
-            type: 'POST',
-            data: {
-                username: username,
-                pakage: pakage,
-                datestart: datestart,
-                datefinish: datefinish,
-                add: 'Tạo'
-            },
-            success: function(response) {
-                if (response) {
-                    alert("Thêm tài khoản thành công!");
-                    location.reload(); //reload lại trang để hiển thị thông tin mới
-
-                } else {
-                    alert("Thêm tài khoản thất bại!");
-                }
-            }
+        $('.return-add').click(function() {
+            $('#addaccount').hide();
         });
     });
-});
 
-// CHỨC NĂNG CẬP NHẬT TÀI KHOẢN
+    //Hiển thị cập nhật tài khoản
+    $(document).ready(function() {
+        $('#figure-updateAccount').click(function() {
+            $('#updateaccount').show();
+
+        })
+        $('.return-update').click(function() {
+            $('#updateaccount').hide();
+        });
+    })
+
+    // CHỨC NĂNG THÊM TÀI KHOẢN
+    $(document).ready(function() {
+        $('#addaccount #formaddAccount').submit(function(event) {
+            event.preventDefault(); // Ngăn không cho form submit mặc định
+            console.log("Form submitted"); // Kiểm tra submit
+            // Lấy dữ liệu từ form
+            var username = $('#formaddAccount input[name="username"]').val();
+            var pakage = $('#formaddAccount select[name="pakage"]').val();
+            var datestart = $('#formaddAccount input[name="datestart"]').val();
+            var datefinish = $('#formaddAccount input[name="datefinish"]').val();
+            var phuongthuc = $('#formaddAccount input[name="phuongthuc"]').val();
+            // Kiểm tra dữ liệu đầu vào
+            if (username == "" || pakage == "" || datestart == "" || datefinish == "") {
+                alert("Vui lòng nhập đ�� thông tin!");
+                return false;
+            }
+            // Gửi dữ liệu đến server
+            $.ajax({
+
+                url: '../includes/model_admin_left_add.php',
+                type: 'POST',
+                data: {
+                    username: username,
+                    pakage: pakage,
+                    datestart: datestart,
+                    datefinish: datefinish,
+                    phuongthuc: phuongthuc,
+                    add: 'Tạo'
+                },
+                success: function(response) {
+                    if (response) {
+                        alert("Thêm tài khoản thành công!");
+                        location.reload(); //reload lại trang để hiển thị thông tin mới
+
+                    } else {
+                        alert("Thêm tài khoản thất bại!");
+                    }
+                }
+            });
+        });
+    });
+
+    // CHỨC NĂNG CẬP NHẬT TÀI KHOẢN
 </script>

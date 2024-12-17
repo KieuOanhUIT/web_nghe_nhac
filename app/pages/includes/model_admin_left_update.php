@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insert dữ liệu
     if ($MaNguoiDung != null && $MaGoi != null) {
         $sql3 = "UPDATE lichsumua
-          SET /*MaGoi = :magoi,*/ NgayBatDau = :ngaybatdau, NgayKetThuc = :ngayketthuc
+          SET /*MaGoi = :magoi,*/ NgayBatDau = :ngaybatdau, NgayKetThuc = :ngayketthuc, PhuongThuc = :phuongthuc
           WHERE MaTaiKhoan = :manguoidung and MaGoi = :magoi ";
 
         // Lưu các giá trị vào tham số
@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':magoi' => $MaGoi,
             ':manguoidung' => $MaNguoiDung,
             ':ngaybatdau' => $datestart,
-            ':ngayketthuc' => $datefinish
+            ':ngayketthuc' => $datefinish,
+            ':phuongthuc' => $_POST['phuongthuc']
         ];
 
         if (db_query($sql3, $params3)) {

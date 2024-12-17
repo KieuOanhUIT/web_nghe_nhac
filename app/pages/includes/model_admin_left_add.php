@@ -33,13 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insert dữ liệu
     if ($MaNguoiDung != null && $MaGoi != null) {
-        $sql3 = "INSERT INTO lichsumua (MaGoi, MaTaiKhoan, NgayBatDau, NgayKetThuc)
-                 VALUES (:magoi, :manguoidung, :ngaybatdau, :ngayketthuc)";
+        $sql3 = "INSERT INTO lichsumua (MaGoi, MaTaiKhoan, NgayBatDau, NgayKetThuc,PhuongThuc)
+                 VALUES (:magoi, :manguoidung, :ngaybatdau, :ngayketthuc,:phuongthuc)";
         $params3 = [
             ':magoi' => $MaGoi,
             ':manguoidung' => $MaNguoiDung,
             ':ngaybatdau' => $datestart,
-            ':ngayketthuc' => $datefinish
+            ':ngayketthuc' => $datefinish,
+            ':phuongthuc' => $_POST['phuongthuc']
         ];
 
         if (db_query($sql3, $params3)) {
@@ -49,4 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo 'error';
         }
     }
+
+    //insert bang thong bao
+
+    $sql4 = "INSERT INTO thongbao (TieuDe, NoiDung, ThoiGian, TrangThai, MaNguoiDung)
+    VALUES ('Thông tin thanh toán','Bạn đã đăng ký thành công gói dịch vụ!', :thoigiandangky,'0',:manguoidung)";
+    $params4 = [
+        ':thoigiandangky' => date('Y-m-d H:i:s'),
+        ':manguoidung' => $MaNguoiDung
+    ];
+    db_query($sql4, $params4);
 }
