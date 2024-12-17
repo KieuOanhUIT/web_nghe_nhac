@@ -9,7 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/web_nghe_nhac/app/pages/admin/header.php";
     display: flex;
     justify-content: center;
     position: absolute;
-    width: 70%;
+    left: 310px;
     right: 10px;
     top: 118px;
     height:456px;
