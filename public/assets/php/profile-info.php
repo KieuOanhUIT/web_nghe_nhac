@@ -84,7 +84,7 @@ function AddImageArtist($name_image_Artist)
                 <!--Lấy thông tin người dùng-->
                 <?php
                 $sql = "  
-                   SELECT nguoidung.MaNguoiDung, nguoidung.TenNguoiDung, nguoidung.AnhNguoiDung, danhsachphat.TenDSP, danhsachphat.AnhDSP
+                   SELECT nguoidung.MaNguoiDung, nguoidung.TenNguoiDung, nguoidung.AnhNguoiDung, danhsachphat.TenDSP, danhsachphat.AnhDSP, danhsachphat.MaDSP
                     from danhsachphat join nguoidung on danhsachphat.MaNguoiDung = nguoidung.MaNguoiDung
                     WHERE nguoidung.MaNguoiDung = '" . $MaNguoiDung . "'";
                 $result = mysqli_query($conn, $sql);
@@ -135,10 +135,12 @@ function AddImageArtist($name_image_Artist)
                     // Lặp qua từng bản ghi
                     while ($row) {
                         // In ra tên và hình ảnh của danh sách phát
+                        echo '<a href="/web_nghe_nhac/public/assets/php/views/playlistView.php" style="text-decoration: none;">';
                         echo '<div id="song1">';
                         echo '<span id="heart-icon2" style="background-color:transparent; background-image: url(\'' . AddImageSong($row['AnhDSP']) . '\');"></span>';
                         echo '<span id="namesong">' . $row["TenDSP"] . '</span>'; // Tên bài hát
                         echo '</div>';
+                        echo '</a>';
                         $row = $result->fetch_assoc();
                     }
                     ?>
@@ -160,10 +162,12 @@ function AddImageArtist($name_image_Artist)
 
                     while ($rowNgheSi) {
                         // In ra hình ảnh và tên của nghệ sĩ
+                        echo '<a href="/web_nghe_nhac/public/assets/php/artist-info.php?manghesy=' . $rowNgheSi["MaNgheSy"] . '" style="text-decoration: none;">';
                         echo '<div id="artist-following-each">';
                         echo '<span><img class="authorPic" src="' . AddImageArtist($rowNgheSi["AnhNgheSy"]) . '" alt=""><br></span>';
                         echo '<span class="authorName" id="name-artist-following">' . $rowNgheSi["TenNgheSy"] . '</span>';
                         echo '</div>';
+                        echo '</a>';
                         $rowNgheSi = $resultNgheSi->fetch_assoc();
                     }
 
