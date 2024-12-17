@@ -84,7 +84,7 @@ function AddImageArtist($name_image_Artist)
                 <!--Lấy thông tin người dùng-->
                 <?php
                 $sql = "  
-                   SELECT nguoidung.MaNguoiDung, nguoidung.TenNguoiDung, nguoidung.AnhNguoiDung, danhsachphat.TenDSP 
+                   SELECT nguoidung.MaNguoiDung, nguoidung.TenNguoiDung, nguoidung.AnhNguoiDung, danhsachphat.TenDSP, danhsachphat.AnhDSP
                     from danhsachphat join nguoidung on danhsachphat.MaNguoiDung = nguoidung.MaNguoiDung
                     WHERE nguoidung.MaNguoiDung = '" . $MaNguoiDung . "'";
                 $result = mysqli_query($conn, $sql);
@@ -136,7 +136,7 @@ function AddImageArtist($name_image_Artist)
                     while ($row) {
                         // In ra tên và hình ảnh của danh sách phát
                         echo '<div id="song1">';
-                        echo '<span id="heart-icon2" style="background-color:transparent; background-image: url(\'' . AddImageSong($row['AnhNguoiDung']) . '\');"></span>';
+                        echo '<span id="heart-icon2" style="background-color:transparent; background-image: url(\'' . AddImageSong($row['AnhDSP']) . '\');"></span>';
                         echo '<span id="namesong">' . $row["TenDSP"] . '</span>'; // Tên bài hát
                         echo '</div>';
                         $row = $result->fetch_assoc();

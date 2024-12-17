@@ -7,7 +7,7 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['name'], $_SE
     $service_package = $_SESSION['package_type'];
     $user_id = $_SESSION['user_id'];
     $buyer_name = $_SESSION['name'];
-    
+
     // Xác định ảnh QR dựa trên gói dịch vụ
     $qr_image = "";
     switch ($service_package) {
@@ -38,6 +38,7 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['name'], $_SE
     <title>Momo</title>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -59,4 +60,5 @@ if (isset($_SESSION['package_type'], $_SESSION['price'], $_SESSION['name'], $_SE
         </form>
     </div>
 </body>
+
 </html>
