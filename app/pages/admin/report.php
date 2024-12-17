@@ -26,11 +26,8 @@ require_once '../../core/functions.php';
     <img src="../../../public/assets/img/admin-bg.png" alt="" class="bgimage">
 
     <main>
-        <!-- Định dạng nền của trang -->
-        <div class="mainLight"></div>
-
         <!-- Màn hình chính -->
-        <div class="main-Space">
+        <div class="main">
             <!-- Chèn menu trái -->
             <?php
             include_once 'left_side.php';
