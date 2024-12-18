@@ -12,12 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         // Kết nối cơ sở dữ liệu
-<<<<<<< HEAD
-        include '\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';
-=======
         include 'C:\xampp\htdocs\web_nghe_nhac\public\assets\php\config\config.php';
 
->>>>>>> 5200e0537ad853bb3332a7bccd8660948297af66
         $database = new Database();
         $conn = $database->getConnection();
 
@@ -30,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute();
 
             // Lấy dữ liệu người dùng từ bảng taikhoan
+
             $user = $stmt->fetch();
             if ($user) {
                 // Lưu thông tin người dùng vào session
@@ -245,18 +242,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="" method="POST">
             <div class="container-2-top">
                 <label for="email">Email</label><br>
-<<<<<<< HEAD
-                <input type="email" id="email" name="email" placeholder="name@domain.com"
-                    style="margin-bottom:30px"><br>
-                <label for="password">Mật khẩu</label><br>
-                <div class="input-container">
-                    <input type="password" id="password" name="password" placeholder="**********">
-                    <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass"
-                        class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
-                </div>
-                <div class="forget-password-container">
-                    <!-- Thêm phần tử cha -->
-=======
 
                 <input type="email" id="email" name="email" placeholder="name@domain.com" style="margin-bottom:30px"><br>
                 <label for="password">Mật khẩu</label><br>
@@ -265,7 +250,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <img src="/web_nghe_nhac/public/assets/img/fluent--eye-32-filled.svg" alt="iconPass" class="iconPass" onclick="togglePassword()" style="cursor: pointer;">
                 </div>
                 <div class="forget-password-container">
->>>>>>> 5200e0537ad853bb3332a7bccd8660948297af66
                     <a href="resetPassword.php" class="forget-password">Quên mật khẩu?</a>
                 </div>
                 <button type="submit" class="sign-in">Đăng nhập</button>
@@ -273,11 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
         <!--Hiển thị thông báo lỗi-->
         <?php if (isset($errorMessage)): ?>
-<<<<<<< HEAD
             <p class="error-message"><?php echo $errorMessage; ?></p>
-=======
-            <p class="error-message"><?php echo $errorMessage;?></p>
->>>>>>> 5200e0537ad853bb3332a7bccd8660948297af66
         <?php endif; ?>
         <div class="container-2-center">
             <div class="divider">
@@ -320,14 +300,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         function goBack() {
             window.history.back(); // Quay lại trang trước đó trong lịch sử trình duyệt
         }
-<<<<<<< HEAD
-
-        // Hàm quay lại trang tiếp theo
-        function goForward() {
-            window.history.forward(); // Quay lại trang tiếp theo trong lịch sử trình duyệt
-        }
-=======
->>>>>>> 5200e0537ad853bb3332a7bccd8660948297af66
     </script>
 </body>
 

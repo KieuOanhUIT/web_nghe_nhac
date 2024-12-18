@@ -502,6 +502,7 @@ body {
     transition: transform 0.3s ease;
     /* Hiệu ứng khi hover icon */
     cursor: pointer;
+    background-size: cover;
 }
 
 #heart-icon2 i {
