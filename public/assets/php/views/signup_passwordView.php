@@ -11,8 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Kiểm tra mật khẩu có ít nhất 8 ký tự, có chứa ít nhất 1 số hoặc ký tự đặc biệt
         if (strlen($password) >= 8 && preg_match('/[0-9!@#$%^&*(),.?":{}|<>]/', $password)) {
-            // Mã hóa mật khẩu (nếu cần lưu trữ hoặc sử dụng)
-            $_SESSION['password'] = password_hash($password, PASSWORD_BCRYPT);
 
             // Chuyển hướng người dùng đến trang signup_infoView.php
             header("Location: signup_infoView.php");

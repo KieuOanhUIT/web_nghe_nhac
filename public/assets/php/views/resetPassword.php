@@ -39,20 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($result) {
                         $maNguoiDung = $result['MaNguoiDung']; // Lấy khóa ngoại MaNguoiDung từ kết quả
 
-                        // (Tuỳ chọn) Mã hóa mật khẩu bằng SHA256 hoặc để mật khẩu dạng gốc
-                        $encoded_password = hash('sha256', $new_password); // Thay đổi theo nhu cầu
+                        // **Lưu mật khẩu dạng thuần không mã hóa**
+                        $plain_password = $new_password;
 
                         // Cập nhật mật khẩu mới trong bảng taikhoan
                         $update_sql_taikhoan = "UPDATE taikhoan SET MatKhau = :new_password WHERE Email = :email";
                         $update_stmt_taikhoan = $conn->prepare($update_sql_taikhoan);
-                        $update_stmt_taikhoan->bindParam(':new_password', $encoded_password, PDO::PARAM_STR);
+                        $update_stmt_taikhoan->bindParam(':new_password', $plain_password, PDO::PARAM_STR);
                         $update_stmt_taikhoan->bindParam(':email', $email, PDO::PARAM_STR);
                         $update_stmt_taikhoan->execute();
 
                         // Cập nhật thông tin liên quan trong bảng nguoidung
                         $update_sql_nguoidung = "UPDATE nguoidung SET MatKhau = :new_password WHERE Email = :email";
                         $update_stmt_nguoidung = $conn->prepare($update_sql_nguoidung);
-                        $update_stmt_nguoidung->bindParam(':new_password', $encoded_password, PDO::PARAM_STR);
+                        $update_stmt_nguoidung->bindParam(':new_password', $plain_password, PDO::PARAM_STR);
                         $update_stmt_nguoidung->bindParam(':email', $email, PDO::PARAM_STR);
                         $update_stmt_nguoidung->execute();
 
@@ -79,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
