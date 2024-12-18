@@ -42,7 +42,7 @@ if (isset($rowMaNguoiDung['MaNguoiDung'])) {
 <?php
 function AddImageSong($name_image_Song)
 {
-    $base_url = "../img/data-songs-image/"; // Đường dẫn gốc đến thư mục chứa ảnh
+    $base_url = "../img/playlist/"; // Đường dẫn gốc đến thư mục chứa ảnh
     return $base_url . $name_image_Song; // Trả về đường dẫn đầy đủ
 }
 
@@ -201,6 +201,7 @@ function AddImageArtist($name_image_Artist)
 
             //UP file ảnh người dùng
         </script>
+    </div>
 </body>
 
 </html>
