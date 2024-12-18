@@ -174,8 +174,61 @@ class PlaylistModel {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
+
+    // Hàm tìm file ảnh playlist theo mã playlist
+    public function findReviewSongById($songId) {
+        $query = "SELECT n.TenNguoiDung AS TenNguoiDung, d.DiemDG AS DiemDG, d.BinhLuan AS BinhLuan
+                FROM danhgia d
+                INNER JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung
+                INNER JOIN baihat b ON b.MaBaiHat = d.MaBaiHat
+                WHERE b.MaBaiHat = :maBaiHat";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':maBaiHat', $songId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Trả về tất cả đánh giá
+    }
+
+    // Lấy mã đánh giá lớn nhất
+    public function getMaxReviewId() {
+        try {
+            $query = "SELECT MAX(MaDanhGia) AS max_id FROM danhgia";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['max_id'] ?? 0;
+        } catch (Exception $e) {
+            error_log("Lỗi khi lấy mã đánh giá lớn nhất: " . $e->getMessage());
+            return 0;
+        }
+    }
+
+    // Thêm đánh giá mới
+    public function addReview($diemDG, $binhLuan, $maNguoiDung, $maBaiHat) {
+        try {
+            $maxId = $this->getMaxReviewId();
+            $newId = $maxId + 1;
+
+            $query = "INSERT INTO danhgia (MaDanhGia, DiemDG, BinhLuan, MaNguoiDung, MaBaiHat) 
+                      VALUES (:newId, :diemDG, :binhLuan, :maNguoiDung, :maBaiHat)";
+            
+            $stmt = $this->db->prepare($query);
+
+            $stmt->bindParam(':newId', $newId, PDO::PARAM_INT);
+            $stmt->bindParam(':diemDG', $diemDG, PDO::PARAM_INT);
+            $stmt->bindParam(':binhLuan', $binhLuan, PDO::PARAM_STR);
+            $stmt->bindParam(':maNguoiDung', $maNguoiDung, PDO::PARAM_INT);
+            $stmt->bindParam(':maBaiHat', $maBaiHat, PDO::PARAM_INT);
+
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log("Lỗi trong addReview: " . $e->getMessage());
+            return false;
+        }
+    }
 
 }
+
+
 
 ?>

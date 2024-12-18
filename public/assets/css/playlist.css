@@ -259,7 +259,8 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     width: 100%;
-    height: 83%;
+    max-width: 680px;
+    height: 630px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 10px;
@@ -439,7 +440,7 @@ body {
     margin-top: 24px;
     width: 100%;
     max-width: 981px;
-    height: fit-content;
+    height: 240px;
     /*350px;*/
 }
 
@@ -566,7 +567,6 @@ body {
     text-overflow: ellipsis;
     /* Hiển thị dấu ba chấm (...) */
     display: block;
-    text-align: center;
 }
 
 #songs #author {
@@ -1575,8 +1575,4 @@ input[name=tenbh] {
     #artist-name {
         font-size: 24px;
     }
-}
-
-@media {
-    
 }

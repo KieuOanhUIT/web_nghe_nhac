@@ -338,6 +338,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
+//Xử lý yêu cầu lấy toàn bộ đánh giá bài hát
+if (isset($_GET['action']) && $_GET['action'] === 'getAllReview' && isset($_GET['maBaiHat'])) {
+        
+    $maBaiHat = $_GET['maBaiHat'];
+
+    // Kết nối database
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $playlistModel = new PlaylistModel($db);
+
+    $reviews = $playlistModel->findReviewSongById($maBaiHat);
+
+    // Trả về dữ liệu dưới dạng JSON
+    header('Content-Type: application/json');
+    echo json_encode($reviews);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'addReview') {
+    // Nhận dữ liệu từ FormData
+    $diemDG = isset($_POST['diemDG']) ? intval($_POST['diemDG']) : 0;
+    $binhLuan = isset($_POST['binhLuan']) ? trim($_POST['binhLuan']) : '';
+    $maNguoiDung = isset($_POST['maNguoiDung']) ? intval($_POST['maNguoiDung']) : 0;
+    $maBaiHat = isset($_POST['maBaiHat']) ? intval($_POST['maBaiHat']) : 0;
+
+    // Kiểm tra dữ liệu hợp lệ
+    if ($diemDG === 0 || empty($binhLuan) || $maNguoiDung === 0 || $maBaiHat === 0) {
+        echo json_encode(['success' => false, 'message' => 'Dữ liệu không hợp lệ.']);
+        exit;
+    }
+
+    // Kết nối database
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $playlistModel = new PlaylistModel($db);
+
+    // Gọi hàm thêm đánh giá
+    $success = $playlistModel->addReview($diemDG, $binhLuan, $maNguoiDung, $maBaiHat);
+
+    if ($success) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Không thể thêm đánh giá.']);
+    }
+}
+
+
+
 
 
 

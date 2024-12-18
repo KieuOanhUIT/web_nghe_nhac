@@ -1,6 +1,7 @@
 let playingPlaylist = null;
 let currentPlaylist = null; // Lưu trữ playlist hiện tại
 let currentSongs = []; // Danh sách bài hát hiện tại
+let currentSong; // Bài hát hiện tại
 let currentIndex = -1; // Chỉ số bài hát hiện tại
 let isPlaying = false; // Trạng thái phát nhạc
 //songs: mảng bài hát truyền từ control
@@ -8,6 +9,9 @@ let isPlaying = false; // Trạng thái phát nhạc
 
 // Hàm phát nhạc từ bài hát cụ thể
 function playSong(songs, index) {
+
+    currentSong = songs[index].MaBaiHat;
+
     if (index < 0 || index >= songs.length) {
         console.error("Chỉ số bài hát không hợp lệ:", index);
         return;
@@ -181,6 +185,10 @@ function handlePlaylistActions(songs, index) {
 
     // Phát bài hát
     playSong(currentSongs, currentIndex);
+
+    // Gọi hàm renderDanhGia để cập nhật đánh giá của bài hát đang phát
+    const currentSongId = songs[index].MaBaiHat;
+    renderDanhGia(currentSongId);
 
     // Cập nhật giao diện
     togglePlayPauseUI(true);
@@ -472,9 +480,20 @@ document.getElementById('form-them-bh').addEventListener('submit', function(even
         if (data.success) {
             // Sau khi thêm bài hát thành công, load lại danh sách bài hát trong playlist
             alert('Thêm bài hát thành công!');
+
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+            const addSongForm = document.getElementById('them-bh-playlist');
+            addSongForm.style.display = 'none';
+
             loadSongs(maDSP); // Hàm load lại danh sách bài hát
         } else {
             alert('Có lỗi khi thêm bài hát.');
+
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+            const addSongForm = document.getElementById('them-bh-playlist');
+            addSongForm.style.display = 'none';
         }
     })
     .catch(error => {
@@ -608,9 +627,19 @@ function confirmDeleteSong(songId, maDSP) {
             .then(data => {
                 if (data.success) {
                     alert('Xóa bài hát thành công!');
+
+                    const overlay = document.getElementById('overlay');
+                    overlay.style.display = 'none';
+                    const deleteForm = document.getElementById('xoa-bh-playlist');
+                    deleteForm.style.display = 'none';
+
                     loadSongs(maDSP); // Reload lại danh sách bài hát
                 } else {
                     alert('Xóa bài hát thất bại: ' + data.message);
+                    const overlay = document.getElementById('overlay');
+                    overlay.style.display = 'none';
+                    const deleteForm = document.getElementById('xoa-bh-playlist');
+                    deleteForm.style.display = 'none';
                 }
                 deleteForm.style.display = 'none';
             })
@@ -657,6 +686,9 @@ document.getElementById("delete-playlist-button").addEventListener("click", () =
                 if (data.success) {
                     alert("Danh sách phát đã được xóa thành công!");
                     popup.style.display = "none"; // Ẩn form
+                    const overlay = document.getElementById('overlay');
+                    overlay.style.display = 'none';
+                    
                     // Tải lại hoặc chuyển hướng
                     location.reload(); // Tùy chỉnh theo nhu cầu
                 } else {
@@ -669,6 +701,147 @@ document.getElementById("delete-playlist-button").addEventListener("click", () =
             });
     });
 });
+
+// Hàm tạo nội dung HTML từ dữ liệu đánh giá
+function renderDanhGia(maBaiHat) {
+    // Gửi yêu cầu đến playlistControl.php để lấy dữ liệu đánh giá
+    fetch(`/web_nghe_nhac/public/assets/php/control/playlistControl.php?action=getAllReview&maBaiHat=${maBaiHat}`)
+        .then(response => response.text()) // Đọc phản hồi dưới dạng text
+        .then(textResponse => {
+            console.log('Response từ lấy toàn bộ đánh giá:', textResponse);
+            return JSON.parse(textResponse); // Chuyển từ text thành JSON và trả về
+        })
+        .then(data => {
+            if (data.error) {
+                console.error(data.error);
+                return;
+            }
+
+            const reviewContent = document.querySelector(".seeReview-content");
+            reviewContent.innerHTML = ""; // Xóa nội dung cũ
+
+            // Duyệt qua từng đánh giá và tạo HTML
+            data.forEach(dg => {
+                const boxE1 = document.createElement("div");
+                boxE1.classList.add("box-E1");
+
+                // Tạo phần tên người đánh giá
+                const nameDiv = document.createElement("div");
+                nameDiv.classList.add("Name");
+                nameDiv.innerHTML = `<p>${dg.TenNguoiDung}</p>`;
+
+                // Tạo phần đánh giá
+                const evaDiv = document.createElement("div");
+                evaDiv.classList.add("Eva");
+
+                const evaOval = document.createElement("div");
+                evaOval.classList.add("Eva-Oval");
+
+                // Thêm số chấm màu dựa trên DiemDG
+                for (let i = 1; i <= 5; i++) {
+                    const dot = document.createElement("span");
+                    if (i <= dg.DiemDG) {
+                        dot.classList.add("dot"); // Chấm màu
+                    } else {
+                        dot.classList.add("dot-empty"); // Chấm trống
+                    }
+                    evaOval.appendChild(dot);
+                }
+
+                // Thêm trạng thái (nội dung đánh giá)
+                const evaStatus = document.createElement("div");
+                evaStatus.classList.add("Eva-status");
+                evaStatus.innerHTML = `<p>${dg.BinhLuan}</p>`;
+
+                evaDiv.appendChild(evaOval);
+                evaDiv.appendChild(evaStatus);
+
+                // Gắn các phần tử con vào box-E1
+                boxE1.appendChild(nameDiv);
+                boxE1.appendChild(evaDiv);
+
+                // Thêm box-E1 vào .seeReview-content
+                reviewContent.appendChild(boxE1);
+            });
+        })
+        .catch(err => console.error("Lỗi khi lấy đánh giá:", err));
+}
+
+//Click info button ẩn thanh info
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector("#exit-ic").addEventListener('click', reviewClickHide);
+    document.querySelector("#show-all-review").addEventListener('click', reviewClickShow);
+});
+function reviewClickHide() {
+        const seeReviewDiv = document.querySelector(".seeReview");
+        seeReviewDiv.style.display = "none";
+};
+function reviewClickShow() {
+    const seeReviewDiv = document.querySelector(".seeReview");
+    seeReviewDiv.style.display = "block";
+};
+
+// Hàm xử lý gửi đánh giá
+function addDanhGia(maBaiHat) {
+    const ratingElements = document.querySelectorAll('.seeReview-nDot .dot-oval');
+    const commentInput = document.querySelector('.writeComment');
+    const submitButton = document.querySelector('.sendComment button');
+
+    // Xác định điểm đánh giá dựa trên số lượng dot được chọn
+    let diemDG = 0;
+    ratingElements.forEach((dot, index) => {
+        const backgroundColor = window.getComputedStyle(dot).backgroundColor;
+        if (backgroundColor === 'rgb(0, 125, 121)') {
+            diemDG = index + 1;
+        }
+    });
+
+    // Lấy nội dung bình luận
+    const binhLuan = commentInput.value;
+
+    // Kiểm tra dữ liệu trước khi gửi
+    if (diemDG === 0 || binhLuan.trim() === '') {
+        alert('Vui lòng chọn điểm đánh giá và nhập bình luận.');
+        return;
+    }
+
+    // Tạo đối tượng FormData
+    const formData = new FormData();
+    formData.append('action', 'addReview'); // Định nghĩa hành động
+    formData.append('diemDG', diemDG);
+    formData.append('binhLuan', binhLuan);
+    formData.append('maNguoiDung', 1); // Mã người dùng mặc định là 1
+    formData.append('maBaiHat', maBaiHat);
+
+    // Gửi yêu cầu POST tới server
+    fetch('/web_nghe_nhac/public/assets/php/control/playlistControl.php', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thêm đánh giá thành công!');
+                commentInput.value = ''; // Xóa nội dung bình luận
+                ratingElements.forEach(dot => dot.style.backgroundColor = ''); // Reset dot
+                renderDanhGia(maBaiHat); // Gọi lại hàm render để hiển thị đánh giá mới
+            } else {
+                alert(data.message || 'Có lỗi xảy ra khi thêm đánh giá.');
+            }
+        })
+        .catch(err => {
+            console.error('Lỗi khi gửi đánh giá:', err);
+            alert('Không thể gửi đánh giá. Vui lòng thử lại sau.');
+        });
+}
+
+// Sự kiện khi người dùng nhấn nút gửi đánh giá
+document.querySelector('.sendComment button').addEventListener('click', (e) => {
+    e.preventDefault(); // Ngăn chặn hành vi submit mặc định
+    const maBaiHat = currentSong;
+    addDanhGia(maBaiHat);
+});
+
 
 
 

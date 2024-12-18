@@ -251,7 +251,7 @@ iconify-icon:hover {
     height: 660px;
     background: #000000;
     border: 1px solid rgba(255, 255, 255, 0.25);
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 500000;
