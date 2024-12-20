@@ -141,6 +141,7 @@ function performSearch(keyword) {
                             if (response.results && response.results.length > 0) {
                                 // Hiển thị bài hát với displaySong
                                 displaySong(response.results[0]);
+                                audioPlayer.play();
                             } else {
                                 console.error('Không tìm thấy thông tin bài hát.');
                             }

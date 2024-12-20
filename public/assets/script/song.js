@@ -58,7 +58,6 @@ function displaySong(song) {
         ? `/web_nghe_nhac/public/song/${song.FileBaiHat}` 
         : '';
 
-        audioPlayer.play();
     // Cập nhật lời bài hát
     const lyric = document.getElementById('lyric');
     lyric.innerHTML = song.LoiBaiHat || 'Lời bài hát';
