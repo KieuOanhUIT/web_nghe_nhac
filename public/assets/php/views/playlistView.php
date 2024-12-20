@@ -119,7 +119,7 @@ if (!isset($controller)) {
                         </div>
                     </div>
                 </div>
-            </div>
+            
             <div id="play">
                 <button id="circle" onclick="togglePlayPause()"><i id="playbutton"
                         class="fa-solid fa-play"></i></button>
@@ -140,6 +140,7 @@ if (!isset($controller)) {
                 <div id="songs"></div>
                 <!--listsong của playlist-->
                 <audio id="audio-player" controls style="display: none;"></audio> <!-- Thẻ audio để phát nhạc -->
+            </div>
             </div>
         </div>
         <?php
