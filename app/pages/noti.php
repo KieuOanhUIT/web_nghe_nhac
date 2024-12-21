@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Lấy MaNguoiDung từ session
-$maNguoiDung = $_SESSION['user_id'];
+$maNguoiDung = $_SESSION['maNguoiDung'];
 
 // Truy vấn lấy thông báo từ cơ sở dữ liệu
 $query = "SELECT MaThongBao, TieuDe, NoiDung, ThoiGian, TrangThai FROM thongbao WHERE MaNguoiDung = ? ORDER BY TrangThai ASC, ThoiGian DESC"; 

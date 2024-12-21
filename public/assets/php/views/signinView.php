@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['user'] = $user;
                 $_SESSION['user_id'] = $user['MaTaiKhoan'];
                 $_SESSION['email'] = $email;
-
+                $_SESSION['maNguoiDung'] = $user['MaNguoiDung'];
                 // Lấy tên khách hàng từ bảng nguoidung thông qua MaNguoiDung
                 $sql_name = "SELECT TenNguoiDung FROM nguoidung WHERE MaNguoiDung = :maNguoiDung";
                 $stmt_name = $conn->prepare($sql_name);
