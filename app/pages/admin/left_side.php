@@ -76,8 +76,11 @@
             </tr>
 
             <tr>
-                <td><span style="width: 325px;">Phương thức</span></td>
-                <td><input type="text" name="phuongthuc"></td>
+                <td><span style="width: 325px;">Phương thức</span>
+                <select id="phuongthuc" name="phuongthuc" required>
+                    <option value="Momo">Momo</option>
+                    <option value="VNPay">VNPay</option>
+                </select></td>
             </tr>
 
             <tr>
@@ -99,12 +102,12 @@
         <div class="wrap-box">
             <div class="box">
                 <span style="width: 325px;">Tên người dùng</span>
-                <input type="text" name="username" required readonly>
+                <input type="text" name="username" required>
             </div>
 
             <div class="box">
                 <span style="width: 325px;">Gói sử dụng</span>
-                <select id="pakage" name="pakage" required disabled>
+                <select id="pakage" name="pakage" required>
                     <option value="Mini">Mini</option>
                     <option value="Individual">Individual</option>
                     <option value="Student">Student</option>
@@ -124,7 +127,10 @@
 
             <div class="box">
                 <span style="width: 325px;">Phương thức</span>
-                <input type="text" name="phuongthuc">
+                <select id="phuongthuc" name="phuongthuc" required>
+                    <option value="Momo">Momo</option>
+                    <option value="VNPay">VNPay</option>
+                </select>
             </div>
 
 
@@ -179,7 +185,7 @@
             var pakage = $('#formaddAccount select[name="pakage"]').val();
             var datestart = $('#formaddAccount input[name="datestart"]').val();
             var datefinish = $('#formaddAccount input[name="datefinish"]').val();
-            var phuongthuc = $('#formaddAccount input[name="phuongthuc"]').val();
+            var phuongthuc = $('#formaddAccount select[name="phuongthuc"]').val();
             // Kiểm tra dữ liệu đầu vào
             if (username == "" || pakage == "" || datestart == "" || datefinish == "") {
                 alert("Vui lòng nhập đ�� thông tin!");

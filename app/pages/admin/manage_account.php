@@ -14,7 +14,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
     <link rel="stylesheet" href="/web_nghe_nhac/public/assets/css/admin_left_side.css">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-    <title>Document</title>
+    <title>Quản lý tài khoản</title>
 </head>
 
 <body>
@@ -85,17 +85,10 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
 
                     <tbody>
                         <!-- Dùng .js để load dữ liệu vào -->
-
-
-
                     </tbody>
                 </table>
-
-
             </div>
-
         </div>
-
         </div>
     </main>
 
@@ -167,7 +160,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
         $('  #formaddAccount2 select').val(rowData[3]);
         $(' #formaddAccount2 input[type="date"][name="datestart"]').val(rowData[4]);
         $(' #formaddAccount2 input[type="date"][name="datefinish"]').val(rowData[5]);
-        $(' #formaddAccount2 input[type="text"][name="phuongthuc"]').val(rowData[6]);
+        $(' #formaddAccount2 select[name="phuongthuc"]').val(rowData[6]);
     });
 
     //sự kiện cập nhật
@@ -179,7 +172,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
         var TenGoi = $('#formaddAccount2 select[name="pakage"]').val();
         var datestart = $('#formaddAccount2 input[name="datestart"]').val();
         var datefinish = $('#formaddAccount2 input[name="datefinish"]').val();
-        var phuongthuc = $('#formaddAccount2 input[name="phuongthuc"]').val();
+        var phuongthuc = $('#formaddAccount2 select[name="phuongthuc"]').val();
 
 
 
@@ -188,7 +181,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Các hea
             url: "../includes/model_admin_left_update.php", // Đường dẫn tới file xử lý PHP
             type: "POST",
             data: {
-                MaNguoiDung: MaTaiKhoan,
+                mataikhoan: MaTaiKhoan,
                 username: TenNguoiDung,
                 pakage: TenGoi,
                 datestart: datestart,

@@ -1,28 +1,20 @@
 <?php
 include '../../core/functions.php';
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if (!isset($_POST['TenGoi']) || !isset($_POST['MaTaiKhoan'])) {
-        echo "Thiếu dữ liệu đầu vào.";
+    if (!isset($_POST['MaTaiKhoan'])) {
+        echo "Thiếu mã tài khoản.";
         exit();
     }
 
-    // Lấy mã gói từ tên gói
-    $sql1 = "SELECT goidichvu.MaGoi FROM goidichvu WHERE goidichvu.TenGoi = :TenGoi";
-    $params1 = [':TenGoi' => $_POST['TenGoi']];
-    $result1 = db_query($sql1, $params1);
-
-    if ($result1 === false || count($result1) === 0) {
-        echo "Gói không tồn tại.";
-        exit();
-    }
-
-    $MaGoi = $result1[0]['MaGoi'];
-
-    // Xóa trong bảng lịch sử mua gói
-    $sql = "DELETE FROM lichsumua WHERE MaTaiKhoan = :MaTaiKhoan AND MaGoi = :MaGoi";
-    $params = [':MaTaiKhoan' => $_POST['MaTaiKhoan'], ':MaGoi' => $MaGoi];
+    // Xóa tài khoản trong bảng taikhoan
+    $sql = "DELETE FROM taikhoan WHERE MaTaiKhoan = :MaTaiKhoan";
+    $params = [':MaTaiKhoan' => $_POST['MaTaiKhoan']];
     $affectedRows = db_query($sql, $params);
+
+    if ($affectedRows) {
+        echo "Tài khoản đã được xóa thành công.";
+    } else {
+        echo "Không thể xóa tài khoản hoặc tài khoản không tồn tại.";
+    }
 }
