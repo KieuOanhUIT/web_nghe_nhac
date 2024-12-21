@@ -31,8 +31,11 @@ img,
     height: 500px;
     margin: 0px 24px 24px 24px;
     position: relative;
-    overflow: hidden;
     overflow-y: auto;
+}
+
+.centerSpace .searches-container::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
 }
 
 /* Định dạng chữ trong phần tìm kiếm */
@@ -97,6 +100,10 @@ img,
     gap: 30px;
     overflow-x: auto;
     padding-bottom: 10px;
+}
+
+.search-items::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
 }
 
 .search-item {
@@ -243,6 +250,10 @@ img,
     overflow-y: auto; /* Cho phép cuộn khi có nhiều thông báo */
     text-align: left; /* Căn trái nội dung */
     color: #ddd; /* Chữ màu xám nhạt */
+}
+
+.popup-content::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
 }
 
 .popup-content h3 {
